@@ -1,0 +1,22 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+        <div metal:fill-slot="content-core">
+
+            <tal:results define="parent python:context.aq_parent;
+                batch python:parent.listFolderContents() if parent.portal_type == 'Folder' else parent.results();
+                document python:view.document('page.html', parent);">
+
+                <metal:block use-macro="context/template9_macro/macros/template"></metal:block>
+
+            </tal:results>
+
+        </div>
+    </body>
+
+</html>

@@ -1,0 +1,204 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="main">
+
+    <!-- <tal:block content="view/ds"/> -->
+
+    <div class="laboratoire_bandeau">
+        <div class="laboratoire_photo_panoramique">
+            <img src="++resource++unice.templates.images/laboratoire.jpg"/>
+        </div>
+
+        <div class="espace_titres">
+            <h2>
+                <tal:block content="context/title"/><br/>
+                <span tal:condition="python:context.sigle or context.codification">
+                    <tal:block content="context/sigle"/>
+                    <tal:block condition="python:context.sigle and context.codification"> - </tal:block>
+                    <tal:block content="context/codification"/>
+                </span>
+            </h2>
+        </div>
+
+        <div tal:condition="context/contentleadimage" class="laboratoire_logo">
+            <img tal:replace="structure context/@@images/contentleadimage/preview"/>
+        </div>
+    </div>
+
+    <div class="laboratoire_contenu" tal:define="chercheurs python:view.chercheurs(context.id)">
+
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Présentation</h4>
+                <p tal:condition="context/Description" tal:content="context/Description" class="laboratoire_description"></p>
+
+                <div class="row">
+                    <div class="col-sm-6" condition="context/url_plaquette">
+                        <a tal:attributes="href context/url_plaquette" class="btn btn-primary btn-block">
+                            <i class="fa-fw fa fa-file-text fa-lg"></i>
+                            Plaquette recherche
+                        </a>
+                        <div class="visible-xs-block"><br/></div>
+                    </div>
+                    <div class="col-sm-6" condition="context/url_site">
+                        <a tal:attributes="href context/url_site" class="btn btn-primary btn-block">
+                            <i class="fa-fw fa fa-globe fa-lg"></i>
+                            Site internet
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visualClear visible-xs-block visible-sm-block"><hr/></div>
+
+            <div class="col-md-4">
+                <h4>Tutelles</h4>
+                <ul tal:condition="context/liste_tutelles" class="laboratoire_tutelles">
+                    <tal:block define="tutelles python:view.tutelles(context.liste_tutelles)">
+                        <li tal:repeat="tutelle tutelles">
+                            <tal:block condition="python:tutelle[1]">
+                                <a tal:attributes="href python:tutelle[1]" tal:content="python:tutelle[0]"/>
+                            </tal:block>
+                            <tal:block condition="python:not tutelle[1]">
+                                <tal:block content="python:tutelle[0]"/>
+                            </tal:block>
+                        </li>
+                    </tal:block>
+                </ul>
+            </div>
+        </div>
+
+        <br class="visualClear"/><hr/>
+
+        <div class="row">
+
+            <div class="col-sm-6 col-md-4">
+                <h4>Contact</h4>
+
+                <strong tal:condition="context/contact_nom">
+                    <i class="fa-fw fa fa-user"></i> <tal:block content="context/contact_nom"/><br/>
+                </strong>
+                <tal:block condition="context/contact_telephone">
+                    <i class="fa-fw fa fa-phone"></i> <tal:block content="context/contact_telephone"/><br/>
+                </tal:block>
+                <tal:block condition="context/contact_email">
+                    <i class="fa-fw fa fa-envelope-alt"></i>
+                    <a tal:attributes="href context/contact_email" tal:content="context/contact_email"/><br/>
+                </tal:block>
+            </div>
+
+            <div class="visualClear visible-xs-block visible-sm-block"><hr/></div>
+
+            <div class="col-sm-6 col-md-4">
+                <h4>Directeur</h4>
+
+                <strong tal:condition="context/directeur_nom">
+                    <i class="fa-fw fa fa-user"></i> <tal:block content="context/directeur_nom"/><br/>
+                </strong>
+                <tal:block condition="context/directeur_telephone">
+                    <i class="fa-fw fa fa-phone"></i> <tal:block content="context/directeur_telephone"/><br/>
+                </tal:block>
+                <tal:block condition="context/directeur_email">
+                    <i class="fa-fw fa fa-envelope-alt"></i>
+                    <a tal:attributes="href context/directeur_email" tal:content="context/directeur_email"/><br/>
+                </tal:block>
+            </div>
+
+            <div class="visualClear visible-xs-block visible-sm-block"><hr/></div>
+
+            <div class="col-sm-6 col-md-4">
+                <h4>Directeur adjoint</h4>
+                    <strong tal:condition="context/directeur_adjoint_nom">
+                        <i class="fa-fw fa fa-user"></i> <tal:block content="context/directeur_adjoint_nom"/><br/>
+                    </strong>
+                    <tal:block condition="context/directeur_adjoint_telephone">
+                        <i class="fa-fw fa fa-phone"></i> <tal:block content="context/directeur_adjoint_telephone"/><br/>
+                    </tal:block>
+                    <tal:block condition="context/directeur_adjoint_email">
+                        <i class="fa-fw fa fa-envelope-alt"></i>
+                        <a tal:attributes="href context/directeur_adjoint_email" tal:content="context/directeur_adjoint_email"/><br/>
+                    </tal:block>
+            </div>
+
+        </div>
+
+        <br class="visualClear"/><hr/>
+
+        <tal:block condition="python:context.afficher_chercheurs and chercheurs">
+            <div class="row">
+                <div class="col-md-12">
+                    <h4>Chercheurs médaillés</h4>
+                    <div class="row laboratoire_liste_chercheurs">
+                        <div tal:repeat="chercheur chercheurs"
+                             class="col-xs-6 col-sm-3 col-md-2 text-center-">
+                            <tal:block define="scales chercheur/@@images; thumb python:scales.scale('contentleadimage', scale='preview')">
+
+                                <div class="row">
+                                    <div class="col-xs-4">
+                                        <a tal:condition="chercheur/contentleadimage"
+                                           tal:attributes="href chercheur/absolute_url;" class="thumb_link image_ratio ratio1:1">
+                                            <span tal:attributes="style string:background-image: url(${thumb/url});" class="image_top">
+                                                <img tal:attributes="src thumb/url; title chercheur/title"/>
+                                            </span>
+                                        </a>
+                                    </div>
+                                    <div class="col-xs-8">
+                                        <a tal:attributes="href chercheur/absolute_url;">
+                                            <strong tal:content="chercheur/title"/>
+                                        </a>
+                                    </div>
+                                </div>
+                            </tal:block>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br class="visualClear"/><hr/>
+        </tal:block>
+
+        <div class="row">
+
+            <div class="col-sm-4 col-md-3">
+                <h4>Implantation</h4>
+
+                <tal:block condition="context/adresse_postale">
+                    <i class="fa-fw fa fa-envelope-o"></i> <tal:block content="context/adresse_postale"/><br/>
+                </tal:block>
+                <tal:block condition="context/complement_adresse">
+                    <i class="fa-fw"></i> <tal:block content="context/complement_adresse"/><br/>
+                </tal:block>
+                <tal:block condition="python:context.code_postal or context.ville">
+                    <i class="fa-fw"></i>
+                    <tal:block content="context/code_postal"/>
+                    <tal:block content="context/ville"/><br/>
+                </tal:block>
+                <tal:block condition="context/plan_acces">
+                    <i class="fa-fw fa fa-map-marker"></i>
+                    <a tal:attributes="href context/plan_acces" class="btn btn-primary btn-xs">Voir le plan d'accès</a><br/>
+                </tal:block>
+            </div>
+
+            <div class="visualClear visible-xs-block"><hr/></div>
+
+            <div class="col-sm-8 col-md-9">
+                <div tal:condition="context/google_map" class="laboratoire_google_map">
+                    <h4>Carte</h4>
+                    <tal:block content="structure context/google_map"/><br/>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</metal:main>
+
+</body>
+</html>
+

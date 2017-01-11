@@ -1,0 +1,317 @@
+<!-- LE CONTENU UTILISE PAR CE FICHIER SE SITUE DANS LA MACRO medites_macro.pt 
+A TERME, CE FICHIER SERA SUPPRIME -->
+
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;
+            variableEtapes python:view.champsRepeat('etapes');      
+            variableGalerie python:view.champsRepeat('galerie_photos');  
+            variableMeditesCollege python:view.champsRepeat('medites_dans_mon_college');
+            variableMeditesEtapesCollege python:view.champsRepeat('ajout_etapes'); 
+            variableMembre python:view.champsRepeat('membre');
+            ">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+            <metal:content-core define-macro="content-core" tal:define="widgets nocall:context/@@view">
+<!-- appel de la mapMonde du parcours  -->
+                <tal:block condition="context/identifiant">
+                    <metal:macro use-macro="python:context.restrictedTraverse('@@medites_macros_parcours').index.macros[context.identifiant]"></metal:macro>
+                </tal:block>
+<!-- contenu -->
+                <section class="container-fluid container-md-height dark col-xs-12">                 
+                    <div class="content presentation"> 
+                        <ol class="breadcrumb">
+                            <li><a href="#">Accueil</a></li>
+                            <li>Parcours p&eacute;dagogique</li>
+                            <li tal:content="infos/title" tal:condition="infos/title" class="active"></li>
+                        </ol>
+                        <h1 tal:content="infos/title" tal:condition="infos/title"></h1>
+                        <div tal:replace="structure widgets/++widget++contenu/render" tal:condition="context/contenu" />
+                    </div>
+                </section>
+                <section class="container-fluid">
+                    <div class="row">
+                        <div class="row-same-height row-full-height toolTipBlanc">
+                            <tal:block condition="variableEtapes">
+                                <tal:block condition="variableMembre">
+                                    <div class="col-xs-12 col-md-4 col-md-height col-lg-height col-full-height col1 parcours">
+                                        <div class="item">
+                                            <div class="topCol">
+                                                <img src="++resource++unice.medites.images/parcours-icon.png" alt="" /><h3>&Eacute;tapes</h3>
+                                            </div>
+                                            <div class="contentCol">  
+                                                <ul class="ulPerso">
+                                                    <li tal:repeat="etapes variableEtapes">  
+                                                        <a tal:attributes="href string:#; data-toggle string:modal; data-target string:#${etapes/identifiant};"
+                                                           tal:content="string:${etapes/numero_de_l_etape}&nbsp;:&nbsp;${etapes/title}"
+                                                           tal:condition="etapes/title" />
+                                                        <div tal:attributes="id etapes/identifiant; class string:modal fade bs-example-modal-lg; tabindex string:-1; role string:dialog; aria-labelledby string:id${etapes/identifiant}; aria-hidden string:true;"
+                                                             tal:condition="etapes/title">
+                                                          <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                                                                    <h3 tal:attributes="class string:modal-title; id string:id${etapes/identifiant};"
+                                                                        tal:content="etapes/title" />
+                                                                </div>    
+                                                                <div class="modal-body">     
+                                                                    <tal:block condition="etapes/contenu" replace="structure etapes/contenu/output" />
+
+                                                                    <hr tal:condition="etapes/fichier_1" />
+                                                                    <h3 tal:condition="etapes/fichier_1">Documents téléchargeables</h3>
+                                                                    <ul class="sansPuce row noMargin borderLi" tal:condition="etapes/fichier_1">
+                                                                        <li class="col-xs-3">
+                                                                            <a tal:condition="etapes/apercu_fichier_1" tal:attributes="href string:${etapes/absolute_url}/@@download/fichier_1/${etapes/fichier_1/filename}" title="Télécharger le fichier">
+                                                                                <img tal:define="scales_photo etapes/@@images; maVariable python:scales_photo.scale('apercu_fichier_1', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" />
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="col-xs-3 col-md-2" tal:condition="etapes/fichier_2">
+                                                                            <a tal:condition="etapes/apercu_fichier_2" tal:attributes="href string:${etapes/absolute_url}/@@download/fichier_2/${etapes/fichier_2/filename}" title="Télécharger le fichier">
+                                                                                <img tal:define="scales_photo etapes/@@images; maVariable python:scales_photo.scale('apercu_fichier_2', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" />
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="col-xs-3 col-md-2" tal:condition="etapes/fichier_3">
+                                                                            <a tal:condition="etapes/apercu_fichier_3" tal:attributes="href string:${etapes/absolute_url}/@@download/fichier_3/${etapes/fichier_3/filename}" title="Télécharger le fichier">
+                                                                                <img tal:define="scales_photo etapes/@@images; maVariable python:scales_photo.scale('apercu_fichier_3', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" />
+                                                                            </a>
+                                                                        </li>
+                                                                        <li class="col-xs-3 col-md-2" tal:condition="etapes/fichier_4">
+                                                                            <a tal:condition="etapes/apercu_fichier_4" tal:attributes="href string:${etapes/absolute_url}/@@download/fichier_4/${etapes/fichier_4/filename}" title="Télécharger le fichier">
+                                                                                <img tal:define="scales_photo etapes/@@images; maVariable python:scales_photo.scale('apercu_fichier_4', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" />
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="footCol"></div>
+                                        </div>    
+                                    </div>
+                                    <div class="col-xs-12 col-md-4 col-md-height col-lg-height col-full-height col2 equipe troisColonnes">
+                                        <div class="item">
+                                            <div class="topCol">
+                                                <i class="fa fa-users fa-3x"></i><h3>Responsables</h3>
+                                            </div>
+                                            <div class="contentCol">
+                                                <ul class="grid cs-style-3">
+                                                    <tal:block repeat="membre variableMembre">
+                                                        <li tal:condition="python:u'Oui' in membre.responsable">
+                                                            <figure>
+                                                                <img tal:define="scales_membre membre/@@images; maVariable python:scales_membre.scale('photo', scale='mini')"
+                                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Photo de ${context/title}"
+                                                                     tal:condition="membre/photo" />
+                                                                <figcaption>
+                                                                    <div>
+                                                                        <strong tal:content="membre/prenom" tal:condition="membre/prenom"></strong>
+                                                                        <strong tal:content="membre/title" class="text-uppercase"></strong>
+
+                                                                        <tal:block tal:condition="membre/lien_vers_structure"> 
+                                                                            <a tal:condition="membre/abreviation_structure" tal:attributes="href membre/lien_vers_structure; title membre/structure; target string:_blank; class string:structureMembre visibleHover text-center col-xs-12" tal:content="membre/abreviation_structure" data-placement="bottom" data-toggle="tooltip" />
+                                                                            <a tal:condition="not:membre/abreviation_structure" data-placement="bottom" tal:attributes="href membre/lien_vers_structure; title string:Afficher la page; target string:_blank; class string:structureMembre visibleHover text-center col-xs-12" tal:content="membre/structure" />
+                                                                        </tal:block>
+                                                                        <tal:block tal:condition="not:membre/lien_vers_structure"> 
+                                                                            <p tal:condition="membre/abreviation_structure" class="structureMembre text-center visibleHover col-xs-12" tal:attributes="data-original-title membre/structure" tal:content="membre/abreviation_structure" data-placement="bottom" data-toggle="tooltip" />
+                                                                            <p tal:condition="not:membre/abreviation_structure" class="structureMembre visibleHover text-center col-xs-12" tal:content="membre/structure" />
+                                                                        </tal:block>
+
+                                                                        <span tal:content="membre/metier" />
+                                                                        <a class="contactMembre"  tal:attributes="href string:mailto: ${membre/email}; title string:Lui &eacute;crire un email">
+                                                                            <i class="fa fa-envelope fa-2x"></i>
+                                                                        </a> 
+                                                                    </div>    
+                                                                </figcaption>
+                                                            </figure>
+                                                        </li>   
+                                                    </tal:block>
+                                                </ul>
+                                            </div>
+                                            <div class="footCol"></div>
+                                        </div>    
+                                    </div>
+
+                                    <div class="col-xs-12 col-md-4 col-md-height col-lg-height col-full-height col3 equipe troisColonnes">
+                                        <div class="item">
+                                            <div class="topCol">
+                                                <i class="fa fa-users fa-3x"></i><h3>Intervenants</h3>
+                                            </div>
+                                            <div class="contentCol">
+                                                <ul class="grid cs-style-3">
+                                                    <tal:block repeat="membre variableMembre">
+                                                        <li tal:condition="python:u'Non' in membre.responsable">
+                                                            <figure>
+                                                                <img tal:define="scales_membre membre/@@images; maVariable python:scales_membre.scale('photo', scale='mini')"
+                                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Photo de ${context/title}"
+                                                                     tal:condition="membre/photo" />
+                                                                <figcaption>
+                                                                    <div>
+                                                                        <strong tal:content="membre/prenom" tal:condition="membre/prenom"></strong>
+                                                                        <strong tal:content="membre/title" class="text-uppercase"></strong>
+     
+                                                                        <tal:block tal:condition="membre/lien_vers_structure"> 
+                                                                            <a tal:condition="membre/abreviation_structure" tal:attributes="href membre/lien_vers_structure; title membre/structure; target string:_blank; class string:structureMembre text-center visibleHover col-xs-12" tal:content="membre/abreviation_structure" data-placement="bottom" data-toggle="tooltip" />
+                                                                            <a tal:condition="not:membre/abreviation_structure" data-placement="bottom" tal:attributes="href membre/lien_vers_structure; title string:Afficher la page; target string:_blank; class string:structureMembre text-center visibleHover col-xs-12" tal:content="membre/structure" />
+                                                                        </tal:block>
+                                                                        <tal:block tal:condition="not:membre/lien_vers_structure"> 
+                                                                            <p tal:condition="membre/abreviation_structure" class="structureMembre text-center visibleHover col-xs-12" tal:attributes="data-original-title membre/structure" tal:content="membre/abreviation_structure" data-placement="bottom" data-toggle="tooltip" />
+                                                                            <p tal:condition="not:membre/abreviation_structure" class="structureMembre text-center visibleHover col-xs-12" tal:content="membre/structure" />
+                                                                        </tal:block>
+
+                                                                        <span tal:content="membre/metier" />
+                                                                        <a class="contactMembre"  tal:attributes="href string:mailto: ${membre/email}; title string:Lui &eacute;crire un email">
+                                                                            <i class="fa fa-envelope fa-2x"></i>
+                                                                        </a>
+                                                                    </div>    
+                                                                </figcaption>
+                                                            </figure>
+                                                        </li>   
+                                                    </tal:block>
+                                                </ul>
+                                            </div>
+                                            <div class="footCol"></div>
+                                        </div>    
+                                    </div>
+                                </tal:block>
+                            </tal:block>
+                            <tal:block condition="variableEtapes">
+                                <tal:block condition="not:variableMembre">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-full-height col1 parcours">
+                                        <div class="item">
+                                            <div class="topCol">
+                                                <img src="++resource++unice.medites.images/parcours-icon.png" alt="" /><h3>&Eacute;tapes</h3>
+                                            </div>
+                                            <div class="contentCol">  
+                                                <ul class="ulPerso">
+                                                    <li tal:repeat="etapes variableEtapes">  
+                                                        <a tal:attributes="href string:#; data-toggle string:modal; data-target string:#${etapes/identifiant};"
+                                                           tal:content="string:${etapes/numero_de_l_etape}&nbsp;:&nbsp;${etapes/title}"
+                                                           tal:condition="etapes/title" />
+                                                        <div tal:attributes="id etapes/identifiant; class string:modal fade bs-example-modal-lg; tabindex string:-1; role string:dialog; aria-labelledby string:id${etapes/identifiant}; aria-hidden string:true;"
+                                                             tal:condition="etapes/title">
+                                                          <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                                                                    <h3 tal:attributes="class string:modal-title; id string:id${etapes/identifiant};"
+                                                                        tal:content="etapes/title" />
+                                                                </div>    
+                                                                <div class="modal-body">     
+                                                                    <tal:block condition="etapes/contenu" replace="structure etapes/contenu/output" />
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="footCol"></div>
+                                        </div>    
+                                    </div>
+                                </tal:block>
+                            </tal:block>
+                            <tal:block condition="variableMembre">
+                                <tal:block condition="not:variableEtapes">
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-height col-md-height col-lg-height col-full-height col2 equipe deuxColonnes">
+                                        <div class="item">
+                                            <div class="topCol">
+                                                <i class="fa fa-users fa-3x"></i><h3>Responsables</h3>
+                                            </div>
+                                            <div class="contentCol">
+                                                <ul class="grid cs-style-3">
+                                                    <tal:block repeat="membre variableMembre">
+                                                        <li tal:condition="python:u'Oui' in membre.responsable">
+                                                            <figure>
+                                                                <img tal:define="scales_membre membre/@@images; maVariable python:scales_membre.scale('photo', scale='mini')"
+                                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Photo de ${context/title}"
+                                                                     tal:condition="membre/photo" />
+                                                                <figcaption>
+                                                                    <div>
+                                                                        <strong tal:content="membre/prenom" tal:condition="membre/prenom"></strong>
+                                                                        <strong tal:content="membre/title" class="text-uppercase"></strong>
+
+                                                                        <tal:block tal:condition="membre/lien_vers_structure"> 
+                                                                            <a tal:condition="membre/abreviation_structure" tal:attributes="href membre/lien_vers_structure; title membre/structure; target string:_blank; class string:structureMembre text-center visibleHover col-xs-12" tal:content="membre/abreviation_structure" data-placement="bottom" data-toggle="tooltip" />
+                                                                            <a tal:condition="not:membre/abreviation_structure" data-placement="bottom" tal:attributes="href membre/lien_vers_structure; title string:Afficher la page; target string:_blank; class string:structureMembre text-center visibleHover col-xs-12" tal:content="membre/structure" />
+                                                                        </tal:block>
+                                                                        <tal:block tal:condition="not:membre/lien_vers_structure"> 
+                                                                            <p tal:condition="membre/abreviation_structure" class="structureMembre text-center visibleHover col-xs-12" tal:attributes="data-original-title membre/structure" tal:content="membre/abreviation_structure" data-placement="bottom" data-toggle="tooltip" />
+                                                                            <p tal:condition="not:membre/abreviation_structure" class="structureMembre text-center visibleHover col-xs-12" tal:content="membre/structure" />
+                                                                        </tal:block>
+                                                                        <span tal:content="membre/metier" />
+                                                                        <a class="contactMembre" tal:attributes="href string:mailto: ${membre/email}; title string:Lui &eacute;crire un email">
+                                                                            <i class="fa fa-envelope fa-2x"></i>
+                                                                        </a> 
+                                                                    </div>    
+                                                                </figcaption>
+                                                            </figure>
+                                                        </li>   
+                                                    </tal:block>
+                                                </ul>
+                                            </div>
+                                            <div class="footCol"></div>
+                                        </div>    
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-sm-height col-md-height col-lg-height col-full-height col3 equipe deuxColonnes">
+                                        <div class="item">
+                                            <div class="topCol">
+                                                <i class="fa fa-users fa-3x"></i><h3>Intervenants</h3>
+                                            </div>
+                                            <div class="contentCol">
+                                                <ul class="grid cs-style-3">
+                                                    <tal:block repeat="membre variableMembre">
+                                                        <li tal:condition="python:u'Non' in membre.responsable">
+                                                            <figure>
+                                                                <img tal:define="scales_membre membre/@@images; maVariable python:scales_membre.scale('photo', scale='mini')"
+                                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Photo de ${context/title}"
+                                                                     tal:condition="membre/photo" />
+                                                                <figcaption>
+                                                                    <div>
+                                                                        <strong tal:content="membre/prenom" tal:condition="membre/prenom"></strong>
+                                                                        <strong tal:content="membre/title" class="text-uppercase"></strong>
+
+                                                                        <tal:block tal:condition="membre/lien_vers_structure"> 
+                                                                            <a tal:condition="membre/abreviation_structure" tal:attributes="href membre/lien_vers_structure; title membre/structure; target string:_blank; class string:structureMembre text-center visibleHover col-xs-12" tal:content="membre/abreviation_structure" data-placement="bottom" data-toggle="tooltip" />
+                                                                            <a tal:condition="not:membre/abreviation_structure" tal:attributes="href membre/lien_vers_structure; title string:Afficher la page; target string:_blank; class string:structureMembre text-center visibleHover col-xs-12" data-placement="bottom" tal:content="membre/structure" />
+                                                                        </tal:block>
+                                                                        <tal:block tal:condition="not:membre/lien_vers_structure"> 
+                                                                            <p tal:condition="membre/abreviation_structure" class="structureMembre text-center visibleHover col-xs-12" tal:attributes="data-original-title membre/structure" tal:content="membre/abreviation_structure" data-placement="bottom" data-toggle="tooltip" />
+                                                                            <p tal:condition="not:membre/abreviation_structure" class="structureMembre text-center visibleHover col-xs-12" tal:content="membre/structure" />
+                                                                        </tal:block>
+                                                                        <span tal:content="membre/metier" />
+                                                                        <a class="contactMembre" tal:attributes="href string:mailto: ${membre/email}; title string:Lui &eacute;crire un email">
+                                                                            <i class="fa fa-envelope fa-2x"></i>
+                                                                        </a> 
+                                                                    </div>    
+                                                                </figcaption>
+                                                            </figure>
+                                                        </li>   
+                                                    </tal:block>
+                                                </ul>
+                                            </div>
+                                            <div class="footCol"></div>
+                                        </div>
+                                    </div>
+
+                                </tal:block>
+                            </tal:block>
+                        </div>    
+                    </div>                    
+                </section>
+                <script>
+                    $(function() {$('.equipe li a').not(".contactMembre").tooltip();})
+                </script>
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+            </metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

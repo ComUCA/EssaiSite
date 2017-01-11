@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.theme">
+
+    <!-- #################################################################### -->
+    <!-- ### CSS, JS & IMG ################################################## -->
+    <!-- #################################################################### -->
+
+    <browser:resourceDirectory
+        name="unice.theme.stylesheets"
+        directory="stylesheets"/>
+
+    <browser:resourceDirectory
+        name="unice.theme.javascripts"
+        directory="javascripts"/>
+
+    <browser:resourceDirectory
+        name="unice.theme.images"
+        directory="images"/>
+
+</configure>

@@ -1,0 +1,155 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="unice.portlet.sygefor">
+
+<!-- <body><div metal:fill-slot="content-core"> -->
+
+    <tal:block define="sygefor view/getSygefor; inscription request/inscription|nothing;">
+
+        <ul class="nav nav-pills nav-justified">
+            <tal:block repeat="public sygefor/publics">
+                <li tal:attributes="class python:'active' if repeat['public'].index == 0 else ''">
+                    <a tal:attributes="href string:#${public}" tal:content="python:sygefor['keys'][public]" data-toggle="tab"/>
+                </li>
+            </tal:block>
+        </ul>
+
+        <div class="tab-content">
+            <tal:block repeat="public sygefor/publics">
+                <div tal:attributes="id public; class python:'tab-pane fade in active' if repeat['public'].index == 0 else 'tab-pane fade'">
+                    <div class="alert alert-info text-center lead" style="margin-bottom:10px;">
+                        <i class="icon-group"></i> Liste des thématiques pour les <strong tal:content="python:sygefor['keys'][public]"/>
+                    </div>
+
+                    <div class="panel-group" tal:attributes="id string:accordion_${public}">
+
+                        <div tal:repeat="theme python:sorted(sygefor['publics'][public])" class="panel panel-default">
+
+                            <tal:block define="stages python:view.stages(sygefor['stages'], sygefor['keys'][public], sygefor['keys'][theme]);
+                                nbr_stages python:len(stages);">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        <a tal:attributes="data-parent string:#accordion_${public}; href string:#collapse_${public}_${theme}" data-toggle="collapse">
+                                            <i class="icon-reorder"></i> <tal:block content="python:sygefor['keys'][theme]"/>
+                                            <small>(<tal:block content="nbr_stages"/> stage<tal:block condition="python:nbr_stages>1">s</tal:block>)</small>
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div tal:attributes="id string:collapse_${public}_${theme}" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <ul>
+                                            <li tal:repeat="stage stages">
+                                                <a href="#" tal:define="nbr_sessions python:len(stage['sessions'])"
+                                                    tal:attributes="data-target string:#modal_${stage/id}" data-toggle="modal">
+                                                    <strong tal:content="stage/intitule"/>
+                                                    <small>(<tal:block content="nbr_sessions"/> session<tal:block condition="python:nbr_sessions>1">s</tal:block>)</small>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </tal:block>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </tal:block>
+        </div>
+
+        <tal:block repeat="stage sygefor/stages">
+            <div tal:attributes="id string:modal_${stage/id}; aria-labelledby string:modal_title${stage/id}"
+                class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" tal:attributes="id string:modal_title${stage/id}" tal:content="stage/intitule"/>
+                        </div>
+                        <div class="modal-body">
+
+                            <h5>Thématique de formation :</h5>
+                            <div class="pull_paragraph">
+                                <p tal:replace="python:stage['thematiques'][0]"/>
+                            </div>
+
+                            <h5>Objectifs :</h5>
+                            <div class="pull_paragraph">
+                                <p tal:replace="structure stage/objectifs"/>
+                            </div>
+
+                            <h5>Public concerné :</h5>
+                            <div class="pull_paragraph">
+                                <p tal:replace="structure stage/publicconcernes"/>
+                            </div>
+
+                            <h5>Pré-requis :</h5>
+                            <div class="pull_paragraph">
+                                <p tal:replace="structure stage/prerequis"/>
+                            </div>
+
+                            <h5>Programme :</h5>
+                            <div class="pull_paragraph">
+                                <p tal:replace="structure stage/contenu"/>
+                            </div>
+
+                            <h5>Année :</h5>
+                            <p tal:content="stage/annee" class="pull_paragraph"/>
+
+                            <h5>Semestre :</h5>
+                            <p tal:content="stage/semestre" class="pull_paragraph"/>
+
+                            <h5>Sessions programmées :</h5>
+                            <table class="table table-bordered table-hover" style="width:100%;">
+                                <caption>Liste des sessions programmées</caption>
+
+                                    <thead>
+                                        <tr>
+                                            <th id="sessions" scope="col">Sessions</th>
+                                            <th id="date" scope="col">Date</th>
+                                            <th id="horaire" scope="col">Horaire</th>
+                                            <th id="lieu" scope="col">Lieu</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tal:block repeat="session stage/sessions">
+                                            <tr tal:repeat="date python:stage['sessions'][session]">
+
+                                                <th id="session" headers="sessions" scope="row">
+                                                    <tal:block condition="repeat/date/start" content="repeat/session/number"/>
+                                                </th>
+                                                <tal:block condition="date/date">
+                                                    <td headers="date session" tal:content="date/date"/>
+                                                    <td headers="horaire session">
+                                                        <tal:block content="date/horairesdeb"/>
+                                                        <tal:block condition="python:date['horairesdeb'] and date['horairesfin']"> et </tal:block>
+                                                        <tal:block content="date/horairesfin"/>
+                                                    </td>
+                                                    <td headers="lieu session" tal:content="date/lieu"/>
+                                                </tal:block>
+                                                <tal:block condition="not:date/date">
+                                                    <td headers="date horaire lieu session" colspan="3">En cours de programmation</td>
+                                                </tal:block>
+
+                                            </tr>
+                                        </tal:block>
+
+                                    </tbody>
+
+                            </table><br/>
+
+                            <a tal:condition="inscription" tal:attributes="href inscription" class="btn btn-primary btn-block">&#x2714; S'inscrire à la formation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </tal:block>
+
+    </tal:block>
+
+<!-- </div></body> -->
+
+</html>

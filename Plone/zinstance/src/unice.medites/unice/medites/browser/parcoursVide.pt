@@ -1,0 +1,691 @@
+<!-- Insectes 1 // Biodiversite -->
+        <metal:block define-macro="bio-p4">
+            <script src="++resource++unice.medites.javascripts/libs/avatars.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points bio-P4">
+                    <h3>Score</h3>
+                    <span id="pointsParcours">0</span>/180 
+                </div>
+                <div id="bio-P4" class="Marker_Container marqueurs">
+
+                <!-- Popup des instruction du parcours -->                
+                    <div class="reglesParcours modal fade" tabindex="-1" role="dialog" aria-labelledby="reglesOceanTitre" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content cadreBleu">
+                                <button aria-label="Close" data-dismiss="modal" class="close" type="button"><span aria-hidden="true">×</span></button>
+                                <div class="modal-body">
+                                    <h4 class="noMarginTop">Biodiversité des plantes</h4>
+                                    <br/>
+                                    <p>Bienvenue sur ce parcours pédagogique, composé de 12 étapes. Chacune d'entre elle est signalée par un des logos suivants :</p>
+                                    <ul class="sansPuce noPadding">
+                                        <li><i class="fa fa-info"></i> : pour les informations générales.</li>
+                                        <li><i class="fa fa-gears"></i> : pour les contenus.</li>
+                                        <li><i class="fa fa-external-link"></i> : pour approfondir le sujet grâce à un autre site internet.</li>
+                                        <li><i class="fa fa-trophy"></i> : pour tester tes nouvelles connaissances avec un quiz géant.</li>
+                                        <li><img alt="Etoile vide" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" class="etoileVide" /> <img alt="Etoile pleine" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" class="etoilePleine" /> : pour les jeux, blanches lorsque les jeux ne sont pas terminés et oranges quand ces derniers sont finis et que tu as remporté tes points. Chaque jeu rapporte 20 points sauf les quiz qui en valent 30 (Ils sont inscrits en haut à droite dans la bouée de sauvetage <img alt="Zone destinée aux points" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/plantes/p1/score.svg" width="20"  />).</li>
+                                    </ul>
+                                    <h4 class="text-center"><em>Bonne balade éducative parmi les plantes...</em></h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="HE_Char"></div>
+                    <div class="marqueur" id="bio-d-0">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"87.5,22.7","tooltip_offset":"-4.5,7","panel_pos":"0.4,0.9"}'><i class="fa fa-info"></i></div>
+                        <div class="HE_Tooltip">Bienvenue !</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Biodiversité des plantes</h3>
+                            <div id="carousel-bio-P4-0" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-0" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-0" data-slide-to="1"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4>Bienvenue !</h4>
+                                            <p>T</p>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                           
+                                        </div>   
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-0" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-0" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a>  
+                            </div>    
+                        </div>
+                    </div>    
+
+                    <div class="marqueur" id="bio-d-1">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"76.5,22","tooltip_offset":"-4.5,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                        <div class="HE_Tooltip">Étape 1 - Culture des fruits et légumes</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Culture des fruits et légumes</h3>
+                            <div id="carousel-bio-P4-1" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-1" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-1" data-slide-to="1"></li>
+                                    <li data-target="#carousel-bio-P4-1" data-slide-to="2"></li>
+                                    <li data-target="#carousel-bio-P4-1" data-slide-to="3"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="introSeance">
+                                            <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                            <div> 
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>           
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4>
+                                            <p></p>
+                                        </div>
+                                        
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                             
+                                        </div>    
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            
+                                        </div>   
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-1" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-1" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a>  
+                            </div>    
+                        </div>
+                    </div>    
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"72.5,20","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"69.5,21","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"62.5,22","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"55.5,20","hidden":true}'></div>
+
+                    <div class="marqueur drag1etape-bio-d-2" id="bio-d-2">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"52,20.8","tooltip_offset":"-6.5,7","panel_pos":"0.4,0.9"}'>
+                            <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                            <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />                       
+                        </div>
+                        <div class="HE_Tooltip">Étape 2 - Les éléments nécéssaires à la germination</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Les éléments nécéssaires à la germination</h3>
+                            <div id="carousel-bio-P4-2" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                <div id="great-1-bio-d-2" class="displayNone" data-animation="animated flipInY">
+                                    <p>Bien joué !</p>
+                                    <p class="pointsXP pointsJeu1">Tu remportes <u><span>20</span> points</u></p>
+                                </div> 
+                                <div id="solution-bio-d-2" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--bio-d-2" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="solution--bio-d-2">Solution</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/plantes/p1/etape2/solution.png" alt="" />
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-2" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-2" data-slide-to="1" class="liPoints liJ1Points"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="introSeance">
+                                            <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                            <div> 
+                                                <p>La germiquoi ?</p>
+                                            </div>
+                                        </div>
+                                    </div>    
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4>
+                                            <div class="jeuBtn">
+                                                <span class="solutionBtn" data-toggle="modal" data-target="#solution-bio-d-2">
+                                                    <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                </span>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-2" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-2" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a> 
+                            </div>   
+                        </div>
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"49.5,20","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"48.5,19.5","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"46.5,17.8","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"44.5,18.8","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"43.5,20.8","hidden":true}'></div>
+
+                    <div class="marqueur drag2etapes-bio-d-3" id="bio-d-3">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"37.5,23","tooltip_offset":"-6.5,7","panel_pos":"0.4,0.9"}'>
+                            <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                            <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                        </div>
+                        <div class="HE_Tooltip">Étape 3 - La démarche scientifique</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>La démarche scientifique</h3>
+                            <div id="carousel-bio-P4-3" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                <div id="great-1-bio-d-3" class="displayNone" data-animation="animated flipInY">
+                                    <p>Bien joué !</p>
+                                    <p class="pointsXP pointsJeu1">Tu remportes <u><span>20</span> points</u></p>
+                                </div> 
+                                <div id="solution-bio-d-3" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--bio-d-3" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="solution--bio-d-3">Solution</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/plantes/p1/etape3/solution.jpg" alt="" />
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>     
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-3" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-3" data-slide-to="1"></li>
+                                    <li data-target="#carousel-bio-P4-3" data-slide-to="2" class="liPoints liJ1Points"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="introSeance">
+                                            <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                            <div> 
+                                                <p>Comment faire la différence entre les insectes ?</p>
+                                            </div>
+                                        </div>
+                                    </div>                
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4>Observation</h4> 
+                                            
+                                        </div>    
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4>     
+                                            <div class="jeuBtn">
+                                                <span class="solutionBtn" data-toggle="modal" data-target="#solution-bio-d-3">
+                                                    <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                </span>
+                                            </div>
+                                        </div>    
+                                    </div>
+                                </div>
+                            </div>        
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-3" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-3" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a> 
+                            </div>    
+                        </div>
+                    </div>   
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"31.5,20","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"25.5,19","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-d-4">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"21.5,21","tooltip_offset":"-8,7","panel_pos":"0.4,0.9"}'>
+                            <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                            <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                        </div>
+                        <div class="HE_Tooltip">Étape 4 - Vidéo ???</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>???</h3>
+                            <div id="carousel-bio-P4-4" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">                               
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-4" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-4" data-slide-to="1" class="liPoints liJ1Points"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="introSeance">
+                                            <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                            <div> 
+                                                <p>Dis-moi qui tu manges, je te dirai qui tu es !</p>
+                                            </div>
+                                        </div>
+                                    </div>                                   
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4>Clique sur les marqueurs pour découvrir les différents lieux (et pour gagner les points).</h4>
+                                        </div>    
+                                    </div>  
+                                </div>
+                            </div>
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-4" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-4" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a> 
+                            </div>  
+                        </div>    
+                    </div>  
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"11.5,19","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"0,19","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"0,89","hidden":true}'></div>
+                    
+                    <div class="marqueur" id="bio-d-5">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"9,87","tooltip_offset":"-4,7","panel_pos":"0.4,0.9"}'>
+                            <img class="etoilePleine logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                            <img class="etoileVide logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                        </div>
+                        <div class="HE_Tooltip">Étape 5 - Clé de determination des arbres</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Clé de determination des arbres</h3>
+                            <div id="carousel-bio-P4-5" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                <div id="great-1-bio-d-5" class="displayNone" data-animation="animated flipInY">
+                                    <p>&Ccedil;a t'a plu ?<br/>Empoche tes points et poursuis la séance :D</p>
+                                    <p class="pointsXP pointsJeu1"><span>20</span> points</p>
+                                </div> 
+                                <div id="great-Q-bio-d-5" class="displayNone" data-animation="animated flipInY">
+                                    <p>Prêt à continuer ?</p>
+                                    <p class="pointsXP pointsJeuQ">Tu remportes <u><span>30</span> points</u></p>
+                                </div>
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-5" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-5" data-slide-to="1"></li>
+                                    <li data-target="#carousel-bio-P4-5" data-slide-to="2" ></li>
+                                    <li data-target="#carousel-bio-P4-5" data-slide-to="3" ></li>
+                                    <li data-target="#carousel-bio-P4-5" data-slide-to="4" ></li>
+                                    <li data-target="#carousel-bio-P4-5" data-slide-to="5" ></li>
+                                    <li data-target="#carousel-bio-P4-5" data-slide-to="6" class="liJ1Points liPoints"></li>
+                                    <li data-target="#carousel-bio-P4-5" data-slide-to="7" class="liQPoints liPoints"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">                               
+                                    <div class="item active">
+                                        <div class="introSeance">
+                                            <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                            <div> 
+                                                <p>
+                                                    Clé de quoi ?
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4>
+                                            
+                                        </div>    
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4> 
+                                                
+                                        </div>    
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4>
+                                              
+                                        </div>    
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4>
+                                              
+                                        </div>    
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4>
+                                              
+                                        </div>    
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4>
+                                              
+                                        </div>    
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <h4></h4>
+                                              
+                                        </div>    
+                                    </div>   
+                                </div>
+                            </div> 
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-5" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-5" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a> 
+                            </div>           
+                        </div> 
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"12,91","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-d-6">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"17.5,82","tooltip_offset":"-7.7,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                        <div class="HE_Tooltip">Étape 6 - Comment l'eau circule t'elle ?</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Comment l'eau circule t'elle ?</h3>
+                            <div id="carousel-bio-P4-6" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-6" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-6" data-slide-to="1" ></li>
+                                    <li data-target="#carousel-bio-P4-6" data-slide-to="2" ></li>
+                                    <li data-target="#carousel-bio-P4-6" data-slide-to="3" ></li>
+                                    <li data-target="#carousel-bio-P4-6" data-slide-to="4" ></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="introSeance">
+                                            <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                            <div> 
+                                                <p>Bah oui, elle passe par où l'eau ?</p>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="item ">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                                            
+                                            <h4></h4>                                      
+                                        </div>    
+                                    </div>
+                                    <div class="item ">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                                            
+                                            <h4></h4>                                      
+                                        </div>    
+                                    </div>
+                                    <div class="item ">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                                            
+                                            <h4></h4>                                      
+                                        </div>    
+                                    </div>
+                                    <div class="item ">
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">                                            
+                                            <h4></h4>                                      
+                                        </div>    
+                                    </div> 
+                                </div>
+                            </div>  
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-6" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-6" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a> 
+                            </div>              
+                        </div> 
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"25,92","hidden":true}'></div>
+
+                    <div class="marqueur drag1etape-bio-d-7" id="bio-d-7">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"30,78","tooltip_offset":"-5.5,7","panel_pos":"0.4,0.9"}'>
+                            <img class="etoilePleine logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                            <img class="etoileVide logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                        </div>
+                        <div class="HE_Tooltip">Étape 7 - Morphologie des feuilles</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Morphologie des feuilles</h3>
+                            <div id="carousel-bio-P4-7" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                <div id="great-1-bio-d-7" class="displayNone">
+                                    <p>Bien joué !</p>
+                                    <p class="pointsXP pointsJeu1"><span>20</span> points</p>
+                                </div> 
+                                <div id="great-2-bio-d-7" class="displayNone">
+                                    <p>&Ccedil;a t'a plu ?</p>
+                                    <p class="pointsXP pointsJeu2">Tu remportes <u><span>20</span> points</u></p>
+                                </div>
+                                <div id="solution-bio-d-7" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--bio-d-7" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h3 class="modal-title" id="solution--bio-d-7">Solution</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/plantes/p1/etape7/solution.png" alt="" />
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-7" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-7" data-slide-to="1"></li>
+                                    <li data-target="#carousel-bio-P4-7" data-slide-to="2" class="liPoints liJ1Points"></li>
+                                    <li data-target="#carousel-bio-P4-7" data-slide-to="3" class="liPoints liJ2Points"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="introSeance">
+                                            <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                            <div> 
+                                                <p></p>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <h4>xxx</h4>
+                                                
+                                        </div>    
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <h4>xxx</h4>
+                                            
+                                            <div class="jeuBtn">
+                                                <span class="solutionBtn" data-toggle="modal" data-target="#solution-bio-d-7">
+                                                    <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                </span>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                     <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <h4></h4>
+                                            
+                                        </div>
+                                    </div>      
+                                </div>
+                            </div>  
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-7" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-7" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a> 
+                            </div>  
+                        </div>
+                    </div>     
+
+                    <div class="marqueur" id="bio-d-8">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"40.5,72","tooltip_offset":"-6,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                        <div class="HE_Tooltip">Étape 8 - Les métiers</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Les métiers</h3>
+                            <div id="carousel-bio-P4-8" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-8" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-8" data-slide-to="1" ></li>
+                                    <li data-target="#carousel-bio-P4-8" data-slide-to="2" ></li>
+                                    <li data-target="#carousel-bio-P4-8" data-slide-to="3" ></li>
+                                    <li data-target="#carousel-bio-P4-8" data-slide-to="4" ></li>
+                                    <li data-target="#carousel-bio-P4-8" data-slide-to="5" ></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="introSeance">
+                                            <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                            <div> 
+                                                <p>
+                                                    Quels sont les métiers en lien avec ce parcours scientifique ?
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="item">
+                                                                                  
+                                    </div>
+                                    <div class="item">
+                                                                                                                   
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">  
+                                            <h4></h4>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">                                        
+                                            <h4></h4>
+                                            
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <h4>xxx</h4>
+                                            
+                                        </div>    
+                                    </div>      
+                                </div>
+                            </div>    
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-8" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-8" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a> 
+                            </div>           
+                        </div> 
+                    </div>
+
+                    <div class="marqueur" id="bio-d-9">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"51,74","tooltip_offset":"-7,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                        <div class="HE_Tooltip">Étape 9 - Quiz<br/></div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Les métiers</h3>
+                            <div id="carousel-bio-P4-9" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators sansPuce">
+                                    <li data-target="#carousel-bio-P4-9" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-bio-P4-9" data-slide-to="1" ></li>
+                                    <li data-target="#carousel-bio-P4-9" data-slide-to="2" class="liPoints liQPoints"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <div class="introSeance">
+                                            <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                            <div> 
+                                                <p>Quels sont les différents métiers en lien avec ce domaine ?</p>
+                                            </div>
+                                        </div>                                                 
+                                    </div>  
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <h4></h4>
+                                        </div>
+                                    </div>
+                                    <div class="item">
+                                        <div class="col-xs-12 col-sm-12 col-md-12">
+                                            <h4>Quiz</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>           
+                            <div class="bottomPanel">
+                                <a class="pull-left glyphiconButton" href="#carousel-bio-P4-9" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Précédente</span>
+                                </a>
+                                <a class="pull-right glyphiconButton" href="#carousel-bio-P4-9" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Suivant</span>
+                                </a> 
+                            </div>  
+                        </div> 
+                    </div>    
+                </div> 
+                                            
+                <img class="img-cache-bio-b delay3" data-animation="animated fadeIn" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/plantes/p1/parcours-ocean-1-cache.png" />
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-full')"
+                     tal:attributes="src maVariable/url; alt string:Image représentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />    
+            </section>
+            <script src="++resource++unice.medites.javascripts/libs/jQuiz/jQuizMe-2.2.1.js"></script> 
+            <script src="++resource++unice.medites.javascripts/libs/plantes.js"></script>  
+            <script src="++resource++unice.medites.javascripts/libs/parcours.js"></script>  
+        </metal:block>   

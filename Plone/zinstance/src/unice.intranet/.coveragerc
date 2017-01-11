@@ -1,0 +1,6 @@
+[report]
+include =
+    src/unice/*
+omit =
+    */test*
+    */upgrades/*

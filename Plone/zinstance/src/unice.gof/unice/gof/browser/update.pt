@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root xmlns:tal="http://xml.zope.org/namespaces/tal">
+
+    <tal:block content="view/creerObjectsGOF"/>
+
+</root>

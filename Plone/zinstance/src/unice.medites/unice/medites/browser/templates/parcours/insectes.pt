@@ -1,0 +1,1472 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;
+            variableEtapes python:view.champsRepeat('etapes');      
+            variableGalerie python:view.champsRepeat('galerie_photos');  
+            variableMeditesCollege python:view.champsRepeat('medites_dans_mon_college');
+            variableMeditesEtapesCollege python:view.champsRepeat('ajout_etapes'); 
+            variableMembre python:view.champsRepeat('membre');
+            ">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+            <metal:content-core define-macro="content-core" tal:define="widgets nocall:context/@@view">
+                
+                <script src="++resource++unice.medites.javascripts/libs/avatars.js"></script> 
+                <section class="container-fluid emplacement">
+                    <div class="points bio-P2">
+                        <h3>Score</h3>
+                        <span id="pointsParcours">0</span>/180 
+                    </div>
+                    <div id="bio-P2" class="Marker_Container marqueurs">
+
+                    <!-- Popup des instruction du parcours -->                
+                        <div class="reglesParcours modal fade" tabindex="-1" role="dialog" aria-labelledby="reglesInsectesTitre" aria-hidden="true">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content cadreVert">
+                                    <div class="modal-header">
+                                        <button aria-label="Close" data-dismiss="modal" class="close" type="button" title="Fermer"><span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4 class="noMarginTop">Biodiversité des insectes</h4>
+                                        <br/>
+                                        <p>Bienvenue sur ce parcours pédagogique, composé de 12 étapes. Chacune d'entre elle est signalée par un des logos suivants :</p>
+                                        <ul class="sansPuce noPadding">
+                                            <li><i class="fa fa-info"></i> : pour les informations générales.</li>
+                                            <li><i class="fa fa-gears"></i> : pour les contenus.</li>
+                                            <li><i class="fa fa-external-link"></i> : pour approfondir le sujet grâce à un autre site internet.</li>
+                                            <li><i class="fa fa-trophy"></i> : pour tester tes nouvelles connaissances avec un quiz géant.</li>
+                                            <li><img alt="Etoile vide" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" class="etoileVide" /> <img alt="Etoile pleine" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" class="etoilePleine" /> : pour les jeux, blanches lorsque les jeux ne sont pas terminés et oranges quand ces derniers sont finis et que tu as remporté tes points. Chaque jeu rapporte 20 points sauf les quiz qui en valent 30 (Ils sont inscrits en haut à droite dans la bouée de sauvetage <img alt="Zone destinée aux points" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/score.svg" width="20"  />).</li>
+                                        </ul>
+                                        <h4 class="text-center"><em>Bonne balade éducative parmi les insectes...</em></h4>
+                                    </div>
+                                    <div class="modal-footer displayNone">
+                                        <button class="clear btn btn-default" title="Confirmer en cliquant dessus">Afficher de nouveau les instructions durant les 5 prochaines visite</button> 
+                                    </div>   
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="HE_Char"></div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"7.5,80.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"10,81","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"11,81.2","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"12,80.2","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"14,77.2","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"14,73.2","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"13,68.2","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"12,62.2","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"12.5,56.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"15,53.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"20.5,47.5","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="bio-b-1">
+                            <div class="HE_Marker zIndexMax" data-hawkeye='{"pos":"22,59.5","tooltip_offset":"-10.5,6","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Séance 1 - Les petites bêtes du jardin</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - Les petites bêtes du jardin</h3>
+                                <div id="carousel-bio-P2-1" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-1" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-1" data-slide-to="1"></li>
+                                        <li data-target="#carousel-bio-P2-1" data-slide-to="2"></li>
+                                        <li data-target="#carousel-bio-P2-1" data-slide-to="3"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Quelles espèces trouve-t'on près de chez soi ?</p>
+                                                </div>
+                                            </div>
+                                        </div>           
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                <p></p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                <p></p>                                            
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                <p></p>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-1" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-1" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a>  
+                                </div>    
+                            </div>
+                        </div>    
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"22,48.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"25.5,43.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"24.5,41.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"17,38","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"11.5,34.5","hidden":true}'></div>
+
+                        <div class="marqueur drag1etape-bio-b-2" id="bio-b-2">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"9,29.8","tooltip_offset":"-5.9,5.7","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />                       
+                            </div>
+                            <div class="HE_Tooltip">Séance 2 - L'échantillonnage</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - L'échantillonnage</h3>
+                                <div id="carousel-bio-P2-2" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-bio-b-2" class="displayNone" data-animation="animated flipInY">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1"><i>Tu remportes :</i><u><span>20</span> points</u></p>
+                                    </div> 
+                                    <div id="solution-bio-b-2" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--bio-b-2" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="solution--bio-b-2">Solution</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/etape2/solution.png" alt="" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-2" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-2" data-slide-to="1"></li>
+                                        <li data-target="#carousel-bio-P2-2" data-slide-to="2"></li>
+                                        <li data-target="#carousel-bio-P2-2" data-slide-to="3" class="liPoints liJ1Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Pour quelles raisons ?</p>
+                                                    <p>Quelles sont les différentes techniques ?</p>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>La classification du vivant</h4>
+                                                <p>Connaître un être vivant, c'est d'abord répondre à la question <u>"qu'est-ce qui le caractérise ?"</u>, avant de répondre à des questions du type "comment fonctionne-t-il ?". Répondre à la question "qu'est-ce qui le caractérise ?", c'est, dans l'ordre : </p>
+                                                <ul class="ulPerso noPadding">
+                                                    <li>Savoir de quoi un organisme est constitué et ce qu'il partage avec d'autres.</li>
+                                                    <li>Savoir d'où il vient.</li>
+                                                    <li>Savoir où il se range dans la classification.</li>
+                                                </ul>
+                                                <p>On répond aux deux dernières questions grâce à la première. Ainsi, on ne peut définir, regrouper les êtres vivants et parler de leur origine qu'en s'attachant à observer ce qu'ils ont concrètement. Les regrouper sur la base de ce qu'ils n'ont pas n'aurait pas de sens : ce qu'ils n'ont pas ne les spécifie en rien et ne saurait témoigner de leur origine. Pour justifier cette démarche auprès de l'enfant, on peut partir du principe suivant : se connaître, c'est en partie savoir de quoi on est fait et d'où l'on vient. On pourra demander à un enfant de tenter de décrire un camarade en énonçant ce qu'il n'a pas, puis de faire des groupes de camarades sur la base de ce qu'ils n'ont pas. Ensuite, on pourra comparer cette démarche à celle qui consiste à décrire et à regrouper les camarades sur la base de ce qu'ils ont. On arrive vite à la conclusion que la seconde démarche peut avoir du sens tandis que la première n'en a pas. (Source : <a href="http://www.fondation-lamap.org/fr/page/10998/la-classification-des-tres-vivants-principes-g-n-raux" title="Lire l'article">Fondation la main à la pâte</a>)</p>
+
+                                                <h5>Qu'est ce que les arthropodes ?</h5>
+                                                <p>Les arthropodes représentent un groupe très important qui rassemble des animaux qui possèdent des pattes articulées.<br/>
+                                                Ils sont un embranchement d'animaux invertébrés dont le plan d'organisation est caractérisé par un corps segmenté formé de métamères hétéronomes munis chacun d'une paire d'appendices articulés et recouvert d'une cuticule ou d'une carapace rigide, qui constitue leur exosquelette, dans la plupart des cas constitué de chitine. Leur mue permet, en changeant périodiquement leur squelette externe, de grandir en taille (mue de croissance) ou d'acquérir de nouveaux organes, voire de changer de forme (mue de métamorphose). Ils seraient apparus il y a 543 millions d'années (543 Ma).<br/>
+                                                L'embranchement des arthropodes est de très loin celui qui possède le plus d'espèces et le plus d'individus de tout le règne animal (80 % des espèces connues). Myriapodes, crustacés, arachnides, insectes… on compte plus d'un million et demi d'espèces actuelles d'arthropodes qui présentent des modes de vie (guildes écologiques) les plus variés possibles grâce notamment à leur tagmatisation. Les arthropodes forment un groupe cosmopolite qui s'est adapté dans des environnements naturels (déserts, forêts, abysses, montagnes, etc.) ou d’origine anthropique (habitations, puits de pétroles, etc.) et sont parmi les premiers animaux à avoir colonisé la terre ferme2.<br/>
+                                                Les micro-arthropodes sont les plus petits d'entre eux. Bien que discrets, ceux d'entre eux qui sont des décomposeurs jouent un rôle essentiel dans les réseaux trophiques en assurant le recyclage de la nécromasse, notamment dans le sol où avec les champignons décomposeurs, ils contribuent à produire l'humus.<br/>(Source : <a href="https://fr.wikipedia.org/wiki/Arthropode" title="Voir la définition sur Wikipedia">Wikipedia</a>)</p>
+                                                <img src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/shema.svg" alt="Peruphasma schultei" class="borderRadius img-responsive noPadding center" />
+
+                                                <h5>Les "ordres" d'insectes</h5>
+                                                <p>Au sein même de la classe des Insectes, les différentes espèces sont divisées en grands ordres suivant des caractéristiques bien spécifiques : la structure des ailes ou des pièces buccales, le cycle de vie... Les noms donnés à ces ordres font le plus souvent référence à certaines propriétés des ailes des espèces concernées. Prenons l’exemple de l’ordre des Diptères : « di » veut dire 2, « ptère » vient du grec et  signifie « aile », cela signifie que tous les diptères ont seulement 2 ailes.<br/>
+                                                En les regardant de plus près et en vous fiant aux différents caractères observés, vous pourrez petit à petit réussir à regrouper les insectes au sein de leurs ordres, et même reconnaître certaines espèces communes.</p>
+
+                                                <h6>Voici les principaux ordres d’insectes :</h6>
+                                                <ul class="ulPerso noPadding">
+                                                    <li class="col-xs-3">Coléoptères (Scarabées, coccinelles)</li>
+                                                    <li class="col-xs-3">Lépidoptères (Papillons)</li>
+                                                    <li class="col-xs-3">Odonates (Libéllules, demoiselles)</li>
+                                                    <li class="col-xs-3">Orthoptères Criquets, sauterelles)</li>
+                                                    <li class="col-xs-3">Hyménoptères (Abeilles, fourmis)</li>
+                                                    <li class="col-xs-3">Diptères (Mouches, moustiques)</li>
+                                                    <li class="col-xs-3">Hétéroptères (Punaises, gendarmes)</li>
+                                                    <li class="col-xs-3">Homoptères (Pucerons, cigales)</li>
+                                                    <li class="col-xs-3">Mantoptères (Mantes religieuses)</li>
+                                                    <li class="col-xs-3">Blattoptères (Blattes, cafards)</li>
+                                                    <li class="col-xs-3">Dermaptères (Perce-oreilles)</li>
+                                                    <li class="col-xs-3">Éphéméroptères (Ephémères)</li>
+                                                    <li class="col-xs-3">Mécoptères (Panorpes)</li>
+                                                    <li class="col-xs-3">Neuroptères (Crhysopes, fourmillons)</li>
+                                                    <li class="col-xs-3">Phasmoptères (Phasmes bâton, phyllies)</li>
+                                                </ul>
+                                                <p>(Source : <a href="http://insectes-de-france.fr/ordres/" title="Voir l'article sur le site source">Insectes de France</a>)</p>
+
+                                                <h6>Exemples de différents ordres d’insectes</h6>
+                                                <ul class="ulPerso noPadding">
+                                                    <li class="puceBleue"><u>L’abeille :</u> Hyménoptère / Insecte aux ailes membraneuses</li> 
+                                                    <li class="puceJaune"><u>Le papillon :</u> Lépidoptère / Insecte aux ailes couvertes d’écailles</li> 
+                                                    <li class="puceRose"><u>Le criquet :</u> Orthoptère / Insecte aux ailes droites</li> 
+                                                </ul>                                                    
+                                            </div> 
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Entretien du terrarium</h4>
+                                                <p>Un terrarium est un emplacement que l'on a préparé pour l'élevage et l'entretien d'insectes, de reptiles, de batraciens, etc. Un terrarium est l'équivalent d'un aquarium, mais à la place de l'eau, c'est de la terre qui est installée.</p>
+                                                <div class="col-xs-12 row">
+                                                    <h5>Le phasme péruvien de schulte (Peruphasma schultei)</h5>
+                                                    <img src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/peruphasmaSchultei.jpg" alt="Peruphasma schultei" class="borderRadius img-responsive col-xs-5 col-sm-3 noPadding" />
+                                                    <ul class="ulPerso col-xs-6 col-sm-8 marginLeft10">
+                                                        <li>Plantes appréciées : Faux poivrier – troène – forsythia – lilas – chèvrefeuille – symphorine.</li>
+                                                        <li>Températures : entre 15° et 28°.</li>
+                                                        <li>Une pulvérisation d’eau tous les jours ou tous les deux jours.</li>
+                                                        <li>Nettoyer le terrarium, changer le papier et mettre des plantes fraiches, sans oublier de changer l’eau dans les pots à confiture (tous les 7 à 10 jours).</li>
+                                                        <li>Récolter les oeufs au fond du terrarium et les laisser incuber sur du sable humide dans une boite transparente percée de trous.</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-xs-12 row">
+                                                    <h5>Le criquet baton (Proscopia scabra)</h5>
+                                                    <img src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/proscopiaScabra.jpg" alt="Proscopia scabra" class="borderRadius img-responsive col-xs-5 col-sm-3 noPadding" />
+                                                    <ul class="ulPerso col-xs-6 col-sm-8 marginLeft10">
+                                                        <li>Plantes appréciées : ronces – arbres forestiers et fruitiers.</li>
+                                                        <li>Températures : entre 15° et 28°.</li>
+                                                        <li>Une pulvérisation d’eau tous les jours ou tous les deux jours.</li>
+                                                        <li>Nettoyer le terrarium, changer le papier et mettre des plantes fraiches, sans oublier de changer l’eau dans les pots à confiture (tous les 7 à 10 jours).</li>
+                                                        <li>Récolter les oeufs au fond du terrarium et les laisser incuber sur du sable humide dans une boite transparente percée de trous.</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-xs-12 row">
+                                                    <h5>Le bombix eri (Philosamia ricini)</h5>
+                                                    <img src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/philosamiaRicini.jpg" alt="Philosamia ricini" class="borderRadius img-responsive col-xs-5 col-sm-3 noPadding" />                                                
+                                                    <ul class="ulPerso col-xs-6 col-sm-8 marginLeft10">
+                                                        <li>Plantes appréciées : troène, ricin, ailante laurier-cerise (jamais de feuilles mouillées)</li>
+                                                        <li>Températures : entre 15° et 28°</li>
+                                                        <li>Nettoyer le terrarium, changer le papier et mettre des plantes fraiches, sans oublier de changer l’eau dans les pots à confiture (tous les 7 jours)</li>
+                                                        <li>Ne JAMAIS pulvériser d’eau dans le terrarium des chenilles.</li>
+                                                        <li>Les cocons ont besoin d’une pulvérisation quotidienne d’eau, il convient donc de séparer les cocons des chenilles</li>
+                                                        <li>Les oeufs sont déposés dans une boite sur du papier essuie-tout sec</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-xs-12 row">
+                                                    <h5>Le grillon domestique (Acheta domestica)</h5>
+                                                    <img src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/achetaDomestica.jpg" alt="Acheta domestica" class="borderRadius img-responsive col-xs-5 col-sm-3 noPadding" />
+                                                    <ul class="ulPerso col-xs-6 col-sm-8 marginLeft10">
+                                                        <li>Températures : entre 15° et 30° - à maintenir près d’une source de chaleur.</li>
+                                                        <li>Nettoyer le terrarium, changer le papier, sans oublier de renouveler l’eau et la nourriture.</li>
+                                                        <li>Nourriture : paillettes pour poisson – pain sec – biscuits – croquettes pour animaux (tjs sec).</li>
+                                                        <li>Eau toujours fraiche dans l’abreuvoir.</li>
+                                                        <li>Le pondoir reste légèrement humide.</li>
+                                                        <li>Vider le contenu du pondoir dans une grande boite fermée et maintenir à 30° si présence d’oeufs.</li>
+                                                    </ul>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Jeu à venir !</h4>
+                                                <div class="jeuBtn"> 
+                                                    <span class="solutionBtn" data-toggle="modal" data-target="#solution-bio-b-2">
+                                                        <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-2" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-2" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>   
+                            </div>
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"12.5,30.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"18.5,29.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"26.5,30.5","hidden":true}'></div>
+
+                        <div class="marqueur" id="bio-b-3">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"28.5,28","tooltip_offset":"-8.5,5","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                            </div>
+                            <div class="HE_Tooltip">Séance 3 - Clé d'identification des insectes</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - Clé d'identification des insectes</h3>
+                                <div id="carousel-bio-P2-3" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-bio-b-3" class="displayNone" data-animation="animated flipInY">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1"><i>Tu remportes :</i> <u><span>20</span> points</u></p>
+                                    </div> 
+                                    <div id="great-2-bio-b-3" class="displayNone" data-animation="animated flipInY">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>Alors, es-tu tombé sur le même résultat ?</p>
+                                        <p class="pointsXP pointsJeu2"><i>Tu remportes :</i> <u><span>20</span> points</u></p>
+                                    </div> 
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-3" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-3" data-slide-to="1" class="liPoints liJ1Points"></li>
+                                        <li data-target="#carousel-bio-P2-3" data-slide-to="2" class="liPoints liJ2Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Comment faire la différence entre les insectes ?</p>
+                                                </div>
+                                            </div>
+                                        </div>                
+                                        <div class="item jeu1">
+                                            <div class="col-xs-12">
+                                                <h4>Anatomie d'une guêpe</h4> 
+                                                <p>Voici l'illustration d'une guêpe, sauras-tu répartir au bon emplacement chaque élément de son anatomie ?</p>
+                                                <div class="apercuGuepe positionRelative noPadding col-xs-12 col-sm-9 col-md-9 col-lg-6 borderRadius">
+                                                    <div class="drop1"></div>
+                                                    <div class="drop2"></div>
+                                                    <div class="drop3"></div>
+                                                    <div class="drop4"></div>
+                                                    <div class="drop5"></div>
+                                                    <div class="drop6"></div>
+                                                    <div class="drop7"></div>
+                                                    <div class="drop8"></div>
+                                                    <div class="drop9"></div>
+                                                    <div class="drop10"></div>
+                                                    <div class="drop11"></div>
+                                                    <div class="drop12"></div>
+                                                    <img src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/anatomieGuepe.jpg" alt="aperçu d'une guêpe" class="borderRadius img-all" />      
+                                                </div>
+                                                <ul class="pull-left ulPerso cadreBleu col-xs-12 col-sm-3 col-md-3 col-lg-6">
+                                                    <li class="drag1">Ocelle</li>
+                                                    <li class="drag2">Œil composé</li>
+                                                    <li class="drag3">Aile supérieure</li>
+                                                    <li class="drag4">Aile inférieure</li>
+                                                    <li class="drag5">Patte 1</li>
+                                                    <li class="drag6">Patte 2</li>
+                                                    <li class="drag7">Patte 3</li>
+                                                    <li class="drag8">Antenne</li>
+                                                    <li class="drag9">Abdomen</li>
+                                                    <li class="drag10">Tête</li>
+                                                    <li class="drag11">Thorax</li>
+                                                    <li class="drag12">Sternites</li>
+                                                    <li><u>Un ocelle</u> est un œil simple présent chez certains arthropodes, cnidaires, échinodermes et annélides. Le terme ocelle est dérivé du latin oculus qui signifie «petit œil ». Il s'agit principalement d'organes sensibles à la lumière, mais il peut avoir d'autres fonctions, par exemple la détection du cycle circadien, la visualisation de la polarité, l'aide à la stabilité en vol.</li>
+                                                    <li>Un <u>œil composé</u>, ou œil à facettes, est constitué d'un ensemble de récepteurs sensibles à la lumière qui sont appelés des ommatidies. Il s'agit en général d'un attribut des arthropodes. Chez les crustacés, l'œil composé peut être pédonculé (crabes) alors que celui des insectes ne l'est jamais.<br/>Les yeux composés ont évolué il y a très longtemps. On en trouve sur les premiers arthropodes présents dans les schistes de Burgess, tels Anomalocaris ou sur les trilobites.<br/>Si généralement il y a une paire d'yeux composés chez les animaux actuels, l'espèce Opabinia semble posséder un nombre impair d'yeux composés.</li>
+                                                    <li>Chez les insectes, <u>les antennes</u> servent avant tout à capter les odeurs. Elles sont donc, en quelque sorte, le « nez » des insectes. Elles sont situées entre les deux yeux, et non sur le dessus de la tête comme les enfants ont souvent tendance à les représenter.<br/>Les antennes sont recouvertes de minuscules organes sensoriels, les sensilles, qui prennent souvent la forme de poils invisibles à l'oeil nu. La surface de ces sensilles est percée de minuscules « trous » qui captent les odeurs.  Certains insectes, comme l'Abeille domestique, peuvent sentir beaucoup d’odeurs, tandis que d'autres ne peuvent en capter qu'une seule sorte : ainsi chez certains papillons de nuit, les mâles ne peuvent détecter que l'odeur émise par la femelle. <br/>Les antennes peuvent aussi servir à l'insecte pour se repérer dans son environnement, goûter, entrer en contact avec d'autres insectes, mais elles peuvent également avoir un rôle tactile pour toucher tout ce qui l'entoure, ou encore capter les vibrations ce qui en fait de petites "oreilles"... C'est le cas chez le moustique mâle qui "entend" ainsi la femelle.</li>
+                                                    <li><u>L'abdomen</u> est généralement cerclé de jaune, parfois de blanc ou de marron. Chez les femelles, il se termine par un organe spécialisé. Il s'agit de l'ovipositeur, ou organe de ponte, chez la reine et de l'aiguillon chez les ouvrières.<br/>Lorsque la température du nid baisse (environ 30 °C dans l'idéal), les ouvrières font vibrer leur abdomen pour réchauffer le guêpier. S'il fait trop chaud, elles sortent chercher de l'eau et en aspergent le nid à leur retour. L'évaporation de l'eau crée un effet refroidisseur.</li>
+                                                    <li><u>Le thorax</u> est une région anatomique de certains animaux vertébrés ou arthropodes. Chez l'homme et les mammifères, c'est la région située entre le cou et l'abdomen. Il comporte la cage thoracique, qui contient notamment le cœur et les poumons. Chez l'homme, il est également appelé poitrine, tandis que chez les animaux, il peut être appelé poitrail.</li>
+                                                    <li><u>Une sternite</u> est une pièce ventrale du sclérite (ensemble des plaques de chitine participant à l'exosquelette des arthropodes). Ces plaques sont articulées entre elles. On appelle membrane articulaire, l'articulation entre deux sclérites.
+                                                    </li>
+                                                    <li class="sansPuce pull-right">(Source : Wikipedia, <a href="http://www.insectes.org" title="Afficher le site">insectes.org</a>)</li>
+                                                </ul>
+                                            </div>    
+                                        </div>
+                                        <div class="item jeu2">
+                                            <div class="col-xs-12">
+                                                <h4>Clé de détermination des principaux ordres d’Insectes</h4>     
+                                                <p>Nous allons ensemble, déterminer à quel ordre appartient un insecte. Pour ce faire, appuies-toi sur l'un des insectes ci-dessous (tu peux en choisir un au hasard sur internet si tu préfères), et réponds aux questions suivantes en cliquant dessus.</p>
+                                                <ul class="col-xs-12 row sansPuce marginBottom30 listeInsectes">
+                                                    <li class="noPadding col-xs-3">
+                                                        <img class="img-responsive borderRadius" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/gendarme.jpg" alt="" />
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>hémiptères</h6>
+                                                    </li>
+                                                    <li class="noPadding col-xs-3">
+                                                        <img class="img-responsive borderRadius" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/mouche.jpg" alt="" />
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>diptères</h6>
+                                                    </li>
+                                                    <li class="noPadding col-xs-3">                                                        
+                                                        <img class="img-responsive borderRadius" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/perceOreille.jpg" alt="" />
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>dermaptères</h6>
+                                                    </li>
+                                                    <li class="noPadding col-xs-3">
+                                                        <img class="img-responsive borderRadius" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/s2/stethorusPunctillum.jpg" alt="" />
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>coléoptères</h6>
+                                                    </li>    
+                                                </ul>
+                                                <div class="e1">
+                                                    <h5>Etape 1</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1 col-xs-5 cadreBlanc marginRight10">
+                                                        Ailes bien évidentes<br/>
+                                                        ou<br/>
+                                                        Ailes antérieures avec la même texture que les ailes postérieures : membraneuses, parfois couvertes d’écailles comme chez les papillons (Lépidoptères) ou bordées de soies comme chez les thrips (Thysanoptères). <br/>
+                                                    </div>
+                                                    <div class="s2 col-xs-5 cadreBlanc">
+                                                        Ailes totalement absentes<br/>
+                                                        ou<br/>
+                                                        Ailes antérieures avec une texture différente des ailes postérieures : ailes antérieures entièrement ou partiellement cornées et opaques. Elles recouvrent les ailes postérieures translucides qui sont dessous.<br/>
+                                                    </div>
+                                                </div>
+                                                <div class="e2-s1 displayNone">
+                                                    <h5>Etape 2</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Ailes opaques et recouvertes de petites écailles visibles à la loupe. Pièces buccales en forme de tube en spirale.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>lépidoptères (Papillons).</h6>
+                                                    </div>
+                                                    <div class="s1-2 col-xs-5 cadreBlanc">
+                                                        Ailes au moins partiellement translucides.
+                                                    </div>                             
+                                                </div>
+                                                <div class="e3-s1 displayNone">
+                                                    <h5>Etape 3</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        Deux paires d’ailes bien formées
+                                                    </div>
+                                                    <div class="s1-2-2 col-xs-5 cadreBlanc">
+                                                        <span>Une seule paire d’ailes (les ailes antérieures).<br/>
+                                                        Ailes postérieures modifiées en forme d’haltères.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>diptères</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="e4-s1 displayNone">
+                                                    <h5>Etape 4</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        Insectes aux ailes plus larges dépourvues de soies.
+                                                    </div>
+                                                    <div class="s1-2-1-2 col-xs-5 cadreBlanc">
+                                                        <span>Ailes très étroites et bordées de soies.<br/>
+                                                        Petits insectes de moins de 5 mm.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>thysanoptères (Thrips)</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="e5-s1 displayNone">
+                                                    <h5>Etape 5</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>2 ou 3 longs prolongements abdominaux.<br/>
+                                                        Ailes postérieures au moins deux fois plus petites que les ailes antérieures.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>éphéméroptères</h6>
+                                                    </div>
+                                                    <div class="s1-2-1-1-2 col-xs-5 cadreBlanc">
+                                                        Pas de longs filaments abdominaux.<br/>
+                                                        Surface des ailes postérieures équivalente à plus de la moitié de celle des ailes antérieures.
+                                                    </div>
+                                                </div>
+                                                <div class="e6-s1 displayNone">
+                                                    <h5>Etape 6</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        Ailes antérieures nettement plus longues avec une plus grande surface que les ailes postérieures.<br/>
+                                                    </div>
+                                                    <div class="s1-2-1-1-2-2 col-xs-5 cadreBlanc">
+                                                        Ailes antérieures avec une longueur et une surface comparable ou à peine plus grandes que les ailes postérieures.
+                                                    </div>
+                                                </div>
+                                                <div class="e7-s1a displayNone">
+                                                    <h5>Etape 7</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1-2-1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Ailes repliées en forme de toit sur le corps de l'insecte.<br/>
+                                                        Ailes avec présence de zones à l'apparence enfumée et qui peuvent être recouvertes de soies (poilues).<br/>
+                                                        Antennes, dirigées vers l'arrière, avec une longueur comparable à celle du corps entier.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>trichoptères (Phryganes)</h6>
+                                                    </div>
+                                                    <div class="s1-2-1-1-2-1-2 col-xs-5 cadreBlanc">
+                                                        Ailes complètement translucides et dépourvues de soies.<br/>
+                                                        Antennes nettement plus courtes que le corps.
+                                                    </div>
+                                                </div>
+                                                <div class="e8-s1a displayNone">
+                                                    <h5>Etape 8</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1-2-1-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        Tarse composé de 2 ou 3 articles.<br/>
+                                                        Apparence générale différente de celle d'une guêpe ou d'une abeille.
+                                                    </div>
+                                                    <div class="s1-2-1-1-2-1-2-2 col-xs-5 cadreBlanc">
+                                                        <span>Tarse composé de cinq articles.<br/>
+                                                        Apparence générale d'une guêpe ou d'une abeille.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>hynénoptères</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="e9-s1a displayNone">
+                                                    <h5>Etape 9</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1-2-1-2-1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Longueur inférieur à 7 mm.<br/>
+                                                        Armature buccale de type broyeur.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>psocoptères</h6>
+                                                    </div>
+                                                    <div class="s1-2-1-1-2-1-2-1-2 col-xs-5 cadreBlanc">
+                                                        <span>Longueur supérieure à 10mm.<br/>
+                                                        Armature buccale de type piqueur/suceur.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>homoptères</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="e7-s1b displayNone">
+                                                    <h5>Etape 7</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        Insecte sans ce "bec“.
+                                                    </div>
+                                                    <div class="s1-2-1-1-2-2-2 col-xs-5 cadreBlanc">
+                                                        <span>Insecte dont la tête se prolonge ventralement en une sorte de long "bec".</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>mécoptères</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="e8-s1b displayNone">
+                                                    <h5>Etape 8</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1-2-2-1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Tête pourvue d'antennes très petites.<br/>
+                                                        Yeux composés très grands.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>odonates (Demoiselles et libellules).</h6>
+                                                    </div>
+                                                    <div class="s1-2-1-1-2-2-1-2 col-xs-5 cadreBlanc">
+                                                        Antennes bien visibles.<br/>
+                                                        Yeux pas aussi grands.
+                                                    </div>
+                                                </div>
+                                                <div class="e9-s1b displayNone">
+                                                    <h5>Etape 9</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1-2-2-1-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Ailes postérieures plus larges que les ailes antérieures. Présence d'une paire de cerques au bout de l'abdomen.</span>
+                                                        <h6 class="text-center noMargin">Ordre de Plécoptères</h6>
+                                                    </div>
+                                                    <div class="s1-2-1-1-2-2-1-2-2 col-xs-5 cadreBlanc">
+                                                        Insecte ne présentant pas toutes ces particularités.
+                                                    </div>
+                                                </div>
+                                                <div class="e10-s1b displayNone">
+                                                    <h5>Etape 10</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s1-2-1-1-2-2-1-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Ailes présentant de nombreuses veines transversales.<br/>
+                                                        Tarse à 5 articles.<br/>
+                                                        Taille pouvant atteindre 75 mm.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>neuroptères</h6>
+                                                    </div>
+                                                    <div class="s1-2-1-1-2-2-1-2-2-2 col-xs-5 cadreBlanc">
+                                                        <span>Ailes présentant très peu de veines transversales.<br/>
+                                                        Tarse à 4 articles.<br/>
+                                                        Taille ne dépassant pas 8 mm.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>isoptères (les Termites)</h6>
+                                                    </div>
+                                                </div>
+                                                <div class="e2-s2 displayNone">
+                                                    <h5>Etape 2</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        Absence d'ailes.<br/>
+                                                        Segments thoraciques et abdominaux visibles dorsalement.
+                                                    </div>
+                                                    <div class="s2-2 col-xs-5 cadreBlanc">
+                                                        Présence d’ailes.<br/>
+                                                        Ailes antérieures cornées qui recouvrent les ailes postérieurs (translucides).<br/>
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e3-s2 displayNone">
+                                                    <h5>Etape 3</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Présence d'un étranglement entre le thorax et l'abdomen.</span>
+                                                        <h6 class="text-center">Ordres des Hyménoptères (fourmis)</h6>
+                                                    </div>
+                                                    <div class="s2-1-2 col-xs-5 cadreBlanc">
+                                                        Pas d'étranglement entre le thorax et l'abdomen.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e4-s2 displayNone">
+                                                    <h5>Etape 4</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        Corps aplati latéralement ou dorso-ventralement.
+                                                    </div>
+                                                    <div class="s2-1-2-2 col-xs-5 cadreBlanc">
+                                                        Corps qui n'est pas particulièrement aplati.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e5-s2a displayNone">
+                                                    <h5>Etape 5</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Corps comprimé latéralement.</span>
+                                                        <h6 class="text-center"><span>Ordre des </span>siphonaptères (puces)</h6>
+                                                    </div>
+                                                    <div class="s2-1-2-1-2 col-xs-5 cadreBlanc">
+                                                        Corps aplati dorsoventralement.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e6-s2a displayNone">
+                                                    <h5>Etape 6</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-1-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Tête plus large que le thorax.<br/>Pièces buccales de type broyeur.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>mallophages</h6>
+                                                    </div>
+                                                    <div class="s2-1-2-1-2-2 col-xs-5 cadreBlanc">
+                                                        <span>Tête plus étroite que le thorax.<br/>Pièces buccales rétractées dans la tête de type suceur.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>anoploures (poux)</h6>
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e5-s2b displayNone">
+                                                    <h5>Etape 5</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Abdomen avec 2 ou 3 longs appendices effilés à son extrémité.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>thysanoures (Poissons-d'argent)</h6>
+                                                    </div>
+                                                    <div class="s2-1-2-2-2 col-xs-5 cadreBlanc">
+                                                        Pas de prolongements effilés à l’extrémité de l'abdomen.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e6-s2b displayNone">
+                                                    <h5>Etape 6</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Moins de 6 mm de longueur.<br/>Présence de la furcula.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>collemboles</h6>   
+                                                    </div>
+                                                    <div class="s2-1-2-2-2-2 col-xs-5 cadreBlanc">
+                                                        Insecte sans cette structure.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e7-s2 displayNone">
+                                                    <h5>Etape 7</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-2-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Corps nettement arrondi.<br/>
+                                                        Présence de 2 petits tubes (cornicules) sur l’extrémité de l'abdomen.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>homoptères (Aphides)</h6>
+                                                    </div>
+                                                    <div class="s2-1-2-2-2-2-2 col-xs-5 cadreBlanc">
+                                                        Absence de cornicules sur l'abdomen.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e8-s2 displayNone">
+                                                    <h5>Etape 8</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-2-2-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        Corps mou et peu pigmenté (blanc)
+                                                    </div>
+                                                    <div class="s2-1-2-2-2-2-2-2 col-xs-5 cadreBlanc">
+                                                        Corps plus rigide distinctement pigmenté.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e9-s2a displayNone">
+                                                    <h5>Etape 9</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-2-2-2-2-1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Longues antennes filiformes.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>psocoptères</h6>
+                                                    </div>
+                                                    <div class="s2-1-2-2-2-2-2-1-2 col-xs-5 cadreBlanc">
+                                                        <span>Antennes courtes, constituées de petites sphères.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>isoptères (les Termites)</h6>
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e9-s2b displayNone">
+                                                    <h5>Etape 9</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-2-2-2-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Moins de 5 mm de longueur.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>thysanoptères (Thrips)</h6>
+                                                    </div>
+                                                    <div class="s2-1-2-2-2-2-2-2-2 col-xs-5 cadreBlanc">
+                                                        Plus de 5 mm de longueur.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e10-s2b displayNone">
+                                                    <h5>Etape 10</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-1-2-2-2-2-2-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>4 ou 5 articles par antenne.<br/>
+                                                        Pièces buccales de type suceur.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>hémiptères (punaises de lit)</h6>
+                                                    </div>
+                                                    <div class="s2-1-2-2-2-2-2-2-2-2 col-xs-5 cadreBlanc">
+                                                        <span>Grand nombre d’articles par antenne.<br/>
+                                                        Pièces buccales de type broyeur.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>orthoptères</h6>
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e3-s2c displayNone">
+                                                    <h5>Etape 3</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Abdomen se terminant par deux cerques en forme de pinces. Ailes très cornées et très courtes.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>dermaptères</h6>
+                                                    </div>
+                                                    <div class="s2-2-2 col-xs-5 cadreBlanc">
+                                                        Insecte ne présentant pas ces caractéristiques.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e4-s2c displayNone">
+                                                    <h5>Etape 4</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        Pièces buccales de type broyeur.
+                                                    </div>
+                                                    <div class="s2-2-2-2 col-xs-5 cadreBlanc">
+                                                        Pièces buccales de type suceur.
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e5-s2c1 displayNone">
+                                                    <h5>Etape 5</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-2-2-1-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Ailes antérieures souvent repliées en forme de toit sur le dos.<br/>
+                                                        Présence de nervures sur les ailes antérieures.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>orthoptères.</h6>
+                                                    </div>
+                                                    <div class="s2-2-2-1-2 col-xs-5 cadreBlanc">
+                                                        <span>Ailes antérieures très sclérifiées.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>coléoptères</h6>
+                                                    </div>                                  
+                                                </div>
+                                                <div class="e5-s2c2 displayNone">
+                                                    <h5>Etape 5</h5>
+                                                    <div class="col-xs-1"></div>
+                                                    <div class="s2-2-2-2-1 col-xs-5 cadreBlanc marginRight10">
+                                                        <span>Ailes antérieures à moitiées sclérifiées.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>hémiptères</h6>
+                                                    </div>
+                                                    <div class="s2-2-2-2-2 col-xs-5 cadreBlanc">
+                                                        <span>Ailes antérieures homogènes.</span>
+                                                        <h6 class="text-center noMargin"><span>Ordre des </span>homoptères</h6>
+                                                    </div>                                  
+                                                </div>  
+
+                                                <div class="restart displayNone cadreJaune text-center marginLeft10 col-xs-5 cursorPointer">Recommencer l'identification</div>
+
+                                                <div class="cadreBleu noPaddingTop marginTop35 col-xs-12">
+                                                    <h5>Liste des caractéristiques sélectionnées</h5>
+                                                    <ul class="detailsCle ulPerso col-xs-12"></ul>
+                                                </div>
+
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>        
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-3" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-3" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>    
+                            </div>
+                        </div>   
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"30.5,31.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"33.5,33.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"31.5,48.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"34.5,53.5","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="bio-b-4">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"35.5,60","tooltip_offset":"-5,6","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                            </div>
+                            <div class="HE_Tooltip">Séance 4 - L'alimentation</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - L'alimentation</h3>
+                                <div id="carousel-bio-P2-4" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">                               
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-4" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-4" data-slide-to="1" class="liPoints liJ1Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Dis-moi qui tu manges, je te dirai qui tu es !</p>
+                                                </div>
+                                            </div>
+                                        </div>                                   
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Clique sur les marqueurs pour découvrir les différents lieux (et pour gagner les points).</h4>
+                                            </div>    
+                                        </div>  
+                                    </div>
+                                </div>
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-4" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-4" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div>    
+                        </div>  
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"35.5,53.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"36.5,52","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"37.5,50","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"38,45","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"41.5,41.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"44.5,40.5","hidden":true}'></div>
+                        
+                        <div class="marqueur bloquee" id="bio-b-5">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"47,44","tooltip_offset":"-10,6","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                            </div>
+                            <div class="HE_Tooltip">Séance 5 - Pourquoi tu piques ?</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - Pourquoi tu piques ?</h3>
+                                <div id="carousel-bio-P2-5" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-bio-b-5" class="displayNone" data-animation="animated flipInY">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>&Ccedil;a t'a plu ?</p>
+                                        <p class="pointsXP pointsJeu1"><i>Tu remportes :</i><u><span>20</span> points</u></p>
+                                    </div> 
+                                    <div id="great-Q-bio-b-5" class="displayNone" data-animation="animated flipInY">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>Prêt à continuer ?</p>
+                                        <p class="pointsXP pointsJeuQ"><i>Tu remportes :</i><u><span>20</span> points</u></p>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-5" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-5" data-slide-to="1"></li>
+                                        <li data-target="#carousel-bio-P2-5" data-slide-to="2" ></li>
+                                        <li data-target="#carousel-bio-P2-5" data-slide-to="3" ></li>
+                                        <li data-target="#carousel-bio-P2-5" data-slide-to="4" ></li>
+                                        <li data-target="#carousel-bio-P2-5" data-slide-to="5" ></li>
+                                        <li data-target="#carousel-bio-P2-5" data-slide-to="6" class="liJ1Points liPoints"></li>
+                                        <li data-target="#carousel-bio-P2-5" data-slide-to="7" class="liQPoints liPoints"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">                               
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>
+                                                        Parce que les insectes ne nous piquent pas pour le plaisir...
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4> 
+                                                    
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                  
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                  
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                  
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                  
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                  
+                                            </div>    
+                                        </div>   
+                                    </div>
+                                </div> 
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-5" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-5" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>           
+                            </div> 
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"48,40.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"57.5,41.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"60.5,37.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"61,29.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"61.5,22.5","hidden":true}'></div>
+
+                        <div class="marqueur démarcheScientifique" id="bio-b-6">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"59.5,17.4","tooltip_offset":"-7.5,6","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Séance 6 - La démarche scientifique</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - La démarche scientifique</h3>
+                                <div id="carousel-bio-P2-6" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-bio-b-6-a" class="displayNone" data-animation="animated flipInY">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1"><i>Tu remportes :</i><u><span>20</span> points</u></p>
+                                    </div> 
+                                    <div id="solution-demarcheScientifique" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--demarcheScientifique" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="solution--demarcheScientifique">Solution</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/etape6/solution1.png" alt="" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="solution-bio-b-6-b" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--bio-b-6-b" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="solution--bio-b-6-b">Solution</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/etape6/solution2.png" alt="" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-6" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-6" data-slide-to="1" ></li>
+                                        <li data-target="#carousel-bio-P2-6" data-slide-to="2" class="liPoints liJ1Points" ></li>
+                                        <li data-target="#carousel-bio-P2-6" data-slide-to="3" class="liPoints liJ2Points" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Qu'est-ce que la démarche scientifique ?</p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Définition</h4>
+                                                <p>D’après André Giordan, la démarche scientifique consiste à "faire émerger des éléments observables ou quantifiables, de les confronter à des hypothèses, de pouvoir maîtriser la démarche pour éventuellement la reproduire et de pouvoir discuter tous les résultats".<br/>Toute démarche scientifique fait appel au raisonnement. Ce dernier s’appuie sur des faits expérimentaux, des lois, des propriétés d’objets, ... Ainsi, observations, mesures, enregistrement de données, modélisation, simulation et enquêtes ont des démarches scientifiques possibles.<br/>L’important dans une démarche scientifique, d’après Gérard de Vecchiet Nicole Carmona - Magnaldi, "C’est de chercher, de regarder la réalité avec un autre œil, c’est d’être à l’affût des contradictions qui nous interpellent et qui nous amènent à nous poser des questions ; ... c’est enfin, construire des modèles explicatifs qui nous permettent d’appréhender le monde qui nous entoure."</p>
+                                                <div class="conclusion cadreBlanc marginTop35">
+                                                    <i class="fa fa-sign-out fa-2x"></i><h5>La démarche scientifique désigne donc l’ensemble des démarches nécessaires pour obtenir des connaissances valides (scientifiques) par le biais d’instruments fiables. Cette méthode a pour but de protéger le chercheur de la subjectivité.</h5>
+                                                  <br/><i class="fa fa-sign-out fa-2x"></i><h5>La démarche scientifique est basée sur la reproduisibilité (la capacité de répéter une expérience donnée n’importe où et par n’importe quelle personne) et la falsifiabilité ou la réfutabilité (toute proposition scientifique est susceptible d’être réfutée).</h5>
+                                                </div>
+                                                <ul class="ulPerso3 marginTop35 cadreNoir">
+                                                    <li class="sansPuce">Sources :</li> 
+                                                    <li><a href="https://www.ulb.ac.be/inforsciences/quandseraigrand/docs/05_dem_sc_tfe.pdf" title="Voir la définition complète sur le site">www.ulb.ac.be</a></li>
+                                                    <li><a href="http://lesdefinitions.fr/methode-scientifique#ixzz4JSddpJ3C" title="Voir la définition complète sur le site">lesdefinitions.fr</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="item jeu1"> 
+                                            <div class="col-xs-12">
+                                                <h4>Dispose les étapes de la démarche scientifique dans le bon ordre</h4>
+                                                <p>La démarche scientifique est une manière d'aborder un sujet identifié. L'idée est d'appliquer dans un ordre précis, plusieurs étapes, afin de solutionner ce fameux sujet identifié.<br />
+                                                Le jeu situé au dessous de cette rubrique illustre ces différentes étapes. A toi de les répartir dans le bon ordre.<br />
+                                                <u>Note :</u> À chaque fois que tu positionnes correctement une étape, elle reste à son emplacement.</p>
+                                                <div data-animation="animated fadeInDown" class="col-xs-12 col-sm-12 col-md-12 cadreBleu delay15 sourcesJeu">
+                                                    <h5 class="noMarginTop">Liste des différentes étapes de la démarche scientifique à répartir :</h5>
+                                                    <ul class="col-xs-12 col-sm-12 col-md-12 etape1 row ulPerso minWidth600"> 
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-2">Mettre en place un protocole expérimental</span>
+                                                        </li>                    
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-4">Répéter l'étape précédente pour confirmer les résultats</span>
+                                                        </li>
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-6">Se poser de nouvelles questions...</span>
+                                                        </li>
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-0">Se poser une question</span>
+                                                        </li>   
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-5">Bilan, discussion, transmission</span>
+                                                        </li>  
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-3">Expérimentation, observation et prise de notes</span>
+                                                        </li>
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-1">Faire des hypothèses</span>
+                                                        </li>
+                                                    </ul>  
+                                                </div>         
+                                                <div data-animation="animated fadeInDown" class="col-xs-12 cadreNoir delay15 displayNone conclusionJeu">
+                                                    <h5 class="noMarginTop">Les différentes étapes de la démarche scientifique :</h5>
+                                                    La première étape consiste effectivement à <u>Se poser une question</u>, laisser exprimer sa curiosité. Essayer d'interpréter un phénomène quel qu'il soit. Tout est issu d'un processus logique...<br/>
+                                                    ...et pour le comprendre, il faut <u>Faire des hypothèses</u>, imaginer des explications, des raisons, s'appuyer sur le contexte et les différents éléments qui le composent...<br/>
+                                                    ...pour être capable de penser et de <u>Mettre en place un protocole expérimental</u> qui permettra ainsi, ...<br/>
+                                                    ...à force d'<u>Expérimentations, d'observations et prises de notes</u>, de confirmer ou de réfuter ses premières hypothèses et/ou ses premiers résultats...<br/>
+                                                    ... et donc de dresser un <u>Bilan</u>, qui aboutira sur une <u>discussion</u>, et une <u>transmission</u> de ce savoir nouvellement acquis...<br/>
+                                                    ... Mais le plus important sera bien entendu de garder sa curiosité en éveil pour <u>Se poser de nouvelles questions</u>, résoudre d'autres mystères et ainsi de suite.
+                                                </div> 
+                                                <ul data-animation="animated flipInY" class="col-xs-12 col-sm-12 col-md-12 etape2 delay15 sansPuce marginTop35 infobulleJaune"> 
+                                                    <li id="demarche-drop-0" class="drop ferme" data-toggle="tooltip" data-placement="top" title="Le problème qu'on veut résoudre">
+                                                        <div>1</div>
+                                                    </li>   
+                                                    <li id="demarche-drop-1" class="ferme" data-toggle="tooltip" data-placement="top" title="Imaginer une possible solution au problème">
+                                                        <div>2</div>
+                                                    </li>
+                                                    <li id="demarche-drop-2" class="drop ferme" data-toggle="tooltip" data-placement="top" title="Imaginer des expériences ou des actions à faire pour tester l'hypothèse">
+                                                        <div>3</div>
+                                                    </li> 
+                                                    <li id="demarche-drop-3" class="ferme" data-toggle="tooltip" data-placement="top" title="Réaliser les expériences ou les observations qu'on a imaginé et les analyser">
+                                                        <div>4</div>
+                                                    </li>
+                                                    <li id="demarche-drop-4" class="ferme" data-toggle="tooltip" data-placement="top" title="Il faut toujours être sûre de nos résultats : on refait les expériences ou les observations">
+                                                        <div>5</div>
+                                                    </li>
+                                                    <li id="demarche-drop-5" class="ferme" data-toggle="tooltip" data-placement="top" title="Il faut faire un bilan pour déterminer si l'hypothèse était valide et partager nos résultats pour aider ceux qui vont se poser la même question... même nous, avec le temps on oublie ce que l'on a fait !">
+                                                        <div>6</div>
+                                                    </li>
+                                                    <li id="demarche-drop-6" class="ferme" data-toggle="tooltip" data-placement="top" title="Une question peut en cacher une autre... Une réponse nous amène très souvent à des nouvelles questions">
+                                                        <div>7</div>
+                                                    </li>                    
+                                                </ul>
+                                                <div class="jeuBtn">
+                                                    <span class="solutionBtn" data-toggle="modal" data-target="#solution-demarcheScientifique">
+                                                        <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div>                                        
+                                        </div>
+                                        <div class="item jeu2">
+                                            <div class="col-xs-12">                                            
+                                                <h4></h4>                                      
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-6" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-6" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>              
+                            </div> 
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"60.5,22.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"67.5,26.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"71.5,29.5","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="bio-b-7">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"74.7,22","tooltip_offset":"-5.5,6","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                            </div>
+                            <div class="HE_Tooltip">Séance 7 - Visite de l'ANSES<br/>Etude des abeilles</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - L'ANSES &amp; l'étude des abeilles</h3>
+                                <div id="carousel-bio-P2-7" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-bio-b-7" class="displayNone">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1"><i>Tu remportes :</i><u><span>20</span> points</u></p>
+                                    </div> 
+                                    <div id="great-2-bio-b-7" class="displayNone">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>&Ccedil;a t'a plu ?</p>
+                                        <p class="pointsXP pointsJeu2"><i>Tu remportes :</i><u><span>20</span> points</u></p>
+                                    </div>
+                                    <div id="solution-bio-b-7" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--bio-b-7" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="solution--bio-b-7">Solution</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/etape7/solution.png" alt="" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-7" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-7" data-slide-to="1"></li>
+                                        <li data-target="#carousel-bio-P2-7" data-slide-to="2" class="liPoints liJ1Points"></li>
+                                        <li data-target="#carousel-bio-P2-7" data-slide-to="3" class="liPoints liJ2Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Dans un pays de tous les temps</p>
+                                                    <p>Vit la plus belle des abeilles...</p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                                    
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                                
+                                                <div class="jeuBtn">
+                                                    <span class="solutionBtn" data-toggle="modal" data-target="#solution-bio-b-7">
+                                                        <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                         <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                
+                                            </div>
+                                        </div>      
+                                    </div>
+                                </div>  
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-7" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-7" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div>
+                        </div>     
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"71.5,29.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"69.5,32.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"66.5,33.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"62.5,36.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"57.5,44.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"56.5,46.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"55.5,66.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"55.5,73.5","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="bio-b-8">
+                            <div class="HE_Marker zIndexMax" data-hawkeye='{"pos":"57.5,78","tooltip_offset":"-6,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Séance 8 - L'agriculture<br/>Le rôle des insectes</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - L'agriculture &amp; le rôle des insectes</h3>
+                                <div id="carousel-bio-P2-8" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-8" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-8" data-slide-to="1" ></li>
+                                        <li data-target="#carousel-bio-P2-8" data-slide-to="2" ></li>
+                                        <li data-target="#carousel-bio-P2-8" data-slide-to="3" ></li>
+                                        <li data-target="#carousel-bio-P2-8" data-slide-to="4" ></li>
+                                        <li data-target="#carousel-bio-P2-8" data-slide-to="5" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>
+                                                        Comment protéger ses cultures ?
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                                                                      
+                                        </div>
+                                        <div class="item">
+                                                                                                                       
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">  
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">                                        
+                                                <h4></h4>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                                
+                                            </div>    
+                                        </div>      
+                                    </div>
+                                </div>    
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-8" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-8" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>           
+                            </div> 
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"59.5,71","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"60,66","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"61,58.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"62,58","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"64,57","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"66,57.5","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="bio-b-9">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"67,54","tooltip_offset":"-7,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Séance 9 - L'INRA<br/></div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - L'INRA</h3>
+                                <div id="carousel-bio-P2-9" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-9" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-9" data-slide-to="1" ></li>
+                                        <li data-target="#carousel-bio-P2-9" data-slide-to="2" ></li>
+                                        <li data-target="#carousel-bio-P2-9" data-slide-to="3" ></li>
+                                        <li data-target="#carousel-bio-P2-9" data-slide-to="4" ></li>
+                                        <li data-target="#carousel-bio-P2-9" data-slide-to="5" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p></p>
+                                                </div>
+                                            </div>                                                 
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>    
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>           
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-9" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-9" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div> 
+                        </div>     
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"69,57.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"71,57.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"72.5,65.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"74.5,66.5","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="bio-b-10">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"77,70","tooltip_offset":"-7,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Séance 10 - Les métiers<br/></div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - Les métiers</h3>
+                                <div id="carousel-bio-P2-10" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-10" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-10" data-slide-to="1" ></li>
+                                        <li data-target="#carousel-bio-P2-10" data-slide-to="2" ></li>
+                                        <li data-target="#carousel-bio-P2-10" data-slide-to="3" ></li>
+                                        <li data-target="#carousel-bio-P2-10" data-slide-to="4" ></li>
+                                        <li data-target="#carousel-bio-P2-10" data-slide-to="5" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Quels sont les différents métiers en lien avec ce domaine ?</p>
+                                                </div>
+                                            </div>                                                 
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>    
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>           
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-10" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-10" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div> 
+                        </div>   
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"80,65.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"82,55.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"84,56.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"84.5,63","hidden":true}'></div>                       
+                        <div class="HE_Marker" data-hawkeye='{"pos":"85.8,69","hidden":true}'></div>
+
+                        <div class="marqueur derniereEtape bloquee" id="bio-b-11">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"86,74","tooltip_offset":"-4.5,7","panel_pos":"0.4,0.9"}'>
+                                <i class="fa fa-gears"></i>
+                            </div>
+                            <div class="HE_Tooltip">Séance 11 - Quiz</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Biodiversité des insectes - Quiz</h3>
+                                <div id="carousel-bio-P2-10" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P2-11" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P2-11" data-slide-to="1" class="liPoints liQPoints"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">      
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>
+                                                        Oh nooooooon ! :P
+                                                    </p>
+                                                </div>
+                                            </div>    
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                
+                                            </div>
+                                        </div>        
+                                    </div>
+                                </div>   
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P2-11" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P2-11" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>   
+                            </div>  
+                        </div>   
+                    </div> 
+                    <img class="img-cache-bio-a1 delay3" data-animation="animated fadeIn" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/parcours-insectes-cache-1.svg" /> 
+                    <img class="img-cache-bio-a2 delay3" data-animation="animated fadeIn" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/insectes/p1/parcours-insectes-cache-2.svg" /> 
+                    <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-full')"
+                         tal:attributes="src maVariable/url; alt string:Image représentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                         tal:condition="context/image_principale" />    
+                </section>
+                <script src="++resource++unice.medites.javascripts/libs/insectes.js"></script>  
+                <script src="++resource++unice.medites.javascripts/libs/parcours.js"></script>              
+                <script src="++resource++unice.medites.javascripts/libs/jQuiz/jQuizMe-2.2.1.js"></script> 
+                <metal:block use-macro="context/medites_macros/macros/parcours" />
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+            </metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

@@ -1,0 +1,248 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+          scales context/@@images;
+          variableEtablissements python:view.champsRepeat('partenaires');
+
+          ">
+  <metal:block use-macro="context/medites_macros/macros/master">
+    <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+      <metal:content-core define-macro="content-core"
+                          tal:define="widgets nocall:context/@@view">
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1TFavxa1-vQFzsw360e2PyBIzhWv-tIE"></script>
+        <section class="row emplacement-normal row-same-height">
+<!-- contenu -->
+          <div class="dark col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-height col-lg-height col-full-height">
+            <div class="content presentation ">
+              <ol class="breadcrumb">
+                <li><a href="../accueil">Accueil</a></li>
+                <li class="active">MEDITES dans mon collège phase 1</li>
+              </ol>
+              <h1 tal:content="infos/title" tal:condition="infos/title"></h1>
+              <div tal:content="structure widgets/++widget++contenu/render" tal:condition="context/contenu" class="text-justify" />
+              <div id="legend" class="legendEtablissements">
+                <ul>
+                  <li><img src="++resource++unice.medites.images/gmap/terOceUni.png" alt="" /> - Terre, Océan, Univers</li>
+                  <li><img src="++resource++unice.medites.images/gmap/sciNum.png" alt="" /> - Sciences du Numérique</li>
+                  <li><img src="++resource++unice.medites.images/gmap/biodiv.png" alt="" /> - Biodiversité</li>
+                  <li><img src="++resource++unice.medites.images/gmap/tpHistEvo.png" alt="" /> - Temps, Histoire, &Eacute;volution</li>
+                  <li><img src="++resource++unice.medites.images/gmap/vivMatTech.png" alt="" /> - Vivant, Matière, Technologie</li>
+                  <li><img src="++resource++unice.medites.images/gmap/toutesThema.png" alt="" /> - Plusieurs thématiques</li>
+                  <li><img src="++resource++unice.medites.images/gmap/p1.png" alt="" /> - Phase 1</li>
+                  <li><img src="++resource++unice.medites.images/gmap/p2.png" alt="" /> - Phase 2</li>                
+                </ul>  
+              </div>
+            </div>
+          </div>
+          <!-- carrousel -->
+          <div class="carto col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-height col-lg-height col-full-height embed-responsive zIndex1">
+            <div id="map" class="embed-responsive-item"></div>
+          </div>
+        </section>
+
+        <div class="displayNone scriptGoogleMap">
+          [<tal:block repeat="partenaires variableEtablissements">
+              ['<h4><tal:block condition="partenaires/title" replace="partenaires/title" /></h4>
+              <br/>
+              <ul class="noPadding">
+                <tal:block define="variableEtape python:view.champsRepeat('medites_etape_intranet', partenaires);"> 
+                    <li tal:repeat="etape variableEtape" class="col-xs-6 col-sm-6 col-md-4 col-lg-4">   
+                        <a title="Ouvrir le contenu dans une fenêtre" data-toggle="modal" href="#" tal:attributes="data-target string:#${etape/getId}">
+                            <span tal:content="etape/title" /> 
+                        </a>
+                        <div tal:attributes="id etape/getId" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h2 tal:content="etape/title" />
+                                        <div class="dateSeance" tal:condition="etape/date">Date de la séance : <tal:block content="etape/date"/></div> 
+                                        <h3 tal:condition="etape/description_etape">Description</h3>
+
+                                        <div tal:condition="etape/description_etape" tal:content="structure etape/description_etape/output" />              
+                                        <hr/>
+                                        <h3 tal:condition="etape/photo_1">Photo(s)</h3>
+                                        <ul class="sansPuce col-md-12 col-lg-12 photos">
+                                            <li class="col-md-3 col-lg-3" tal:condition="etape/photo_1">
+                                                <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('photo_1', scale='preview')"
+                                                tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all"
+                                                tal:condition="etape/photo_1" />
+                                                <a tal:condition="etape/photo_1" tal:attributes="href string:${etape/absolute_url}/@@download/photo_1/${etape/photo_1/filename}; title string:T&eacute;l&eacute;charger la photo 1">
+                                                  <i class="fa fa-download fa-2x"></i>
+                                                </a>
+                                            </li>
+                                            <li class="col-md-3 col-lg-3" tal:condition="etape/photo_2">
+                                                <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('photo_2', scale='preview')"
+                                                tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all"
+                                                tal:condition="etape/photo_2" />
+                                                <a tal:condition="etape/photo_2" tal:attributes="href string:${etape/absolute_url}/@@download/photo_1/${etape/photo_2/filename}; title string:T&eacute;l&eacute;charger la photo 2">
+                                                  <i class="fa fa-download fa-2x"></i>
+                                                </a>
+
+                                            </li>
+                                            <li class="col-md-3 col-lg-3" tal:condition="etape/photo_3">
+                                                <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('photo_3', scale='preview')"
+                                                tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all"
+                                                tal:condition="etape/photo_3" />
+                                                <a tal:condition="etape/photo_3" tal:attributes="href string:${etape/absolute_url}/@@download/photo_1/${etape/photo_3/filename}; title string:T&eacute;l&eacute;charger la photo 3">
+                                                  <i class="fa fa-download fa-2x"></i>
+                                                </a>                                          
+                                            </li>
+                                            <li class="col-md-3 col-lg-3" tal:condition="etape/photo_4">
+                                                <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('photo_4', scale='preview')"
+                                                tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all"
+                                                tal:condition="etape/photo_4" />
+                                                <a tal:condition="etape/photo_4" tal:attributes="href string:${etape/absolute_url}/@@download/photo_1/${etape/photo_4/filename}; title string:T&eacute;l&eacute;charger la photo 4">
+                                                  <i class="fa fa-download fa-2x"></i>
+                                                </a>
+                                            </li>
+                                        </ul>                                    
+                                        <br/>
+                                        <hr/>
+                                        <h3 tal:condition="etape/fichier_1">Fichiers divers</h3>
+                                        <ul>
+                                            <li tal:condition="etape/fichier_1"> 
+                                                <a tal:attributes="href string:${etape/absolute_url}/@@download/fichier_1/${etape/fichier_1/filename}; title string:T&eacute;l&eacute;charger le fichier 1">
+                                                    <tal:block content="etape/fichier_1/filename" /> - <i class="fa fa-download fa-2x widthAuto"></i>
+                                                </a>  
+                                            </li>    
+                                            <li tal:condition="etape/fichier_2"> 
+                                                <a tal:attributes="href string:${etape/absolute_url}/@@download/fichier_2/${etape/fichier_2/filename}; title string:T&eacute;l&eacute;charger le fichier 2">
+                                                    <tal:block content="etape/fichier_2/filename" /> - <i class="fa fa-download fa-2x widthAuto"></i>
+                                                </a>  
+                                            </li>  
+                                            <li tal:condition="etape/fichier_3"> 
+                                                <a tal:attributes="href string:${etape/absolute_url}/@@download/fichier_3/${etape/fichier_3/filename}; title string:T&eacute;l&eacute;charger le fichier 3">
+                                                    <tal:block content="etape/fichier_3/filename" /> - <i class="fa fa-download fa-2x widthAuto"></i>
+                                                </a>  
+                                            </li>  
+                                            <li tal:condition="etape/fichier_4"> 
+                                                <a tal:attributes="href string:${etape/absolute_url}/@@download/fichier_4/${etape/fichier_4/filename}; title string:T&eacute;l&eacute;charger le fichier 4">
+                                                    <tal:block content="etape/fichier_4/filename" /> - <i class="fa fa-download fa-2x widthAuto"></i>
+                                                </a>  
+                                            </li>  
+                                        </ul>
+                                        <hr tal:condition="etape/commentaires" />
+                                        <h3 tal:condition="etape/commentaires">Commentaires sur la séance</h3>
+                                        <div tal:condition="etape/commentaires" tal:content="structure etape/commentaires/output" />    
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </tal:block>
+              </ul>    
+              ',
+              <tal:block condition="partenaires/latitude_googlemap" replace="structure partenaires/latitude_googlemap" />,
+              <tal:block condition="partenaires/longitude_googlemap" replace="structure partenaires/longitude_googlemap" />,
+              '++resource++unice.medites.images/gmap/<tal:block replace="partenaires/classe" condition="partenaires/classe" />-p1.png'],
+            </tal:block>]
+        </div>    
+      
+<!-- les partenaires -->
+     <!--  <section class="container-fluid partenaires white">
+        <div class="row cs-style-3 grid row-full-height" >
+          <div class="col-md-height col-full-height">
+            <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 col-full-height" tal:repeat="partenaires variablePartenaires">
+              <div tal:attributes="class string:item bloc-${partenaires/classe};" tal:condition="partenaires/classe">
+                <figure>
+                  <a tal:attributes="title string:Atteindre la page;
+                                     href partenaires/absolute_url"
+                     tal:condition="partenaires/absolute_url">
+                    <img tal:define="scales_image partenaires/@@images; maVariable python:scales_image.scale('logo_bloc', scale='preview')"
+                         tal:attributes="src maVariable/url; alt string:Photo du partenaire ${partenaires/title}; class string:img-all"
+                         tal:condition="partenaires/logo_bloc" />
+                    <figcaption>
+                      <h2 tal:content="partenaires/type_de_partenaire" tal:condition="partenaires/type_de_partenaire" />
+                      <h3 tal:content="partenaires/thematiques" tal:condition="partenaires/thematiques" />
+                    </figcaption>
+                  </a>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+        <script>
+
+          var googleScript = $(".scriptGoogleMap").html();
+          googleScript = googleScript.replace(/([A-Za-z])'([A-Za-z0-9])/g, "$1\\'$2");
+          var locations = eval(googleScript.replace(/\s+/g,' '));
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            scrollwheel: false,
+            center: new google.maps.LatLng(43.6882405,7.207712),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+          var styles = [
+            {
+              stylers: [ ]},{
+              featureType: "water",
+              elementType: "geometry",
+              stylers: [
+                { hue: "#139bd5" },
+                { lightness: -50 },
+                { visibility: "simplified" }
+              ]
+            },
+            {
+              featureType: "landscape",
+              elementType: "geometry",
+              stylers: [
+                { hue: "#4eaa33" },
+                { lightness: -10 },
+                { saturation: 40 },
+                { visibility: "simplified" }
+              ]
+            },
+            {
+              featureType: "road",
+              elementType: "geometry",
+              stylers: [
+                { hue: "#ccc" },
+                { lightness: 50 },
+                { visibility: "simplified" }
+              ]
+            },
+            {
+              featureType: "road",
+              elementType: "labels",
+              stylers: [
+                { visibility: "off" }
+              ]
+            }
+          ];
+          map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('legend'));
+          map.setOptions({styles: styles});
+          var infowindow = new google.maps.InfoWindow();
+          
+          var marker, i;
+          for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map,
+            icon: locations[i][3]
+          });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+          }
+        </script>
+        <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+      </metal:content-core>
+    </div>
+  </metal:block>
+</tal:block>

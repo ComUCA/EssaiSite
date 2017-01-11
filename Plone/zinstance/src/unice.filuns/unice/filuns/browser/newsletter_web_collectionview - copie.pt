@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width"/>
+    <style tal:content="python:view.css('++resource++unice.filuns.stylesheets/newsletter.css')"/>
+</head>
+
+<body tal:define="
+    prefix_themes string:#FilUNSTheme;
+    prefix_canaux string:#FilUNSCanal;
+
+    themes python:view.themes(prefix_themes);
+    canaux python:view.canaux(prefix_canaux, {'*':'#FilUNSImp', 'FilUNS':'#FilUNSImportance'});
+    importances python:view.importances(canaux);">
+
+    <!-- <small tal:define="url string:${context/absolute_url}/@@newsletter_web_view">
+        Si cette page ne s'affiche pas correctement dans votre messagerie,
+        cliquez sur le lien <a tal:attributes="href url" tal:content="url"/>.
+        Pour garantir l'affichage par defaut des images de la lettre électronique hebdomadaire de l'Université Nice Sophia Antipolis :
+        activer "Afficher toutes les images".
+    </small> -->
+
+    <tal:block tal:define="
+        batch python:context.results();
+        father nocall:here/aq_inner/aq_parent;
+        grandfather nocall:father/aq_inner/aq_parent;
+        greatfather nocall:grandfather/aq_inner/aq_parent;
+
+        filuns father/absolute_url;
+        agenda string:${filuns}/agenda;
+
+        classement python:view.classementItems(batch, prefix_themes, themes, prefix_canaux, canaux, importances, 200);
+
+        rubriques python:[
+        {'id':'institutionnel', 'title':'Institutionnel'},
+        {'id':'formation', 'title':'Formation'},
+        {'id':'recherche', 'title':'Recherche'},
+        {'id':'international', 'title':'International'},
+        {'id':'culture', 'title':'Culture'},
+        {'id':'sport', 'title':'Sport'}
+        ];
+        mois python:['-', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+        reseaux python:[
+        {'id':'facebook', 'url':'https://www.facebook.com/UnivNiceSophia'},
+        {'id':'twitter', 'url':'https://twitter.com/Univ_Nice'},
+        {'id':'linkedin', 'url':'http://www.linkedin.com/company/universit-nice-sophia-antipolis?trk=cp_followed_name_universit-nice-sophia-antipolis'},
+        {'id':'vimeo', 'url':'https://vimeo.com/channels/unice'},
+        {'id':'youtube', 'url':'http://www.youtube.com/user/UnivNice?feature=watch'},
+        {'id':'google', 'url':'https://plus.google.com/u/0/b/104299740066935221672/104299740066935221672/posts'}];">
+
+        <table class="body">
+            <tr>
+                <td class="center" align="center" valign="top">
+                    <center>
+
+                        <!-- HEADER ----------------------------------------------------------->
+                        <table class="row">
+                            <tr>
+                                <td class="center" align="center">
+                                    <center>
+                                        <metal:block use-macro="context/newsletter_macro/macros/header"/>
+                                    </center>
+                                </td>
+                            </tr>
+                        </table><br>
+
+                        <!-- CONTAINER ----------------------------------------------------------->
+                        <table class="container">
+                            <tr>
+                                <td>
+
+                                    <!-- TITRE IMPORTANCE 1 ------------------------------------------------------->
+                                    <table class="row" tal:define="titre string:A la Une; importance string:1; lien python:None;">
+                                        <tr>
+                                            <td class="wrapper last">
+                                                <metal:block use-macro="context/newsletter_macro/macros/titre_importance"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <table class="row">
+                                        <tr>
+                                            <td class="wrapper">
+                                                <!-- CONTENU IMPORTANCE 1 -------------------------------------------->
+                                                <metal:block use-macro="context/newsletter_macro/macros/importance1"/>
+                                            </td>
+                                            <td class="wrapper last">
+                                                <!-- NAVIGATION ------------------------------------------------------>
+                                                <metal:block use-macro="context/newsletter_macro/macros/navigation"/>
+                                            </td>
+                                        </tr>
+                                    </table><br>
+
+
+                                    <!-- TITRE IMPORTANCE 2 ------------------------------------------------------->
+                                    <table class="row" tal:define="titre string:Actualités; importance string:2; lien python:None;">
+                                        <tr>
+                                            <td class="wrapper last">
+                                                <metal:block use-macro="context/newsletter_macro/macros/titre_importance"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- CONTENU IMPORTANCE 2 ------------------------------------------------------->
+                                    <tal:block condition="python:'2' in classement">
+                                        <table class="row" tal:repeat="item classement/2">
+                                            <tr>
+                                                <td class="wrapper">
+                                                    <!-- IMAGE -------------------------------------------->
+                                                    <metal:block use-macro="context/newsletter_macro/macros/importance2_image"/>
+                                                </td>
+                                                <td class="wrapper last">
+                                                    <!-- TEXTE ------------------------------------------------------>
+                                                    <metal:block use-macro="context/newsletter_macro/macros/importance2_texte"/>
+                                                </td>
+                                            </tr>
+                                        </table><br>
+                                    </tal:block>
+
+
+                                    <!-- TITRE PLUS D'INFOS FIL ------------------------------------------------------->
+                                    <!-- <table class="row" tal:define="titre string:Plus d'infos sur le Fil UNS; importance string:4; lien python:None;">
+                                        <tr>
+                                            <td class="wrapper last">
+                                                <metal:block use-macro="context/newsletter_macro/macros/titre_importance"/>
+                                            </td>
+                                        </tr>
+                                    </table> -->
+
+                                    <!-- PLUS D'INFOS FIL ------------------------------------------------------->
+                                    <table class="row" tal:define="titre string:Plus d'infos sur le Fil UNS; cases string:four; lien filuns;">
+                                        <tr>
+                                            <td class="wrapper no-margin" tal:define="cases string:four">
+                                                <metal:block use-macro="context/newsletter_macro/macros/case_vide"/>
+                                            </td>
+
+                                            <td class="wrapper no-margin">
+                                                <metal:block use-macro="context/newsletter_macro/macros/plus_infos"/>
+                                            </td>
+
+                                            <td class="wrapper no-margin last" tal:define="cases string:four">
+                                                <metal:block use-macro="context/newsletter_macro/macros/case_vide"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <br>
+
+
+
+                                    <!-- TITRE IMPORTANCE 3 ------------------------------------------------------->
+                                    <table class="row" tal:define="titre string:Agenda; importance string:3; lien python:None">
+                                        <tr>
+                                            <td class="wrapper last">
+                                                <metal:block use-macro="context/newsletter_macro/macros/titre_importance"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <!-- CONTENU IMPORTANCE 3 ------------------------------------------------------->
+                                    <tal:block condition="python:'3' in classement">
+                                        <table class="row" tal:repeat="item classement/3">
+                                            <tr>
+                                                <td class="wrapper">
+                                                    <!-- IMAGE -------------------------------------------->
+                                                    <metal:block use-macro="context/newsletter_macro/macros/importance3_date"/>
+                                                </td>
+                                                <td class="wrapper last">
+                                                    <!-- TEXTE ------------------------------------------------------>
+                                                    <metal:block use-macro="context/newsletter_macro/macros/importance3_texte"/>
+                                                </td>
+                                            </tr>
+                                        </table><br>
+                                    </tal:block>
+
+
+                                    <!-- TITRE PLUS D'INFOS AGENDA ------------------------------------------------------->
+                                    <!-- <table class="row" tal:define="titre string:Tout l'agenda; importance string:4; lien python:None;">
+                                        <tr>
+                                            <td class="wrapper last">
+                                                <metal:block use-macro="context/newsletter_macro/macros/titre_importance"/>
+                                            </td>
+                                        </tr>
+                                    </table> -->
+
+                                    <!-- PLUS D'INFOS AGENDA ------------------------------------------------------->
+                                    <table class="row" tal:define="titre string:Tout l'agenda; cases string:four; lien agenda;">
+                                        <tr>
+                                            <td class="wrapper no-margin" tal:define="cases string:four">
+                                                <metal:block use-macro="context/newsletter_macro/macros/case_vide"/>
+                                            </td>
+
+                                            <td class="wrapper no-margin">
+                                                <metal:block use-macro="context/newsletter_macro/macros/plus_infos"/>
+                                            </td>
+
+                                            <td class="wrapper no-margin last" tal:define="cases string:four">
+                                                <metal:block use-macro="context/newsletter_macro/macros/case_vide"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <br>
+
+
+                                    <!-- RESEAUX SOCIAUX ------------------------------------------------------->
+                                    <table class="row">
+                                        <tr>
+                                            <td class="wrapper last">
+                                                <metal:block use-macro="context/newsletter_macro/macros/reseaux"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <br>
+                                    <br>
+
+                                    <!-- FOOTER ------------------------------------------------------->
+                                    <table class="row">
+                                        <tr>
+                                            <td class="wrapper last">
+                                                <metal:block use-macro="context/newsletter_macro/macros/footer"/>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                    </center>
+                </td>
+            </tr>
+        </table>
+    </tal:block>
+</body>
+</html>

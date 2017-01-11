@@ -1,0 +1,25 @@
+@import "uca_utils";
+
+#content h2 {
+    background-color: @couleurFond;
+    border-radius: 2px;
+    font-size: 24px;
+    padding: 5px;
+    color: #FFF !important;
+    letter-spacing: 0;
+
+    strong {
+        font-weight: 100;
+    }
+}
+
+#content .well, #content .alert {
+
+    & > h3:first-child {
+        margin-top: 0;
+    }
+    & > p:last-child,
+    & > ul:last-child {
+        margin-bottom: 0;
+    }
+}

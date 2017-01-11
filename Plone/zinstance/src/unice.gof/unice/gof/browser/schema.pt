@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model
+    xmlns:security="http://namespaces.plone.org/supermodel/security"
+    xmlns:marshal="http://namespaces.plone.org/supermodel/marshal"
+    xmlns:form="http://namespaces.plone.org/supermodel/form"
+    xmlns="http://namespaces.plone.org/supermodel/schema"
+    xmlns:tal="http://xml.zope.org/namespaces/tal">
+
+    <schema tal:define="gof view/parseGOF; onglets gof/onglets; formations gof/formations;">
+
+        <field name="id_formation" type="zope.schema.TextLine">
+            <description/>
+            <title>Identifiant</title>
+        </field>
+
+        <field name="lib_composante" type="zope.schema.TextLine">
+            <description/>
+            <title>Composante</title>
+        </field>
+
+        <field name="keywords" type="zope.schema.TextLine">
+            <description/>
+            <title>Mots clés</title>
+        </field>
+
+        <tal:onglets repeat="onglet onglets">
+
+            <fieldset tal:attributes="name onglet/id_onglet; label onglet/lib_onglet">
+
+                <tal:items repeat="item python:onglet['items']">
+
+                     <field tal:attributes="name item/id_item; type python:view.type_item(item['id_type_item'])">
+
+                        <required tal:condition="python:item['tem_obligatoire']=='0'">False</required>
+                        <description/>
+                        <title tal:content="item/lib_item"/>
+                    </field>
+
+                </tal:items>
+
+            </fieldset>
+
+        </tal:onglets>
+
+    </schema>
+
+</model>

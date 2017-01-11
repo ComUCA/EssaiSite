@@ -1,0 +1,167 @@
+@couleur_principale: #006FA4;
+
+body.template-axe_interdisciplinaire_view #content,
+body.template-projet_axe_interdisciplinaire_view #content {
+
+    .banniere .title, .modal-header {
+        text-align: center;
+        // background-image: url("++resource++unice.templates.images/blurred/bleu_jaune.jpg");
+        background-size: cover;
+        -moz-background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+    }
+
+    .banniere {
+
+        .title {
+
+            &, & > div {
+                border-radius: 5px;
+            }
+
+            & > div {
+                padding: 40px 10px;
+                background-color: rgba(0, 0, 0, 0.25);
+
+                h1 {
+                    color: #FFF;
+                    margin: 0 0 20px 0;
+                    padding: 0;
+                }
+                .dropdown {
+                    display: inline-block;
+                }
+                .btn-inverted {
+                    background-color: transparent !important;
+                    color: #fff !important;
+                    border-color: #fff !important;
+                }
+            }
+        }
+
+        .contentleadimage + .title {
+            &, & > div {
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+            & > div {
+                padding: 20px 10px;
+            }
+        }
+
+        .contentleadimage {
+            img {
+                display: block;
+                max-width: 100%;
+                height: auto;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+            }
+        }
+    }
+
+
+    .modal-header {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+
+        padding: 0;
+
+        & > div {
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.25);
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+
+            .close {
+                &, &:hover, &:focus {
+                    color: #FFF;
+                    opacity: 1;
+                    text-shadow: none;
+                }
+            }
+        }
+    }
+
+    .axe h2 {
+        background-color: #f6f6f6;
+        border-radius: 5px;
+        font-size: 24px;
+        padding: 5px;
+        color: #000;
+        letter-spacing: 0;
+    }
+
+    h3.modal-title {
+        color: #FFF;
+        font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        font-weight: 300;
+        font-size: 18px;
+    }
+    .axe, .projet {
+        ul.fa-ul, ul.list-inline, p {
+            padding: 0 10px !important;
+        }
+        p {
+            text-align: justify;
+        }
+    }
+
+    .projet h4 {
+        background-color: #F6F6F6;
+        padding: 10px 25px;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    .list-inline {
+        list-style: outside none none !important;
+        margin-left: 0 !important;
+        padding-left: 0 !important;
+
+        & > li {
+            display: inline-block;
+            padding: 0 !important;
+        }
+    }
+
+    .dropdown-menu > li > a {
+        border: none !important;
+    }
+
+}
+
+body.template-projet_axe_interdisciplinaire_view #content {
+    .banniere .title {
+        background-image: url("++resource++unice.templates.images/blurred/bleu_rose.jpg");
+        background-position: center bottom;
+
+        & > div h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+    }
+
+    .projet h4 {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 10px;
+        border-radius: 5px;
+    }
+}
+
+body.portaltype-axe_interdisciplinaire.template-edit,
+body.portaltype-projet_axe_interdisciplinaire.template-edit {
+    .ploneSkin {
+        .mceButton, .mceListBox {
+            display: none;
+        }
+
+        .mceButton {
+            &.mce_bold, &.mce_italic, &.mce_bullist, &.mce_numlist, &.mce_anchor {
+                display: block;
+            }
+        }
+    }
+}

@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.portlet.actualite_evenement">
+
+    <!-- Resource directory for images -->
+    <browser:resourceDirectory
+        name="unice.portlet.actualite_evenement.stylesheets"
+        directory="stylesheets"
+        />
+
+</configure>

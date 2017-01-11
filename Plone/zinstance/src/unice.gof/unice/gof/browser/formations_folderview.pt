@@ -1,0 +1,138 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+        <div metal:fill-slot="content-core">
+
+            <div tal:define="batch python:context.getFolderContents({'portal_type': 'formation', 'sort_on': 'sortable_title'}, batch=False) if context.portal_type == 'Folder' else context.results();
+                recherche_initiale request/recherche | nothing;
+                titre_initial request/titre_initial | nothing"
+                tal:attributes="class python:'recherche_initiale' if recherche_initiale else ''">
+
+                <!-- <div class="alert alert-success text-center">
+                    <strong class="lead">Bienvenue sur la nouvelle offre de formation de l'Université Nice Sophia Antipolis.</strong><br/>
+                    Cette offre étant en cours de construction, certaines formations sont actuellement manquantes mais seront publiées rapidement.
+                </div> -->
+
+                    <div id="moteur_recherche_formation">
+                        <!-- <h2><i class="fa fa-search" style="font-size: 0.66em;"></i> Rechercher une formation</h2> -->
+
+                        <form action="http://gof.unice.fr/Search" method="get" id="searchform">
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-2">
+                                    <div class="form-group has-success" style="float: none;">
+                                        <label for="search" class="sr-only">Rechercher une formation :</label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-search fa-fw" id="state_icon"></i>
+                                            </span>
+                                            <input type="text" class="form-control" id="search" name="search" placeholder="Rechercher une formation..." style="border-top-right-radius:4px; border-bottom-right-radius:4px;" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-2" style="padding-left: 0;">
+                                    <button type="submit" class="btn btn-success btn-block">Rechercher</button>
+                                </div>
+                            </div>
+
+                            <!-- <div class="row text-center">
+                                <br/>
+                                <a  href="http://unice.fr/unicepro/orientation/formulaire-de-contact-bio" class="internal-link btn btn-primary">
+                                    <i class="fa fa-question-circle"></i> Une question, un renseignement, un conseil, un rendez-vous ?
+                                </a>
+                                <br/>
+                            </div> -->
+
+                            <div class="row">
+                                <div class="col-sm-12" id="resultats">
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- <form role="form" class="form-inline text-center" tal:attributes="action string:${context/absolute_url}/@@recherche" id="recherche_formation">
+                            <div class="form-group">
+                                <label class="sr-only" for="recherche">Rechercher une formation :</label>
+                                <input type="text" size="50" class="form-control" id="recherche" name="recherche" placeholder="Rechercher une formation..."/>
+                            </div>
+                            <button type="submit" class="btn btn-default">Rechercher</button>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="multicriteres"/> Recherche avancée</label>
+                            </div>
+                            <div id="recherche_formation_multicriteres" class="row text-left">
+                                <br/>
+                                <div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
+                                    <div tal:repeat="searchables view/searchables" class="col-sm-6 col-md-3">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading text-center">
+                                                <strong tal:content="searchables/label"/>
+                                            </div>
+                                            <ul class="list-group">
+                                                <li tal:repeat="searchable python:searchables['values']" class="list-group-item">
+                                                    <label class="checkbox-inline">
+                                                        <input type="checkbox" tal:attributes="name searchable/name"/>
+                                                        <small tal:content="searchable/label"/>
+                                                    </label>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form> -->
+                    </div>
+
+
+                <h2 tal:condition="titre_initial">
+                    <i class="fa fa-th-list" style="font-size: 0.66em;"></i> <tal:block content="titre_initial"/>
+                </h2>
+                <div id="liste_formations"></div>
+
+                <!-- <tal:listing condition="batch"> -->
+
+
+
+
+                    <!-- <h2><i class="fa fa-th-list" style="font-size: 0.66em;"></i>
+                        <tal:block condition="not:titre_initial">Liste des formations</tal:block>
+                        <tal:block condition="titre_initial" content="titre_initial"/>
+                    </h2> -->
+
+                    <!-- <div id="liste_formations">
+                        <ul tal:condition="not:recherche_initiale">
+                            <tal:block repeat="item batch">
+                                <li><a tal:attributes="href item/getURL"><i class="fa fa-quote-left"></i> <strong tal:content="item/Title"/></a></li>
+                            </tal:block>
+                        </ul>
+                    </div> -->
+                    <!-- <div id="liste_formations">
+                        <div class="panel panel-info" tal:condition="not:recherche_initiale">
+                            <div class="panel-heading">
+                                <strong><tal:block content="python:len(batch)"/> formations</strong>
+                            </div>
+                            <div class="list-group">
+                                <tal:block repeat="item batch">
+                                    <a tal:attributes="href string:${item/getURL}" class="list-group-item">
+                                        <i class="fa fa-bookmark-empty text-muted"></i>
+                                        <strong tal:content="item/Title"/>
+                                    </a>
+                                </tal:block>
+                            </div>
+                        </div>
+                    </div> -->
+                <!-- </tal:listing> -->
+
+                <p class="discreet" tal:condition="not: batch" i18n:translate="description_no_items_in_folder">
+                    There are currently no items in this folder.
+                </p>
+
+
+            </div>
+
+        </div>
+    </body>
+
+</html>

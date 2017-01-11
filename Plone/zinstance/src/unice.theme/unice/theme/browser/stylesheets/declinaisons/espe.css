@@ -1,0 +1,391 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,100&subset=latin,latin-ext);
+/*****************************************************************************************/
+/*** UTILITAIRES *************************************************************************/
+/*****************************************************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+.fontAwesome {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: 0.25em;
+  text-align: center;
+}
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/*****************************************************************************************/
+/*** NUANCIERS ***************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+#portlets-in-header div.portlet.portletNavigation.navbar-style-noir,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.dropdown-menu,
+.portlet.portletTitre {
+  background-color: #888888 !important;
+}
+div.portlet.portletNavigation.navbar-style-plan {
+  background-color: #f7f5f0;
+}
+div.portlet.portletNavigation.navbar-style-plan,
+div.portlet.portletNavigation.navbar-style-plan nav.navbar ul.row li a {
+  color: #000;
+}
+div.portlet.portletCarousel {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#888888), to(#555555));
+  background-image: -webkit-linear-gradient(top, #888888, #555555) ;
+  background-image: -moz-linear-gradient(top, #888888, #555555) ;
+  background-image: -ms-linear-gradient(top, #888888, #555555) ;
+  background-image: -o-linear-gradient(top, #888888, #555555) ;
+  background-image: linear-gradient(top, #888888, #555555) ;
+}
+/*****************************************************************************************************/
+/*** GENERAL *****************************************************************************************/
+/*****************************************************************************************************/
+a {
+  color: #0b6d8d;
+}
+a:hover,
+a:focus {
+  color: #07485e;
+}
+.btn-primary {
+  background-color: #0b6d8d;
+  border-color: #07485e;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #07485e;
+}
+.btn.btn-inverted.btn-primary,
+#content .btn.btn-inverted.btn-primary {
+  color: #0b6d8d !important;
+  border: 1px solid #0b6d8d !important;
+}
+.btn.btn-inverted.btn-primary:hover,
+#content .btn.btn-inverted.btn-primary:hover,
+.btn.btn-inverted.btn-primary:focus,
+#content .btn.btn-inverted.btn-primary:focus {
+  background-color: #0b6d8d;
+}
+ul.nav.navbar-nav ul.dropdown-menu > li > a:hover,
+ul.nav.navbar-nav ul.dropdown-menu > li > a:focus {
+  background-color: #0b6d8d !important;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .open > a,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .open > a:hover,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .open > a:focus,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .active > a,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .active > a:hover,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .active > a:focus {
+  background-color: #07485e !important;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.navbar-nav ul.dropdown-menu {
+  background-color: #07485e !important;
+}
+.portlet.portletAgenda div.row > div.col-md-1,
+#portal-column-one .portlet.portletNavigationTree > .portletItem .navTree > .navTreeCurrentNode a.navTreeCurrentItem,
+#portal-column-one .portlet.portletNavigationTree > .portletItem .navTree > .navTreeCurrentNode:hover a.navTreeCurrentItem,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal {
+  background-color: #0b6d8d;
+}
+.portlet.portletTitre .container {
+  background-color: #007398;
+}
+#portal-columns h1,
+#portal-columns h2,
+#portal-columns h3 {
+  color: #0b6d8d;
+}
+footer .credits {
+  background-color: #0b6d8d;
+}
+/*****************************************************************************************************/
+/*** TINY MCE ****************************************************************************************/
+/*****************************************************************************************************/
+.alert-composante {
+  background-color: rgba(11, 109, 141, 0.1);
+  border-color: rgba(11, 109, 141, 0.2);
+  color: rgba(11, 109, 141, 0.8);
+}
+/*****************************************************************************************************/
+/*** PORTLETS ****************************************************************************************/
+/*****************************************************************************************************/
+#viewlet-below-content .BelowPortletManager4 li.active a {
+  background-color: #0b6d8d !important;
+  color: #FFF !important;
+}
+dl.portlet.portletCoordonnees .portletHeader {
+  background-color: #0b6d8d;
+  color: #FFF;
+}
+dl.portlet.portletCoordonnees .portletHeader span {
+  color: #FFF;
+}
+div#portal-column-content dl.portlet dt,
+#portal-column-one dl.portlet dt,
+#portal-column-two dl.portlet dt {
+  color: #0b6d8d;
+}
+div#portal-column-content dl.portlet dt a,
+#portal-column-one dl.portlet dt a,
+#portal-column-two dl.portlet dt a,
+div#portal-column-content dl.portlet dt a:hover,
+#portal-column-one dl.portlet dt a:hover,
+#portal-column-two dl.portlet dt a:hover,
+div#portal-column-content dl.portlet dt a:focus,
+#portal-column-one dl.portlet dt a:focus,
+#portal-column-two dl.portlet dt a:focus {
+  color: #0b6d8d;
+}
+dl.portlet.portletTwitterPortlet .tweetDate {
+  color: #0b6d8d;
+}
+@media (min-width: 992px) {
+  div.portletEventsContainer dl.portlet.portletEvents dt.portletHeader {
+    background-color: #0b6d8d;
+  }
+  div.portletEventsContainer dl.portlet.portletEvents .bx-wrapper .bx-controls-direction a,
+  div.portletEventsContainer dl.portlet.portletEvents .bx-wrapper .bx-controls-direction a:hover,
+  div.portletEventsContainer dl.portlet.portletEvents .bx-wrapper .bx-controls-direction a:focus {
+    background-color: #07485e;
+  }
+}
+dl.portlet.portletCalendar .todaynoevent strong {
+  background-color: #0b6d8d;
+}
+dl.portlet.portletCalendar .event strong {
+  border: 1px solid #0b6d8d;
+}
+div.portlet.portletA_La_Une .dossier_actu_evenement_header {
+  background-color: #0b6d8d;
+}
+/*** ESPE STYLE ********************************************/
+/*****************************************************************************************/
+/*** UTILITAIRES *************************************************************************/
+/*****************************************************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+.fontAwesome {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: 0.25em;
+  text-align: center;
+}
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+body.site-espe {
+  background-color: #FFF;
+  /*** LAYOUT *******************************************/
+
+  /*** MENUS ********************************************/
+
+}
+body.site-espe div#wrap > div.container,
+body.site-espe footer.container {
+  max-width: none;
+}
+body.site-espe #portlets-in-header {
+  background-color: #0b6d8d;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#0e87ae), to(#0b6d8d));
+  background-image: -webkit-linear-gradient(top, #0e87ae, #0b6d8d) ;
+  background-image: -moz-linear-gradient(top, #0e87ae, #0b6d8d) ;
+  background-image: -ms-linear-gradient(top, #0e87ae, #0b6d8d) ;
+  background-image: -o-linear-gradient(top, #0e87ae, #0b6d8d) ;
+  background-image: linear-gradient(top, #0e87ae, #0b6d8d) ;
+}
+body.site-espe #portlets-in-header > div,
+body.site-espe #portal-columns {
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (min-width: 768px) {
+  body.site-espe #portlets-in-header > div,
+  body.site-espe #portal-columns {
+    max-width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  body.site-espe #portlets-in-header > div,
+  body.site-espe #portal-columns {
+    max-width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  body.site-espe #portlets-in-header > div,
+  body.site-espe #portal-columns {
+    max-width: 1170px;
+  }
+}
+body.site-espe ol.breadcrumb {
+  border: 1px solid #0b6d8d;
+  background-color: #FFF;
+}
+body.site-espe footer.container {
+  font-size: 100%;
+}
+body.site-espe footer.container .credits {
+  background-color: #0b6d8d;
+}
+body.site-espe footer.container .credits a {
+  color: #FFF !important;
+}
+body.site-espe div.portlet.portletNavigation nav.navbar-style-noir.navbar-height-small {
+  background-color: transparent;
+  border-bottom: 0;
+}
+body.site-espe div.portlet.portletNavigation nav.navbar-style-noir.navbar-height-small .navbar-nav > li > a {
+  color: #DDD !important;
+}
+body.site-espe div.portlet.portletNavigation nav.navbar-style-logo {
+  background-color: #fff;
+}
+body.site-espe div.portlet.portletNavigation nav.navbar-style-logo .navbar-brand img {
+  /*height: 120px;*/
+
+  margin-bottom: 27px;
+  margin-top: 24px;
+}
+body.site-espe div.portlet.portletNavigation nav.navbar-style-logo .navbar-form {
+  margin-top: 50px;
+}
+body.site-espe div.portlet.portletNavigation nav.navbar.navbar-style-principal {
+  background-color: transparent;
+}
+body.site-espe div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse {
+  padding: 0;
+}
+body.site-espe div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.navbar-nav > li {
+  border-left-width: 0;
+}
+body.site-espe div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.navbar-nav > li > a {
+  font-stretch: normal;
+  text-transform: none;
+}
+body.site-espe #content #content-core .btn.btn-primary {
+  color: #FFF;
+}
+/*** FOOTER ********************************************/
+.liens-rapides {
+  background: none repeat scroll 0 0 #09546B;
+  padding: 15px 0 15px 20px;
+  /*a:before {
+  		content: "\f105";
+	}*/
+
+}
+.liens-rapides ul.list-inline {
+  margin-bottom: 0;
+  /*li:before {
+  			content: "\f105";
+		}*/
+
+}
+.liens-rapides a {
+  color: white;
+  font-size: 12px !important;
+}
+.liens-rapides a:hover {
+  color: #ededed;
+}
+.icon-angle-right:before {
+  color: #FFFFFF !important;
+  padding: 0 10px  !important;
+}
+/*** ESPE PARCOURS ********************************************/
+.espe_parcours div.row {
+  margin-bottom: 20px;
+}
+.espe_parcours div.row > div div.btn {
+  cursor: auto;
+}
+.espe_parcours div.row > div div.btn a {
+  text-decoration: underline;
+}
+.espe_parcours div.row > div div.btn.btn-primary {
+  background-color: #192F3D;
+  border-color: #192F3D;
+}
+.espe_parcours div.row > div div.btn.btn-primary.btn-inverted {
+  background-color: #FFF !important;
+  color: #192F3D !important;
+}
+.espe_parcours div.row > div div.btn.btn-warning {
+  background-color: #EC9858;
+  border-color: #EC9858;
+}
+.espe_parcours div.row > div div.btn.btn-warning.btn-inverted {
+  background-color: #FFF !important;
+  color: #EC9858 !important;
+}
+.espe_parcours div.row > div div.btn.btn-info {
+  background-color: #2791A3;
+  border-color: #2791A3;
+}
+.espe_parcours div.row > div div.btn.btn-info.btn-inverted {
+  background-color: #FFF !important;
+  color: #2791A3 !important;
+}
+.espe_parcours div.row > div div.btn.btn-primary,
+.espe_parcours div.row > div div.btn.btn-info,
+.espe_parcours div.row > div div.btn.btn-warning {
+  min-height: 38px;
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.espe_parcours div.row > div div.btn.btn-default {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  color: #2791A3;
+  border-color: #2791A3;
+  background-color: #FFF;
+}
+@media (min-width: 768px) {
+  .espe_parcours div.row > div div.btn.btn-default {
+    min-height: 86px;
+  }
+}
+.espe_parcours div.row > div ul {
+  white-space: normal;
+  text-align: left;
+  margin: 0 !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.espe_parcours div.row > div ul li {
+  display: inline-block;
+}
+.espe_parcours div.row > div ul li:before {
+  content: "\2022";
+  margin-right: 0.25em;
+}

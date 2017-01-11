@@ -1,0 +1,85 @@
+<html tal:omit-tag=""
+    xmlns="http://www.w3.org/1.09/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+
+
+    <div tal:define="dossier_actualite view/dossier_actualite;
+
+                     container python:dossier_actualite['folder'] if dossier_actualite else None;
+                     roles python:user.getRolesInContext(container) if container else [];
+                     access python:'Manager' in roles or'Contributor' in roles or 'Editor' in roles;"
+        tal:attributes="id view/data/extra_id; class string:portlet portletA_La_Une ${view/data/extra_css};">
+
+        <div class="portletItem">
+
+            <div class="tab-content">
+                <tal:block condition="dossier_actualite">
+                    <div tal:define="item dossier_actualite/item"
+                        class="dossier_actualite tab-pane fade in active" tal:attributes="id dossier_actualite/uuid">
+
+                        <tal:block condition="item">
+                            <a tal:condition="not:view/data/omit_header" tal:attributes="href item/url; title string:En savoir plus sur '${item/title}';" class="dossier_actu_evenement_header">
+                                <span class="fa-stack">
+                                    <i class="fa fa-bookmark fa-stack-2x"></i>
+                                    <i class="fa fa-star fa-stack-1x icon-stack-top"></i>
+                                </span>
+                                <strong tal:content="view/header"/>
+                            </a>
+                            <div class="visualClear"/>
+                            <!-- <a tal:attributes="href item/url; title string:En savoir plus sur '${item/title}';" class="thumb_link image_ratio ratio4:3">
+                                <span tal:attributes="style string:background-image: url(${item/image});">
+                                    <img tal:attributes="src item/image; title item/title"/>
+                                </span>
+                            </a> -->
+
+                            <tal:block define="TRUE python:True; FALSE python:False; opt_image TRUE; opt_title TRUE; opt_desc TRUE; opt_desctrunc TRUE; opt_boutonsavoirplus TRUE; opt_imageratio string:ratio4:3; opt_modal FALSE;">
+                                <metal:block use-macro="context/templates_macro/macros/thumb_link"></metal:block>
+                            </tal:block>
+
+                            <a tal:attributes="href item/url; title string:En savoir plus sur '${item/title}';" class="details_link">
+                                <strong tal:content="item/title" class="dossier_actu_evenement_titre"/>
+                                <small class="dossier_actu_evenement_date">
+                                    <i class="fa fa-calendar-empty"></i> <tal:block content="item/dates/start_localized"/>
+                                </small>
+                                <small tal:condition="item/location" class="dossier_actu_evenement_location">
+                                    <i class="fa fa-map-marker"></i> <tal:block content="item/location"/>
+                                </small>
+                            </a>
+                            <div class="visualClear"/>
+                            <p class="dossier_actu_evenement_desc">
+                                <a tal:attributes="href item/url; title string:En savoir plus sur '${item/title}';">
+                                    <small tal:content="item/description"/><br/>
+                                    <span class="text-right">En savoir plus...</span>
+                                </a>
+                            </p>
+                            <!-- <p class="dossier_actu_evenement_tout">
+                                <a tal:attributes="href dossier_actualite/folder/absolute_url;">
+                                    Toute l'actualité <i class="fa fa-chevron-right"></i>
+                                </a>
+                            </p> -->
+
+                            <div class="visualClear"/>
+                        </tal:block>
+
+                        <p class="discreet" tal:condition="not:item" i18n:translate="description_no_items_in_folder">
+                            There are currently no items in this folder.
+                        </p>
+
+                    </div>
+                </tal:block>
+            </div>
+
+        </div>
+
+        <a tal:condition="access" tal:attributes="href container/absolute_url" target="_blank"
+            class="btn btn-warning btn-xs btn-block" style="color: #FFF !important;">
+            <i class="fa fa-edit fa-lg"></i> Gérer les contenus
+        </a>
+
+    </div>
+
+</html>
+

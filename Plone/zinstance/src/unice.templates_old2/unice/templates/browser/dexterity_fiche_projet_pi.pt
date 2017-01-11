@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="main"
+    tal:define="style_banniere string:background-image: url('++resource++unice.templates.images/banners/geometric04.jpg');">
+
+    <div class="projet">
+        <div class="banniere">
+            <div class="title" tal:attributes="style style_banniere">
+                <div>
+                    <h1 id="parent-fieldname-title" tal:content="context/Title"/>
+
+                    <p tal:condition="context/porteur" class="lead text-center">
+                        <i class="fa fa-user"></i> Porteur de projet : <tal:block content="context/porteur"/><br/>
+                    </p>
+
+                    <p tal:condition="context/equipe_pedagogique" class="text-center">
+                        <i class="fa fa-users"></i> Equipe pédagogique :<br/>
+                        <tal:block content="structure python:context.equipe_pedagogique.replace('\n', '<br/>')"/><br/>
+                    </p>
+
+                    <a tal:condition="context/lien" tal:attributes="href context/lien"
+                        class="btn btn-primary btn-inverted">
+                        <i class="fa fa-external-link"></i> Site internet
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div tal:attributes="class python:'col-md-8' if context.video else 'col-md-12'">
+            <h2>Description du projet :</h2>
+            <!-- <p tal:condition="context/Description" class="text-justify">
+                <tal:block content="structure python:context.Description().replace('\n', '<br/>')"/>
+            </p> -->
+            <div tal:condition="context/content" tal:replace="structure context/content/output"/>
+        </div>
+        <div tal:condition="context/video" class="col-md-4">
+            <h2>Vidéo :</h2>
+            <tal:block content="structure context/video"/>
+        </div>
+    </div>
+
+</metal:main>
+
+</body>
+</html>
+

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+
+        <meta charset="utf-8">
+        <title tal:content="context/Title"/>
+        <meta name="description" tal:attributes="content context/Description"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+        <link href="++resource++unice.theme.stylesheets/libs/bootstrap.min.css" rel="stylesheet">
+        <link href="++resource++unice.theme.stylesheets/libs/font-awesome.min.css" rel="stylesheet">
+        <link href="++resource++unice.templates.stylesheets/dexterity_laboratoire_fiche.css" rel="stylesheet">
+
+        <script src="++resource++unice.theme.javascripts/libs/jquery.min.js"></script>
+    </head>
+
+    <body tal:define="ds view/ds; scales context/@@images;" tal:attributes="class string:ds_${ds/code}">
+        <div class="container-fluid">
+
+            <!-- <div class="row hidden-print">
+                <div class="col-xs-12 text-right">
+                    <button onclick="window.print();" class="btn btn-primary btn-sm">
+                        <i class="fa fa-print fa-lg"></i> IMPRIMER
+                    </button>
+                </div>
+            </div> -->
+
+            <!-- <div class="row logos">
+                <div class="col-xs-10">
+                    <img tal:condition="not:comp_code" tal:attributes="src string:${images}/logos/uns.png;" alt="Université Nice Sophia Antipolis"/>
+                    <img tal:condition="comp_code" tal:attributes="src string:${images}/logos/${comp_code}.png; alt comp_lib;"/>
+                </div>
+                <div class="col-xs-2 text-right visible-print-block">
+                    <div id="qrcode" tal:attributes="data-qrcode string:${context/absolute_url}/@@formation_mobile_view"></div>
+                </div>
+            </div> -->
+
+            <div class="row top top-left">
+                <div class="col-xs-12">
+                    <div class="ds">
+                        <strong tal:content="ds/numero"/><br/><small tal:content="ds/libelle"/>
+                    </div>
+                    <span tal:condition="context/backgroundimage" class="backgroundimage"
+                        tal:define="full python:scales.scale('backgroundimage', scale='full')">
+                        <img tal:attributes="src full/url"/>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="row header header-left">
+                <div class="col-xs-12">
+                    <h1>
+                        <span tal:condition="context/contentleadimage" class="contentleadimage"
+                            tal:define="full python:scales.scale('contentleadimage', scale='full')">
+                            <img tal:attributes="src full/url"/>
+                        </span>
+                        <tal:block content="context/Title"/><br/>
+                        <tal:block condition="context/abbreviation">
+                            <tal:block content="context/abbreviation"/> -
+                        </tal:block>
+                        <span class="umr">
+                            <tal:block content="context/sigle"/> <tal:block content="context/codification"/>
+                        </span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="container-fluid container-xs-height">
+                <div class="row contents row-xs-heigh">
+
+                    <div class="col-xs-8 col-xs-push-4 col-xs-height col-top content">
+                        <h2>Présentation</h2>
+                        <p tal:replace="structure python:view.clean(context.Description())"/>
+                        <p tal:replace="structure python:view.clean(context.contenu_page1.output)"/>
+                        <div class="url_site text-center" tal:condition="context/url_site" tal:content="context/url_site"/>
+                    </div>
+
+                    <div class="col-xs-4 col-xs-pull-8 col-xs-height col-top aside">
+                        <h2>Reponsable</h2>
+                        <strong tal:condition="context/directeur_nom">
+                            <tal:block content="context/directeur_nom"/><br/>
+                        </strong>
+                        <tal:block condition="context/directeur_telephone">
+                            <tal:block content="context/directeur_telephone"/><br/>
+                        </tal:block>
+                        <tal:block condition="context/directeur_email">
+                            <tal:block content="context/directeur_email"/><br/>
+                        </tal:block>
+
+                        <br/><strong>Directeur adjoint</strong><br/>
+                        <strong tal:condition="context/directeur_adjoint_nom">
+                            <tal:block content="context/directeur_adjoint_nom"/><br/>
+                        </strong>
+                        <tal:block condition="context/directeur_adjoint_telephone">
+                            <tal:block content="context/directeur_adjoint_telephone"/><br/>
+                        </tal:block>
+                        <tal:block condition="context/directeur_adjoint_email">
+                            <tal:block content="context/directeur_adjoint_email"/><br/>
+                        </tal:block>
+
+                        <h2>Lieu d'implantation</h2>
+                        <tal:block condition="context/adresse_postale">
+                            <tal:block content="context/adresse_postale"/><br/>
+                        </tal:block>
+                        <tal:block condition="context/complement_adresse">
+                            <tal:block content="context/complement_adresse"/><br/>
+                        </tal:block>
+                        <tal:block condition="python:context.code_postal or context.ville">
+                            <tal:block content="context/code_postal"/>
+                            <tal:block content="context/ville"/><br/>
+                        </tal:block>
+
+                        <h2>Services transversaux</h2>
+                        <tal:block condition="context/services_transversaux">
+                            <p tal:replace="structure python:view.clean(context.services_transversaux.output)"/>
+                        </tal:block>
+
+                        <h2>Tutelles</h2>
+                        <div tal:condition="context/liste_tutelles" class="laboratoire_tutelles text-center">
+                            <tal:block define="tutelles python:view.tutelles(context.liste_tutelles)">
+                                <img tal:repeat="tutelle tutelles" tal:attributes="src python:tutelle[2]"/>
+                            </tal:block>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="page_break"></div>
+
+            <div class="row top top-right">
+                <div class="col-xs-12">
+                    <div class="ds">
+                        <strong tal:content="ds/numero"/><br/><small tal:content="ds/libelle"/>
+                    </div>
+                    <span tal:condition="context/backgroundimage" class="backgroundimage"
+                        tal:define="full python:scales.scale('backgroundimage', scale='full')">
+                        <img tal:attributes="src full/url"/>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="row header header-right">
+                <div class="col-xs-12">
+                    <h1>
+                        <span tal:condition="context/contentleadimage" class="contentleadimage"
+                            tal:define="full python:scales.scale('contentleadimage', scale='full')">
+                            <img tal:attributes="src full/url"/>
+                        </span>
+                        <tal:block content="context/Title"/><br/>
+                        <tal:block condition="context/abbreviation">
+                            <tal:block content="context/abbreviation"/> -
+                        </tal:block>
+                        <span class="umr">
+                            <tal:block content="context/sigle"/> <tal:block content="context/codification"/>
+                        </span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="container-fluid container-xs-height">
+                <div class="row contents row-xs-heigh">
+
+                    <div class="col-xs-8 col-xs-height col-top content">
+                        <p tal:replace="structure python:view.clean(context.contenu_page2.output)"/>
+                    </div>
+
+                    <div class="col-xs-4 col-xs-height col-top aside">
+                        <h2>Chiffres clés</h2>
+                        <ul tal:define="lignes python:context.chiffres_cles.split('\n')">
+                            <li tal:repeat="ligne lignes" tal:content="ligne"/>
+                        </ul>
+
+                        <h2>Mots clés</h2>
+                        <ul tal:define="lignes python:context.mots_cles.split('\n')">
+                            <li tal:repeat="ligne lignes" tal:content="ligne"/>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <script src="++resource++unice.theme.javascripts/libs/bootstrap.min.js"></script>
+        <script src="++resource++unice.gof.javascripts/jquery.qrcode.min.js"></script>
+        <script>
+            $('.top img').one('load', function() {
+                var h = $('.top .ds').height();
+                h = 125;
+                $('.top .ds').css({
+                    'width': h + 'px'
+                });
+            }).each(function() {
+                if(this.complete) $(this).load();
+            });
+
+            var qr = $('#qrcode');
+            qr.qrcode({text: qr.data('qrcode')});
+
+            $.urlParam = function(name) {
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                if (results==null) { return null; } else { return results[1] || 0; }
+            }
+            if ($.urlParam('print')) {
+                setTimeout(function(){window.print();}, 2000);
+            }
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <clipPath id="angledup5" clipPathUnits="objectBoundingBox">
+            <polygon points="0 .05, 1 0, 1 .95, 0 1" />
+        </clipPath>
+        <clipPath id="angledup10" clipPathUnits="objectBoundingBox">
+            <polygon points="0 .1, 1 0, 1 .9, 0 1" />
+        </clipPath>
+        <clipPath id="angledup20" clipPathUnits="objectBoundingBox">
+            <polygon points="0 .2, 1 0, 1 .8, 0 1" />
+        </clipPath>
+
+        <clipPath id="angleddown5" clipPathUnits="objectBoundingBox">
+            <polygon points="0 0, 1 .05, 1 1, 0 .95" />
+        </clipPath>
+        <clipPath id="angleddown10" clipPathUnits="objectBoundingBox">
+            <polygon points="0 0, 1 .1, 1 1, 0 .9" />
+        </clipPath>
+        <clipPath id="angleddown20" clipPathUnits="objectBoundingBox">
+            <polygon points="0 0, 1 .2, 1 1, 0 .8" />
+        </clipPath>
+
+        <clipPath id="angledright5" clipPathUnits="objectBoundingBox">
+            <polygon points=".0125 .05, 1 0, .9875 .95, 0 1" />
+        </clipPath>
+        <clipPath id="angledright10" clipPathUnits="objectBoundingBox">
+            <polygon points=".025 .1, 1 0, .975 .9, 0 1" />
+        </clipPath>
+        <clipPath id="angledright20" clipPathUnits="objectBoundingBox">
+            <polygon points=".05 .2, 1 0, .95 .8, 0 1" />
+        </clipPath>
+    </defs>
+</svg>
+
+

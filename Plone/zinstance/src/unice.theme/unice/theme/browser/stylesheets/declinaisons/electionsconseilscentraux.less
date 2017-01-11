@@ -1,0 +1,32 @@
+@import "declinaisons";
+
+@couleurFond: #018baa;
+@couleurFondSombre: darken(@couleurFond, 10%);
+
+.portlets-in-header(@couleurFond, @couleurFond);
+.declinaison();
+.navigation-principale-large-centree();
+
+div.portlet.portletCarousel.carousel_bandeau .bx-caption span strong,
+div.portlet.portletCarousel.carousel_bandeau .bx-caption span small {
+    font-weight: 100;
+}
+// div.portlet.portletCarousel.carousel_hero_mode .portletItem.container .bx-wrapper .bx-viewport .bxslider li a.image_ratio span {
+//     padding-top: 33.333%;
+// }
+
+ol.breadcrumb > li:nth-child(2) {
+    display: none;
+
+    & + li:before {
+        content: " ";
+    }
+}
+
+// div.portlet.portletNavigation.navbar-style-principal,
+// .portlet.portletAgenda div.row>div.col-md-1,
+// #portal-column-one .portlet.portletNavigationTree>.portletItem .navTree>.navTreeCurrentNode a.navTreeCurrentItem,
+// #portal-column-one .portlet.portletNavigationTree>.portletItem .navTree>.navTreeCurrentNode:hover a.navTreeCurrentItem,
+// div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal {
+//     background-color: @couleurFondSombre;
+// }

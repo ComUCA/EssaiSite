@@ -1,0 +1,279 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<metal:content-core fill-slot="content-core">
+
+    <!-- HEADER ------------------------------------------------ -->
+    <metal:block define-macro="header">
+
+        <table class="container"
+                tal:define="date python:view.dateTime(); parts python:date.parts() if date else ['', 0, '-'];">
+            <tr>
+                <td class="wrapper last">
+
+                    <table class="twelve columns">
+                        <tr>
+                            <td class="three sub-columns">
+                                <a tal:attributes="href context/portal_url">
+                                    <img tal:attributes="src string:${context/portal_url}/++theme++ThemeUNS/assets/img/logo.png"/>
+                                </a>
+                            </td>
+                            <td class="nine sub-columns last" style="text-align:right; vertical-align:middle;">
+                                <h1><a tal:attributes="href filuns" tal:content="context/Title"/></h1>
+                                <h2><a tal:attributes="href filuns" tal:content="context/Description"/></h2>
+                                <!-- <h3><a tal:attributes="href filuns" tal:content="python:context.toLocalizedTime()"/></h3> -->
+                                <h3><tal:block content="python:parts[2]"/> <tal:block content="python:mois[parts[1]]"/> <tal:block content="python:parts[0]"/></h3>
+                            </td>
+                            <td class="expander"></td>
+                        </tr>
+                    </table>
+
+                </td>
+            </tr>
+        </table>
+
+    </metal:block>
+
+    <!-- TITRE IMPORTANCE ------------------------------------------------ -->
+    <metal:block define-macro="titre_importance">
+        <table tal:attributes="class string:twelve columns titre_importance${importance}">
+            <tr>
+                <td>
+                    <h4>
+                        <span tal:content="titre"/>
+                        <a tal:condition="lien" tal:attributes="href python:lien[1]" tal:content="python:lien[0]"/>
+                    </h4>
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- NAVIGATION ----------------------------------------------------- -->
+    <metal:block define-macro="navigation">
+        <table class="five columns navigation">
+            <tr>
+                <td>
+                    <tal:block tal:repeat="rubrique rubriques">
+                        <table>
+                            <tr>
+                                <td tal:attributes="class string:left-text-pad section section-${rubrique/id}">
+                                    <a tal:attributes="href string:${filuns}/${rubrique/id}" tal:content="rubrique/title"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <hr tal:condition="not:repeat/rubrique/end">
+                    </tal:block>
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- IMPORTANCE 1 ------------------------------------------------ -->
+    <metal:block define-macro="importance1">
+        <table class="seven columns importance1">
+            <tr>
+                <td class="center" tal:condition="python:'1' in classement and len(classement['1'])>0">
+                    <center tal:define="item python:classement['1'][0]">
+                        <a tal:attributes="href string:${item/url}/@@article_view;">
+                            <span class="thumb_large">
+                                <img tal:attributes="src item/image;"/>
+                            </span>
+                            <strong tal:content="item/title"/>
+                        </a>
+                    </center>
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- IMPORTANCE 2 IMAGE ------------------------------------------------ -->
+    <metal:block define-macro="importance2_image">
+        <table class="four columns importance2_image">
+            <tr>
+                <td>
+                    <table class="row" tal:define="titre string:Actualités; importance string:2">
+                        <tr>
+                            <td class="wrapper last">
+                                <a tal:attributes="href string:${item/url}/@@article_view;">
+                                    <span class="thumb_small">
+                                        <img tal:attributes="src item/image;"/>
+                                    </span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td tal:attributes="class string:wrapper last panel center theme ${item/themeCls}">
+                                <center>
+                                    <a tal:attributes="href string:${item/url}/@@article_view;">
+                                        <small tal:content="item/theme"/>
+                                    </a>
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- IMPORTANCE 2 TEXTE ------------------------------------------------ -->
+    <metal:block define-macro="importance2_texte">
+        <table class="eight columns importance2_texte">
+            <tr>
+                <td>
+                    <a tal:attributes="href string:${item/url}/@@article_view;">
+                        <strong tal:content="item/title"/><br>
+                        <small tal:content="item/dates/localized"/>
+                        <tal:block condition="item/location">
+                            - <small tal:content="item/location"/>
+                        </tal:block><br>
+                        <small tal:content="item/desc_trunc"/>
+                    </a>
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- IMPORTANCE 3 DATE ------------------------------------------------ -->
+    <metal:block define-macro="importance3_date">
+        <table class="two columns importance3_date">
+            <tr>
+                <td>
+                    <table class="row" tal:define="parts python:item['dates']['start'].parts() if item['dates']['start'] else ['', 0, '-']">
+                        <tr>
+                            <td class="wrapper last panel center date date-jour">
+                                <a tal:attributes="href string:${item/url}/@@article_view;">
+                                    <strong tal:content="python:parts[2]"/>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="wrapper last panel center date date-mois">
+                                <center>
+                                    <a tal:attributes="href string:${item/url}/@@article_view;">
+                                        <strong><small tal:content="python:mois[parts[1]]"/></strong>
+                                    </a>
+                                </center>
+                            </td>
+                        </tr>
+                    </table>
+
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- IMPORTANCE 3 TEXTE ------------------------------------------------ -->
+    <metal:block define-macro="importance3_texte">
+        <table class="ten columns importance3_texte">
+            <tr>
+                <td>
+                    <a tal:attributes="href string:${item/url}/@@article_view;">
+                        <strong tal:attributes="class string:titre-${item/themeCls}">
+                            <tal:block content="item/theme"/>
+                        </strong><br>
+                        <strong tal:content="item/title"/><br>
+                        <tal:block condition="item/location">
+                            <small tal:content="item/location"/><br>
+                        </tal:block>
+                        <small tal:content="item/desc_trunc"/>
+                    </a>
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- PLUS D'INFO ------------------------------------------------ -->
+    <metal:block define-macro="plus_infos">
+        <table tal:attributes="class string:${cases} columns">
+            <tr>
+                <td>
+                    <table class="tiny-button">
+                        <tr>
+                            <td>
+                                <a tal:attributes="href lien" tal:content="titre"/>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- RESEAUX SOCIAUX ------------------------------------------------ -->
+    <metal:block define-macro="reseaux">
+        <table class="row reseaux">
+            <tr>
+                <td class="wrapper" tal:define="cases string:one">
+                    <metal:block use-macro="context/newsletter_macro/macros/case_vide"/>
+                </td>
+
+                <td class="wrapper">
+                    <table class="three columns">
+                        <tr>
+                            <td>
+                                Suivez-nous sur
+                            </td>
+                            <td class="expander"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="wrapper" tal:repeat="reseau reseaux">
+                    <table class="one columns">
+                        <tr>
+                            <td>
+                                <a tal:attributes="href reseau/url">
+                                    <img tal:attributes="src string:${context/portal_url}/++resource++unice.theme.images/social/${reseau/id}.png"/>
+                                </a>
+                            </td>
+                            <td class="expander"></td>
+                        </tr>
+                    </table>
+                </td>
+                <td class="wrapper last" tal:define="cases string:two">
+                    <metal:block use-macro="context/newsletter_macro/macros/case_vide"/>
+                </td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- FOOTER ------------------------------------------------ -->
+    <metal:block define-macro="footer">
+        <table class="twelve columns">
+            <tr>
+                <td align="center">
+                    <center>
+                        <p style="text-align:center;">
+                            <strong>Service Communication</strong><br>
+                            <span>Direction Stratégie et Développement</span><br>
+                            <a href="mailto:com@unice.fr">com@unice.fr</a>
+                            <!-- <a href="#"><unsubscribe>Unsubscribe</unsubscribe></a> -->
+                        </p>
+                    </center>
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+    </metal:block>
+
+    <!-- CASE VIDE ------------------------------------------------ -->
+    <metal:block define-macro="case_vide">
+        <table tal:attributes="class string:${cases} columns">
+            <tr><td></td><td class="expander"></td></tr>
+        </table>
+    </metal:block>
+
+</metal:content-core>
+</html>

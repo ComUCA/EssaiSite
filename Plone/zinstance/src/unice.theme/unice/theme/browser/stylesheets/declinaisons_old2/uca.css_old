@@ -1,0 +1,212 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,100&subset=latin,latin-ext);
+/*****************************************************************************************/
+/*** UTILITAIRES *************************************************************************/
+/*****************************************************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+.fontAwesome {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: 0.25em;
+  text-align: center;
+}
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/*****************************************************************************************/
+/*** NUANCIERS ***************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+#portlets-in-header div.portlet.portletNavigation.navbar-style-noir,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.dropdown-menu,
+.portlet.portletTitre {
+  background-color: #1396c3 !important;
+}
+div.portlet.portletNavigation.navbar-style-plan {
+  background-color: #f7f5f0;
+}
+div.portlet.portletNavigation.navbar-style-plan,
+div.portlet.portletNavigation.navbar-style-plan nav.navbar ul.row li a {
+  color: #000;
+}
+div.portlet.portletCarousel {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#1396c3), to(#1396c3));
+  background-image: -webkit-linear-gradient(top, #1396c3, #1396c3) ;
+  background-image: -moz-linear-gradient(top, #1396c3, #1396c3) ;
+  background-image: -ms-linear-gradient(top, #1396c3, #1396c3) ;
+  background-image: -o-linear-gradient(top, #1396c3, #1396c3) ;
+  background-image: linear-gradient(top, #1396c3, #1396c3) ;
+}
+/*****************************************************************************************************/
+/*** GENERAL *****************************************************************************************/
+/*****************************************************************************************************/
+a {
+  color: #1396c3;
+}
+a:hover,
+a:focus {
+  color: #0e7295;
+}
+.btn-primary {
+  background-color: #1396c3;
+  border-color: #0e7295;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0e7295;
+}
+.btn.btn-inverted.btn-primary,
+#content .btn.btn-inverted.btn-primary {
+  color: #1396c3 !important;
+  border: 1px solid #1396c3 !important;
+}
+.btn.btn-inverted.btn-primary:hover,
+#content .btn.btn-inverted.btn-primary:hover,
+.btn.btn-inverted.btn-primary:focus,
+#content .btn.btn-inverted.btn-primary:focus {
+  background-color: #1396c3;
+}
+ul.nav.navbar-nav ul.dropdown-menu > li > a:hover,
+ul.nav.navbar-nav ul.dropdown-menu > li > a:focus {
+  background-color: #1396c3 !important;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .open > a,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .open > a:hover,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .open > a:focus,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .active > a,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .active > a:hover,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .active > a:focus {
+  background-color: #0e7295 !important;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.navbar-nav ul.dropdown-menu {
+  background-color: #0e7295 !important;
+}
+.portlet.portletAgenda div.row > div.col-md-1,
+#portal-column-one .portlet.portletNavigationTree > .portletItem .navTree > .navTreeCurrentNode a.navTreeCurrentItem,
+#portal-column-one .portlet.portletNavigationTree > .portletItem .navTree > .navTreeCurrentNode:hover a.navTreeCurrentItem,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal {
+  background-color: #1396c3;
+}
+.portlet.portletTitre .container {
+  background-color: #009fd6;
+}
+#portal-columns h1,
+#portal-columns h2,
+#portal-columns h3 {
+  color: #1396c3;
+}
+footer .credits {
+  background-color: #1396c3;
+}
+/*****************************************************************************************************/
+/*** PORTLETS ****************************************************************************************/
+/*****************************************************************************************************/
+#viewlet-below-content .BelowPortletManager4 li.active a {
+  background-color: #1396c3 !important;
+  color: #FFF !important;
+}
+dl.portlet.portletCoordonnees .portletHeader {
+  background-color: #1396c3;
+  color: #FFF;
+}
+dl.portlet.portletCoordonnees .portletHeader span {
+  color: #FFF;
+}
+div#portal-column-content dl.portlet dt,
+#portal-column-one dl.portlet dt,
+#portal-column-two dl.portlet dt {
+  color: #1396c3;
+}
+div#portal-column-content dl.portlet dt a,
+#portal-column-one dl.portlet dt a,
+#portal-column-two dl.portlet dt a,
+div#portal-column-content dl.portlet dt a:hover,
+#portal-column-one dl.portlet dt a:hover,
+#portal-column-two dl.portlet dt a:hover,
+div#portal-column-content dl.portlet dt a:focus,
+#portal-column-one dl.portlet dt a:focus,
+#portal-column-two dl.portlet dt a:focus {
+  color: #1396c3;
+}
+dl.portlet.portletTwitterPortlet .tweetDate {
+  color: #1396c3;
+}
+@media (min-width: 992px) {
+  div.portletEventsContainer dl.portlet.portletEvents dt.portletHeader {
+    background-color: #1396c3;
+  }
+  div.portletEventsContainer dl.portlet.portletEvents .bx-wrapper .bx-controls-direction a,
+  div.portletEventsContainer dl.portlet.portletEvents .bx-wrapper .bx-controls-direction a:hover,
+  div.portletEventsContainer dl.portlet.portletEvents .bx-wrapper .bx-controls-direction a:focus {
+    background-color: #0e7295;
+  }
+}
+dl.portlet.portletCalendar .todaynoevent strong {
+  background-color: #1396c3;
+}
+dl.portlet.portletCalendar .event strong {
+  border: 1px solid #1396c3;
+}
+div.portlet.portletA_La_Une .dossier_actu_evenement_header {
+  background-color: #1396c3;
+}
+div.portlet.portletNavigation.navbar-style-principal {
+  background-color: #1396c3;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.navbar-nav > li > a {
+  font-size: 16px;
+  text-transform: none;
+  font-stretch: initial;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse:before,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse:after {
+  display: none;
+}
+div.portlet.portletCarousel.carousel_bandeau .bx-caption span strong,
+div.portlet.portletCarousel.carousel_bandeau .bx-caption span small {
+  font-weight: 100;
+}
+#livesearch0,
+footer {
+  display: none !important;
+}
+body.portaltype-document.section-uca.subsection-presentation.subsection-presentation-presentation ol.breadcrumb,
+body.portaltype-document.section-uca.subsection-presentation.subsection-presentation-presentation h1#parent-fieldname-title {
+  display: none !important;
+}
+ol.breadcrumb > li:nth-child(2) {
+  display: none;
+}
+ol.breadcrumb > li:nth-child(2) + li:before {
+  content: " ";
+}
+div#portlets-in-header nav.navbar-style-logo.navbar-height-normal.navbar-hero-mode {
+  background-color: #1396c3;
+  text-align: center;
+  padding: 10px;
+  outline: 1px solid #FFF;
+  outline-offset: -5px;
+}
+div#portlets-in-header nav.navbar-style-logo.navbar-height-normal .navbar-header,
+div#portlets-in-header nav.navbar-style-logo.navbar-height-normal .navbar-brand {
+  float: none;
+}

@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<div metal:fill-slot="content-core"
+    tal:define="composante request/composante | nothing; formations python:view.formations_composantes(composante);
+    batch python:context.listFolderContents() if context.portal_type == 'Folder' else context.results();
+    items python:view.items(batch, ['page.html'], isObjects=type(batch) is list) if batch else [];
+    schema python:items[0] if len(items) > 0 else None;">
+
+    <ul class="nav nav-pills nav-justified nav-tabs">
+        <li tal:repeat="tab formations/tabs" tal:attributes="class python:'active' if repeat['tab'].index == 0 else ''">
+            <a data-toggle="tab" tal:attributes="href string:#tab-${tab/code}">
+                <tal:block content="tab/libelle"/>
+             </a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div tal:repeat="tab formations/tabs"
+             tal:attributes="id string:tab-${tab/code};
+                             class python:'tab-pane fade in active' if repeat['tab'].index == 0 else 'tab-pane fade'">
+
+            <div tal:define="afficherSchema python:tab['code'] == 'niveaux' and schema" class="row">
+
+                <div class="alert alert-info text-center lead" role="alert" tal:condition="composante">
+                    Formations de l'<strong tal:content="python:view.codes_composantes()[composante]"/>
+                    classées par <strong tal:content="python:tab['libelle'].lower()"/>
+                </div>
+
+                <div tal:condition="afficherSchema" class="col-md-7">
+                    <img tal:attributes="src schema/image_full; alt string:Schéma des formations par niveaux;" class="img-responsive"/>
+                </div>
+
+
+                <div tal:attributes="id string:accordion-${tab/code}; class python:'panel-group col-md-5' if afficherSchema else 'panel-group';"
+                    role="tablist" aria-multiselectable="true">
+
+                    <tal:block repeat="subtab python:view.niveaux_sorted() if tab['code'] == 'niveaux' else view.sorted(formations[tab['code']])">
+
+                        <div tal:condition="python:subtab in formations[tab['code']]" class="panel panel-default">
+                            <div tal:attributes="id string:heading-${tab/code}-${repeat/subtab/index}" class="panel-heading" role="tab">
+                                <h4 class="panel-title">
+                                    <a tal:attributes="data-parent string:#accordion-${tab/code};
+                                        href string:#collapse-${tab/code}-${repeat/subtab/index};
+                                        aria-controls string:collapse-${tab/code}-${repeat/subtab/index};"
+                                        tal:define="nbr python:len(formations[tab['code']][subtab])"
+                                        data-toggle="collapse" aria-expanded="true">
+                                        <strong tal:content="subtab"/>
+                                        <small>(<tal:block content="nbr"/> formation<tal:block condition="python:nbr>1">s</tal:block>)</small>
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div tal:attributes="id string:collapse-${tab/code}-${repeat/subtab/index};
+                                aria-labelledby string:heading-${tab/code}-${repeat/subtab/index}"
+                                class="panel-collapse collapse" role="tabpanel">
+                                <div class="panel-body">
+
+                                    <div class="list-group">
+                                        <tal:block repeat="id_formation python:formations[tab['code']][subtab]">
+                                            <a tal:define="formation python:formations['formations'][id_formation]"
+                                                tal:attributes="href formation/absolute_url;
+                                                title string:Plus d'infomations sur '${formation/Title}' (dans une nouvelle fenêtre);"
+                                                target="_blank" class="list-group-item">
+                                                <h4 class="list-group-item-heading" tal:content="formation/Title"/>
+                                                <p class="list-group-item-text text-muted">
+                                                    <small tal:content="structure python:view.strip_tags(formation.objectifs)"/>
+                                                    <!-- <span tal:replace="structure formation/accessibilite"/> -->
+                                                </p>
+                                            </a>
+                                        </tal:block>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </tal:block>
+
+                </div>
+            </div>
+
+            <div class="visualClear"></div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

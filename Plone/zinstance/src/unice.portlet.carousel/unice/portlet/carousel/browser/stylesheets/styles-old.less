@@ -1,0 +1,389 @@
+@couleurFond: #006fa4;
+@base: '../++resource++unice.portlet.carousel.images';
+
+@ratio_bandeau: 500/1500;
+@ratio_bandeau_composante: 400/1500;
+@ratio_contenu: 1/2;
+@ratio_colonne: 3/4;
+@ratio_hero: 1/2.5;
+
+.gradient(@start, @stop, @important:~'') {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@stop));
+    background-image: -webkit-linear-gradient(top, @start, @stop) @important;
+    background-image:    -moz-linear-gradient(top, @start, @stop) @important;
+    background-image:     -ms-linear-gradient(top, @start, @stop) @important;
+    background-image:      -o-linear-gradient(top, @start, @stop) @important;
+    background-image:         linear-gradient(top, @start, @stop) @important;
+}
+
+div.portlet.portletCarousel {
+    //.gradient(lighten(@couleurFond, 5%), @couleurFond);
+    .gradient(@couleurFond, darken(@couleurFond, 8%));
+    clear: both;
+
+    .bxslider > li {
+        display: none;
+
+        &:first-child {
+            display: inherit;
+        }
+
+        .image_ratio span {
+            background-position: left center;
+        }
+    }
+    .bx-wrapper li {
+        display: inherit;
+    }
+
+    .bx-wrapper {
+        background-color: #FFF;
+        margin-bottom: 0;
+
+        .bx-controls.bx-has-controls-auto.bx-has-pager {
+            .bx-pager, .bx-controls-auto {
+                text-align: right;
+                top: 10px;
+                right: 10px;
+                left: auto;
+                bottom: auto;
+                padding: 5px;
+                background-color: rgba(255, 255, 255, 0.5);
+                border-radius: 3px;
+
+                a {
+                    text-align: center;
+                }
+            }
+            .bx-pager {
+                right: 10px + 45px + 5px;
+                width: auto;
+            }
+            .bx-controls-auto {
+                right: 10px;
+                width: 45px;
+            }
+        }
+    }
+
+    &.carousel_captions_hidden div.bx-caption {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0 0 0 0);
+        border: 0;
+    }
+
+    .carousel_captions_out() {
+        .bx-viewport {
+            overflow-y: auto !important;
+            height: auto !important;
+        }
+        .bx-caption {
+            position: inherit;
+        }
+    }
+    &.carousel_captions_out .bx-wrapper {
+        .carousel_captions_out();
+    }
+    &.carousel_captions_block {
+        @media (min-width: 992px) {
+            .bx-caption {
+                top: 0;
+                width: 50%;
+
+                span {
+                    padding-left: 10px + 32px + 10px;
+                    padding-top: 10px + 32px + 10px;
+                    white-space: normal;
+                    text-overflow: initial;
+                    overflow: auto;
+                }
+            }
+        }
+    }
+    &.carousel_bandeau {
+        @media (max-width: 768px) {
+            .carousel_captions_out();
+        }
+    }
+
+    &.carousel_composante {
+        @media (max-width: 768px) {
+            .carousel_captions_out();
+        }
+    }
+
+    .carousel_ratio(@ratio, @zoom_xs:100%, @font_title1:14px, @font_title2:14px, @font_title3:14px, @font_title4:14px) {
+        .image_ratio span {
+            padding-top: @zoom_xs * @ratio;
+
+            @media (min-width: 768px) {
+                padding-top: 100% * @ratio;
+            }
+        }
+        .bx-caption span {
+            font-size: @font_title1;
+            @media (min-width: 768px)  { font-size: @font_title2; }
+            @media (min-width: 992px)  { font-size: @font_title3; }
+
+            strong, small {
+                font-weight: 300;
+            }
+        }
+    }
+
+    .carousel_video_container {
+        .image_ratio span, .bx-caption {
+            display: none;
+        }
+    }
+
+    &.carousel_bandeau {
+        .carousel_ratio(@ratio_bandeau, 125%, 14px, 18px, 20px, 24px);
+
+        .bx-caption {
+            //background: fade(#94cdba, 75%);
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+
+
+            strong, small {
+                font-weight: 100;
+            }
+        }
+
+        .carousel_video_container {
+            .bx-caption {
+                display: none;
+            }
+
+            @media (max-width: 768px) {
+                .carousel_video_image {
+                    display: none;
+                }
+            }
+
+            @media (min-width: 768px) {
+                // .carousel_video_image, .carousel_video_iframe {
+                //     float: left;
+                //     width: 50%;
+                // }
+                .carousel_video_image {
+                    float: left;
+                    width: 100%;
+
+                    background-color: #000;
+                }
+                .carousel_video_iframe {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 48%;
+                    padding: 48px;
+
+                    @media (min-width: 992px)  {
+                        width: 50%;
+                    }
+                }
+                .image_ratio {
+                    opacity: 0.85;
+                }
+                .image_ratio span, .fluid-width-video-wrapper {
+                    display: block;
+                    //padding-top: 2*100%*@ratio_bandeau !important;
+                }
+                .fluid-width-video-wrapper {
+                    //border: 2px solid rgba(148,205,186,0.75);
+                    box-shadow: 0 0 8px rgba(0,0,0,1);
+                }
+                .bx-caption {
+                    display: block;
+                    //width: 50%;
+                }
+            }
+        }
+    }
+
+
+    &.carousel_composante {
+        .carousel_ratio(@ratio_bandeau_composante, 125%, 14px, 18px, 20px, 24px);
+
+        .bx-caption {
+            //background: fade(#94cdba, 75%);
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+
+
+            strong, small {
+                font-weight: 100;
+            }
+        }
+
+        .carousel_video_container {
+            .bx-caption {
+                display: none;
+            }
+
+            @media (max-width: 768px) {
+                .carousel_video_image {
+                    display: none;
+                }
+            }
+
+            @media (min-width: 768px) {
+                // .carousel_video_image, .carousel_video_iframe {
+                //     float: left;
+                //     width: 50%;
+                // }
+                .carousel_video_image {
+                    float: left;
+                    width: 100%;
+
+                    background-color: #000;
+                }
+                .carousel_video_iframe {
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 48%;
+                    padding: 48px;
+
+                    @media (min-width: 992px)  {
+                        width: 50%;
+                    }
+                }
+                .image_ratio {
+                    opacity: 0.5;
+                }
+                .image_ratio span, .fluid-width-video-wrapper {
+                    display: block;
+                    //padding-top: 2*100%*@ratio_bandeau_composante !important;
+                }
+                .fluid-width-video-wrapper {
+                    //border: 2px solid rgba(148,205,186,0.75);
+                    box-shadow: 0 0 8px rgba(0,0,0,1);
+                }
+                .bx-caption {
+                    display: block;
+                    //width: 50%;
+                }
+            }
+        }
+    }
+
+    &.carousel_colonne {
+        .carousel_ratio(@ratio_colonne);
+
+        .bx-wrapper .bx-controls-direction a {
+            top: 0;
+            margin-top: 0;
+
+            &.bx-prev {
+                left: 0;
+            }
+            &.bx-next {
+                right: 0;
+            }
+        }
+    }
+
+    &.carousel_contenu {
+        .carousel_ratio(@ratio_contenu, 100%, 14px, 16px, 18px, 20px);
+    }
+
+    &.carousel_hero_mode {
+        .portletItem.container {
+            width: 100%;
+
+            .bx-wrapper .bx-viewport .bxslider li a {
+                max-width: none;
+
+                &.image_ratio span {
+                    @media (min-width: 768px) {
+                        padding-top: 100% * @ratio_hero * 1.5;
+                    }
+                    @media (min-width: 992px)  {
+                        padding-top: 100% * @ratio_hero;
+
+                    }
+                }
+            }
+            .bx-wrapper .bx-caption {
+                text-align: center;
+
+                @media (min-width: 992px)  {
+                    span {
+                        font-size: 30px;
+                    }
+                    small {
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+#portal-column-content .portlet.portletCarousel.carousel_bandeau > div.container {
+    width: auto;
+}
+
+/*************************************************************/
+
+.bx-wrapper .bx-viewport {
+    left: 0;
+    border: 0;
+    box-shadow: none;
+    moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.bx-wrapper .bx-viewport .bxslider {
+    margin: 0 !important;
+}
+
+.bx-wrapper .bx-controls-direction a {
+    border: none !important;
+    background-position: 0 0 !important;
+    background-size: 32px 32px;
+    opacity: 0.5;
+
+    &:hover, &:focus {
+        opacity: 1;
+    }
+
+    &.bx-prev {
+        background-image: url("@{base}/control_prev.png");
+    }
+    &.bx-next {
+        background-image: url("@{base}/control_next.png");
+    }
+}
+
+.bx-wrapper .bx-viewport .bxslider li a {
+    display: block;
+    overflow: hidden;
+    max-width: 1200px;
+}
+
+.bx-wrapper .bx-caption {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.bx-wrapper .bx-caption span {
+    font-family: "Roboto";
+    font-weight: 300;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.66);
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.bx-wrapper .bx-caption span small {
+    font-size: 12px;
+}

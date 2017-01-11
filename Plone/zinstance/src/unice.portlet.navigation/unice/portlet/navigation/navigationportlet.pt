@@ -1,0 +1,183 @@
+<html tal:omit-tag=""
+    xmlns="http://www.w3.org/1.09/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+
+
+
+    <div tal:define="parents view/dossier_racine; icons view/icons; TRUE python:True; FALSE python:False;"
+         tal:attributes="id view/data/extra_id; class string:portlet portletNavigation ${view/data/extra_css} ${view/cls};
+         style python:'top:%s' % (view.data.hero_mode_top if view.data.hero_mode and view.data.hero_mode_top else '');">
+
+        <div tal:condition="python:view.data.item_display == 'plan'" class="row">
+            <div tal:repeat="i python:range(6)" tal:attributes="class string:col-xs-2 pos-${i}"/>
+        </div>
+
+        <tal:block define="cls string:navbar navbar-default hidden-xs container">
+
+            <nav role="navigation"
+                 tal:attributes="class python:view.cls(cls); style python:'z-index:%s' % view.data.z_index if view.data.z_index else '';">
+
+                <tal:block condition="python:not view.data.item_display == 'plan'">
+
+                    <div class="navbar-header">
+                        <tal:block condition="python:view.data.item_display == 'logo'">
+                            <a class="navbar-brand" tal:attributes="href view/data/logo_url; title view/data/logo_text">
+                                <img tal:attributes="src view/data/logo_img; alt view/data/logo_text"/>
+                            </a>
+                            <a tal:condition="python:view.data.logo2_img and view.data.logo2_url and view.data.logo2_text"
+                                class="navbar-brand" tal:attributes="href view/data/logo2_url; title view/data/logo2_text">
+                                <img tal:attributes="src view/data/logo2_img; alt view/data/logo2_text"/>
+                            </a>
+                        </tal:block>
+                    </div>
+
+                    <div class="collapse navbar-collapse">
+                        <p tal:attributes="class python:'navbar-text sr-only' if view.data.omit_header else 'navbar-text'">
+                            <strong><tal:block content="view/header"/> :</strong>
+                        </p>
+                        <ul class="nav navbar-nav">
+
+                            <tal:block repeat="parent parents">
+
+                                <tal:block define="i repeat/parent/index">
+
+<li tal:condition="not:parent/contents"
+    tal:define="image not:parent/image_default"
+    tal:attributes="id string:menu-${parent/id};">
+    <a tal:attributes="href parent/url; class python:'navbar-image' if image and not view.data.hide_images else '';">
+        <i tal:condition="python:i in icons" tal:attributes="class python:icons[i]['icon']"></i>
+        <span tal:content="parent/title"
+            tal:attributes="class python:'sr-only' if (image or i in icons and icons[i]['notext']) and not view.data.hide_images else ''"/>
+        <img tal:condition="python:image and not view.data.hide_images" tal:attributes="src parent/image; alt parent/title;"/>
+
+    </a>
+</li>
+
+<li tal:condition="python:parent['contents'] and not context.data.yamm" class="dropdown"
+    tal:attributes="id string:menu-${parent/id};">
+    <a tal:attributes="href parent/url" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+        <i tal:condition="python:i in icons" tal:attributes="class python:icons[i]['icon']"></i>
+        <span tal:content="parent/title"
+            tal:attributes="class python:'sr-only' if i in icons and icons[i]['notext'] else ''"/>
+        <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+        <li tal:repeat="item parent/contents"
+            tal:attributes="id string:menu-${parent/id}-${item/id};">
+            <a tal:attributes="href item/url">
+                <i class="fa fa-angle-right"></i> <span tal:content="item/title"/>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li tal:condition="python:parent['contents'] and context.data.yamm" class="dropdown yamm-fw"
+    tal:attributes="id string:menu-${parent/id};">
+    <a tal:attributes="href parent/url" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
+        <i tal:condition="python:i in icons" tal:attributes="class python:icons[i]['icon']"></i>
+        <span tal:content="parent/title"
+            tal:attributes="class python:'sr-only' if i in icons and icons[i]['notext'] else ''"/>
+        <b class="caret"></b>
+    </a>
+    <ul tal:define="contents parent/contents; half python:len(contents) / 2 if len(contents) % 2 == 0 else len(contents) / 2 + 1; document python:view.document('a-la-une', parent['item']); cls python:'col-sm-6' if document else 'col-sm-12';"
+        class="dropdown-menu yamm">
+        <li>
+            <div class="row" tal:define="opt_image TRUE; opt_title TRUE; opt_desc FALSE; opt_desctrunc FALSE; opt_boutonsavoirplus FALSE; opt_imageratio string:ratio4:3; opt_modal FALSE;">
+                <ul tal:attributes="class string:${cls} list-unstyled dropdown-menu">
+                    <li tal:repeat="item contents" class="col-sm-2"
+                        tal:attributes="id string:menu-${parent/id}-${item/id};">
+                        <metal:block use-macro="context/templates_macro/macros/thumb_link"></metal:block>
+                        <a tal:attributes="href item/url">
+                            <strong><span tal:content="item/title"/></strong>
+                        </a>
+                    </li>
+                </ul>
+                <div tal:condition="document" tal:define="item document" class="col-sm-4 yamm_alaune">
+                    <metal:block use-macro="context/templates_macro/macros/thumb_link"></metal:block>
+                    <metal:block use-macro="context/templates_macro/macros/titledesc_link"></metal:block>
+                </div>
+            </div>
+        </li>
+    </ul>
+</li>
+
+                                </tal:block>
+
+                            </tal:block>
+
+                        </ul>
+
+                        <tal:block condition="python:view.data.item_display == 'logo'" i18n:domain="plone"
+                                tal:define="navigation_root_url context/@@plone_portal_state/navigation_root_url;
+                                            search_input_id string:searchGadget;">
+
+
+                            <form id="searchGadget_form" action="@@search" class="navbar-form navbar-right" role="search"
+                                  tal:attributes="action string:${navigation_root_url}/@@search; id string:${search_input_id}_form;">
+
+                                <div class="LSBox">
+                                    <div class="form-group">
+                                        <label class="hiddenStructure" tal:attributes="for search_input_id" i18n:translate="text_search">Search Site</label>
+
+                                        <input name="SearchableText" type="text" size="10" value="" title="Search Site" placeholder="Search Site" accesskey="4"
+                                               i18n:attributes="title title_search_site;  placeholder title_search_site"
+                                               tal:attributes="value request/form/SearchableText|nothing; id search_input_id"
+                                               class="form-control input-sm searchField" />
+                                    </div>
+
+                                    <button type="submit" class="searchButton btn btn-primary input-sm">
+                                        <i class="fa fa-search"></i>&nbsp;
+                                        <span class="sr-only" i18n:translate="label_search">Search</span>
+                                    </button>
+
+
+                                    <div class="LSResult" id="LSResult"><div class="LSShadow" id="LSShadow"></div></div>
+                                </div>
+                            </form>
+
+                            <div id="portal-advanced-search" class="hiddenStructure">
+                                <a href="#" tal:attributes="href string:${navigation_root_url}/@@search"
+                                   i18n:translate="label_advanced_search" accesskey="5">
+                                    Advanced Search&hellip;
+                                </a>
+                            </div>
+
+
+                        </tal:block>
+                    </div>
+
+                </tal:block>
+
+
+                <tal:block condition="python:view.data.item_display == 'plan'">
+
+                    <ul class="row">
+                        <tal:block repeat="parent parents">
+
+                            <li class="col-sm-4 col-md-2">
+                                <strong><tal:block content="parent/title"/> :</strong>
+                                <ul>
+                                    <li tal:repeat="item parent/contents">
+                                        <a tal:attributes="href item/url">
+                                            <i class="fa fa-angle-right"></i> <span tal:content="item/title"/>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </tal:block>
+                    </ul>
+
+                </tal:block>
+
+            </nav>
+
+        </tal:block>
+
+    </div>
+
+</html>
+

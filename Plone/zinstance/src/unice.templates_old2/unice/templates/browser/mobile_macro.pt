@@ -1,0 +1,158 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+<metal:content-core fill-slot="content-core">
+
+<!-- ### HEADER ############################################################################################### -->
+
+<metal:block define-macro="header">
+
+    <header class="bar bar-nav">
+        <a tal:attributes="href string:${context/aq_parent/absolute_url}/${suffix}"
+            tal:condition="python:not context.portal_type == 'Plone Site'"
+            class="icon icon-left-nav pull-left" data-transition="slide-out"></a>
+         <a href="#search-modal" class="icon icon-search pull-right"></a>
+        <h1 class="title" tal:content="python:context.Title() or context.id"/>
+    </header>
+
+</metal:block>
+
+<!-- ### FOOTER ############################################################################################## -->
+
+<metal:block define-macro="footer">
+
+    <nav class="bar bar-tab">
+        <div tal:attributes="class string:portaltype_${type_code}">
+            <a tal:repeat="link footer" tal:attributes="href python:view.mobile_link(link['href'], portal, suffix)" class="tab-item active">
+                <span tal:attributes="class string:icon ${link/icon}"></span>
+                <span class="tab-label" tal:content="link/title"/>
+            </a>
+        </div>
+    </nav>
+
+</metal:block>
+
+<!-- ### SEARCH ############################################################################################## -->
+
+<metal:block define-macro="search">
+
+    <div id="search-modal" class="modal">
+        <header class="bar bar-nav">
+            <a class="icon icon-close pull-right" href="#search-modal"></a>
+            <h1 class="title">Recherche</h1>
+        </header>
+
+        <div class="content">
+            <div class="content-padded">
+                <form tal:attributes="action string:${portal}/livesearch_reply" method="GET" class="search-form"
+                    onsubmit="submit_search_form(this, 'search-input', 'search-results'); return false;">
+                    <input id="search-input" type="search" placeholder="Recherche..." value=""/>
+                    <button class="btn btn-primary btn-block">
+                        <span class="icon icon-search"></span>
+                    </button>
+                </form>
+                <div id="search-results" class="search-results"></div>
+            </div>
+        </div>
+    </div>
+
+</metal:block>
+
+<!-- ############################################################################################################# -->
+<!-- ### PLONESITE ############################################################################################### -->
+<!-- ############################################################################################################# -->
+
+<metal:block define-macro="plonesite">
+
+    <div class="content-padded">
+
+        <span class="hero image_ratio ratio16:9">
+            <span tal:attributes="style string:background-image: url(${hero_img})"/>
+        </span>
+
+        <tal:block repeat="item items">
+            <a tal:content="item/title" tal:attributes="href python:view.mobile_link(item['url'], portal, suffix)"
+                class="btn btn-primary btn-outlined btn-block" data-transition="slide-in"/>
+        </tal:block>
+
+    </div>
+
+</metal:block>
+
+<!-- ### FOLDER ############################################################################################### -->
+
+<metal:block define-macro="folder">
+
+    <div class="card">
+        <ul class="table-view">
+            <li tal:repeat="item items" class="table-view-cell">
+                <a tal:content="item/title" tal:attributes="href python:view.mobile_link(item['url'], portal, suffix)"
+                    class="push-right" data-transition="slide-in"/>
+            </li>
+        </ul>
+    </div>
+
+</metal:block>
+
+<!-- ### DOCUMENT ############################################################################################### -->
+
+<metal:block define-macro="document">
+
+    <div class="content-padded">
+        <div class="card" tal:condition="context/Description">
+            <ul class="table-view">
+                <li class="table-view-cell table-view-divider">
+                    <tal:block content="context/Description"/>
+                </li>
+            </ul>
+        </div>
+        <p tal:replace="structure context/getText" tal:condition="context/getText"/>
+        <p tal:condition="not:context/getText">Pas de contenu.</p>
+    </div>
+
+</metal:block>
+
+<!-- ### IMAGE ############################################################################################### -->
+
+<metal:block define-macro="image">
+
+    <div class="content-padded" tal:define="tag python:context.tag(scale='large', css_class='portaltype_image')">
+        <img tal:replace="structure tag"/>
+    </div>
+
+</metal:block>
+
+<!-- ### FILE ############################################################################################### -->
+
+<metal:block define-macro="file">
+
+    <div class="content-padded" tal:define="tag python:context.tag(scale='large', css_class='portaltype_image')">
+        <a tal:attributes="href string:${context/absolute_url}/at_download/file" data-ignore="push" class="btn btn-primary btn-block">
+            <span class="icon icon-download"></span> Télécharger le fichier
+        </a>
+    </div>
+
+</metal:block>
+
+<!-- ### DEXTERITY ############################################################################################### -->
+
+<metal:block define-macro="dexterity">
+
+    <div class="content-padded">
+        <div id="dexterity-content"></div>
+
+        <script type='text/javascript'>
+            load_dexterity('dexterity-content', 'content');
+        </script>
+
+    </div>
+
+</metal:block>
+
+</metal:content-core>
+</body>
+</html>

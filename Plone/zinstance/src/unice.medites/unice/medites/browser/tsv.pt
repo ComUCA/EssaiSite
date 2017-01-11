@@ -1,0 +1,85 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<div metal:fill-slot="content-core">
+    <tal:main-macro metal:define-macro="main"
+           tal:define="results here/getSavedFormInputItems;
+                       canEdit python:checkPermission('Modify portal content', here);
+                       Batch python:modules['Products.CMFPlone'].Batch;
+                       b_size python:100000;
+                       b_start python:0;
+                       b_start request/b_start | b_start;
+
+                       colsTitles here/getColumnTitles;
+
+                       dateCol string:Posting Date/Time;
+                       datePos python:colsTitles.index(dateCol) if dateCol in colsTitles else False;
+
+                       hidden request/hidden | string:;
+                       prev_hidden request/prev_hidden | string:;
+                       extraHiddenCols python:hidden.split(',');
+                       hiddenCols python:[dateCol, 'HTTP_X_FORWARDED_FOR', 'REMOTE_ADDR', 'HTTP_USER_AGENT'];
+
+                       toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+
+        <tal:block tal:condition="results" tal:define="batch python:Batch(results, b_size, int(b_start), orphan=1);">
+
+<!--             <div class="text-right hidden-print">
+                <a tal:condition="hidden" tal:attributes="href string:${context/absolute_url}?prev_hidden=${hidden}" class="btn btn-primary">
+                    <i class="fa fa-list"></i> Afficher le listing complet
+                </a>
+                <a tal:condition="prev_hidden" tal:attributes="href string:${context/absolute_url}?hidden=${prev_hidden}" class="btn btn-primary">
+                    <i class="fa fa-th-list"></i> Afficher le listing simple
+                </a>
+                <a class="btn btn-primary" href="javascript:window.print()"><i class="fa fa-print"></i> Imprimer le listing</a>
+            </div><br/> -->
+
+            <table class="listing">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <tal:block tal:repeat="ct colsTitles">
+                            <th tal:define="colnumber repeat/ct/number;" tal:content="ct" tal:condition="python:not ct in hiddenCols and not str(colnumber) in extraHiddenCols"/>
+                        </tal:block>
+                      <!--   <th class="hidden-print" tal:condition="canEdit"/>
+                        <th class="visible-print">Signature</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tal:repeat="row batch">
+                        <tal:index define="record_id python:row[0]">
+
+                            <td tal:condition="datePos" tal:content="python:toLocalizedTime(row[1][datePos])" style="white-space: nowrap; width: 1px;"/>
+
+                            <tal:block repeat="cell python:row[1]">
+                                <tal:block define="colnumber repeat/cell/number; ct python:colsTitles[colnumber-1];">
+                                    <td tal:condition="python:not ct in hiddenCols and not str(colnumber) in extraHiddenCols" tal:attributes="data-content cell"
+                                    style="max-width: 100px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;" data-container="body" data-toggle="popover" data-placement="bottom">
+                                        <tal:block condition="python:not cell in ['True', 'False']" tal:content="cell"/>
+                                        <i tal:condition="python:cell == 'True'" class="fa fa-ok-sign text-success"></i>
+                                        <i tal:condition="python:cell == 'False'" class="fa fa-remove-sign text-danger"></i>
+                                    </td>
+                                </tal:block>
+                            </tal:block>
+                            <!-- <td tal:condition="canEdit" class="hidden-print" style="text-align: center">
+                                <a tal:attributes="href string:${context/absolute_url}/fg_savedata_editview?id:int=${record_id}">
+                                    <img src="++resource++unice.templates.images/edit.png" />
+                                </a>
+                            </td> -->
+                            <td class="visible-print"></td>
+                        </tal:index>
+                    </tr>
+                </tbody>
+            </table>
+
+        </tal:block>
+
+   </tal:main-macro>
+
+</div>
+</body>
+</html>

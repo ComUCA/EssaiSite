@@ -1,0 +1,91 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="content-core">
+
+    <tal:block define=" opt_titre context/titre01; opt_description context/description01; opt_texte context/texte01;
+                        opt_image context/image01; opt_image_name string:image01;
+                        opt_lien context/lien01; opt_lien_titre context/lien_titre01;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre02; opt_description context/description02; opt_texte context/texte02;
+                        opt_image context/image02; opt_image_name string:image02;
+                        opt_lien context/lien02; opt_lien_titre context/lien_titre02;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre03; opt_description context/description03; opt_texte context/texte03;
+                        opt_image context/image03; opt_image_name string:image03;
+                        opt_lien context/lien03; opt_lien_titre context/lien_titre03;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre04; opt_description context/description04; opt_texte context/texte04;
+                        opt_image context/image04; opt_image_name string:image04;
+                        opt_lien context/lien04; opt_lien_titre context/lien_titre04;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre05; opt_description context/description05; opt_texte context/texte05;
+                        opt_image context/image05; opt_image_name string:image05;
+                        opt_lien context/lien05; opt_lien_titre context/lien_titre05;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre06; opt_description context/description06; opt_texte context/texte06;
+                        opt_image context/image06; opt_image_name string:image06;
+                        opt_lien context/lien06; opt_lien_titre context/lien_titre06;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre07; opt_description context/description07; opt_texte context/texte07;
+                        opt_image context/image07; opt_image_name string:image07;
+                        opt_lien context/lien07; opt_lien_titre context/lien_titre07;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre08; opt_description context/description08; opt_texte context/texte08;
+                        opt_image context/image08; opt_image_name string:image08;
+                        opt_lien context/lien08; opt_lien_titre context/lien_titre08;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre09; opt_description context/description09; opt_texte context/texte09;
+                        opt_image context/image09; opt_image_name string:image09;
+                        opt_lien context/lien09; opt_lien_titre context/lien_titre09;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre10; opt_description context/description10; opt_texte context/texte10;
+                        opt_image context/image10; opt_image_name string:image10;
+                        opt_lien context/lien10; opt_lien_titre context/lien_titre10;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+        <tal:block define=" opt_titre context/titre11; opt_description context/description11; opt_texte context/texte11;
+                        opt_image context/image11; opt_image_name string:image11;
+                        opt_lien context/lien11; opt_lien_titre context/lien_titre11;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre12; opt_description context/description12; opt_texte context/texte12;
+                        opt_image context/image12; opt_image_name string:image12;
+                        opt_lien context/lien12; opt_lien_titre context/lien_titre12;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre13; opt_description context/description13; opt_texte context/texte13;
+                        opt_image context/image13; opt_image_name string:image13;
+                        opt_lien context/lien13; opt_lien_titre context/lien_titre13;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre14; opt_description context/description14; opt_texte context/texte14;
+                        opt_image context/image14; opt_image_name string:image14;
+                        opt_lien context/lien14; opt_lien_titre context/lien_titre14;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+    <tal:block define=" opt_titre context/titre15; opt_description context/description15; opt_texte context/texte15;
+                        opt_image context/image15; opt_image_name string:image15;
+                        opt_lien context/lien15; opt_lien_titre context/lien_titre15;">
+        <metal:block use-macro="context/templates_macro/macros/chapitre"></metal:block>
+    </tal:block>
+
+</metal:main>
+
+</body>
+</html>
+

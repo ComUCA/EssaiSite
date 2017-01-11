@@ -1,0 +1,1736 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;
+            variableEtapes python:view.champsRepeat('etapes');      
+            variableGalerie python:view.champsRepeat('galerie_photos');  
+            variableMeditesCollege python:view.champsRepeat('medites_dans_mon_college');
+            variableMeditesEtapesCollege python:view.champsRepeat('ajout_etapes'); 
+            variableMembre python:view.champsRepeat('membre');
+            ">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+            <metal:content-core define-macro="content-core" tal:define="widgets nocall:context/@@view">
+                <script src="++resource++unice.medites.javascripts/libs/avatars.js"></script> 
+
+                <section class="container-fluid emplacement">
+                    <div class="points teOcUn-P1">
+                        <h3>Score</h3>
+                        <span id="pointsParcours">0</span>/200 
+                    </div>
+                    <div id="teOcUn-P1" class="Marker_Container marqueurs">
+
+                    <!-- Popup des instruction du parcours -->                
+                        <div class="reglesParcours modal fade" tabindex="-1" role="dialog" aria-labelledby="reglesTerreTitre" aria-hidden="true">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content cadreBleu">
+                                    <div class="modal-header">
+                                        <button aria-label="Close" data-dismiss="modal" class="close" type="button" title="Fermer"><span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4 class="noMarginTop">Terre solide</h4>
+                                        <br/>
+                                        <p>Bienvenue sur ce parcours pédagogique, composé de 11 étapes. Chacune d'entre elle est signalée par un des logos suivants :</p>
+                                        <ul class="sansPuce noPadding">
+                                            <li><i class="fa fa-info"></i> : pour les informations générales.</li>
+                                            <li><i class="fa fa-gears"></i> : pour les contenus.</li>
+                                            <li><i class="fa fa-external-link"></i> : pour approfondir le sujet grâce à un autre site internet.</li>
+                                            <li><i class="fa fa-trophy"></i> : pour tester tes nouvelles connaissances avec un quiz géant.</li>
+                                            <li><img alt="Etoile vide" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" class="etoileVide" /> <img alt="Etoile pleine" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" class="etoilePleine" /> : pour les jeux, blanches lorsque les jeux ne sont pas terminés et oranges quand ces derniers sont finis et que tu as remporté tes points. Chaque jeu rapporte 20 points sauf les quiz qui en valent 30 (Ils sont inscrits en haut à droite dans le soleil <img alt="Zone destinée aux points" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/score.svg" width="20"  />).</li>
+                                        </ul>
+                                        <h4 class="text-center"><em>Bonne balade éducative dans la programmation...</em></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="HE_Char bloquee"></div>
+                        <div class="marqueur bloquee" id="teOcUn-a-0">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"0.5,94.7","tooltip_offset":"2,-1","panel_pos":"0.4,0.9"}'><i class="fa fa-info"></i></div>
+                            <div class="HE_Tooltip">Bienvenue</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide</h3>
+                                <h4>Bienvenue !</h4>
+                                          
+                            </div>
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"5.25,88.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"10.25,89","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="teOcUn-a-1">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"6.25,80.7","tooltip_offset":"-4.5,7","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+
+                                <!-- <i class="fa fa-info"></i>
+                                <div>
+                                    <img class="etoilePleine jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                    <img class="etoileVide jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsVide.svg" alt="Etoile vide" />
+                                    <img class="etoilePleine jeuQuiz" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                    <img class="etoileVide jeuQuiz" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsVide.svg" alt="Etoile vide" />
+
+                                </div> -->
+                            </div>
+                            <div class="HE_Tooltip">Étape 1 - La démarche scientifique</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - La démarche scientifique</h3>
+                                <div id="carousel-teOcUn-P1-1" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-teOcUn-a-1" class="displayNone">
+                                        <p>&Ccedil;a t'a plu ?<br/>Empoche tes points et poursuis la séance :D</p>
+                                        <p class="pointsXP pointsJeu1"><span>20</span> points</p>
+                                    </div> 
+                                    <div id="great-Q-teOcUn-a-1" class="displayNone">
+                                        <p>Prêt à continuer ?</p>
+                                        <p class="pointsXP pointsJeuQ">Tu remportes <u><span>30</span> points</u></p>
+                                    </div>
+                                    <div id="solution-teOcUn-a-1" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--teOcUn-a-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="solution--teOcUn-a-1">Solution</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/ocean/p1/etape2/solution.png" alt="" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-1" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-1" data-slide-to="1" class="liPoints liJ1Points"></li>
+                                        <li data-target="#carousel-teOcUn-P1-1" data-slide-to="2" class="liPoints liQPoints"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Qu'est-ce que la démarche scientifique ?</p>
+                                                </div>
+                                            </div>
+                                        </div>           
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Dispose les étapes de la démarche scientifique dans le bon ordre</h4>
+                                                <p>La démarche scientifique est une manière d'aborder un sujet identifié. L'idée est d'appliquer dans un ordre précis, plusieurs étapes, afin de solutionner ce fameux sujet identifié.<br />
+                                                Le jeu situé au dessus de cette rubrique illustre ces différentes étapes. A toi de les répartir dans le bon ordre.<br />
+                                                <u>Note :</u> À chaque fois que tu positionnes correctement une étape, elle reste à son emplacement.</p>
+                                                <div data-animation="animated fadeInDown" class="col-xs-12 col-sm-12 col-md-12 cadreBleu delay15">
+                                                    <h5 class="noMarginTop">Liste des différentes étapes de la démarche scientifique à répartir :</h5>
+                                                    <ul class="col-xs-12 col-sm-12 col-md-12 etape1 row ulPerso minWidth600"> 
+                                                        <li class="col-xs-6">
+                                                            <span id="teOcUn-c-1-drag-2">Mettre en place un protocole expérimental</span>
+                                                        </li>                    
+                                                        <li class="col-xs-6">
+                                                            <span id="teOcUn-c-1-drag-4" >Répéter l'étape précédente pour confirmer les résultats</span>
+                                                        </li>
+                                                        <li class="col-xs-6">
+                                                            <span  id="teOcUn-c-1-drag-6" >Se poser de nouvelles questions...</span>
+                                                        </li>
+                                                        <li class="col-xs-6">
+                                                            <span id="teOcUn-c-1-drag-0" >Se poser une question</span>
+                                                        </li>   
+                                                        <li class="col-xs-6">
+                                                            <span id="teOcUn-c-1-drag-5">Bilan, discussion, transmission</span>
+                                                        </li>  
+
+                                                        <li class="col-xs-6">
+                                                            <span id="teOcUn-c-1-drag-3">Expérimentation, observation et prise de notes</span>
+                                                        </li>
+                                                        <li class="col-xs-6">
+                                                            <span id="teOcUn-c-1-drag-1">Faire des hypothèses</span>
+                                                        </li>
+                                                    </ul>  
+                                                </div>                                      
+                                                <ul data-animation="animated flipInY" class="col-xs-12 col-sm-12 col-md-12 etape2 delay15 sansPuce marginTop35 infobulleVerte"> 
+                                                    <li id="teOcUn-c-1-drop-0" class="drop ferme" data-toggle="tooltip" data-placement="top" title="Le problème qu'on veut résoudre">
+                                                        <div>1</div>
+                                                    </li>   
+                                                    <li id="teOcUn-c-1-drop-1" class="ferme" data-toggle="tooltip" data-placement="top" title="Imaginer une possible solution au problème">
+                                                        <div>2</div>
+                                                    </li>
+                                                    <li id="teOcUn-c-1-drop-2" class="drop ferme" data-toggle="tooltip" data-placement="top" title="Imaginer des expériences ou des actions à faire pour tester l'hypothèse">
+                                                        <div>3</div>
+                                                    </li> 
+                                                    <li id="teOcUn-c-1-drop-3" class="ferme" data-toggle="tooltip" data-placement="top" title="Réaliser les expériences ou les observations qu'on a imaginé et les analyser">
+                                                        <div>4</div>
+                                                    </li>
+                                                    <li id="teOcUn-c-1-drop-4" class="ferme" data-toggle="tooltip" data-placement="top" title="Il faut toujours être sûre de nos résultats : on refait les expériences ou les observations">
+                                                        <div>5</div>
+                                                    </li>
+                                                    <li id="teOcUn-c-1-drop-5" class="ferme" data-toggle="tooltip" data-placement="top" title="Il faut faire un bilan pour déterminer si l'hypothèse était valide et partager nos résultats pour aider ceux qui vont se poser la même question... même nous, avec le temps on oublie ce que l'on a fait !">
+                                                        <div>6</div>
+                                                    </li>
+                                                    <li id="teOcUn-c-1-drop-6" class="ferme" data-toggle="tooltip" data-placement="top" title="Une question peut en cacher une autre... Une réponse nous amène très souvent à des nouveaux questions">
+                                                        <div>7</div>
+                                                    </li>                    
+                                                </ul>
+                                                <div class="jeuBtn">
+                                                    <span class="solutionBtn" data-toggle="modal" data-target="#solution-teOcUn-a-1">
+                                                        <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div> 
+                                        </div> 
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Reconstituer une démarche scientifique</h4>
+                                                <h5>Situation d'accroche</h5>
+                                                <p>Voici les enregistrements de deux stations pour un même séisme. Au regard de l’allure de l’enregistrement. Si le même séisme est enregistré, <u>comment se fait-il que l’enregistrement soit différent ?</u></p>
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cadreNoir">
+                                                    <img class="img-responsive col-xs-12 col-sm-12 col-md-6 col-lg-6" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape1/accroche.png" alt="Graphique" />
+                                                    <img class="img-responsive col-xs-12 col-sm-12 col-md-6 col-lg-6" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape1/hypothese.jpg" alt="Graphique" />
+                                                </div>
+                                                <h5 class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noPadding">Nous avons 2 hypothèses :</h5>
+
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cadreBlanc">
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                        <h6>La première :</h6>
+                                                        <ul class="ulPerso noPadding">
+                                                            <li>Plus il y a de mer entre l’épicentre et la station, plus le temps d’arrivée est retardé.</li>
+                                                            <li>Plus il y a de montagne entre l’épicentre et la station, plus l’amplitude de l’onde est diminuée</li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                        <h6>La seconde :</h6>
+                                                        <ul class="ulPerso noPadding">
+                                                            <li>Plus la distance est grande, plus l’onde arrive tard.</li>
+                                                            <li>Plus la distance est grande, plus l’amplitude de l’onde s’affaiblit.</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noPadding">
+                                                    <h5>Protocole expérimentale (stratégie de résolution)</h5>
+                                                    <p>On se propose de reproduire une onde de choc en l’enregistrant en deux points situés à des distances différents de l’impact. Les enregistrements sont réalisés par l’intermédiaire de capteurs piézoélectriques placés à des distances différentes de la zone de choc.</p>
+                                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5 cadreJaune">
+                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                            <video controls class="embed-responsive-item">
+                                                                <source src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape1/propagation-en-stereo.mp4" type="video/mp4">
+                                                            </video>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noPadding">
+                                                    <h5>Analyse des résultats :</h5>
+                                                    <p>Après visualisation du film, nous pouvons nous poser et répondre aux questions suivantes pour tirer les premières conclusions.</p>
+                                                    <div id="quizTeOcUn-a-1"></div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 noPadding">                                               
+                                                    <h5>Conclusion :</h5>
+                                                    <p>L’expérimentation montre qu’une onde partant de sa source met d’autant plus de temps à atteindre un point qu’elle en est éloignée :</p>
+                                                    <ul class="ulPerso noPadding">
+                                                        <li>Une onde possède une vitesse.</li>
+                                                        <li>Par le même occasion, l’onde s’atténue à mesure qu’elle se déplace : l’énergie se dissipe.</li>
+                                                    </ul>
+                                                </div>                                       
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-1" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-1" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a>  
+                                </div>    
+                            </div>
+                        </div>    
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"8.75,74.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"10,69.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"13.75,66.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"14.75,57.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"15.75,54.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"17.2,49.7","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="teOcUn-a-2">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"16.5,44.7","tooltip_offset":"-6.5,7","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+
+                             <!--    <i class="fa fa-gears"></i>
+                                <div>
+                                    <img class="etoilePleine jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                    <img class="etoileVide jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsVide.svg" alt="Etoile vide" />
+                                </div> -->
+                            </div>
+                            <div class="HE_Tooltip">Étape 2 - Les instruments de mesure</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - Les instruments de mesure</h3>
+                                <div id="carousel-teOcUn-P1-2" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-teOcUn-a-2" class="displayNone" data-animation="animated flipInY">
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1">Tu remportes <u><span>20</span> points</u></p>
+                                    </div> 
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-2" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-2" data-slide-to="1" class="liPoints liJ1Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Comment observe t'on la nature ?</p>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-2" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-2" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>   
+                            </div>
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"22.5,43.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"24.5,40.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"26.5,31.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"34.5,20.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"36.5,17.7","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"40.5,19","hidden":true}'></div>
+
+                        <div class="marqueur drag2etapes-teOcUn-a-3 bloquee" id="teOcUn-a-3">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"48.15,23","tooltip_offset":"-6.5,7","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                            </div>
+                            <div class="HE_Tooltip">Étape 3 - Calern</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - Visite de Calern</h3>
+                                <div id="carousel-teOcUn-P1-3" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-teOcUn-a-3" class="displayNone" data-animation="animated flipInY">
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1">Tu remportes <u><span>20</span> points</u></p>
+                                    </div> 
+                                    <div id="terre-calern1" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="calern1Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="calern1Titre">Batiment Méo</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h4>La façade du batiment</h4>
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape3/telescope-envoie-rayon-laser-vers-satellite-jason2.jpg" alt="Photo du batiment Méo" />
+                                                    <h4>Téléscope Méo en activité</h4>
+                                                    <p>Le site de Calern est surtout connu pour être l’une des très rares stations au monde à effectuer des tirs Laser vers la Lune, afin de déterminer exactement la distance Terre-Lune.<br/>
+                                                    La Terre attire la Lune, la Lune attire la Terre, l’attraction  exercée par la Lune provoque les marées.
+                                                    ­Cela crée un effet « ballon de rugby » sur la Terre : le bourrelet équatorial</p>
+                                                    <p>Par  effet de marées, les océans font des va-et-vient permanents, il y a friction dans la rotation de la terre. Cela a des conséquences :</p>
+                                                    <ul class="ulPerso">
+                                                        <li>La lune s’éloigne, et la terre ralentit</li>
+                                                        <li>La lune s’éloigne de 4m par siècle (4cm par an) et la Terre ralentit de 2ms par siècle !</li>
+                                                    </ul>
+                                                    <p>De même les marées font évoluer périodiquement la distance Terre-Lune.</p>
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape3/telescope-Meo-en-activite.jpg" alt="Téléscope Méo" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="terre-calern2" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="calern2Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="calern2Titre">Batiment C2PU</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Le projet Centre Pédagogique Planète Univers (C2PU) repose sur la réhabilitation puis l’utilisation de deux télescopes de 1m de performances professionnelles localisés sur le plateau de Calern dans l’arrière-pays grassois ainsi que sur l’exploitation des caractéristiques géologiques du site.</p>
+                                                    <p>L’Observatoire de la Côte d’Azur (OCA) en partenariat avec l’Université de Nice Sophia Antipolis (UNS) ont décidé d’offrir de nouvelles méthodes pédagogiques à des étudiants de licence et de Master (notamment dans le cadre du nouveau master IMAG2E (Imagerie et Modélisation en Astrophysique, Géophysique Espace et Environnement), en créant une base de sciences expérimentales liés aux Sciences de la Planète et de l’Univers, astronomie et géosciences, sur le plateau de Calern.</p>
+                                                    <p>L’infrastructure permet grâce à ses équipements tant scientifiques qu’hôteliers, une immersion de l’étudiant dans un contexte expérimental non seulement pédagogique mais également de production scientifique : une partie de l’originalité de l’opération consiste en effet à faire travailler les étudiants sur des données réelles et de les motiver en les faisant contribuer à la recherche scientifique. </p>
+                                                    <p>L’implantation de matériels spécifiques (type GPS, sismographes..) ainsi que l’utilisation des télescopes dans des programmes scientifiques d’observations systématiques ou de longue haleine permettront par l’enrichissement de base de données une telle participation.</p>
+                                                    <p>L’intégration des télescopes dans un réseau international d’instruments au sol en liaison avec la mission spatiale GAIA pour le suivi d’événements furtifs (découverte de comète, astéroïdes, super novae, ...) offrira une occasion supplémentaire d’intégrer de plein pied les étudiants dans le monde de la recherche en les rendant acteurs et collaborateurs de nombreuses découvertes.</p>
+                                                    <p>Porteurs de projet : Lyu Abe, Philippe Bendjoya, Jean-Pierre Rivet</p>
+                                                    <p>Divers liens utiles :</p>
+                                                    <ul class="ulPerso">
+                                                        <li>https://www.oca.eu/spip.php?article476</li>
+                                                        <li>https://c2pu.oca.eu/</li>
+                                                    </ul>
+                                                    <p>(Demander l'autorisation pour la vidéo)</p>
+                                                    <iframe width="560" height="315" src="https://www.youtube.com/embed/PXMqtNFH4Ds" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="terre-calern3" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="calern3Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="calern3Titre">Batiment</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    lorem ipsum
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="terre-calern4" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="calern4Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="calern4Titre">Batiment</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    lorem ipsum
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="terre-calern5" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="calern5Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="calern5Titre">Batiment</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    lorem ipsum
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="terre-calern6" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="calern6Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="calern6Titre">Batiment</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    lorem ipsum
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="terre-calern7" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="calern7Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="calern7Titre">Batiment</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    lorem ipsum
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="terre-calern8" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="calern8Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="calern8Titre">Batiment GI2T</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Le Grand Interféromètre à 2 Télescopes (GI2T), successeur de l’I2T de 1974 ; est un interféromètre optique travaillant dans le domaine visible à moyenne résolution spectrale. Il permet de coupler 2 télescopes , c’est cet ensemble qui a permis à Antoine Labeyrie de mettre au point cette technique d’interférométrie.</p>
+                                                    <iframe width="420" height="315" src="https://www.youtube.com/embed/FZcsJ66EoEk" frameborder="0" allowfullscreen></iframe>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="terre-calern9" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="calern9Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="calern9Titre">Batiment</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Page Wikipedia :</p>
+                                                    https://fr.wikipedia.org/wiki/T%C3%A9lescope_Schmidt-Cassegrain
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-3" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-3" data-slide-to="1"></li>
+                                        <li data-target="#carousel-teOcUn-P1-3" data-slide-to="2" class="liPoints liJ1Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Je connais de nom, mais c'est quoi ?</p>
+                                                </div>
+                                            </div>
+                                        </div>            
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Présentation du site</h4> 
+                                                <p>Le site d’observation du plateau de Calern a été inauguré en 1974 sous la dénomination "Centre d’Étude et de Recherches en Géodynamique et Astronomie" (CERGA) au terme d’une campagne de prospection pour l’implantation d’un nouvel observatoire astrométrique. Il a été conçu dès le départ comme un laboratoire destiné à la mise au point et à l’utilisation d’instruments nouveaux. Les qualités essentielles de ce plateau calcaire semi-désertique de 20 km2 de l’arrière pays grassois sont, outre un nombre élevé de nuits claires, l’absence de brumes et de poussières, une atmosphère pas trop sèche, et une circulation des vents en couches horizontales due à la fois à la topographie des lieux et à la présence du vent marin qui stabilise l’atmosphère.</p>
+                                                <p>Depuis 1988 et la fusion du CERGA avec l’Observatoire de Nice donnant ainsi naissance à l’Observatoire de la Côte d’Azur, le plateau de Calern est un site d’observation de l’OCA.</p>
+                                                <p>Dans les années 70, 80, 90, le plateau de Calern a hébergé des instruments précurseurs dans leur discipline, que ce soit notamment en télémétrie laser ou en interférométrie. L’activité du télescope de Schmidt avec l’imagerie grand champ de petits objets a également été très intense jusqu’au début des années 2000.</p>
+                                                <div class="photoCalern positionRelative cadreBlanc">
+                                                    <img class="img-all" alt="Photo du site de Calern" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape3/calern2.jpg">
+                                                    <span class="copyright">OCA-CNRS</span>
+                                                </div>
+                                                <p>Aujourd’hui, la vie scientifique du plateau se poursuit avec des projets qui exploitent l’expérience acquise, et les liens particuliers entre astronomie et géophysique :</p>
+                                                <ul class="ulPerso">
+                                                    <li>Télémétrie laser, transfert de temps, géodésie spatiale : SLUM, MEO</li>
+                                                    <li>Mesure du diamètre solaire : PICARD-SOL</li>
+                                                    <li>Enseignement et recherche : C2PU</li>
+                                                    <li>Prévention des tsunamis : réseau CRATANEM</li>
+                                                    <li>Responsable : Alain Blazit</li>
+                                                </ul>
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">                                            
+                                                <h4>Site de Calern</h4>
+                                                <h5>Clique sur les différents marqueurs pour gagner les points</h5>
+                                                <a class="calern1" title="Cliquez-ici pour afficher le contenu" data-target="#terre-calern1" data-toggle="modal" href="#">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                </a>
+                                                <a class="calern2" title="Cliquez-ici pour afficher le contenu" data-target="#terre-calern2" data-toggle="modal" href="#">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                </a>
+                                                <a class="calern3" title="Cliquez-ici pour afficher le contenu" data-target="#terre-calern3" data-toggle="modal" href="#">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                </a>
+                                                <a class="calern4" title="Cliquez-ici pour afficher le contenu" data-target="#terre-calern4" data-toggle="modal" href="#">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                </a>
+                                                <a class="calern5" title="Cliquez-ici pour afficher le contenu" data-target="#terre-calern5" data-toggle="modal" href="#">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                </a>
+                                                <a class="calern6" title="Cliquez-ici pour afficher le contenu" data-target="#terre-calern6" data-toggle="modal" href="#">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                </a>
+                                                <a class="calern7" title="Cliquez-ici pour afficher le contenu" data-target="#terre-calern7" data-toggle="modal" href="#">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                </a>
+                                                <a class="calern8" title="Cliquez-ici pour afficher le contenu" data-target="#terre-calern8" data-toggle="modal" href="#">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                </a>
+                                                <a class="calern9" title="Cliquez-ici pour afficher le contenu" data-target="#terre-calern9" data-toggle="modal" href="#">
+                                                    <span aria-hidden="true" class="glyphicon glyphicon-search"></span>
+                                                </a>
+                                                <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/univers/p1/etape9/calern.jpg" alt="Photo du site de Calern depuis le ciel" />
+                                                <span class="copyright2">Alain Girard</span>
+                                            </div>                                                                       
+                                        </div>
+                                    </div>
+                                </div>        
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-3" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-3" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>    
+                            </div>
+                        </div>   
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"46.15,25","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"38.1,28","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"35.1,44","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"36.4,64","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"36.4,68","hidden":true}'></div>
+
+
+                        <div class="marqueur bloquee" id="teOcUn-a-4">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"32.7,80.3","tooltip_offset":"-8,7","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+
+                              <!--   <i class="fa fa-home"></i>
+                                <div>
+                                    <img class="etoilePleine jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                    <img class="etoileVide jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsVide.svg" alt="Etoile vide" />
+                                </div> -->
+                            </div>
+                            <div class="HE_Tooltip">Étape 4 - Conférence</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - Conférence "Séisme, risque sisimique et chercheur en sismologie"</h3>
+                                <div id="carousel-teOcUn-P1-4" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-4" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-4" data-slide-to="1" class="liPoints liJ1Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <br/><br/><br/><br/><br/><br/><br/>
+                                            <p class="titre text-center">xxx</p>
+                                            <p class="titre text-center">xxx</p>
+                                        </div>                                   
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>   
+                                        </div>  
+                                    </div>
+                                </div>
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-4" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-4" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div>    
+                        </div>  
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"37,80","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"39,72","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"39.2,66","hidden":true}'></div>
+                        
+                        <div class="marqueur bloquee" id="teOcUn-a-5">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"41.15,59.3","tooltip_offset":"-4,7","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeuQuiz logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeuQuiz logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                              <!--   <i class="fa fa-puzzle-piece"></i>
+                                <div>
+                                    <img class="etoilePleine jeuQuiz" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                    <img class="etoileVide jeuQuiz" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsVide.svg" alt="Etoile vide" />
+                                </div> -->
+                            </div>
+                            <div class="HE_Tooltip">Étape 5<br/>A la découverte de l'énigme Namazu</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - Namazu</h3>
+                                <div id="carousel-teOcUn-P1-5" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-Q-teOcUn-a-5" class="displayNone" data-animation="animated flipInY">
+                                        <p>Prêt à continuer ?</p>
+                                        <p class="pointsXP pointsJeuQ">Tu remportes <u><span>30</span> points</u></p>
+                                    </div>
+                                    <div id="namazu1" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="namazu1Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content cadreJaune">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="namazu1Titre">Grande peur sur la Côte d'Azur</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/diapo1.jpg" class="img-responsive center" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="namazu2" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="namazu2Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content cadreBleu">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="namazu2Titre">Un séisme, c’est quoi au juste ?</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/diapo2.jpg" class="img-responsive center" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="namazu3" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="namazu3Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content cadreRose">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="namazu3Titre">Le ballet incessant des plaques</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/diapo3.jpg" class="img-responsive center" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="namazu4" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="namazu4Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content cadreVert">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="namazu4Titre">La Méditerranée, une région complexe</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/diapo4.jpg" class="img-responsive center" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="namazu5" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="namazu5Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content cadreBleu">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="namazu5Titre">Des tsunamis sur la Côte d’Azur</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/diapo5.jpg" class="img-responsive center" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="namazu6" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="namazu6Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content cadreRose">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="namazu6Titre">La terre tremble et nous avec</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/diapo6.jpg" class="img-responsive center" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="namazu7" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="namazu7Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content cadreVert">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="namazu7Titre">Une région à risque modéré</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/diapo7.jpg" class="img-responsive center" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="namazu8" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="namazu8Titre" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content cadreJaune">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="namazu8Titre">A l’écoute sismique de la Terre</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/diapo8.jpg" class="img-responsive center" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-5" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-5" data-slide-to="1"></li>
+                                        <li data-target="#carousel-teOcUn-P1-5" data-slide-to="2" class="liQPoints liPoints"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">                               
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Et si on commençait par une expo' ??</p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>L’exposition "Sismicité"</h4>
+                                                <h5>Clique sur les photos pour afficher son contenu</h5>
+                                                <ul class="sansLi noPadding">
+                                                    <li class="col-xs-3 cadreJaune">
+                                                        <a class="namazu1" title="Cliquez-ici pour afficher le contenu" data-target="#namazu1" data-toggle="modal" href="#">
+                                                            <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/miniDiapo1.jpg" class="img-responsive" />
+                                                            <h5>Grande peur sur la Côte d'Azur</h5>
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-xs-3 cadreBleu">
+                                                        <a class="namazu2" title="Cliquez-ici pour afficher le contenu" data-target="#namazu2" data-toggle="modal" href="#">
+                                                            <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/miniDiapo2.jpg" class="img-responsive" />
+                                                            <h5>Un séisme, c’est quoi au juste ?</h5>
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-xs-3 cadreRose">
+                                                        <a class="namazu3" title="Cliquez-ici pour afficher le contenu" data-target="#namazu3" data-toggle="modal" href="#">
+                                                            <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/miniDiapo3.jpg" class="img-responsive" />
+                                                            <h5>Le ballet incessant des plaques</h5>
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-xs-3 cadreVert">
+                                                        <a class="namazu4" title="Cliquez-ici pour afficher le contenu" data-target="#namazu4" data-toggle="modal" href="#">
+                                                            <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/miniDiapo4.jpg" class="img-responsive" />
+                                                            <h5>La Méditerranée, une région complexe</h5>
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-xs-3 cadreBleu">
+                                                        <a class="namazu5" title="Cliquez-ici pour afficher le contenu" data-target="#namazu5" data-toggle="modal" href="#">
+                                                            <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/miniDiapo5.jpg" class="img-responsive" />
+                                                            <h5>Des tsunamis sur la Côte d’Azur</h5>
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-xs-3 cadreRose">
+                                                        <a class="namazu6" title="Cliquez-ici pour afficher le contenu" data-target="#namazu6" data-toggle="modal" href="#">
+                                                            <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/miniDiapo6.jpg" class="img-responsive" />
+                                                            <h5>La terre tremble et nous avec</h5>
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-xs-3 cadreVert">
+                                                        <a class="namazu7" title="Cliquez-ici pour afficher le contenu" data-target="#namazu7" data-toggle="modal" href="#">
+                                                            <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/miniDiapo7.jpg" class="img-responsive" />
+                                                            <h5>Une région à risque modéré</h5>
+                                                        </a>
+                                                    </li>
+                                                    <li class="col-xs-3 cadreJaune">
+                                                        <a class="namazu8" title="Cliquez-ici pour afficher le contenu" data-target="#namazu8" data-toggle="modal" href="#">
+                                                            <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/miniDiapo8.jpg" class="img-responsive" />
+                                                            <h5>A l’écoute sismique de la Terre</h5>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Grande peur sur la Côte d'Azur</h4>
+                                                <p>Mercredi 23 février 1887 à 6h22, le carnaval se termine lorsque soudain le lit oscille, des craquements sinistres se font entendre, un bruit souterrain gronde et se prolonge. Une stupeur immense se rpand, on se lève affolé, on se précipite dans la rue, <strong>c'est un tremblement de terre !</strong></p>
+                                                <div class="col-xs-12 col-sm-4 cadreBleu">
+                                                    <h5 class="noMargin">Carte d'identité du séisme</h5>
+                                                    <p>Magnitude estimée à 6,3<br>Intensité macrosismique : 8<br>Localisation de l'épicentre : Au large des côtes italiennes.<br>Zone touchée : la Ligurie et la Côte d'Azur</p>
+                                                    <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/ligurie1887.jpg" class="img-responsive">
+                                                    <p>Carte macrosismique de la Ligurie de 1887</p>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-6">
+                                                    <div class="col-xs-6 cadreJaune">
+                                                        <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/nice1887.jpg" class="img-responsive">
+                                                        <p>Dans la ville de Nice, la population paniquée se précipite dans les rues malgré le froid. Les omnibus et les tramways sont saturés, on quitte Nice. On dresse des tentes sur les places et même sur la plage.</p>
+                                                    </div>
+                                                    <div class="col-xs-6 cadreJaune">
+                                                        <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/menton1887.jpg" class="img-responsive">
+                                                        <p>&Agrave; Menton, il n'a pas une maison qui n'ait eu à souffrir des secousses.</p>
+                                                    </div>
+                                                    <div class="col-xs-6 cadreJaune">
+                                                        <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/dianoMarina1887.jpg" class="img-responsive">
+                                                        <p>&Agrave; Diano Marina, un tiers de la population est entérré sous les décombres. Une compagnie de chemins de fer expédie des wagons pour y coucher les sisnitrés.</p>
+                                                    </div>
+                                                    <div class="col-xs-6 cadreJaune">
+                                                        <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape5/bussanaVecchia1887.jpg" class="img-responsive">
+                                                        <p>Bussana Vecchia est largement affectée. Sur 820 habitants, 30 sont tués et 27 bléssés. Des cabanes sont alors construites dans les champs environnants pour abriter les villageois sinistrés. Sept ans plus tard, le village est définitivement abandonné et administrativement rayé de la carte. </p>
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                        </div> -->
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Quiz</h4>
+                                                <div id="quizTeOcUn-a-5"></div>                                 
+                                            </div>    
+                                        </div>      
+                                    </div>
+                                </div> 
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-5" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-5" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>           
+                            </div> 
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"41.65,78.3","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"42.65,88.3","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"45.65,75.3","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"48.65,82.3","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"54.65,78.3","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"58.65,76.3","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"59.2,70.3","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="teOcUn-a-6">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"57.9,67.3","tooltip_offset":"-7.7,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Étape 6 - La traque des secousses sismiques</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - La traque des secousses sismiques</h3>
+                                <div id="carousel-teOcUn-P1-6" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-6" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-6" data-slide-to="1" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Mais... comment s'y prendre ?</p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item ">
+                                            <div class="col-xs-12">      
+                                                <h4>Comprendre ce qui se passe à la source et comment on identifie la source qui libère de l’énergie ?</h4>
+                                                <p>On s’intéresse à la rupture des roches solides, soumises à des forces continues qu’elles ne peuvent plus accommoder par leur plasticité.  Ces contraintes accumulées sur de longues périodes de temps vont aboutir à la rupture, à une cassure, à un séisme.</p>
+                                                <h5>Expérience 1.1 : SISMO RUPTURE</h5>
+                                                <h6>Reproduisons le phénomène :</h6>
+                                                <p><u>Du matériel rigide à casser :</u> Lasagne, chocolat, polystyrène (pas de plastique rigide type règle, ou de verre !)</p>
+                                                <ul class="ulPerso">
+                                                    <li>On casse une lasagne, on constate qu’elle casse après avoir appliqué une pression qu’elle ne peut plus accommoder par la déformation.<br/> 
+                                                    Comment enregistrer le moment exact de la cassure ? une vidéo ou un microphone relié à un ordinateur avec logiciel "Audacity" ou un smartphone avec application d’un accéléromètre.</li>
+                                                    <li>On enregistre sur l’écran de l’ordinateur ou du smartphone des vibrations dues à la rupture du matériel rigide suite à une pression continue et progressive exercée sur le matériel rigide<br/>
+                                                    On peut faire varier la rigidité du matériel et montrer qu’il y a un lien direct entre l’amplitude des secousses enregistrées et la rigidité du matériel (chocolat froid et congelé par exemple). Le retour à l’état initial est aussi plus tardif.</li>
+                                                </ul>
+                                                <h5>Expérience 1.2 : SISMO BILLE</h5>
+                                                <h6>Modélisons l’appareil d’enregistrement :</h6>
+                                                <p>Comment enregistrer les vibrations naturelles dues à un séisme ? Comment construire un sismomètre ?</p>
+
+                                                <p><u>Matériel :</u> sismomètres à pendule, placés en fonction de point cardinaux, boussole</p>
+                                                <ul class="ulPerso">
+                                                    <li>Etre capable que la table garde le souvenir d’une secousse. On bouscule la table dans une direction et les sismo billes gardent le souvenir de la direction de la secousse.<br/>
+                                                    On peut aussi enregistrer en continu le mouvement du sol pour détecter le passage de vibrations.<br/>
+                                                    Matériel : aimant, bobine, axe, élastique, ordinateur, audacity</li>
+                                                    <li>Construire un capteur avec la masse et la bobine qui puisse enregistrer une secousse que l’on va provoquer sur la table. Etre capable de fabriquer son propre sismomètre.</li>
+                                                </ul>
+                                                <p>Retour vers le sismomètre installé au collège : une masse qui en vibrant va créer un courant électrique qui est enregistré sur le petit écran de la station. On finit la séance par un ‘big jump’ de la classe qui génère un enregistrement sur la station.
+                                                <br/>On regarde sur les archives de la station les enregistrements  passés. On va trouver un enregistrement ‘naturel’ (personne n’a sauté !). Un séisme s’est produit. Peut on savoir quand, où?</p>
+                                                <p>Il faut en savoir un peu plus sur les secousses qui se propagent... prochaine séance !</p>
+
+                                            </div>      
+                                        </div>
+                                        
+                                    </div>
+                                </div>  
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-6" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-6" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>              
+                            </div> 
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"63.9,67.3","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"64.7,57.3","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"66.7,53.3","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"70.7,50.3","hidden":true}'></div>
+
+                        <div class="marqueur drag1etape-teOcUn-a-7 bloquee" id="teOcUn-a-7">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"73.5,46.8","tooltip_offset":"-5.5,7","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                                <!-- <i class="fa fa-gamepad"></i>
+                                <div>
+                                    <img class="etoilePleine jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                    <img class="etoileVide jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsVide.svg" alt="Etoile vide" />
+                                </div> -->
+                            </div>
+                            <div class="HE_Tooltip">Étape 7 - La traque des ondes sismiques</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - La traque des ondes sismiques</h3>
+                                <div id="carousel-teOcUn-P1-7" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-teOcUn-a-7" class="displayNone">
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1"><span>20</span> points</p>
+                                    </div> 
+                                    <div id="solution-teOcUn-a-7" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--teOcUn-a-7" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="solution--teOcUn-a-7">Solution</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <h5>1ère étape</h5>
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape7/solution1.png" alt="" />
+                                                    <h5>2nd étape</h5>
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape7/solution2.png" alt="" />
+                                                    <h5>3ième étape</h5>
+                                                    <div class="teOcUn-a-7-clic-solution cadreRose">Saint Paul en baye</div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-7" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-7" data-slide-to="1"></li>
+                                        <li data-target="#carousel-teOcUn-P1-7" data-slide-to="2"></li>
+                                        <li data-target="#carousel-teOcUn-P1-7" data-slide-to="3" class="liPoints liJ1Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>En gros, c'est un peu comme une enquête, non ?</p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Comment se propagent les ondes sismiques créées au foyer sismique ?</h4>
+                                                <p>Quand je regarde le sismomètre de l’école, on voit qu’on enregistre des vibrations. Ces vibrations sont des ondes sismiques qui se propagent dans la Terre et qui font vibrer le sol. Elles peuvent avoir fait beaucoup de chemin depuis le foyer du séisme avant d’arriver chez nous. Comment savoir la distance qu’elles ont parcourue.</p>
+                                                <h5>Expérience 2.1 - SISMO VITESSE : la vitesse des ondes sismiques</h5>
+                                                <p>Peut-on calculer la vitesse des ondes sismiques ? Est-ce que cette vitesse est toujours la même suivant les régions traversées (est ce que l’on peut accélérer  ou ralentir les ondes) ?</p>
+                                                <p><u>Matériel :</u> Paire de piézos, ordinateur, audacity et diverses barres de matériau de densité différente (polystyrène, bois, frite piscine, barre métallique).</p>
+                                                <ul class="ulPerso">
+                                                    <li>On met en place un dispositif permettant d’évaluer le temps de parcours des ondes entre les deux piézos.<br/>
+                                                        Les ondes sismiques vont vite et leur amplitude s’atténue en se propageant. Les ondes peuvent être légèrement accélérées dans certains matériaux, ralenties dans d’autres.
+                                                    </li>
+                                                </ul>
+                                                <h5>Expérience 2.2 - SISMO EPICENTRE : Où se cache l’épicentre ?</h5>
+                                                <p>Essayons de faire une expérience dans la classe pour localiser l’épicentre d’un séisme artificiel.</p> 
+                                                <p><u>Matériel :</u> plusieurs paires de piézos, autant de pc avec audacity.</p>
+                                                <ul class="ulPerso">
+                                                    <li>On installe un piézo 1 près de l’épicentre choisi et l’autre piézo  2 plus loin. On provoque un choc près des piezos 1. Chaque groupe d’élève calcule le temps mis aux ondes pour aller du piézos 1 à 2 et vient l’écrire au tableau. De ce tableau, à l’aide de médiatrices on va localiser le point probable du choc. </li>
+                                                    <li>On enchaine sur un même travail sur de réelles données pour un séisme région enregistré par l’école et d’autres stations. Educarte ou carte papier avec stations indiquées, sismogrammes sur papier ou numérique.</li>
+                                                </ul>
+                                            </div>    
+                                        </div>          
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h5>Echelle de Richter</h5>
+                                                <p>Afin d'estimer la puissance des séismes, le sismologue Richter introduisît la notion de magnitude. Elle correspond à l'énergie libérée au foyer du séisme et dépend de la longueur de la faille activée et de l'importance du déplacement. </p>
+                                                <table class="table table-hover cadreBlanc">
+                                                    <caption>Echelle de Richter</caption>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Magnitude</th>
+                                                            <th>Effets du tremblement de terre</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>&lt; 3,5</td>
+                                                            <td>Le séisme est non ressenti, mais enregistré par les sismographes</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>3,5 - 5,4</td>
+                                                            <td>Il est souvent ressenti, mais sans dommage</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>5,4 - 6</td>
+                                                            <td>Légers dommages aux bâtiments bien construits, mais peut causer des dommages majeurs à d'autres bâtisses</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>6,1 - 6,9</td>
+                                                            <td>Peut être destructeur dans une zone de 100 km à la ronde</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>7 - 7,9</td>
+                                                            <td>Tremblement de terre majeur. Il peut causer de sérieux dommages sur une large surface</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>&gt; 8</td>
+                                                            <td>C'est un très fort séisme pouvant causer de très grands dommages dans des zones de plusieurs centaines de kilomètres</td>
+                                                        </tr>
+                                                    </tbody>
+                                              </table>
+                                              <h5>Echelle MSK</h5>
+                                              <p>La magnitude ne doit pas être confondue avec l'intensité qui est estimée à partir des effets produits en surface. Pour l'évaluer, on utilise l'échelle MSK dont le nom provient de ses inventeurs Medvedev, Sponheuer et Kamik en 1964.</p>
+                                              <table class="table table-hover cadreBlanc">
+                                                    <caption>Echelle MSK</caption>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th>Intensité</th>
+                                                            <th>Effets produits en surface</th>
+                                                        </tr>
+                                                    <tr>
+                                                        <td>Degré 1</td>
+                                                        <td>Secousse non perceptible</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 2</td>
+                                                        <td>Secousse à peine perceptible</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 3</td>
+                                                        <td>Secousse faible ressentie seulement de façon partielle</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 4</td>
+                                                        <td>Secousse largement ressentie</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 5</td>
+                                                        <td>Réveil des dormeurs</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 6</td>
+                                                        <td>Frayeur</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 7</td>
+                                                        <td>Dommages aux constructions</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 8</td>
+                                                        <td>Destruction des bâtiments</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 9</td>
+                                                        <td>Dommages généralisés aux constructions</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 10</td>
+                                                        <td>Destruction générale des bâtiments</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 11</td>
+                                                        <td>Catastrophe</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Degré 12</td>
+                                                        <td>Changement de paysage</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+                                            <p>Source : <a href="http://www-tamaris.cea.fr/html/fr/notions/echelles.php" title="Accéder au site internet">Laboratoire d'Etudes de Mécanique SIsmique (EMSI)</a></p> 
+
+                                            </div>
+                                        </div>
+
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>L'enquête macrosismique</h4>
+                                                <p>Le 26 février 2012, à 23h30, la région niçoise a connu un séisme d’intensité modérée. Cependant, beaucoup de personnes ont ressenti les vibrations.<br/>En effet, le tremblement de terre s’étant déclarée en fin de soirée, la population se trouvait chez elle dans un environnement calme.</p>
+                                                <p>Te voici dans la peau des enquêteurs. Le recueil des témoignages doit te permettre de localiser l’épicentre. Pour cela, tu dois réaliser une carte d’intensité :</p>
+                                                <ul class="ulPerso">
+                                                    <li>En classant les témoignages par intensité selon l’échelle MSK.</li>
+                                                    <li>En plaçant les témoignages sur une carte.</li>
+                                                    <li>En regroupant les témoignages de même intensité dans une seule zone.</li>
+                                                </ul>
+                                                <div class="etape1"> 
+                                                    <h5>1- L’analyse et le tri des témoignages</h5>
+                                                    <p>Pour chaque ligne, associe un degré d’intensité en déposant la bonne valeure dans la bonne case (Tu as leurs définitions sur la page précédente).</p>
+                                                    <ul class="sansPuce positionRelative col-xs-12 col-sm-8 col-md-4 center">
+                                                        <li class="col-xs-1 col-sm-2">
+                                                            <a class="teOcUn-a-7-drag1-2" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousses faiblement ressenties, balancement des objets suspendus">3</a>
+                                                            <a class="teOcUn-a-7-drag1-2" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousses faiblement ressenties, balancement des objets suspendus">3</a>
+                                                            <a class="teOcUn-a-7-drag1-2" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousses faiblement ressenties, balancement des objets suspendus">3</a>
+                                                            <a class="teOcUn-a-7-drag1-2" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousses faiblement ressenties, balancement des objets suspendus">3</a>
+                                                            <a class="teOcUn-a-7-drag1-2" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousses faiblement ressenties, balancement des objets suspendus">3</a>
+                                                            <a class="teOcUn-a-7-drag1-2" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousses faiblement ressenties, balancement des objets suspendus">3</a>
+                                                            <a class="teOcUn-a-7-drag1-2" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousses faiblement ressenties, balancement des objets suspendus">3</a>
+                                                            <a class="teOcUn-a-7-drag1-2" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousses faiblement ressenties, balancement des objets suspendus">3</a>
+                                                            <a class="teOcUn-a-7-drag1-2" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousses faiblement ressenties, balancement des objets suspendus">3</a>
+                                                        </li>
+                                                        <li class="col-xs-1 col-sm-2">
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>                                                        
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>         
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>
+                                                            <a class="teOcUn-a-7-drag1-3" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse largement ressenties dans et hors des habitations, tremblement des objets">4</a>                                                        
+                                                        </li>
+                                                        <li class="col-xs-1 col-sm-2">
+                                                            <a class="teOcUn-a-7-drag1-4" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse forte, réveil des dormeurs, chute d'objets, parfois légères fissures dans les plâtres">5</a>
+                                                            <a class="teOcUn-a-7-drag1-4" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse forte, réveil des dormeurs, chute d'objets, parfois légères fissures dans les plâtres">5</a>
+                                                            <a class="teOcUn-a-7-drag1-4" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse forte, réveil des dormeurs, chute d'objets, parfois légères fissures dans les plâtres">5</a>             
+                                                            <a class="teOcUn-a-7-drag1-4" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Secousse forte, réveil des dormeurs, chute d'objets, parfois légères fissures dans les plâtres">5</a>
+                                                        </li>
+                                                        <li class="col-xs-1 col-sm-2">
+                                                            <a class="teOcUn-a-7-drag1-5" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Légers dommages, parfois fissures dans les murs, frayeur de nombreuses personnes">6</a>
+                                                            <a class="teOcUn-a-7-drag1-5" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Légers dommages, parfois fissures dans les murs, frayeur de nombreuses personnes">6</a>
+                                                            <a class="teOcUn-a-7-drag1-5" title="" data-placement="bottom" data-toggle="tooltip" data-original-title="Légers dommages, parfois fissures dans les murs, frayeur de nombreuses personnes">6</a>                                                        
+                                                        </li>
+                                                    </ul>
+                                                    <br/>
+                                                    <table class="table table-hover cadreBlanc marginTop35">
+                                                        <thead>
+                                                            <tr>
+                                                                <th class="etape2">Latitude</th>
+                                                                <th class="etape2">Longitude</th>
+                                                                <th>Témoignage</th>
+                                                                <th>intensité</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td class="etape2">44,28°</td>
+                                                                <td class="etape2">6,57°</td>
+                                                                <td>On était au restaurant et on terminait notre raclette quand les objets accrochés au murs se sont balancés et un vieux ski s'est décroché. Heureusement que personne n'était dessous.</td>
+                                                                <td class="teOcUn-a-7-drop1-3"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">43,68°</td>
+                                                                <td class="etape2">7,23°</td>
+                                                                <td>J'ai très bien senti mon siège bouger pendant quelques secondes. Ma lampe de chevet s'est mise à remuer. Ca faisait bouger la lumière, Sur le coup j'ai pas trop compris.</td>
+                                                                <td class="teOcUn-a-7-drop1-2"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">43,70°</td>
+                                                                <td class="etape2">6,99°</td>
+                                                                <td>Moi j'ai rien senti mais ma mère était effrayée en sentant le fauteuil bouger. Je n'étais sûr de rien et c'est en voyant les infos le matin que j'ai compris.</td>
+                                                                <td class="teOcUn-a-7-drop1-2"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">44,08°</td>
+                                                                <td class="etape2">7,10°</td>
+                                                                <td>Mon lit a tremblé et je me suis vite réveillé. La porte de ma chambre s'est ouverte. J'ai eu très peur. Un vase a été cassé. J'ai eu peur pour mon chat.</td>
+                                                                <td class="teOcUn-a-7-drop1-3"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">44,22°</td>
+                                                                <td class="etape2">6,94°</td>
+                                                                <td>Je me suis réveillé à cet heure mais je ne sais pas pourquoi. C'est le matin par les informations que j'ai compris. Les cadres sur mon murs était de travers. D'après mon fils, tout a tremblé très fort. Mais il n'y a aucun dégât.</td>
+                                                                <td class="teOcUn-a-7-drop1-3"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">44,38°</td>
+                                                                <td class="etape2">6,63°</td>
+                                                                <td>J'étais dehors quand j'ai entendu en grand claquement et tout s'est mis à trembler pendant ce que j'ai cru être 2 minutes. On m'a dit que cela n'avait duré que quelques secondes. N'empêche que j'ai vu des tuiles tomber.</td>
+                                                                <td class="teOcUn-a-7-drop1-4"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">44,57°</td>
+                                                                <td class="etape2">6,68°</td>
+                                                                <td>Mes skis qui étaient appuyés au mur sont tombés et la vaisselle qui séchait s'est cassée. Cela m'a réveillé et je ne réalisait pas ce qui se passait. J'ai eu très peur après.</td>
+                                                                <td class="teOcUn-a-7-drop1-4"></td>
+                                                            </tr>  
+                                                            <tr>
+                                                                <td class="etape2">44,87°</td>
+                                                                <td class="etape2">6,63°</td>
+                                                                <td>Les tableaux de mon mur ont bougé mais mon frère n'a rien senti.</td>
+                                                                <td class="teOcUn-a-7-drop1-2"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">44,06°</td>
+                                                                <td class="etape2">6,17°</td>
+                                                                <td>Je jouais aux jeux vidéos quand mon téléviseur a bougé et après ma lampe et tout ensemble.</td>
+                                                                <td class="teOcUn-a-7-drop1-2"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">44,11°</td>
+                                                                <td class="etape2">6,92°</td>
+                                                                <td>J'étais avac ma mère devant la télé quand les vitres se sont mises à vibrer. Les murs ont tremblé et j'ai dis à maman de venir s'abriter sous la table.</td>
+                                                                <td class="teOcUn-a-7-drop1-3"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">43,95°</td>
+                                                                <td class="etape2">6,89°</td>
+                                                                <td>J'étais dans la cuisine quand mes couverts se sont mis à trembler et quelques assiettes sont tombées dans l'évier.</td>
+                                                                <td class="teOcUn-a-7-drop1-2"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">44,52°</td>
+                                                                <td class="etape2">6,74°</td>
+                                                                <td>Je regardais la télé quand mes vitres ont tremblé et des verres sont tombés de l'étagère. Le matin, j'ai vu que ma cheminée était cassé et menaçait de s'éffondrer. La maison de mon voisin a elle aussi été touchée, une grosse fissure parcours sa façade. </td>
+                                                                <td class="teOcUn-a-7-drop1-5"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">44,56°</td>
+                                                                <td class="etape2">6,49°</td>
+                                                                <td>J'étais dehors et totu a semblé silencieux puis j'ai ressenti des vibration dans le sol.</td>
+                                                                <td class="teOcUn-a-7-drop1-3"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="etape2">43,97°</td>
+                                                                <td class="etape2">7,31°</td>
+                                                                <td>Mon père était dans sa chambre quand il est sorti en courant en nous disant de nous mettre à l'abris. J'ai alors senti tout bouger et faire du bruit.</td>
+                                                                <td class="teOcUn-a-7-drop1-2"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="etape2">
+                                                    <h5>2- Géolocalisation des témoignages</h5>
+                                                    <p>&Agrave; partir du tableau, déplace les pastilles sur la carte à partir des coordonnées géographiques renseignées.</p>
+                                                    <div class="row-same-height row-full-height">
+                                                        <table class="table table-hover cadreBlanc col-md-height col-lg-height col-full-height text-center">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Latitude</th>
+                                                                    <th>Longitude</th>
+                                                                    <th>Intensité</th>
+                                                                    <th>Marqueur</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="etape2">44,28°</td>
+                                                                    <td class="etape2">6,57°</td>
+                                                                    <td><span class="intensite4">4</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-0">1</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">43,68°</td>
+                                                                    <td class="etape2">7,23°</td>
+                                                                    <td><span class="intensite3">3</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-1">2</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">43,70°</td>
+                                                                    <td class="etape2">6,99°</td>
+                                                                    <td><span class="intensite3">3</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-2">3</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">44,08°</td>
+                                                                    <td class="etape2">7,10°</td>
+                                                                    <td><span class="intensite4">4</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-3">4</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">44,22°</td>
+                                                                    <td class="etape2">6,94°</td>
+                                                                    <td><span class="intensite4">4</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-4">5</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">44,38°</td>
+                                                                    <td class="etape2">6,63°</td>
+                                                                    <td><span class="intensite5">5</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-5">6</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">44,57°</td>
+                                                                    <td class="etape2">6,68°</td>
+                                                                    <td><span class="intensite5">5</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-6">7</span></td>
+                                                                </tr>  
+                                                                <tr>
+                                                                    <td class="etape2">44,87°</td>
+                                                                    <td class="etape2">6,63°</td>
+                                                                    <td><span class="intensite3">3</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-7">8</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">44,06°</td>
+                                                                    <td class="etape2">6,17°</td>
+                                                                    <td><span class="intensite3">3</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-8">9</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">44,11°</td>
+                                                                    <td class="etape2">6,91°</td>
+                                                                    <td><span class="intensite4">4</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-9">10</span></td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td class="etape2">43,95°</td>
+                                                                    <td class="etape2">6,89°</td>
+                                                                    <td><span class="intensite3">3</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-10">11</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">44,52°</td>
+                                                                    <td class="etape2">6,74°</td>
+                                                                    <td><span class="intensite6">6</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-11">12</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">44,56°</td>
+                                                                    <td class="etape2">6,49°</td>
+                                                                    <td><span class="intensite4">4</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-12">13</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="etape2">43,97°</td>
+                                                                    <td class="etape2">7,31°</td>
+                                                                    <td><span class="intensite3">3</span></td>
+                                                                    <td><span class="teOcUn-a-7-drag2-13">14</span></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="col-xs-height col-md-height col-sm-height col-lg-height col-full-height ">
+                                                            <ul class="sansPuce positionRelative carto noPadding">
+                                                                <li class="teOcUn-a-7-drop2-0"></li>
+                                                                <li class="teOcUn-a-7-drop2-1"></li>
+                                                                <li class="teOcUn-a-7-drop2-2"></li>
+                                                                <li class="teOcUn-a-7-drop2-3"></li> 
+                                                                <li class="teOcUn-a-7-drop2-4"></li>
+                                                                <li class="teOcUn-a-7-drop2-5"></li>
+                                                                <li class="teOcUn-a-7-drop2-6"></li>
+                                                                <li class="teOcUn-a-7-drop2-7"></li>
+                                                                <li class="teOcUn-a-7-drop2-8"></li>
+                                                                <li class="teOcUn-a-7-drop2-9"></li>
+                                                                <li class="teOcUn-a-7-drop2-10"></li>
+                                                                <li class="teOcUn-a-7-drop2-11"></li>
+                                                                <li class="teOcUn-a-7-drop2-12"></li>
+                                                                <li class="teOcUn-a-7-drop2-13"></li>
+                                                            </ul>    
+                                                        </div>
+                                                    </div>                                         
+                                                </div>
+                                                <div class="etape3">
+                                                    <h5>3- Indique quelle localité était la plus proche de l’épicentre de ce séisme en Cliquant dessus.</h5>
+                                                    <ul class="sansLi col-xs-12">
+                                                        <li class="teOcUn-a-7-clic-0 cadreOrange">Nice<br/><div class="txtRouge">Faux !</div></li>
+                                                        <li class="teOcUn-a-7-clic-1 cadreJaune">Dignes<br/><div class="txtRouge">Faux !</div></li>
+                                                        <li class="teOcUn-a-7-clic-2 cadreRose">Saint Paul en baye<br/><div class="txtVert">Bonne réponse ! :D</div></li>
+                                                        <li class="teOcUn-a-7-clic-3 cadreVert">Jausier<br/><div class="txtRouge">Faux !</div></li>
+                                                        <li class="teOcUn-a-7-clic-4 cadreBleu">Vars<br/><div class="txtRouge">Faux !</div></li>
+                                                        <li class="teOcUn-a-7-clic-5 cadreRouge">Barcelonnette<br/><div class="txtRouge">Faux !</div></li>
+                                                    </ul>                                             
+                                                    <div class="col-xs-12 noPadding">
+                                                        <h6>Voici une carte qui illustre les différentes intensitées sismiques traitées dans cet exercice</h6>
+                                                        <img alt="" src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/etape7/fin.png" class="cadreBlanc img-responsive fin col-xs-12 col-md-4">  
+                                                    </div>   
+                                                </div>
+                                                <div class="jeuBtn">
+                                                    <span class="solutionBtn" data-toggle="modal" data-target="#solution-teOcUn-a-7">
+                                                        <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-7" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-7" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div>
+                        </div>     
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"81.5,48.8","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="teOcUn-a-8">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"83.1,45.9","tooltip_offset":"-6,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Étape 8 - La danse des batîments</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - La danse des batîments</h3>
+                                <div id="carousel-teOcUn-P1-8" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-8" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-8" data-slide-to="1" ></li>
+      <!--                                   <li data-target="#carousel-teOcUn-P1-8" data-slide-to="2" ></li>
+                                        <li data-target="#carousel-teOcUn-P1-8" data-slide-to="3" ></li>
+                                        <li data-target="#carousel-teOcUn-P1-8" data-slide-to="4" ></li> -->
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>&Agrave; choisir, je préfère que mon immeuble soit fan de slow plutôt que de dubstep</p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Comment la surface sur laquelle nous vivons bouge ? Quelles conséquences pour nos maisons ?</h4>
+                                                <p>Les ondes sismiques créées lors du séisme se propagent partout et font vibrer la surface terrestre là où nous vivons. Y a-t-il un danger pour nos bâtiments... les grands, les petits ?</p>
+                                                <h5>Expérience 3.1 :  SISMO SECOUSSE</h5>
+                                                <p>Soit des bâtiments de hauteur différente. Comment se comportent-ils quand on les secoue.</p>
+                                                <ul class="ulPerso">
+                                                    <li>On fait varier la fréquence du mouvement de cisaillement du modèle et on voit que ce ne sont pas les mêmes bâtiments qui vibrent. On essaie de trouver la raison … la façon dont on fait vibrer (rapidement ou plus lentement)  le modèle. On met en évidence un lien entre hauteur du bâtiment et fréquence de vibration.</li>
+                                                </ul>
+                                                <h5>Expérience 3.2 : SISMO TABLE</h5>
+                                                <p>Essayons de construire une table vibrante pour aller plus loin.</p>
+                                                <p><u>Matériel :</u> table vibrante de la mallette, spaghettis et maison.</p>
+                                                <ul class="ulPerso">
+                                                    <li>On met en évidence le phénomène de résonnance des bâtiments. On peut chercher à faire varier des facteurs : renforcer les bâtiments, alourdir des étages, poser le bâtiments sur un sol mou (liquéfaction).<br/>On peut revenir sur des enregistrements réels sur Nice et montrer que dans chaque quartier les vibrations n’ont pas la même amplitude pour un même séisme. Donc les bâtiments ne bougeront pas de la même façon.</li>
+                                                </ul>
+                                            </div>                         
+                                        </div>
+     <!--                                    <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>                                                                          
+                                        </div>
+                                        <div class="item">
+                                             <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>                                          
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>  
+                                        </div>  -->     
+                                    </div>
+                                </div>    
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-8" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-8" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>           
+                            </div> 
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"85.5,48.8","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"91.5,48.8","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"91.2,53.8","hidden":true}'></div>
+
+                        <div class="marqueur bloquee" id="teOcUn-a-9">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"91.3,58","tooltip_offset":"-7,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Étape 9<br/>Analyse des données</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - Analyse des données</h3>
+                                <div id="carousel-teOcUn-P1-9" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-9" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-9" data-slide-to="1" ></li>
+                                        <li data-target="#carousel-teOcUn-P1-9" data-slide-to="2" ></li>
+                                        <li data-target="#carousel-teOcUn-P1-9" data-slide-to="3" ></li>
+                                        <li data-target="#carousel-teOcUn-P1-9" data-slide-to="4" ></li>
+                                        <li data-target="#carousel-teOcUn-P1-9" data-slide-to="5" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Titre</p>
+                                                </div>
+                                            </div>                                   
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>    
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>    
+                                        </div>   
+                                    </div>
+                                </div>           
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-9" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-9" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div> 
+                        </div>     
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"87.7,61.8","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"87.7,65.8","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"89.7,72.8","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"90.2,78.8","hidden":true}'></div>
+
+                        <div class="marqueur drag1etape-teOcUn-a-10 bloquee" id="teOcUn-a-10">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"92.6,80","tooltip_offset":"-4.5,7","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                               <!--  <i class="fa fa-users"></i>
+                                <div>
+                                    <img class="etoilePleine jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                    <img class="etoileVide jeu1" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsVide.svg" alt="Etoile vide" />
+                                </div> -->
+                            </div>
+                            <div class="HE_Tooltip">Étape 10 - Les métiers</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - Les métiers</h3>
+                                <div id="carousel-teOcUn-P1-10" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-teOcUn-a-10" class="displayNone" data-animation="animated flipInY">
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1">Tu remportes <u><span>20</span> points</u></p>
+                                    </div> 
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-10" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-10" data-slide-to="1"></li>
+                                        <li data-target="#carousel-teOcUn-P1-10" data-slide-to="2"></li>
+                                        <li data-target="#carousel-teOcUn-P1-10" data-slide-to="3"></li>
+                                        <li data-target="#carousel-teOcUn-P1-10" data-slide-to="4"></li>
+                                        <li data-target="#carousel-teOcUn-P1-10" data-slide-to="5" class="liPoints liJ1Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">      
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Quels sont les métiers en lien avec ce parcours scientifique ?</p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                            <div  class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div  class="col-xs-12">
+                                                <h4>xxx</h4>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>   
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-10" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-10" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>   
+                            </div>  
+                        </div>   
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"95.2,86.8","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"95,90.8","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"92.2,92.8","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"86.2,90.8","hidden":true}'></div>
+
+                        <div class="marqueur derniereEtape bloquee" id="teOcUn-a-11">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"75,92","tooltip_offset":"-3,7","panel_pos":"0.4,0.9"}'>
+                                <i class="jeuQuizFinal fa fa-trophy"></i>
+                               <!--  <i class="fa fa-trophy"></i>
+                                <div>
+                                    <img class="etoilePleine jeuQuiz" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                    <img class="etoileVide jeuQuiz" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsVide.svg" alt="Etoile vide" />
+                                </div>      -->                       
+                            </div>
+                            <div class="HE_Tooltip">Étape 11 - Quiz / Passeport "Sismologue junior"</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Terre solide - Quiz / Passeport "Sismologue junior"</h3>
+                                <div id="carousel-teOcUn-P1-11" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-Q-teOcUn-a-11" class="displayNone" data-animation="animated flipInY">
+                                        <p>Tu viens de terminer le parcours, bien joué !</p>
+                                        <p class="pointsXP pointsJeuQ"><span>30</span> points</p>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-teOcUn-P1-11" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-teOcUn-P1-11" data-slide-to="1" class="liPoints liQPoints"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">      
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Un petit quiz pour terminer en beauté !</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">    
+                                            <div class="col-xs2 col-sm-12 -xs2 col-sm-12 col-md-12">
+                                                <h4>Quiz du parcours "Océan : Observation et découverte"</h4>
+                                                <div id="quizTeOcUn-a-11"></div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-teOcUn-P1-11" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-teOcUn-P1-11" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>             
+                            </div>  
+                        </div>     
+                    </div> 
+                    <img src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/parcours-terre-1-cache1.png" data-animation="animated fadeIn" class="img-cache-teOcUn-a1 delay3" />
+                    <img src="++resource++unice.medites.images/parcours-pedagogiques/terre-ocean-univers/terre/p1/parcours-terre-1-cache2.png" data-animation="animated fadeIn" class="img-cache-teOcUn-a2 delay3" />
+                    <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-full')"
+                         tal:attributes="src maVariable/url; alt string:Image représentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                         tal:condition="context/image_principale" />    
+                </section>
+                <script src="++resource++unice.medites.javascripts/libs/terre.js"></script>  
+                <script src="++resource++unice.medites.javascripts/libs/parcours.js"></script>  
+                <script src="++resource++unice.medites.javascripts/libs/jQuiz/jQuizMe-2.2.1.js"></script> 
+                <metal:block use-macro="context/medites_macros/macros/parcours" />
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+            </metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

@@ -1,0 +1,127 @@
+@import "nuancier";
+
+/*** ICONES ************************************************************************************/
+
+nav#navigation_globale ul.navbar-nav > li > a,
+footer .portletNavigationTree ul > li > a,
+
+.contenttype-document,
+.contenttype-event,
+.contenttype-folder,
+.contenttype-link,
+.contenttype-news-item,
+.contenttype-plone-site,
+.contenttype-collection,
+.contenttype-topic,
+.contenttype-file,
+.contenttype-image,
+.contenttype-atsuccessstoryfolder,
+
+dl.portlet.portletTwitterPortlet .portletHeader a,
+dl.portlet.portletFlickr .portletHeader span,
+dl.portlet.portletVimeo .portletHeader span,
+
+body.section-filuns #portal-column-two .portletNavigationTree li.section-agenda a {
+    &:before {
+        .fontAwesome();
+    }
+}
+
+/*******************************************************************************/
+
+#portal-column-one .portlet.portletNavigationTree>.portletItem>.navTree>li>a,
+#portal-column-two .portlet.portletNavigationTree>.portletItem>.navTree>li>a,
+
+body.section-filuns #portal-column-two .portletNavigationTree li.section-agenda a {
+    &:after {
+        .fontAwesome();
+    }
+}
+
+
+/*******************************************************************************/
+
+nav#navigation_globale ul.navbar-nav > li {
+    &:nth-child(1) > a:before  {
+        content: "\f013";
+    }
+    &:nth-child(2) > a:before  {
+        content: "\f064";
+    }
+    &:nth-child(3) > a:before  {
+        content: "\f0c0";
+    }
+    &:nth-child(4) > a:before  {
+        content: "\f00b";
+    }
+}
+
+/*******************************************************************************/
+
+.contenttype-document:before {
+    content: "\f0f6";
+}
+.contenttype-event:before {
+    content: "\f133";
+}
+.contenttype-folder:before {
+    content: "\f115";
+}
+.contenttype-link:before {
+    content: "\f0c1";
+}
+.contenttype-news-item:before {
+    content: "\f006";
+}
+.contenttype-collection:before {
+    content: "\f002";
+}
+.contenttype-file:before {
+    content: "\f016";
+}
+.contenttype-image:before {
+    content: "\f03e";
+}
+.contenttype-atsuccessstoryfolder:before {
+    content: "\f005";
+}
+
+/*******************************************************************************/
+
+dl.portlet.portletTwitterPortlet .portletHeader a:before {
+    content: "\f099";
+}
+dl.portlet.portletFlickr .portletHeader span:before {
+    content: "\f030";
+}
+dl.portlet.portletVimeo .portletHeader span:before {
+    content: "\f03d";
+}
+
+/*******************************************************************************/
+
+#portal-column-one .portlet.portletNavigationTree>.portletItem>.navTree>li>a:after,
+#portal-column-two .portlet.portletNavigationTree>.portletItem>.navTree>li>a:after {
+    //content: "\f054";
+}
+
+/*******************************************************************************/
+
+body.section-filuns #portal-column-two .portlet.portletNavigationTree li.section-agenda a:before {
+    content: "\f073";
+}
+body.section-filuns #portal-column-two .portlet.portletNavigationTree li.section-agenda a:after {
+    content: "\f105";
+}
+
+/*******************************************************************************/
+
+body.userrole-anonymous .portletNavigationTree .navTree li a:before {
+    display: none;
+}
+
+/*******************************************************************************/
+.portletEventsContainer h3:before {
+    content: "\f105";
+    }
+

@@ -1,0 +1,67 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.espe">
+
+    <include package="plone.app.contentmenu"/>
+
+    <!-- #################################################################### -->
+    <!-- ### PAGE TEMPLATES ################################################# -->
+    <!-- #################################################################### -->
+
+    <!-- <browser:page
+        name="espe_macro"
+        for="*"
+        permission="zope2.View"
+        template="espe_macro.pt"/> -->
+
+    <!-- TEMPLATE 1 -->
+    <!-- <browser:page
+        name="template1_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".espe.ESPE"
+        template="template1_folderview.pt"/>
+    <browser:page
+        name="template1_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".espe.ESPE"
+        template="template1_collectionview.pt"/>
+    <browser:page
+        name="template1_macro"
+        for="*"
+        permission="zope2.View"
+        template="template1_macro.pt"/> -->
+
+    <!-- #################################################################### -->
+    <!-- ### MENUS AFFICHAGE ################################################ -->
+    <!-- #################################################################### -->
+
+    <browser:menuItems
+        for="plone.app.collection.interfaces.ICollection"
+        menu="plone_displayviews">
+
+    <!-- <browser:menuItem
+        title="Template n°1"
+        action="template1_view"/> -->
+
+    </browser:menuItems>
+
+    <!-- #################################################################### -->
+    <!-- ### CSS, JS & IMG ################################################## -->
+    <!-- #################################################################### -->
+
+    <browser:resourceDirectory
+        name="unice.espe.stylesheets"
+        directory="stylesheets"/>
+
+    <browser:resourceDirectory
+        name="unice.espe.javascripts"
+        directory="javascripts"/>
+
+    <browser:resourceDirectory
+        name="unice.espe.images"
+        directory="images"/>
+
+</configure>

@@ -1,0 +1,94 @@
+div.portlet.portletActualite_Evenement {
+    margin-bottom: 10px;
+}
+
+div.portlet.portletActualite_Evenement .nav-tabs {
+    border: 1px solid #DDD;
+    border-bottom-width: 0;
+    background-color: #006FA4;
+}
+
+div.portlet.portletActualite_Evenement .nav-tabs > li > a {
+    border: 0;
+    background-color: #006FA4;
+    color: #FFF;
+    border-radius: 0;
+}
+div.portlet.portletActualite_Evenement .nav-tabs > .active > a {
+    background-color: #004C71;
+}
+
+div.portlet.portletActualite_Evenement .tab-content {
+    padding: 5px;
+    border-radius: 0;
+}
+
+div.portlet.portletActualite_Evenement p.discreet {
+    margin: 0;
+}
+
+div.portlet.portletActualite_Evenement .thumb_link {
+    display: block;
+    float: left;
+    width: 80px;
+}
+div.portlet.portletActualite_Evenement .details_link {
+    margin-left: 85px;
+    display: block;
+    text-decoration: none !important;
+}
+
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_titre,
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_date,
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_location {
+    display: block;
+    color: #000;
+    text-align: center;
+}
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_titre {
+    background-color: #004C71;
+    color: #FFF;
+    padding: 10px 5px;
+    margin-top: -5px;
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-bottom: 5px;
+}
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_date,
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_location {
+    line-height: 40px; /* 80/2 */
+}
+div.portlet.portletActualite_Evenement .no_location .dossier_actu_evenement_date {
+    line-height: 80px;
+}
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_location {
+    border-top: 1px solid #006FA4;
+}
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_desc {
+    margin: 0;
+    margin-top: 5px;
+}
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_desc a {
+    text-decoration: none !important;
+}
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_desc a small {
+    color: #666;
+}
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_desc a span {
+    display: block;
+}
+
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_tout {
+    margin-top: 15px;
+    margin-left: -5px;
+    margin-right: -5px;
+    margin-bottom: -5px;
+    background-color: #006FA4;
+}
+div.portlet.portletActualite_Evenement .dossier_actu_evenement_tout a {
+    display: block;
+    text-align: center;
+    padding: 5px;
+    color: #FFF;
+    text-decoration: none !important;
+}

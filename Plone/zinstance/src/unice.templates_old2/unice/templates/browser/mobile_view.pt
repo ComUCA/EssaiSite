@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+
+        <meta charset="utf-8">
+        <title>UNS</title>
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="++theme++ThemeUNS/assets/ico/apple-touch-icon-144-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="++theme++ThemeUNS/assets/ico/apple-touch-icon-114-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="++theme++ThemeUNS/assets/ico/apple-touch-icon-72-precomposed.png" />
+        <link rel="apple-touch-icon-precomposed" href="++theme++ThemeUNS/assets/ico/apple-touch-icon-57-precomposed.png" />
+        <link rel="assets/ico/apple-touch-startup-image" href="++theme++ThemeUNS/assets/ico/apple-touch-startup-image-iphone.png" media="(device-width: 320px)" />
+        <link rel="assets/ico/apple-touch-startup-image" href="++theme++ThemeUNS/assets/ico/apple-touch-startup-image-iphone-retina.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)" />
+        <link rel="assets/ico/apple-touch-startup-image" href="++theme++ThemeUNS/assets/ico/apple-touch-startup-image-ipad-portrait.png" media="(device-width: 768px) and (orientation: portrait)" />
+        <link rel="assets/ico/apple-touch-startup-image" href="++theme++ThemeUNS/assets/ico/apple-touch-startup-image-ipad-landscape.png" media="(device-width: 768px) and (orientation: landscape)" />
+        <link rel="assets/ico/apple-touch-startup-image" href="++theme++ThemeUNS/assets/ico/apple-touch-startup-image-ipad-portrait-retina.png" media="(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" />
+        <link rel="assets/ico/apple-touch-startup-image" href="++theme++ThemeUNS/assets/ico/apple-touch-startup-image-ipad-landscape-retina.png" media="(device-width: 1536px)  and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)" />
+        <link rel="shortcut icon" href="++theme++ThemeUNS/assets/ico/favicon.png" />
+
+
+        <script src="++resource++unice.templates.javascripts/ratchet.min.js"></script>
+        <link href="++resource++unice.templates.stylesheets/ratchet.min.css" rel="stylesheet">
+        <link href="++resource++unice.templates.stylesheets/mobile.css" rel="stylesheet">
+
+        <script src="++resource++unice.templates.javascripts/mobile.js"></script>
+
+        <link rel="icon" href="++resource++unice.templates.images/favicon.ico">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="++resource++unice.templates.images/apple-touch-icon-114x114.png">
+
+    </head>
+
+    <body tal:define="
+            suffix string:@@mobile_view;
+            portal context/portal_url;
+            type context/portal_type;
+            type_code python:type.lower().replace(' ', '');
+            dexterity python:context.meta_type == 'Dexterity Container';
+
+            footer python:[
+                {'title': 'Accueil', 'href': portal, 'icon': 'icon-home'},
+                {'title': 'Actualités', 'href': '%s/filuns/accueil' % portal, 'icon': 'icon-star-filled'},
+                {'title': 'Formations', 'href': '%s/formation/formation-initiale' % portal, 'icon': 'icon-list'},
+                {'title': 'Outils', 'href': '%s/navigations/menu-outils' % portal, 'icon': 'icon-gear'}
+            ];
+            hero_img string:http://dev-portail.unice.fr/formation/formation-initiale/mobile/carousel/luniversite-nice-sophia-antipolis/image_large;">
+
+        <metal:block use-macro="context/mobile_macro/macros/header"></metal:block>
+
+        <metal:block use-macro="context/mobile_macro/macros/footer"></metal:block>
+
+        <div tal:attributes="class string:content portaltype_${type_code}">
+
+            <tal:block condition="python:(type in ['Folder', 'Collection'] or context.__class__.__name__ == 'Container') and not dexterity" define="items python:view.mobile_folder_items()">
+                    <metal:block use-macro="context/mobile_macro/macros/folder"></metal:block>
+            </tal:block>
+
+            <tal:block condition="python:type == 'Plone Site'" define="items python:view.mobile_folder_items()">
+                    <metal:block use-macro="context/mobile_macro/macros/plonesite"></metal:block>
+            </tal:block>
+
+            <tal:block condition="python:type == 'Document'">
+                <metal:block use-macro="context/mobile_macro/macros/document"></metal:block>
+            </tal:block>
+
+            <tal:block condition="python:type == 'Image'">
+                <metal:block use-macro="context/mobile_macro/macros/image"></metal:block>
+            </tal:block>
+
+            <tal:block condition="python:type == 'File'">
+                <metal:block use-macro="context/mobile_macro/macros/file"></metal:block>
+            </tal:block>
+
+            <tal:block condition="dexterity">
+                <metal:block use-macro="context/mobile_macro/macros/dexterity"></metal:block>
+            </tal:block>
+
+        </div>
+
+
+        <metal:block use-macro="context/mobile_macro/macros/search"></metal:block>
+    </body>
+</html>

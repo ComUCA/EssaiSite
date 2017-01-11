@@ -1,0 +1,33 @@
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-1.7.0.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+
+<div tal:define="etapes view/codes_inscriptions" class="centered-pills" style="margin:20px 0;">
+
+    <ul class="nav nav-pills">
+
+        <li class="dropdown active success">
+            <a data-toggle="dropdown" href="#">
+                <i class="fa fa-check-square fa-lg"></i>
+                &nbsp; <strong>S'inscrire à la formation</strong> <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>Choisissez l'étape de la formation à laquelle s'inscrire :</li>
+                <li class="divider"></li>
+                <li tal:repeat="etape etapes">
+                     <a tal:attributes="href etape/inscription; title string:S'inscrire à l'étape '${etape/lib_web_vet}' de la formation '${context/title}' (dans une nouvelle fenêtre);" target="_blank">
+                        <strong tal:content="etape/lib_web_vet"/>
+                     </a>
+                </li>
+            </ul>
+        </li>
+
+        <!--<li class="dropdown active success">
+            <a href="http://ent.unice.fr">
+                <i class="fa fa-chevron-circle-right fa-lg"></i>
+                &nbsp; <strong>Se réinscrire à la formation</strong>
+            </a>
+        </li>-->
+    </ul>
+
+</div>

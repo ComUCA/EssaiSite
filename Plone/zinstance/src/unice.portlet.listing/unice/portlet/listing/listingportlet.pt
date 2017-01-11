@@ -1,0 +1,170 @@
+<html tal:omit-tag=""
+    xmlns="http://www.w3.org/1.09/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="unice.portlet.listing">
+
+    <tal:block define="listing view/listing;
+
+                       container python:listing['folder'] if listing else None;
+                       roles python:user.getRolesInContext(container) if container else ['none'];
+                       access python:'Manager' in roles or'Contributor' in roles or 'Editor' in roles;
+                       mois python:['-', 'Jan', 'Fev', 'Mar', 'Avr', 'Mai', 'Juin', 'Jui', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'];">
+
+        <dl tal:define="type view/data/item_display; max python:max(listing['items'], key=lambda x:x['n_chiffre'])['n_chiffre'] if len(listing['items']) > 0 else 1; max_w python:(float(max)+3)/2;" tal:attributes="id view/data/extra_id; class string:portlet portletListing portlet_type_${view/data/item_display} ${view/data/extra_css};">
+
+            <dt tal:condition="not:view/data/omit_header" class="portletHeader">
+                <i tal:condition="python:type == 'documents_utiles'" class="fa fa-paper-clip"></i>
+                <i tal:condition="python:type == 'profils'" class="fa fa-user"></i>
+                <i tal:condition="python:type == 'chiffres_cles'" class="fa fa-signal"></i>
+                <span tal:content="view/header"/>
+            </dt>
+
+            <dd class="portletItem">
+                <ul>
+                    <li tal:repeat="item python:listing['items']">
+
+                        <tal:block condition="python:type != 'chiffres_cles' or item['type'] != 'chiffre_cle'">
+                            <a tal:attributes="
+                                    href python:item['url'] if not view.data.popup else '#';
+                                    title string:En savoir plus sur '${item/title}';
+                                    class python:'btn %s' % (item['cls'] if item['cls'] else 'btn-primary') if type == 'boutons' else '';
+                                    style python:'background-image: url(%s) !important' % (item['image']) if type == 'boutons' and item['type'] == 'Link' and not item['image_default'] else '';
+                                    data-toggle python:'modal' if view.data.popup else '';
+                                    data-target python:'#%s' % item['uuid'] if view.data.popup else '';">
+                                <i tal:condition="python:type == 'faq'" class="fa fa-angle-right"></i>
+
+                                <i tal:condition="python:'icon' in item and item['icon']"
+                                    tal:attributes="class string:fa ${item/icon} fa-fw"/>
+
+                                <tal:block condition="python:type == 'profils'">
+                                    <span class="thumb_link image_ratio ratio1:1">
+                                        <span tal:attributes="style string:background-image: url(${item/image});">
+                                            <img tal:attributes="src item/image; title item/title"/>
+                                        </span>
+                                    </span>
+                                </tal:block>
+
+                                <tal:block condition="python:type == 'profils'">
+                                    <small tal:content="item/description"/>
+                                </tal:block>
+
+								<tal:block condition="python:type in ['dates_liens']">
+                                    <small>
+						                <span tal:content="python:'%02d' % item['dates']['start'].day()"/><br/>
+						                <strong tal:content="python:mois[item['dates']['start'].month()]"/>
+
+						            </small>
+                                </tal:block>
+
+                                <span tal:content="item/title"/>
+
+                                <tal:block condition="python:'desc' in item and item['desc']">
+                                    <br/><small tal:content="item/desc"/>
+                                </tal:block>
+
+                                <tal:block condition="python:type == 'actualites'">
+                                    <span class="thumb_link image_ratio ratio1:1">
+                                        <span tal:attributes="style string:background-image: url(${item/image});">
+                                            <img tal:attributes="src item/image; title item/title"/>
+                                        </span>
+                                    </span>
+                                </tal:block>
+
+                                <tal:block condition="python:type == 'actualites'">
+                                    <small tal:content="item/desc_trunc"/>
+                                    <small class="lien_savoir_plus">En savoir plus</small>
+                                </tal:block>
+                            </a>
+
+                            <tal:block condition="view/data/popup">
+                                <div tal:attributes="id item/uuid" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                <h4 class="modal-title" tal:content="item/title"/>
+                                            </div>
+                                            <div class="modal-body">
+                                                <tal:block content="structure item/text"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </tal:block>
+
+                        </tal:block>
+
+                        <tal:block condition="python:type == 'chiffres_cles' and item['type'] == 'chiffre_cle'"
+                            define="obj python:item['item'];">
+
+                            <i tal:condition="python:obj.icone == '[vide]'" class="fa-fw"></i>
+                            <i tal:condition="python:obj.icone == 'monnaie'" class="fa-fw fa fa-eur"></i>
+                            <i tal:condition="python:obj.icone == 'poids'" class="fa-fw fa fa-truck"></i>
+                            <i tal:condition="python:obj.icone == 'vitesse'" class="fa-fw fa fa-dashboard"></i>
+                            <i tal:condition="python:obj.icone == 'personnes'" class="fa-fw fa fa-male"></i>
+                            <i tal:condition="python:obj.icone == 'distance'" class="fa-fw fa fa-resize-horizontal"></i>
+                            <i tal:condition="python:obj.icone == 'progressions'" class="fa-fw fa fa-tasks"></i>
+                            <i tal:condition="python:obj.icone == 'histogramme'" class="fa-fw fa fa-bar-chart"></i>
+                            <i tal:condition="python:obj.icone == 'distinctions'" class="fa-fw fa fa-trophy"></i>
+                            <i tal:condition="python:obj.icone == 'international'" class="fa-fw fa fa-globe"></i>
+                            <i tal:condition="python:obj.icone == 'environnement'" class="fa-fw fa fa-leaf"></i>
+                            <i tal:condition="python:obj.icone == 'recherche'" class="fa-fw fa fa-beaker"></i>
+                            <i tal:condition="python:obj.icone == 'conferences'" class="fa-fw fa fa-microphone"></i>
+                            <i tal:condition="python:obj.icone == 'deplacements'" class="fa-fw fa fa-plane"></i>
+                            <i tal:condition="python:obj.icone == 'articles'" class="fa-fw fa fa-book"></i>
+                            <i tal:condition="python:obj.icone == 'evenements'" class="fa-fw fa fa-calendar-empty"></i>
+                            <i tal:condition="python:obj.icone == 'videos'" class="fa-fw fa fa-film"></i>
+                            <i tal:condition="python:obj.icone == 'photos'" class="fa-fw fa fa-picture"></i>
+                            <i tal:condition="python:obj.icone == 'telechargements'" class="fa-fw fa fa-cloud-download"></i>
+                            <i tal:condition="python:obj.icone == 'localisation'" class="fa-fw fa fa-map-marker"></i>
+                            <i tal:condition="python:obj.icone == 'travaux'" class="fa-fw fa fa-wrench"></i>
+                            <i tal:condition="python:obj.icone == 'messages'" class="fa-fw fa fa-comments"></i>
+                            <i tal:condition="python:obj.icone == 'surface'" class="fa-fw fa fa-fullscreen"></i>
+                            <i tal:condition="python:obj.icone == 'batiments'" class="fa-fw fa fa-building"></i>
+                            <i tal:condition="python:obj.icone == 'drapeaux'" class="fa-fw fa fa-flag"></i>
+                            <i tal:condition="python:obj.icone == 'homme'" class="fa-fw fa fa-male"></i>
+                            <i tal:condition="python:obj.icone == 'femme'" class="fa-fw fa fa-female"></i>
+
+                            <span tal:condition="python:obj.tendance == 'hausse'" class="label label-success" tal:attributes="style string:width: ${max_w}em;">
+                                <i class="fa fa-level-up"></i> <tal:block content="python:obj.chiffre"/>
+                            </span>
+                            <span tal:condition="python:obj.tendance == 'stable'" class="label label-default" tal:attributes="style string:width: ${max_w}em;">
+                                <!-- <i class="fa fa-long-arrow-right fa-lg"></i>  --><tal:block content="python:obj.chiffre"/>
+                            </span>
+                            <span tal:condition="python:obj.tendance == 'baisse'" class="label label-danger" tal:attributes="style string:width: ${max_w}em;">
+                                <i class="fa fa-level-down"></i> <tal:block content="python:obj.chiffre"/>
+                            </span>
+                            <span tal:content="item/title"/>
+                        </tal:block>
+
+
+                        <a tal:condition="access" tal:attributes="href string:${item/url}/edit" target="_blank"
+                            class="btn btn-warning btn-xs" style="color: #FFF !important; display: inline; float:right;">
+                            <i class="fa fa-pencil fa-lg"></i>
+                        </a>
+
+                    </li>
+                </ul>
+            </dd>
+
+            <dd class="portletFooter" tal:condition="python:listing['folder'] and view.data.portlet_footer">
+                <a tal:attributes="href listing/folder/absolute_url">
+                    <span tal:content="view/data/portlet_footer"/>
+                    <i class="fa fa-chevron-right"></i>
+                </a>
+            </dd>
+
+        </dl>
+
+        <a tal:condition="access" tal:attributes="href container/absolute_url" target="_blank"
+            class="btn btn-warning btn-xs btn-block" style="color: #FFF !important;">
+            <i class="fa fa-pencil fa-lg"></i> Gérer les contenus
+        </a>
+
+    </tal:block>
+
+
+</html>
+

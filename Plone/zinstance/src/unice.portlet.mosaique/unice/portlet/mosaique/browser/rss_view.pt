@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:media="http://search.yahoo.com/mrss/"
+     xmlns:tal="http://xml.zope.org/namespaces/tal">
+
+    <channel tal:define="portal context/plone_portal_state/portal;
+                         batch python:context.results();
+                         items python:view.items(batch, ['page.html'], isObjects=type(batch) is list);
+                         mode request/mode|string:normal">
+
+        <title tal:content="context/title"/>
+        <description tal:content="context/Description"/>
+        <link tal:content="portal/absolute_url"/>
+        <copyright>© Université Nice Sophia Antipolis - Nice Sophia Antipolis University</copyright>
+        <image>
+            <url tal:content="string:${portal/absolute_url}/++theme++ThemeUNS/assets/img/logo.png"/>
+            <title tal:content="context/title"/>
+            <link tal:content="portal/absolute_url"/>
+        </image>
+
+        <tal:block repeat="item items">
+            <item>
+                <title tal:content="item/title" />
+                <link tal:content="string:${item/url}/@@article_view" />
+                <guid isPermaLink="true" tal:content="string:${item/url}/@@article_view" />
+
+                <description tal:condition="python:mode == 'normal'" tal:content="item/description" />
+
+                <description tal:condition="python:mode == 'inline'"
+                    tal:content="structure string:&lt;![CDATA[&lt;img src=&quot;${item/image}&quot;/&gt;&lt;strong&gt;]]&gt;"/>
+
+                <category tal:content="item/theme"/>
+                <pubDate tal:content="item/dates/start/HTML4"/>
+                <media:thumbnail tal:attributes="url item/image"/>
+                <author tal:content="item/legend"/>
+            </item>
+        </tal:block>
+
+    </channel>
+
+</rss>

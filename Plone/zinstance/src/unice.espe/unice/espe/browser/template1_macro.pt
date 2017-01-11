@@ -1,0 +1,67 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="template">
+
+    <tal:listing condition="batch">
+
+        <tal:block define="document python:view.document('page.html');
+                            items python:view.items(batch, ['page.html']);
+                            filtered python:view.filtered(items, '#ExclureContenuTemplate');
+                            TRUE python:True; FALSE python:False;">
+
+            <!-- CHAPEAU -->
+            <tal:block define="opt_savoirplus FALSE; opt_image TRUE; opt_title TRUE; opt_desc TRUE; opt_desctrunc FALSE; opt_imageratio string:ratio4:3;">
+                <metal:block use-macro="context/espe_macro/macros/chapeau"></metal:block>
+            </tal:block>
+
+            <hr tal:condition="document" class="visualClear"/>
+
+            <!-- ITEMS -->
+            <ul class="canal_fil_importance2" tal:define="colonnes python:2">
+
+                <tal:block repeat="item filtered">
+
+                    <tal:block define="index repeat/item/index;">
+
+                        <div class="row">
+
+                            <li class="col-md-12"
+                                tal:define="opt_image FALSE; opt_title TRUE; opt_desc TRUE; opt_desctrunc FALSE; opt_boutonsavoirplus FALSE; opt_imageratio string:ratio4:3;">
+                                <metal:block use-macro="context/espe_macro/macros/item"></metal:block>
+                            </li>
+
+                        </div>
+                    </tal:block>
+
+                </tal:block>
+
+            </ul>
+
+            <tal:block condition="document">
+                <ul class="canal_fil_importance2" tal:define="item document">
+                    <li>
+                        <metal:block use-macro="context/espe_macro/macros/more_link"></metal:block>
+                    </li>
+                </ul>
+            </tal:block>
+
+        </tal:block>
+
+    </tal:listing>
+
+    <p class="discreet" tal:condition="not:batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+</metal:content-core>
+</body>
+
+</html>

@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<object name="portal_css">
+
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/libs/bootstrap.min.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/libs/font-awesome.min.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/styles.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/styles_menus.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/styles_portlets.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/styles_icones.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/styles_anonymous.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/neutre.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/tremplin-emploi', '/tremplincarriere', '/electionspro'])"/>
+
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/access-key.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/access-key'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/chir-dentaire.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/faculte-de-chirurgie-dentaire'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/droit-science-po.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/faculte-de-droit-et-sciences-politiques'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/medecine.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/faculte-de-medecine'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/lash.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/faculte-des-lettres-arts-sciences-humaines'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/espace-culture.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/espace-et-culture'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/polytech.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/ecole-polytechnique'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/iae.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/iae'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/imredd.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/imredd'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/idpd.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/institut-du-droit-de-la-paix-et-du-developpement'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/isem.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/isem', '/iup-tourisme'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/iufm.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/iufm'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/iut.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/iut'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/sciences.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/sciences'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/staps.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/staps'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/unicepro.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/unicepro', '/formation/formation-continue'])"/>
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/laboratoires.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/laboratoires/gredeg', '/lp2m'])"/>
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/uca.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/uca']) or context.absolute_url_matches(['univ-cotedazur.fr'])"/>
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/uca_labs.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/uca/english/uca-labs']) or context.absolute_url_matches(['univ-cotedazur.fr/english/uca-labs'])"/>
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/ulysse.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/ulysse', '/porlets-2'])"/>
+    
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/en.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/en'])"/>
+
+ <stylesheet title=""
+    id="++resource++unice.theme.stylesheets/declinaisons/electionsconseilscentraux.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression="python:context.relative_url_matches(['/electionsconseilscentraux'])"/>
+</object>

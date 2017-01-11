@@ -1,0 +1,323 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+    font-size: 10px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 300;
+}
+h2 {
+    margin-bottom: 5px;
+}
+ul, ol {
+    margin-bottom: 2px;
+}
+.col-xs-1,
+.col-xs-2,
+.col-xs-3,
+.col-xs-4,
+.col-xs-5,
+.col-xs-6,
+.col-xs-7,
+.col-xs-8,
+.col-xs-9,
+.col-xs-10,
+.col-xs-11,
+.col-xs-12 {
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+/**************************************************************************/
+
+.logos > div,
+.header > div,
+.carousel > div {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.logos {
+    margin-top: 1px;
+    margin-bottom: 10px;
+
+    img {
+        max-width: 100%;
+        max-height: 60px;
+        width: auto;
+    }
+}
+
+.header {
+    & > div:first-child {
+        padding: 10px 5px;
+
+        h1 {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+        p {
+            margin: 0;
+            margin-top: 5px;
+        }
+    }
+}
+
+.carousel {
+    max-height: 300px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+.contents {
+    .content {
+        padding-top: 10px;
+
+        h2 {
+            font-size: 14px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+    .aside {
+        padding-top: 5px;
+        padding-bottom: 10px;
+        font-size: 9px;
+
+        ul.list-unstyled {
+            margin: 0;
+        }
+
+        h2 {
+            font-size: 12px;
+            margin: 0;
+            margin-top: 10px;
+
+            &:first-child {
+                margin-top: 5px;
+            }
+        }
+        a, a:hover, a:focus {
+            color: #000;
+            text-decoration: none;
+
+            -ms-word-break: break-all;
+            word-break: break-all;
+            word-break: break-word;
+            // -webkit-hyphens: auto;
+            // -moz-hyphens: auto;
+            // hyphens: auto;
+        }
+
+        hr {
+            margin: 10px -10px;
+        }
+
+        .label.label-info {
+            display: block;
+            white-space: normal;
+            padding: 1em;
+            font-weight: 500;
+            border-width: 0 !important;
+
+            a {
+            }
+        }
+    }
+}
+
+.programme, .metiers, .competences, .conditions {
+    & > div:first-child {
+        padding: 10px 5px;
+        margin-bottom: 10px;
+
+        h2 {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+    }
+    & > div:last-child {
+        margin-bottom: 40px;
+    }
+
+    table {
+        width: 100% !important;
+        height: auto !important;
+
+        td {
+            padding: 2px;
+            border: 1px solid #CCC !important;
+        }
+    }
+}
+
+#qrcode {
+    padding-right: 5px;
+
+    canvas {
+        width: 100%;
+        height: auto;
+        width: auto;
+        height: 60px;
+    }
+}
+
+/*** ACCESSIBILITE **************************************************************/
+
+ul.termes_accessibilite {
+    margin-left: -5px !important;
+    margin-right: -5px !important;
+
+    li {
+        float: left;
+        width: 50%;
+        margin-bottom: 2px;
+
+        * {
+            line-height: 2em;
+        }
+        a {
+            font-size: 80%;
+        }
+        .label {
+            display: inline-block;
+            width: 2.5em;
+            color: #FFF !important;
+            border-width: 0 !important;
+        }
+        &.terme_initiale .label {
+            background-color: #0A7B83 !important;
+        }
+        &.terme_continue .label {
+            background-color: #2AA876 !important;
+        }
+        &.terme_alternance .label {
+            background-color: #FFD265 !important;
+        }
+        &.terme_validation .label {
+            background-color: #F19C65 !important;
+        }
+        &.terme_distance .label {
+            background-color: #CE4D45 !important;
+        }
+    }
+}
+
+/******************************************************************/
+/*** PRINT ********************************************************/
+/******************************************************************/
+
+@media print {
+    * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .page_break {
+        page-break-after: always;
+    }
+    .aside a[href]:after{
+        content: initial;
+    }
+}
+
+/******************************************************************/
+/*** THEMES *******************************************************/
+/******************************************************************/
+
+@sciences: #00AF85;
+@cultures: #0071BB;
+@staps: #F16549;
+@droit: #92278F;
+@odonto: #9A87B8;
+@iae: #C4151C;
+@espe: #0099B3;
+@imredd: #24408E;
+@isem: #415968;
+@iut: #939597;
+@lash: #4498B4;
+@medecine: #77A43F;
+@epu: #00ADEF;
+@idpd: #00B4DE;
+
+.theme();
+.theme_sciences { .theme(@bgcolor: @sciences); }
+.theme_lash { .theme(@bgcolor: @lash); }
+.theme_droit { .theme(@bgcolor: @droit); }
+.theme_idpd { .theme(@bgcolor: @idpd); }
+.theme_isem { .theme(@bgcolor: @isem); }
+.theme_iae { .theme(@bgcolor: @iae); }
+.theme_iut { .theme(@bgcolor: @iut); }
+.theme_odonto { .theme(@bgcolor: @odonto); }
+.theme_medecine { .theme(@bgcolor: @medecine); }
+.theme_espe { .theme(@bgcolor: @espe); }
+.theme_epu { .theme(@bgcolor: @epu); }
+.theme_cultures { .theme(@bgcolor: @cultures); }
+.theme_staps { .theme(@bgcolor: @staps); }
+.theme_imredd { .theme(@bgcolor: @imredd); }
+
+.theme(@color:#FFF, @bgcolor:#999) {
+    .header > div:first-child {
+        background-color: @bgcolor !important;
+
+        h1, p {
+            color: @color !important;
+        }
+    }
+    .contents {
+        .content h2 {
+            color: darken(@bgcolor, 15%) !important;
+        }
+        .aside {
+            background-color: hsl(hue(@bgcolor), 25%, 95%) !important;
+
+            hr {
+                border-top: 2px solid @color;
+            }
+            .label.label-info {
+                background-color: @bgcolor !important;
+
+                a, a:hover, a:focus {
+                    color: @color !important;
+                }
+            }
+        }
+    }
+    .programme, .metiers, .competences, .conditions {
+        & > div:first-child {
+            background-color: @bgcolor !important;
+
+            h2 {
+                color: @color !important;
+            }
+        }
+    }
+}
+
+/******************************************************************/
+/*** GRID *********************************************************/
+/******************************************************************/
+
+.container-xs-height {
+    display:table;
+    padding-left:0px;
+    padding-right:0px;
+}
+.row-xs-height {
+    display:table-row;
+}
+.col-xs-height {
+    display:table-cell;
+    float:none;
+}
+.col-top {
+    vertical-align:top;
+}

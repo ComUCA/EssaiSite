@@ -1,0 +1,36 @@
+@import "onepage";
+
+.fullscreen.hero {
+    @media (min-width:768px) {
+        height: 90%;
+        min-height: 90%;
+    }
+
+    @media (max-width:767px){
+        background-image: none !important;
+        background-color: #1972a8;
+    }
+
+    .content-a {
+        background-color: transparent;
+
+        h1 {
+            @media (min-width: 768px) {
+                display: none;
+            }
+        }
+
+        p {
+            @media (min-width: 768px) {
+                display: none;
+            }
+
+        }
+
+        // a.btn.more {
+        //     display: none;
+        // }
+    }
+}
+
+.couleur_principale(#1972a8, 10%);

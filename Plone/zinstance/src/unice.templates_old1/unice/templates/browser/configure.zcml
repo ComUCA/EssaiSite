@@ -1,0 +1,656 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.templates">
+
+    <include package="plone.app.contentmenu"/>
+
+    <!-- #################################################################### -->
+    <!-- ### PAGE TEMPLATES ################################################# -->
+    <!-- #################################################################### -->
+
+    <browser:page
+        name="templates_macro"
+        for="*"
+        permission="zope2.View"
+        template="templates_macro.pt"/>
+
+    <browser:page
+        name="templates_onepage_macro"
+        for="*"
+        permission="zope2.View"
+        template="templates_onepage_macro.pt"/>
+
+    <!-- TEMPLATE 1 -->
+    <browser:page
+        name="template1_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template1_folderview.pt"/>
+    <browser:page
+        name="template1_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template1_folderview.pt"/>
+    <browser:page
+        name="template1_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template1_documentview.pt"/>
+
+    <browser:page
+        name="template1_macro"
+        for="*"
+        permission="zope2.View"
+        template="template1_macro.pt"/>
+
+    <!-- TEMPLATE 1 BIS -->
+    <browser:page
+        name="template1bis_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template1bis_folderview.pt"/>
+    <browser:page
+        name="template1bis_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template1bis_folderview.pt"/>
+    <browser:page
+        name="template1bis_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template1bis_documentview.pt"/>
+    <browser:page
+        name="template1bis_macro"
+        for="*"
+        permission="zope2.View"
+        template="template1bis_macro.pt"/>
+
+    <!-- TEMPLATE 2 -->
+    <browser:page
+        name="template2_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template2_folderview.pt"/>
+    <browser:page
+        name="template2_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template2_folderview.pt"/>
+    <browser:page
+        name="template2_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template2_documentview.pt"/>
+    <browser:page
+        name="template2_macro"
+        for="*"
+        permission="zope2.View"
+        template="template2_macro.pt"/>
+
+    <!-- TEMPLATE 2 BIS -->
+    <browser:page
+        name="template2bis_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template2bis_folderview.pt"/>
+    <browser:page
+        name="template2bis_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template2bis_folderview.pt"/>
+    <browser:page
+        name="template2bis_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template2bis_documentview.pt"/>
+    <browser:page
+        name="template2bis_macro"
+        for="*"
+        permission="zope2.View"
+        template="template2bis_macro.pt"/>
+
+    <!-- TEMPLATE 3 -->
+    <browser:page
+        name="template3_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template3_folderview.pt"/>
+    <browser:page
+        name="template3_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template3_folderview.pt"/>
+    <browser:page
+        name="template3_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template3_documentview.pt"/>
+    <browser:page
+        name="template3_macro"
+        for="*"
+        permission="zope2.View"
+        template="template3_macro.pt"/>
+
+    <!-- TEMPLATE 4 -->
+    <browser:page
+        name="template4_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template4_folderview.pt"/>
+    <browser:page
+        name="template4_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template4_folderview.pt"/>
+    <browser:page
+        name="template4_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template4_documentview.pt"/>
+    <browser:page
+        name="template4_macro"
+        for="*"
+        permission="zope2.View"
+        template="template4_macro.pt"/>
+
+    <!-- TEMPLATE 5 -->
+    <browser:page
+        name="template5_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template5_folderview.pt"/>
+    <browser:page
+        name="template5_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template5_folderview.pt"/>
+    <browser:page
+        name="template5_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template5_documentview.pt"/>
+    <browser:page
+        name="template5_macro"
+        for="*"
+        permission="zope2.View"
+        template="template5_macro.pt"/>
+
+    <!-- TEMPLATE 6 -->
+    <browser:page
+        name="template6_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template6_folderview.pt"/>
+    <browser:page
+        name="template6_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template6_folderview.pt"/>
+    <browser:page
+        name="template6_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template6_documentview.pt"/>
+    <browser:page
+        name="template6_macro"
+        for="*"
+        permission="zope2.View"
+        template="template6_macro.pt"/>
+
+    <!-- TEMPLATE 6 BIS -->
+    <browser:page
+        name="template6bis_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template6bis_folderview.pt"/>
+    <browser:page
+        name="template6bis_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template6bis_folderview.pt"/>
+    <browser:page
+        name="template6bis_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template6bis_documentview.pt"/>
+    <browser:page
+        name="template6bis_macro"
+        for="*"
+        permission="zope2.View"
+        template="template6bis_macro.pt"/>
+
+
+    <!-- TEMPLATE 6 TER -->
+    <browser:page
+        name="template6ter_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template6ter_folderview.pt"/>
+    <browser:page
+        name="template6ter_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template6ter_folderview.pt"/>
+    <browser:page
+        name="template6ter_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template6ter_documentview.pt"/>
+
+    <!-- TEMPLATE 7 -->
+    <browser:page
+        name="template7_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template7_folderview.pt"/>
+    <browser:page
+        name="template7_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template7_folderview.pt"/>
+    <browser:page
+        name="template7_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="template7_documentview.pt"/>
+    <browser:page
+        name="template7_macro"
+        for="*"
+        permission="zope2.View"
+        template="template7_macro.pt"/>
+
+    <!-- #################################################################### -->
+    <!-- ### LISTINGS ####################################################### -->
+    <!-- #################################################################### -->
+
+    <browser:page
+        name="listingsimple_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="listingsimple_folderview.pt"/>
+    <browser:page
+        name="listingsimple_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="listingsimple_folderview.pt"/>
+    <browser:page
+        name="listingsimple_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="listingsimple_documentview.pt"/>
+    <browser:page
+        name="listingsimple_macro"
+        for="*"
+        permission="zope2.View"
+        template="listingsimple_macro.pt"/>
+
+
+    <browser:page
+        name="listingpanel_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="listingpanel_folderview.pt"/>
+    <browser:page
+        name="listingpanel_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="listingpanel_folderview.pt"/>
+    <browser:page
+        name="listingpanel_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="listingpanel_documentview.pt"/>
+    <browser:page
+        name="listingpanel_macro"
+        for="*"
+        permission="zope2.View"
+        template="listingpanel_macro.pt"/>
+
+    <browser:page
+        name="listingonglets_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="listingonglets_folderview.pt"/>
+    <browser:page
+        name="listingonglets_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="listingonglets_folderview.pt"/>
+    <browser:page
+        name="listingonglets_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="listingonglets_documentview.pt"/>
+    <browser:page
+        name="listingonglets_macro"
+        for="*"
+        permission="zope2.View"
+        template="listingonglets_macro.pt"/>
+
+    <!-- #################################################################### -->
+    <!-- ### DEXTERITY ###################################################### -->
+    <!-- #################################################################### -->
+
+    <!-- PORTAIL -->
+    <browser:page
+        name="document_structure_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_document_structure.pt"/>
+    <browser:page
+        name="video"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_video.pt"/>
+
+    <!-- ESPACES UNS -->
+    <browser:page
+        name="espaces_uns_view"
+        for="*"
+        permission="zope2.View"
+        class="plone.dexterity.browser.view.DefaultView"
+        template="dexterity_espacesuns.pt"/>
+    <browser:page
+        name="espaces_campus_uns_view"
+        for="*"
+        permission="zope2.View"
+        class="plone.dexterity.browser.view.DefaultView"
+        template="dexterity_espacescampusuns.pt"/>
+    <browser:page
+        name="espace_uns_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_espaceuns.pt"/>
+
+    <!-- LABORATOIRES -->
+    <browser:page
+        name="laboratoire_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_laboratoire.pt"/>
+    <browser:page
+        name="laboratoire_fiche_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_laboratoire_fiche_view.pt"/>
+    <browser:page
+        name="plaquettes_csv"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_laboratoires_csv.pt"/>
+    <browser:page
+        name="chercheur_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_chercheur.pt"/>
+
+    <!-- ASURE -->
+    <browser:page
+        name="formation_professionnelle_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_formation_professionnelle.pt"/>
+
+    <!-- DSD -->
+    <browser:page
+        name="projet_dsd_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_projet_dsd.pt"/>
+    <browser:page
+        name="projets_dsd_deposes_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_projets_dsd_deposes.pt"/>
+    <browser:page
+        name="projets_dsd_en_cours_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_projets_dsd_en_cours.pt"/>
+
+    <!-- RESSOURCES EXTERNES -->
+    <browser:page
+        name="ressource_externe_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_ressource_externe.pt"/>
+
+    <!-- PROFILS -->
+    <browser:page
+        name="profil_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_profil.pt"/>
+
+    <!-- ONE PAGE -->
+    <browser:page
+        name="onepage_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="dexterity_onepage.pt"/>
+
+
+    <!-- #################################################################### -->
+    <!-- ### DIVERS ######################################################### -->
+    <!-- #################################################################### -->
+
+    <!-- ASURE -->
+    <browser:page
+        name="emargement_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="emargement.pt"/>
+
+    <!-- RESUME REDACTEURS -->
+    <browser:page
+        name="resume"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="resume_view.pt"/>
+
+    <!-- RESUME REDACTEURS -->
+    <browser:page
+        name="resume_excel"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="resume_excel_view.pt"/>
+
+    <!-- CARTE DE VOEUX -->
+    <browser:page
+        name="carte_voeux"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="carte_voeux.pt"/>
+
+
+    <!-- #################################################################### -->
+    <!-- ### MOBILE ######################################################### -->
+    <!-- #################################################################### -->
+
+    <browser:page
+        name="mobile_view"
+        for="*"
+        permission="zope2.View"
+        class=".templates.Templates"
+        template="mobile_view.pt"/>
+    <browser:page
+        name="mobile_macro"
+        for="*"
+        permission="zope2.View"
+        template="mobile_macro.pt"/>
+
+    <!-- #################################################################### -->
+    <!-- ### MENUS AFFICHAGE ################################################ -->
+    <!-- #################################################################### -->
+
+    <browser:menuItems
+        for="plone.app.collection.interfaces.ICollection"
+        menu="plone_displayviews">
+
+    <browser:menuItem
+        title="Template n°1"
+        action="template1_view"/>
+    <browser:menuItem
+        title="Template n°1 bis"
+        action="template1bis_view"/>
+    <browser:menuItem
+        title="Template n°2"
+        action="template2_view"/>
+    <browser:menuItem
+        title="Template n°2 bis"
+        action="template2bis_view"/>
+    <browser:menuItem
+        title="Template n°3"
+        action="template3_view"/>
+    <browser:menuItem
+        title="Template n°4"
+        action="template4_view"/>
+    <browser:menuItem
+        title="Template n°5"
+        action="template5_view"/>
+    <browser:menuItem
+        title="Template n°6"
+        action="template6_view"/>
+    <browser:menuItem
+        title="Template n°6 bis"
+        action="template6bis_view"/>
+    <browser:menuItem
+        title="Template n°6 ter"
+        action="template6ter_view"/>
+    <browser:menuItem
+        title="Template n°7"
+        action="template7_view"/>
+
+    <browser:menuItem
+        title="Listing simple"
+        action="listingsimple_view"/>
+
+    <browser:menuItem
+        title="Listing panel"
+        action="listingpanel_view"/>
+
+    <browser:menuItem
+        title="Listing onglets"
+        action="listingonglets_view"/>
+
+    <browser:menuItem
+        title="Document structuré"
+        action="document_structure_view"/>
+
+    <browser:menuItem
+        title="Espaces UNS"
+        action="espaces_uns_view"/>
+    <browser:menuItem
+        title="Espaces Campus UNS"
+        action="espaces_campus_uns_view"/>
+    <browser:menuItem
+        title="Espace UNS"
+        action="espace_uns_view"/>
+
+    <browser:menuItem
+        title="Laboratoire"
+        action="laboratoire_view"/>
+    <browser:menuItem
+        title="Chercheur"
+        action="chercheur_view"/>
+
+    <browser:menuItem
+        title="Formation professionnelle"
+        action="formation_professionnelle_view"/>
+
+    <browser:menuItem
+        title="Projet DSD"
+        action="projet_dsd_view"/>
+
+    <browser:menuItem
+        title="Ressource externe"
+        action="ressource_externe_view"/>
+
+    <browser:menuItem
+        title="Profil"
+        action="profil_view"/>
+
+    <browser:menuItem
+        title="One page"
+        action="onepage_view"/>
+
+    </browser:menuItems>
+
+    <!-- #################################################################### -->
+    <!-- ### CSS, JS & IMG ################################################## -->
+    <!-- #################################################################### -->
+
+    <browser:resourceDirectory
+        name="unice.templates.stylesheets"
+        directory="stylesheets"/>
+
+    <browser:resourceDirectory
+        name="unice.templates.javascripts"
+        directory="javascripts"/>
+
+    <browser:resourceDirectory
+        name="unice.templates.images"
+        directory="images"/>
+
+</configure>

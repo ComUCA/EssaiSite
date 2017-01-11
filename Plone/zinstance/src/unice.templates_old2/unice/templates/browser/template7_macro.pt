@@ -1,0 +1,90 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="template">
+
+    <div tal:condition="batch" class="template">
+
+        <tal:block define=" items python:view.items(batch, ['page.html'], isObjects=type(batch) is list, desc_max=200);
+                            filtered python:view.filtered(items, '#ExclureContenuTemplate');
+                            TRUE python:True; FALSE python:False;
+                            max python:10;">
+
+            <!-- CHAPEAU -->
+            <metal:block use-macro="context/templates_macro/macros/entete"></metal:block>
+
+            <!-- ITEMS -->
+            <div tal:repeat="item filtered" class="row item">
+
+                <div tal:define="opt_imageratio string:ratio4:3;" class="col-xs-3">
+                    <metal:block use-macro="context/templates_macro/macros/thumb_no_link"></metal:block>
+                    <tal:block define="opt_entete FALSE">
+                        <metal:block use-macro="context/templates_macro/macros/edit"></metal:block>
+                    </tal:block>
+                </div>
+
+                <div class="col-xs-9">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 tal:content="item/title"/>
+                            <span tal:content="item/desc_trunc"/>
+                        </div>
+                    </div>
+                    <div tal:define="subbatch python:view.getFolderContents(item['real_item']);
+                        subitems python:view.items(subbatch, ['page.html'], isObjects=True);
+                        subfiltered python:view.filtered(subitems, '#ExclureContenuTemplate')"
+                        class="row" >
+                        <div tal:attributes="class python:'col-sm-6' if len(subfiltered) > max/2 else 'col-sm-12'">
+                            <ul>
+                                <li tal:repeat="subitem python:subfiltered[0:max/2]">
+                                    <a tal:attributes="href subitem/url" tal:content="subitem/title"/>
+                                </li>
+                            </ul>
+                        </div>
+                        <div tal:condition="python:len(subfiltered) > max/2" class="col-sm-6">
+                            <ul>
+                                <li tal:repeat="subitem python:subfiltered[max/2:(max-1 if len(subfiltered) > max else max)]">
+                                    <a tal:attributes="href subitem/url" tal:content="subitem/title"/>
+                                </li>
+                                <li tal:condition="python:len(subfiltered) > max" class="dropdown">
+                                    <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Plus de rubriques... <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li tal:repeat="subitem python:subfiltered[max-1:]">
+                                            <a tal:attributes="href subitem/url" tal:content="subitem/title"/>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div tal:condition="python:len(subfiltered) == 0" class="col-sm-12" tal:define="opt_modal FALSE">
+                            <metal:block use-macro="context/templates_macro/macros/more_link"></metal:block>
+                            <metal:block use-macro="context/templates_macro/macros/item_modal"></metal:block>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </tal:block>
+
+        <div class="visualClear"/>
+
+    </div>
+
+    <p class="discreet" tal:condition="not:batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+</metal:content-core>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+@import "declinaisons";
+
+@couleurFond: #becd00;
+@couleurFondSombre: darken(@couleurFond, 10%);
+
+.portlets-in-header(transparent, transparent);
+.declinaison();
+
+#portlets-in-header {
+    background-color: #444;
+    background-image: url(++resource++unice.theme.images/access-key-stripe.jpg);
+    background-size: 100px;
+
+    .portletNavigation.navbar-style-default,
+    .portletNavigation.navbar-style-principal,
+    .portletNavigation.navbar-style-blanc,
+    .portletAgenda {
+        background-color: #FFF;
+    }
+}
+
+div.portlet.portletNavigation.navbar-style-plan {
+    background-color: #444;
+
+    &, nav.navbar ul.row li a {
+        color: #FFF;
+    }
+}

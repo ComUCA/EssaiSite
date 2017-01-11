@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+
+        <meta charset="utf-8">
+        <title tal:content="context/Title"/>
+        <!-- <meta name="description" tal:attributes="content context/objectifs"/> -->
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+        <link href="++resource++unice.theme.stylesheets/libs/bootstrap.min.css" rel="stylesheet">
+        <link href="++resource++unice.theme.stylesheets/libs/font-awesome.min.css" rel="stylesheet">
+        <link href="++resource++unice.gof.stylesheets/fiche.css" rel="stylesheet">
+
+        <script src="++resource++unice.theme.javascripts/libs/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+        AAAAA
+
+        <script src="++resource++unice.theme.javascripts/libs/bootstrap.min.js"></script>
+        <script src="++resource++unice.gof.javascripts/scripts.js"></script>
+        <script src="++resource++unice.gof.javascripts/jquery.qrcode.min.js"></script>
+        <script>
+            var qr = $('#qrcode');
+            qr.qrcode({text: qr.data('qrcode')});
+
+            $.urlParam = function(name) {
+                var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+                if (results==null) { return null; } else { return results[1] || 0; }
+            }
+            if ($.urlParam('print')) {
+                setTimeout(function(){window.print();}, 2000);
+            }
+        </script>
+
+    </body>
+</html>

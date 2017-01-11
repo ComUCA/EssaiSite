@@ -1,0 +1,1141 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master">
+
+    <metal:content-core fill-slot="content-core">
+
+        <!-- ======================= -->
+        <!-- MACRO Scripts MAP MONDE -->
+        <!-- ======================= -->
+
+<!-- biodiversite p1 -->
+        <metal:block define-macro="bio-p1">
+            <script src="++resource++unice.medites.javascripts/libs/biodiversite.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="bio-P1" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "7,80","tooltip_offset":"0,-10","panel_pos":"17.5,10"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "18,65","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"33.5,79","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "27.5,35","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "11.5,26","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "38,14","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                   
+
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "45.5,65","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "81,72","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "59,38","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 8</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>                          
+
+
+                    <div class="marqueur" id="bio-a-9">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "65,25","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 9</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-10">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "82.5,40","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 10</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la dernière &Eacute;tape</button>                        
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-11">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "90.5,15","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- biodiversite p2 -->
+        <metal:block define-macro="bio-p2">
+            <script src="++resource++unice.medites.javascripts/libs/biodiversite.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="bio-P2" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"17.5,10"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>           
+
+<!-- biodiversite p3 -->
+        <metal:block define-macro="bio-p3">
+            <script src="++resource++unice.medites.javascripts/libs/biodiversite.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="bio-P3" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"17.5,10"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- biodiversite p4 -->
+        <metal:block define-macro="bio-p4">
+            <script src="++resource++unice.medites.javascripts/libs/biodiversite.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="bio-P4" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"17.5,10"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+
+<!-- Science numerique p1 -->
+        <metal:block define-macro="scNu-p1">
+            <script src="++resource++unice.medites.javascripts/libs/biodiversite.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="scNu-P1" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"17.5,10"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- Temps, histoire, évolution p1 -->
+        <metal:block define-macro="tpHiEvo-p1">
+            <script src="++resource++unice.medites.javascripts/libs/biodiversite.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="tpHiEvo-P1" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"17.5,10"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- Temps, histoire, évolution p1 -->
+        <metal:block define-macro="teOcUn-p1">
+            <script src="++resource++unice.medites.javascripts/libs/biodiversite.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="teOcUn-P1" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"17.5,10"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- Temps, histoire, évolution p1 -->
+        <metal:block define-macro="teOcUn-p2">
+            <script src="++resource++unice.medites.javascripts/libs/biodiversite.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="teOcUn-P2" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"17.5,10"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- Temps, histoire, évolution p1 -->
+        <metal:block define-macro="teOcUn-p3">
+            <script src="++resource++unice.medites.javascripts/libs/biodiversite.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="teOcUn-P3" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"17.5,10"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>Débloquer la &Eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>Débloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"17.5,10" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+    </metal:content-core>
+</html>

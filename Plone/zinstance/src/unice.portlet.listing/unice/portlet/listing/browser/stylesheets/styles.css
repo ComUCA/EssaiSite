@@ -1,0 +1,173 @@
+dl.portlet.portletListing {
+    margin-bottom: 10px;
+}
+
+dl.portlet.portletListing .portletHeader {
+    padding: 5px 10px;
+    color: #000;
+}
+dl.portlet.portletListing .portletItem ul {
+	padding: 5px;
+    margin: 0 !important;
+    list-style: none !important;
+}
+dl.portlet.portletListing .portletItem ul li {
+    margin: 0;
+    padding: 0;
+}
+dl.portlet.portletListing .portletItem ul li a {
+	display: block;
+	padding: 4px 5px;
+	color: #000 !important;
+	text-decoration: none !important;
+	border-bottom: 1px solid #DDD !important;
+}
+dl.portlet.portletListing .portletItem ul li:last-child a {
+	border-bottom-width: 0 !important;
+}
+dl.portlet.portletListing .portletItem hr {
+	opacity: 1;
+	border-color: #DDD;
+}
+dl.portlet.portletListing .portletFooter a {
+	display: block;
+	padding: 10px;
+	text-decoration: none !important;
+	border-bottom-width: 0 !important;
+	text-align: right;
+	font-size: 75%;
+	font-weight: bold;
+}
+
+/******************************************************************/
+
+
+dl.portlet.portletListing.portlet_type_documents_utiles {
+	margin-top: 20px;		
+}
+
+dl.portlet.portletListing.portlet_type_documents_utiles .portletHeader,
+dl.portlet.portletListing.portlet_type_dates_liens .portletHeader,
+dl.portlet.portletListing.portlet_type_chiffres_cles .portletHeader {
+    background-color: #ddd;
+}
+dl.portlet.portletListing.portlet_type_dates_liens .portletHeader,
+dl.portlet.portletListing.portlet_type_faq .portletHeader,
+dl.portlet.portletListing.portlet_type_profils .portletHeader {
+	text-align: center;
+}
+dl.portlet.portletListing.portlet_type_actualites .portletHeader {
+    color:#006FA4;
+    font-size: 30px;
+    padding:0;
+}
+
+dl.portlet.portletListing.portlet_type_documents_utiles .portletItem,
+dl.portlet.portletListing.portlet_type_dates_liens .portletItem,
+dl.portlet.portletListing.portlet_type_chiffres_cles .portletItem {
+    border: 1px solid #ddd;
+}
+dl.portlet.portletListing.portlet_type_documents_utiles .portletFooter,
+dl.portlet.portletListing.portlet_type_profils .portletFooter,
+dl.portlet.portletListing.portlet_type_dates_liens .portletFooter,
+dl.portlet.portletListing.portlet_type_chiffres_cles .portletFooter {
+    border: 1px solid #ddd;
+	border-top-width: 0;
+	background-color: #F5F5F5;
+}
+dl.portlet.portletListing.portlet_type_faq .portletItem ul li a {
+	padding: 2px 4px;
+}
+dl.portlet.portletListing.portlet_type_dates_liens .portletItem ul li a {
+	text-align: right;
+}
+dl.portlet.portletListing.portlet_type_profils .portletItem ul,
+dl.portlet.portletListing.portlet_type_actualites .portletItem ul {
+	padding: 0;
+}
+dl.portlet.portletListing.portlet_type_profils .portletItem ul li a,
+dl.portlet.portletListing.portlet_type_actualites .portletItem ul li a  {
+	border-bottom-width: 0 !important;
+	clear: both;
+}
+dl.portlet.portletListing.portlet_type_actualites .portletItem ul li a span {
+    display: block;
+    color:#006FA4;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 5px;
+}
+dl.portlet.portletListing.portlet_type_profils .portletItem ul li a small,
+dl.portlet.portletListing.portlet_type_actualites .portletItem ul li a small {
+    display: block;
+}
+dl.portlet.portletListing.portlet_type_profils .portletItem ul li a small {
+    border-bottom: 1px solid #DDD;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+}
+dl.portlet.portletListing.portlet_type_actualites .portletItem ul li a small.lien_savoir_plus {
+    display: block;
+    text-align: right;
+    color:#006FA4;
+    font-weight: bold;
+}
+dl.portlet.portletListing.portlet_type_profils .portletItem ul li a .thumb_link,
+dl.portlet.portletListing.portlet_type_actualites .portletItem ul li a .thumb_link {
+	float: left;
+	width: 50px;
+	margin-right: 5px;
+}
+dl.portlet.portletListing.portlet_type_actualites .portletItem ul li a .thumb_link {
+    width: 80px;
+}
+dl.portlet.portletListing.portlet_type_profils .portletItem ul li a .thumb_link {
+    border: 1px solid #000 !important;
+}
+
+dl.portlet.portletListing.portlet_type_chiffres_cles .portletItem ul li span {
+	font-weight: normal;
+	font-size: 85%;
+}
+dl.portlet.portletListing.portlet_type_chiffres_cles .portletItem ul li span.label {
+	display: inline-block;
+    font-size: 80%;
+	width: 5.5em;
+	padding: 0.2em;
+	padding-left: 0.4em;
+}
+dl.portlet.portletListing.portlet_type_chiffres_cles .portletItem ul li span.label.label-success {
+	background-color: #2AA876;
+}
+dl.portlet.portletListing.portlet_type_chiffres_cles .portletItem ul li span.label.label-danger {
+	background-color: #CE4D45;
+}
+
+
+dl.portlet.portletListing.portlet_type_boutons .portletItem ul li a {
+    color: #FFF !important;
+    border: 0 !important;
+    margin-bottom: 2px;
+    text-align: right;
+    padding: 6px 12px;
+    white-space: normal;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left center;
+}
+dl.portlet.portletListing.portlet_type_boutons .portletItem ul li a.btn-lg {
+    padding: 10px 16px;
+}
+dl.portlet.portletListing.portlet_type_boutons .portletItem ul li a.btn-sm {
+    padding: 5px 10px;
+}
+dl.portlet.portletListing.portlet_type_boutons .portletItem ul li a.btn-xs {
+    padding: 1px 5px;
+}
+dl.portlet.portletListing.portlet_type_boutons .portletItem ul li a small {
+    font-size: 12px;
+}
+dl.portlet.portletListing.portlet_type_boutons .portletItem ul li a .fa-fw {
+    width: auto;
+}

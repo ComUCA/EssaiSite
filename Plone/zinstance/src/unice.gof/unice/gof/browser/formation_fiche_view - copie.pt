@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+
+        <meta charset="utf-8">
+        <title tal:content="context/Title"/>
+        <meta name="description" tal:attributes="content context/objectifs"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+        <link href="++resource++unice.theme.stylesheets/libs/bootstrap.min.css" rel="stylesheet">
+        <link href="++resource++unice.theme.stylesheets/libs/font-awesome.min.css" rel="stylesheet">
+        <link href="++resource++unice.gof.stylesheets/fiche.css" rel="stylesheet">
+
+        <script src="++resource++unice.theme.javascripts/libs/jquery.min.js"></script>
+    </head>
+
+    <body tal:define="comp view/fiche_composante; comp_code python:comp['code']; comp_lib python:comp['lib'];
+        images string:++resource++unice.gof.images;"
+        tal:attributes="class string:theme_${comp_code}">
+
+        <div class="container-fluid">
+
+            <div class="row logos">
+                <div class="col-xs-2 col-xs-push-10 text-right hidden-print">
+                    <button onclick="window.print();" class="btn btn-primary">
+                        <i class="fa fa-print fa-lg"></i> IMPRIMER
+                    </button>
+                </div>
+                <div class="col-xs-2 col-xs-push-10 text-right visible-print-block">
+                    <div id="qrcode" tal:attributes="data-qrcode string:${context/absolute_url}/@@formation_mobile_view"></div>
+                </div>
+
+                <div class="col-xs-10 col-xs-pull-2">
+                    <img tal:condition="not:comp_code" tal:attributes="src string:${images}/logos/uns.png;" alt="Université Nice Sophia Antipolis"/>
+                    <img tal:condition="comp_code" tal:attributes="src string:${images}/logos/${comp_code}.png; alt comp_lib;"/>
+                </div>
+            </div>
+
+            <div class="row header">
+                <div class="col-md-8 text-center">
+                    <h1 tal:content="context/Title"/>
+                    <p tal:content="context/specialite"/>
+                </div>
+            </div>
+
+            <div class="row carousel" tal:condition="comp_code">
+                <div class="col-xs-12 text-center">
+                    <img tal:attributes="src string:${images}/carousels/${comp_code}.jpg; alt comp_lib"/>
+                </div>
+            </div>
+
+            <div class="container-fluid container-sm-height">
+                <div class="row contents row-sm-heigh">
+                    <div class="col-sm-8 col-sm-push-4 col-sm-height col-top content">
+                        <h2>Objectifs de la formation</h2>
+                        <p tal:replace="structure context/objectifs"/>
+
+                        <h2>Compétences développées</h2>
+                        <p tal:replace="structure context/competences"/>
+
+                        <!-- <h2>Metiers / débouchés</h2>
+                        <p tal:replace="structure context/metiers"/> -->
+
+                        <h2>Conditions et modalités d'admission</h2>
+                        <p tal:replace="structure context/conditions"/>
+                    </div>
+                    <div class="col-sm-4 col-sm-pull-8 col-sm-height col-top aside">
+                        <h2>Accessible en :</h2>
+                        <p tal:replace="structure context/accessibilite"/>
+
+                        <h2>Domaine :</h2>
+                        <p tal:replace="structure context/domaine"/>
+
+                        <h2>Mention :</h2>
+                        <p tal:replace="structure context/mention"/>
+
+                        <h2>Spécialité :</h2>
+                        <p tal:replace="structure context/specialite"/>
+
+                        <hr/>
+                        <h2>Poursuite d'études :</h2>
+                        <p tal:replace="structure context/poursuite"/>
+
+                        <hr/>
+                        <h2>Responsable :</h2>
+                        <p tal:replace="structure context/responsable"/>
+                        <hr/>
+
+                        <h2>Site web :</h2>
+                        <div class="text-center">
+                            <div class="label label-info"><p tal:replace="structure context/siteweb"/></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page_break"></div>
+
+
+            <div class="row metiers">
+                <div class="col-xs-12 text-center">
+                    <h2>Metiers et débouchés</h2>
+                </div>
+                <div class="col-xs-12">
+                    <p tal:replace="structure context/metiers"/>
+                </div>
+            </div>
+
+            <div class="row programme">
+                <div class="col-xs-12 text-center">
+                    <h2>Programme des études</h2>
+                </div>
+                <div class="col-xs-12">
+                    <p tal:replace="structure context/programme"/>
+                </div>
+            </div>
+        </div>
+
+
+        <script src="++resource++unice.theme.javascripts/libs/bootstrap.min.js"></script>
+        <script src="++resource++unice.gof.javascripts/scripts.js"></script>
+        <script src="++resource++unice.gof.javascripts/jquery.qrcode.min.js"></script>
+        <script>
+            var qr = $('#qrcode');
+            qr.qrcode({
+                text: qr.data('qrcode')
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="main"
+    tal:define="
+    b_actualites python:context.aq_parent.actualites.actualites.results(batch=True, b_size=2);
+    actualites python:view.items(b_actualites, ['page.html'], desc_max=90, isObjects=type(b_actualites) is list)">
+    <!-- <tal:block content="python:context.aq_parent.actualites.actualites.absolute_url()"/> -->
+
+    <div class="membre row">
+
+        <div class="banniere">
+            <div class="title">
+                <div>
+                    <a tal:omit-tag="not:context/site_internet" tal:attributes="href context/site_internet">
+                        <tal:block content="structure context/@@images/logo/preview"/>
+                    </a>
+                    <h1 id="parent-fieldname-title" tal:content="context/Title"/>
+                    <strong tal:content="context/Description"/>
+                    <a tal:condition="context/site_internet" tal:attributes="href context/site_internet"
+                        class="btn btn-primary btn-inverted">
+                        <i class="fa fa-external-link"></i> Site internet
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content row">
+            <div class="col-md-8">
+                <h2 class="text-center">Présentation</h2>
+                <tal:block condition="context/content" content="structure context/content/output"/>
+            </div>
+            <div class="col-md-4">
+                <h2 class="text-center">Actualités</h2>
+                <div class="portlet portletEvenementiels list-group" style="list-style: none; margin-left: 0;">
+                    <tal:block repeat="item actualites">
+                        <a class="list-group-item" tal:attributes="href item/url">
+                            <span class="carre pull-left">
+                                <img tal:attributes="src item/image; title item/title"/>
+                            </span>
+
+                            <h4 class="list-group-item-heading" tal:content="item/title"/>
+                            <p class="list-group-item-text" tal:condition="item/dates/start_localized">
+                                <span class="text-muted">
+                                    <i class="fa fa-calendar-empty"></i> <tal:block content="item/dates/start_localized"/>
+                                    <tal:block condition="item/location">
+                                        <i class="fa fa-map-marker"></i> <tal:block content="item/location"/>
+                                    </tal:block>
+                                </span>
+                            </p>
+                            <p class="list-group-item-text" tal:content="item/desc_trunc"/>
+                        </a>
+                    </tal:block>
+                </div>
+                <!-- <div tal:repeat="item actualites" class="card">
+                    <div class="card_img card_img_top_left card_img_top_right card_img_monochrome">
+                        <a tal:attributes="href item/url; title item/title;" class="image_ratio ratio16:9">
+                            <span tal:attributes="style string:background: url(${item/image});">
+                                <img tal:attributes="src item/image; title item/title"/>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="card_content">
+                        <a tal:attributes="href item/url; title item/title;">
+                            <strong tal:content="item/title"/>
+                        </a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+
+    </div>
+
+</metal:main>
+
+</body>
+</html>
+

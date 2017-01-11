@@ -1,0 +1,57 @@
+<html tal:omit-tag=""
+    tal:condition="nocall:view/agenda"
+    xmlns="http://www.w3.org/1.09/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+	xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+	i18n:domain="unice.portlet.agenda">
+
+
+    <div tal:attributes="id view/data/extra_id; class string:portlet portletAgenda ${view/data/extra_css}"
+         tal:define="agenda view/agenda; items python:agenda['items'];">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-1">
+                    <a tal:omit-tag="not:view/data/more_link" tal:attributes="href view/data/more_link">
+                        <i class="fa fa-calendar-o"></i> <strong tal:content="view/header"/>
+                    </a>
+                </div>
+
+                <div class="col-md-11">
+                    <ul class="bxslider slider_agenda" data-slider-captions="1"
+                            tal:define="auto python:len(items)>1"
+                            tal:attributes="data-slider-auto python:'1' if auto else '0'; data-slider-pager python:'1' if auto else '0';">
+
+                        <li tal:repeat="item items" tal:attributes="class python:'carousel_video_container' if item['type'] == 'video' else ''">
+
+                            <tal:block tal:condition="python:item['type'] != 'video'">
+                                <a tal:attributes="href string:${item/url}/@@article_view" class="thumb_link image_ratio">
+                                    <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                        <img tal:attributes="src item/image; title python:view.captions(item)"/>
+                                    </span>
+                                </a>
+                            </tal:block>
+
+                            <tal:block tal:condition="python:item['type'] == 'video'">
+                                <div class="carousel_video_image">
+                                    <a tal:attributes="href string:${item/url}/@@article_view" class="thumb_link image_ratio">
+                                        <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                            <img tal:attributes="src item/image; title python:view.captions(item)"/>
+                                        </span>
+                                    </a>
+                                </div>
+                                <div class="carousel_video_iframe" tal:content="structure item/item/iframe"/>
+                            </tal:block>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</html>

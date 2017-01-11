@@ -1,0 +1,1045 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;
+            variableEtapes python:view.champsRepeat('etapes');      
+            variableGalerie python:view.champsRepeat('galerie_photos');  
+            variableMeditesCollege python:view.champsRepeat('medites_dans_mon_college');
+            variableMeditesEtapesCollege python:view.champsRepeat('ajout_etapes'); 
+            variableMembre python:view.champsRepeat('membre');
+            ">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+            <metal:content-core define-macro="content-core" tal:define="widgets nocall:context/@@view">
+                
+                <script src="++resource++unice.medites.javascripts/libs/avatars.js"></script> 
+                <section class="container-fluid emplacement">
+                    <div class="points bio-P1 displayNone">
+                        <h3>Score</h3>
+                        <span id="pointsParcours">0</span>/180 
+                    </div>
+                    <div id="bio-P1" class="Marker_Container marqueurs">
+
+                    <!-- Popup des instruction du parcours -->                
+                        <div class="reglesParcours modal fade" tabindex="-1" role="dialog" aria-labelledby="reglesInsectesTitre" aria-hidden="true">
+                            <div class="modal-dialog modal-md">
+                                <div class="modal-content cadreVert">
+                                    <div class="modal-header">
+                                        <button aria-label="Close" data-dismiss="modal" class="close" type="button" title="Fermer"><span aria-hidden="true">×</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h4 class="noMarginTop">Changement climatique vu à travers ses impacts</h4>
+                                        <br/>
+                                        <p>Bienvenue sur ce parcours pédagogique, composé de 12 étapes. Chacune d'entre elle est signalée par un des logos suivants :</p>
+                                        <ul class="sansPuce noPadding">
+                                            <li><i class="fa fa-info"></i> : pour les informations générales.</li>
+                                            <li><i class="fa fa-gears"></i> : pour les contenus.</li>
+                                            <li><i class="fa fa-external-link"></i> : pour approfondir le sujet grâce à un autre site internet.</li>
+                                            <li><i class="fa fa-trophy"></i> : pour tester tes nouvelles connaissances avec un quiz géant.</li>
+                                            <li><img alt="Etoile vide" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" class="etoileVide" /> <img alt="Etoile pleine" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" class="etoilePleine" /> : pour les jeux, blanches lorsque les jeux ne sont pas terminés et oranges quand ces derniers sont finis et que tu as remporté tes points. Chaque jeu rapporte 20 points sauf les quiz qui en valent 30 (Ils sont inscrits en haut à droite dans la bouée de sauvetage <img alt="Zone destinée aux points" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/climat/p1/score.svg" width="20"  />).</li>
+                                        </ul>
+                                        <h4 class="text-center"><em>Bonne balade éducative parmi les insectes...</em></h4>
+                                    </div>
+                                    <div class="modal-footer displayNone">
+                                        <button class="clear btn btn-default" title="Confirmer en cliquant dessus">Afficher de nouveau les instructions durant les 5 prochaines visite</button> 
+                                    </div>   
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="HE_Char"></div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"13.5,19.7","hidden":true}'></div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"17.2,16","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"22.2,15.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"28.2,18","hidden":true}'></div>        
+
+                        <div class="marqueur" id="bio-a-1">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"31.2,24","tooltip_offset":"-10.5,6","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Séance 1<br/>Les phénomènes atmosphériques </div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Les phénomènes atmosphériques </h3>
+                                <div id="carousel-bio-P1-1" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-1" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-1" data-slide-to="1"></li>
+                                        <li data-target="#carousel-bio-P1-1" data-slide-to="2"></li>
+                                        <li data-target="#carousel-bio-P1-1" data-slide-to="3"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                        </div>           
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                <div class="col-xs-12 col-lg-7 cadreBlanc">
+                                                    <img class="img-responsive center" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/climat/p1/etape1/img1.png" alt="" />
+                                                    <span class="pull-right"><u>Source :</u> <a href="http://www.educapoles.org/fr/multimedia/animation_detail/la_biodiversit_changement_climatique" title="Cliquer sur le lien pour voir l'exemple sur le site officiel">EducaPoles</a></span> 
+                                                </div>
+                                                <div class="col-xs-12 col-lg-5">
+                                                    <p>Le climat a sans cesse évolué depuis les origines de la terre. Nous constatons une alternance de périodes froides dites « glaciaires » et de périodes chaudes dites « interglaciaires ».<br/>Il s'agit de changements climatiques étudiés par les paléoclimatologues, des scientifiques qui s'intéressent aux climats anciens. La dernière période glaciaire remonte à 21000 ans. La température n'était pas la même qu'aujourd'hui, en moyenne 6 degrés inférieure à celle que nous connaissons actuellement.</p>
+                                                    <p>&Agrave; titre comparatif, la région Nord-Pas-de-Calais devait ressembler à une zone froide et désolée, avec quelques touffes d'herbe rabougrie de type toundra et balayée par les vents froids venus du glacier alors que la région PACA était plus clémente, il y faisait plus chaud et il pouvait y pousser une forêt tempérée. Les conditions y étaient plus propices à la vie.</p>
+                                                    <p>Les changements de températures de l'époque étaient du fait de facteurs naturels, en particulier les variations cycliques des mouvements de la Terre autour du soleil. Mais aussi les gaz à éffet de serre. </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                 
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>  
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-1" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-1" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a>  
+                                </div>    
+                            </div>
+                        </div>    
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"33.2,26","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"35.2,32","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"34.2,36","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"31.2,37.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"25.2,37.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"25.1,43.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"26.4,51.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"25.4,53.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"23.4,55.5","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"20.5,52.5","hidden":true}'></div>
+      
+
+                        <div class="marqueur" id="bio-a-2">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"20.6,51","tooltip_offset":"-5.9,5.7","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />                       
+                            </div>
+                            <div class="HE_Tooltip">Séance 2 - La démarche scientifique</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Océan - La démarche scientifique</h3>
+                                <div id="carousel-bio-P1-2" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-bio-a-2" class="displayNone" data-animation="animated flipInY">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1"><i>Tu remportes :</i><u><span>20</span> points</u></p>
+                                    </div> 
+                                    <div id="solution-demarcheScientifique" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--demarcheScientifique" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="solution--demarcheScientifique">Solution</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/climat/p1/etape2/solution1.png" alt="" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="solution-bio-a-2-b" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--bio-a-2" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="solution--bio-a-2">Solution</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/climat/p1/etape2/solution2.png" alt="" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-2" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-2" data-slide-to="1"></li>
+                                        <li data-target="#carousel-bio-P1-2" data-slide-to="2" class="liPoints liJ1Points"></li>
+                                        <li data-target="#carousel-bio-P1-2" data-slide-to="3" class="liPoints liJ2Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Qu'est ce que la démarche scientifique ?</p>
+                                                </div>
+                                            </div>
+                                        </div>    
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Définition</h4>
+                                                <p>D’après André Giordan, la démarche scientifique consiste à "faire émerger des éléments observables ou quantifiables, de les confronter à des hypothèses, de pouvoir maîtriser la démarche pour éventuellement la reproduire et de pouvoir discuter tous les résultats".<br/>Toute démarche scientifique fait appel au raisonnement. Ce dernier s’appuie sur des faits expérimentaux, des lois, des propriétés d’objets, ... Ainsi, observations, mesures, enregistrement de données, modélisation, simulation et enquêtes ont des démarches scientifiques possibles.<br/>L’important dans une démarche scientifique, d’après Gérard de Vecchiet Nicole Carmona - Magnaldi, "C’est de chercher, de regarder la réalité avec un autre œil, c’est d’être à l’affût des contradictions qui nous interpellent et qui nous amènent à nous poser des questions ; ... c’est enfin, construire des modèles explicatifs qui nous permettent d’appréhender le monde qui nous entoure."</p>
+                                                <div class="conclusion cadreBlanc marginTop35">
+                                                    <i class="fa fa-sign-out fa-2x"></i><h5>La démarche scientifique désigne donc l’ensemble des démarches nécessaires pour obtenir des connaissances valides (scientifiques) par le biais d’instruments fiables. Cette méthode a pour but de protéger le chercheur de la subjectivité.</h5>
+                                                  <br/><i class="fa fa-sign-out fa-2x"></i><h5>La démarche scientifique est basée sur la reproduisibilité (la capacité de répéter une expérience donnée n’importe où et par n’importe quelle personne) et la falsifiabilité ou la réfutabilité (toute proposition scientifique est susceptible d’être réfutée).</h5>
+                                                </div>
+                                                <ul class="ulPerso3 marginTop35 cadreNoir">
+                                                    <li class="sansPuce">Sources :</li> 
+                                                    <li><a href="https://www.ulb.ac.be/inforsciences/quandseraigrand/docs/05_dem_sc_tfe.pdf" title="Voir la définition complète sur le site">www.ulb.ac.be</a></li>
+                                                    <li><a href="http://lesdefinitions.fr/methode-scientifique#ixzz4JSddpJ3C" title="Voir la définition complète sur le site">lesdefinitions.fr</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="item jeu1">
+                                            <div class="col-xs-12">
+                                                <h4>Dispose les étapes de la démarche scientifique dans le bon ordre</h4>
+                                                <p>La démarche scientifique est une manière d'aborder un sujet identifié. L'idée est d'appliquer dans un ordre précis, plusieurs étapes, afin de solutionner ce fameux sujet identifié.<br />
+                                                Le jeu situé au dessous de cette rubrique illustre ces différentes étapes. A toi de les répartir dans le bon ordre.<br />
+                                                <u>Note :</u> À chaque fois que tu positionnes correctement une étape, elle reste à son emplacement.</p>
+                                                <div data-animation="animated fadeInDown" class="col-xs-12 col-sm-12 col-md-12 cadreBleu delay15 sourcesJeu">
+                                                    <h5 class="noMarginTop">Liste des différentes étapes de la démarche scientifique à répartir :</h5>
+                                                    <ul class="col-xs-12 col-sm-12 col-md-12 etape1 row ulPerso minWidth600"> 
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-2">Mettre en place un protocole expérimental</span>
+                                                        </li>                    
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-4">Répéter l'étape précédente pour confirmer les résultats</span>
+                                                        </li>
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-6">Se poser de nouvelles questions...</span>
+                                                        </li>
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-0">Se poser une question</span>
+                                                        </li>   
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-5">Bilan, discussion, transmission</span>
+                                                        </li>  
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-3">Expérimentation, observation et prise de notes</span>
+                                                        </li>
+                                                        <li class="col-xs-6">
+                                                            <span id="demarche-drag-1">Faire des hypothèses</span>
+                                                        </li>
+                                                    </ul>  
+                                                </div>         
+                                                <div data-animation="animated fadeInDown" class="col-xs-12 cadreNoir delay15 displayNone conclusionJeu">
+                                                    <h5 class="noMarginTop">Les différentes étapes de la démarche scientifique :</h5>
+                                                    La première étape consiste effectivement à <u>Se poser une question</u>, laisser exprimer sa curiosité. Essayer d'interpréter un phénomène quel qu'il soit. Tout est issu d'un processus logique...<br/>
+                                                    ...et pour le comprendre, il faut <u>Faire des hypothèses</u>, imaginer des explications, des raisons, s'appuyer sur le contexte et les différents éléments qui le composent...<br/>
+                                                    ...pour être capable de penser et de <u>Mettre en place un protocole expérimental</u> qui permettra ainsi, ...<br/>
+                                                    ...à force d'<u>Expérimentations, d'observations et prises de notes</u>, de confirmer ou de réfuter ses premières hypothèses et/ou ses premiers résultats...<br/>
+                                                    ... et donc de dresser un <u>Bilan</u>, qui aboutira sur une <u>discussion</u>, et une <u>transmission</u> de ce savoir nouvellement acquis...<br/>
+                                                    ... Mais le plus important sera bien entendu de garder sa curiosité en éveil pour <u>Se poser de nouvelles questions</u>, résoudre d'autres mystères et ainsi de suite.
+                                                </div> 
+                                                <ul data-animation="animated flipInY" class="col-xs-12 col-sm-12 col-md-12 etape2 delay15 sansPuce marginTop35 infobulleJaune"> 
+                                                    <li id="demarche-drop-0" class="drop ferme" data-toggle="tooltip" data-placement="top" title="Le problème qu'on veut résoudre">
+                                                        <div>1</div>
+                                                    </li>   
+                                                    <li id="demarche-drop-1" class="ferme" data-toggle="tooltip" data-placement="top" title="Imaginer une possible solution au problème">
+                                                        <div>2</div>
+                                                    </li>
+                                                    <li id="demarche-drop-2" class="drop ferme" data-toggle="tooltip" data-placement="top" title="Imaginer des expériences ou des actions à faire pour tester l'hypothèse">
+                                                        <div>3</div>
+                                                    </li> 
+                                                    <li id="demarche-drop-3" class="ferme" data-toggle="tooltip" data-placement="top" title="Réaliser les expériences ou les observations qu'on a imaginé et les analyser">
+                                                        <div>4</div>
+                                                    </li>
+                                                    <li id="demarche-drop-4" class="ferme" data-toggle="tooltip" data-placement="top" title="Il faut toujours être sûre de nos résultats : on refait les expériences ou les observations">
+                                                        <div>5</div>
+                                                    </li>
+                                                    <li id="demarche-drop-5" class="ferme" data-toggle="tooltip" data-placement="top" title="Il faut faire un bilan pour déterminer si l'hypothèse était valide et partager nos résultats pour aider ceux qui vont se poser la même question... même nous, avec le temps on oublie ce que l'on a fait !">
+                                                        <div>6</div>
+                                                    </li>
+                                                    <li id="demarche-drop-6" class="ferme" data-toggle="tooltip" data-placement="top" title="Une question peut en cacher une autre... Une réponse nous amène très souvent à des nouvelles questions">
+                                                        <div>7</div>
+                                                    </li>                    
+                                                </ul>
+                                                <div class="jeuBtn">
+                                                    <span class="solutionBtn" data-toggle="modal" data-target="#solution-demarcheScientifique">
+                                                        <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="item jeu2">
+                                            <div class="col-xs-12">
+                                                <h4>Reviens prochainement !</h4>
+                                                <div class="jeuBtn"> 
+                                                    <span class="solutionBtn" data-toggle="modal" data-target="#solution-bio-a-2">
+                                                        <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-2" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-2" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>   
+                            </div>
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"18.2,58","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"20,62","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"20,68","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"18.2,77","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"19.2,80","hidden":true}'></div>
+
+                        <div class="marqueur" id="bio-a-3">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"17,85","tooltip_offset":"-8.5,5","panel_pos":"0.4,0.9"}'>
+                                <i class="fa fa-gears"></i>
+                            </div>
+                            <div class="HE_Tooltip">Séance 3 - L'effet de serre</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>L'effet de serre</h3>
+                                <div id="carousel-bio-P1-3" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-3" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-3" data-slide-to="1"></li>
+                                        <li data-target="#carousel-bio-P1-3" data-slide-to="2"></li>
+                                        <li data-target="#carousel-bio-P1-3" data-slide-to="3"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Qu'est-ce que l'effet de serre ?</p>
+                                                    <p>Comment cela fonctionne-t'il ?</p>
+                                                </div>
+                                            </div>
+                                        </div>      
+                                        <div class="item ">
+                                            <div class="col-xs-12">
+                                                <h4>L'effet de serre</h4> 
+                                                <div class="col-xs-12">
+                                                    <img class="img-responsive cadreBlanc center" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/climat/p1/etape3/terre-effetSerre.svg" alt="" />
+                                                </div>
+                                                <div class="col-xs-12">
+                                                    <h5>Définition</h5>
+                                                    <p>L'effet de serre est un phénomène naturel qui permet à la Terre (comme toute autre planète) de retenir la chaleur solaire dans l'atmosphère et de maintenir une température acceptable pour entretenir la vie. Sans cela la température de la Terre serait d'environ -18 °C ! La Lune n'a pas d'effet de serre car elle n'a pas d'atmosphère : il y fait très froid sur la moitié que le Soleil n'éclaire pas. (source : <a href="https://fr.vikidia.org/wiki/Effet_de_serre" title="Accéder au site internet">Vikidia</a>)</p> 
+                                                    <h5>Comment marche l'éffet de serre ?</h5>
+                                                    <p>On l'appelle « effet de serre » car le fonctionnement de ce phénomène est comparable à ce qui se passe dans une serre en verre, utilisée pour faciliter la culture de certaines plantes. Les parois transparentes d'une serre laissent passer les rayons du soleil. Le verre ralentit la sortie de la chaleur. Cela fait augmenter la température à l'intérieur de la serre.</p>
+                                                    <p>On peut remplacer la serre par l'atmosphère et le verre par les gaz à effet de serre contenus dans l'atmosphère (principalement la vapeur d'eau mais aussi le dioxyde de carbone (CO2), le méthane, ...).</p>
+                                                    <p>Au départ, les gaz à effet de serre devaient littéralement gazéifier la terre entière, mais grâce à l'atmosphère, ce phénomène ne se produira pas (du moins pour l'instant (voir " Conséquence de la Pollution))</p>
+                                                    <h5>Quand les rayons du soleil atteignent la terre :</h5>
+                                                    <ul class="ulPerso">
+                                                        <li>une partie (30%) est directement renvoyée dans l'espace par les surfaces blanches ou claires de la Terre (nuages, glaces, déserts de sable, ...).</li>
+                                                        <li>l'autre partie (50%) est absorbée par le sol, les océans, et sert à les réchauffer, ... car l'atmosphère (20%) laisse passer certains ultraviolets (les UV les plus dangereux sont absorbés par l'ozone) mais surtout les rayons infrarouges qui contiennent le plus de chaleur.</li>
+                                                    </ul>
+                                                    <p>C'est cette énergie que le sol va réémettre sous forme de rayons infrarouges. C'est là que les gaz à effet de serre interviennent : ils vont empêcher ces rayons de se perdre dans l'espace et contribuent ainsi à réchauffer la planète, comme le verre d'une serre. </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Les différents gaz à effet de serre</h4> 
+                                                <p>Il existe plusieurs gaz à effet de serre, qui n'ont pas la même importance dans le phénomène :</p>
+                                                <h5>L'eau</h5>
+                                                <p>La vapeur d'eau n'est pas un gaz particulièrement efficace dans l'effet de serre. Mais c'est un gaz tellement abondant, qu'il est le premier responsable de l'effet de serre sur Terre, en tous cas de l'effet de serre naturel. Grâce à la vapeur d'eau et à l'effet de serre, la température moyenne sur Terre est d'environ 15 °C, alors qu'elle serait inférieure à 0 °C sans cela : sans l'effet de serre, la vie serait donc impossible sur Terre !</p>
+                                                <h5>Le dioxyde de carbone</h5>
+                                                <p>Le dioxyde de carbone (ou gaz carbonique, CO2) est un gaz plutôt rare dans l'atmosphère : moins de 1% ! Mais ce gaz est beaucoup plus efficace que la vapeur d'eau, pour ce qui est de l'effet de serre : il est le deuxième gaz le plus important de l'effet de serre. Le problème, c'est que l'industrie produit beaucoup de dioxyde de carbone : en polluant l'atmosphère, l'homme est donc en train d'augmenter l'effet de serre naturel.</p>
+                                                <h5>Le méthane</h5>
+                                                <p>Le méthane est aussi appelé gaz naturel. On s'en sert pour se chauffer, pour faire la cuisine... Il est produit naturellement, notamment dans les marais. C'est un gaz plutôt rare, mais plus efficace encore que le dioxyde de carbone. L'homme augmente aussi le taux de méthane dans l'atmosphère, notamment en cultivant du riz dans les rizières : une rizière est une sorte de marécage aménagé pour l'agriculture ; elle produit beaucoup de méthane. Comme le riz est l'une des céréales les plus cultivées sur Terre, l'impact sur l'effet de serre est important.<br/>Les toundras sont des sortes de marécages gelés, au niveau du cercle polaire. Quand la température de la Terre augmente, les toundras dégèlent, et se remettent à produire du méthane, ce qui augmente encore l'effet de serre, et la température : c'est un cercle vicieux ! L'océan contient aussi une grande quantité de méthane, dissout. Quand la température augmente, le gaz s'échappe, et participe à l'effet de serre et à l'augmentation de la température.<br/>Le méthane est un gaz important dans l'effet de serre, et son importance augmente avec l'augmentation de la température.</p>
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Quelques exemples de sources d'émission de CO2</h4>   
+                                                <div class="col-xs-12">  
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>L'aviation civile</h5>
+                                                        Chaque année l'aviation civile émet près de 3% des émissions de CO2 mondiales. Ce sont donc près de 660 millions de tonnes de CO2 qui sont émises par les avions.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les iphones</h5> 
+                                                        L'iPhone 4 aura produit durant sa vie un total de 45 kilos de CO2 répartis entre sa production (57%), son usage (34%) son transport (8%) et enfin son recyclage (1%). En 2010, la production et consommation d'iPhone a relâché 2,35 millions de tonnes de CO2 dans l'atmosphère. Une étude récente nous apprend qu'Apple a tout de même fait des efforts en matière de conditionnement. La réduction de l'emballage d'un iPhone 4 permet une économie de carburant de 14% pour son transport. 
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">  
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les lampes à kérosène</h5> 
+                                                        170 Millions de tonnes de C02 sont dégagées chaque année par les lampes à kérosène, soit près de 5400 kilos de C02 par seconde. Les lampes dangereuses pour la santé et pour l'environnement sont surtout utilisées dans les pays en voie en développement.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les vins de Bordeaux</h5>
+                                                        La filière des Vins de Bordeaux émet les émissions annuelles de 90 000 Français. Les matériaux entrants (produits chimiques, métaux, papiers carton, plastique, liège, verre et sucre) représentent a eux seuls 43% des gaz a effet de serre émis. Responsable principal, le verre génère 42 600 tonnes équivalent carbone, tandis que le fret (aérien et fournisseur) constitue 18% des émissions du secteur.
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">  
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>La respiration des Français</h5> 
+                                                        Chaque seconde la respiration des quelques 65 millions de Français rejette dans l'atmosphère 667 kilos de C02 par le simple fait de leur respiration. Cela représente des émissions de C02 de 20 millions de tonnes par an.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les Etats-Unis</h5> 
+                                                        En 2012, les émissions de CO2 par les États-Unis ont été de 5298 millions de tonnes, soit 200 millions de tonnes de moins qu’en 2011 : en matière d'émissions de CO2, les États-Unis arrivent en seconde position derrière la Chine.
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">  
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>La Chine</h5> 
+                                                        En 2012, la Chine a émis 300 millions de tonnes de plus qu'en 2011. La Chine est devenue le premier responsable des émissions de CO2, dépassant les Etats-Unis depuis 2006. Les émissions de CO2 par habitant en Chine sont de même niveau qu'en Europe !
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>La Russie</h5>
+                                                        Loin derrière la Chine et les USA, la Russie occuperait la troisième place des plus gros émetteurs de CO2.
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">  
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>L'Inde</h5>
+                                                        4eme pays responsable des émissions de CO2 dans le monde. Le pays possède trois industries fortes : minières, textiles et automobiles.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les recherches sur Google</h5>
+                                                        Une requête sur Google produit 7g de C02 du fait de l'immense quantité d'énergie consommée par les quelques 500 000 serveurs du moteur de recherche américain. Ces 7 grammes sont à multiplier par 200 millions de requêtes par jour au minimum tout au long de l'année, soit 511 millions de kilos de CO2/an au total.
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">                                                  
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Le charbon</h5>
+                                                        La consommation de charbon dans le monde représente 184 000 kilos par seconde, soit 5,8 milliards de tonnes de charbon. La consommation globale de charbon a cru de 5.4% en 2011, ce qui fait du charbon le carburant fossile qui connait la plus forte croissance. La consommation de charbon a plus que doublé en 30 ans et devrait continuer à augmenter de 1,8% par an et passer. Le charbon devient la première énergie primaire consommée dans le monde, devant le pétrole, vers 2016 ou 17.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>La production d'électricité et de chaleur dans le monde</h5>
+                                                        En 2006, les émissions mondiales de CO2 dues à la production d'électricité et de chaleur ont atteint 365 000 kilos de CO2 par seconde, soit 11 500 milliards de kilos de CO2 par an, en hausse de +53 % depuis 1990.
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">  
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les feux de tourbières</h5>
+                                                        En 2008, l'assèchement des zones humides et des tourbières aurait été la cause de 1,3 milliards de tonnes d’émission de C02. Si on prend en compte les feux de tourbières, le total des émissions de CO2 serait de 2 milliards de tonnes. 
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Un américain moyen</h5>
+                                                        La quantité de C02 émise par un Américain a augmenté de d'environ 11% entre 1990 et 2002. Il émet en moyenne 11 fois plus de CO2 que le seuil défini pour éviter le réchauffement climatique.
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">                                                      
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Un Français moyen</h5>
+                                                        Un Français émet en moyenne 9 tonnes d'équivalent C02 par an soit environ 24 kilos de CO2 émis chaque jour. A l'origine de ces émissions : nos déplacements (33%), le chauffage, l'eau chaude et l'électricité.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>La déforestation mondiale</h5> 
+                                                        La déforestation représente 20% des émissions de gaz à effet de serre, principalement sous forme de CO2. Selon certains scientifiques, c’est la troisième source d'émissions de gaz à effet de serre au monde, cette tendance se poursuit aujourd’hui, par exemple en Amazonie. 
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">                                                      
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Le traffic maritime mondial</h5>
+                                                        Les émissions du transport maritime international ont atteint en 2007 près de 4,5% du total des émissions. A ce rythme, l'Organisation Maritime Internationale estime qu'en 2020, les émissions de CO2 du secteur maritime auront augmenté de 30%.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>La climatisation aux USA</h5> 
+                                                        La climatisation représente 5% de l'énergie consommée aux États-Unis et émet 100 milliards de kilos de C02.
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">                                                      
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Le fonctionnement des centres informatique dans le monde</h5>
+                                                        Aux USA, on estime que les centres informatiques consomment 1,5% de l'électricité nationale en 2008.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Elan Norvégien</h5>
+                                                        Des chercheurs de l'Université Technique de Norvège affirment que leur mascotte nationale, l'Elan, émettrait une centaine de kilos de méthane par an par ses rots et ses pets fréquents.
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">                                                      
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les volcans</h5>
+                                                        Une faible quantité de dioxyde de carbone est crée par les éruptions volcaniques, ce qui représente une petite part des émissions naturelles de CO2. Les éruptions volcaniques libèrent du magma, des cendres, de la poussière et des gaz des profondeurs de la Terre. L’un des gaz libéré est le CO2. 
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>La fabrication de ciment</h5>
+                                                        La dépense d'énergie liée à la nécessité de produire de très hautes températures pour réaliser le processus de fabrication du ciment. Le phénomène de transformation du calcaire sous l'effet de la chaleur en chaux et en gaz carbonique (CO2). Plus de 60 % des émissions de CO2 lors de la fabrication de ciment proviennent de cette réaction. 
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">                                                      
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les rizières</h5>
+                                                        Les rizières sont à l'origine de l'émission dans l'atmosphère d'une part importante de l'un des principaux gaz responsables du réchauffement du globe, le méthane. La riziculture devrait s'intensifier au cours des prochaines années. Le méthane est produit par des bactéries dans des environnements dépourvus d'oxygène (anaérobies), lors de la décomposition de la matière organique.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Gramme de méthane émis par une vache</h5>
+                                                        La molécule de méthane (CH4) aurait, selon le GIEC (Groupe Intergouvernemental sur l'Evolution du Climat), un effet de serre 21 fois supérieur à celle du CO2. Or ce gaz est émis par… les ruminants, avec nos amis les bovins et leurs flatulences en haut de l'affiche.
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">                                                      
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Transports quotidiens</h5>
+                                                        Nos déplacements quotidiens émettent une énorme quantité de CO2 dans l’atmosphère.  Une voiture et une moto 115g de CO2 par kilomètre, le bus 110g de CO2 par kilomètre. L’avantage du bus est qu’il peut contenir beaucoup plus de personnes que dans une voiture. 
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les centrales nucléaires</h5> 
+                                                        La construction d’une centrale nucléaire rejette du CO2 indirectement de par sa construction et son fonctionnement. L’extraction d’uranium et l’acheminement de celui-ci vers les centrales, émettent aussi du CO2 (Transports maritime et routiers). 
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">                                                      
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>La fabrication des panneaux photo voltaïques</h5>
+                                                        Présents dans les panneaux solaires, le silicium transformé par raffinage est très gourmand en énergie. Lors de la fabrication du silicium (dans un four électrique), il se produit une réaction chimique qui libère du CO2.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Production de produits chimiques</h5>
+                                                        La production de produits chimiques est également un facteur d’émanation de CO2, notamment raffineries, métallurgie, chimie, cimenterie (2,6 % du total des émissions de CO2 en France), en particulier dû aux opérations sous hautes températures. 
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">                                                      
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Production de produits pétrochimiques</h5>
+                                                        Les plastiques sont dérivés du pétrole. Il faut 1,9 kg de pétrole brut pour fabriquer 1 kg de plastique. Une bouteille d’eau en plastique de 1,5L nécessite environ 35g de plastique. Dans une bougie, il y a de la paraffine qui est aussi un dérivé du pétrole et qui rejette du CO2.
+                                                    </div>
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Incinération des déchets</h5>
+                                                        Indirectement, les techniques employés pour incinérer ces déchets émettent beaucoup de CO2. La plus grande décharge d’ordures se trouve au USA, celle-ci mesure 1700 terrains de foot, reçoit 13 000 tonnes de déchets par jour et produit 2700 tonnes d’émanations de méthane. 
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12">  
+                                                    <div class="col-xs-12 col-md-6">
+                                                        <h5>Les biocarburants</h5>
+                                                        Pour faire face au manque de pétrole dans les années à venir, plusieurs biocarburants ont été créés. Cette nouvelle source d’énergie, comme le biodiesel, est fabriqué à partir du colza, du soja ou de l’huile de palme afin d’éviter d’utiliser des énergies fossile. Si ces plantations sont mises en place sur des tourbières tropicales, les émissions de CO2 peuvent être 2000 fois supérieures à celle d’un carburant fossile. 
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>        
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-3" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-3" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>    
+                            </div>
+                        </div>   
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"20.2,89","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"24.2,92","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"26.2,92","hidden":true}'></div>
+
+                        <div class="marqueur" id="bio-a-4">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"26.6,88.2","tooltip_offset":"-5,6","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide jeu1 logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                            </div>
+                            <div class="HE_Tooltip">Séance 4 - Visite de l'ICN</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Visite de l'ICN</h3>
+                                <div id="carousel-bio-P1-4" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">                               
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-4" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-4" data-slide-to="1" class="liPoints liJ1Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Quelles sont les objectifs de l'ICN ?</p>
+                                                </div>
+                                            </div>
+                                        </div>                                   
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Clique sur les marqueurs pour découvrir les différents lieux (et pour gagner les points).</h4>
+                                            </div>    
+                                        </div>  
+                                    </div>
+                                </div>
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-4" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-4" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div>    
+                        </div>  
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"31.2,86","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"32.6,80","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"31.6,76","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"30.6,73","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"30.6,71","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"33.6,71","hidden":true}'></div>
+                        
+                        <div class="marqueur" id="bio-a-5">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"34,68","tooltip_offset":"-5,6","panel_pos":"0.4,0.9"}'>
+                                <i class="fa fa-gears"></i>
+                            </div>
+                            <div class="HE_Tooltip">Séance 5<br/>Phénologie des plantes</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Phénologie des plantes (Observatoire des saisons) </h3>
+                                <div id="carousel-bio-P1-5" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-5" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-5" data-slide-to="1"></li>
+                                        <li data-target="#carousel-bio-P1-5" data-slide-to="2" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">                               
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>
+                                                        La phéno... quoi ? 
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Qu'est-ce que la phénologie ?</h4>
+                                                <p>La phénologie est l'étude de l'apparition d'événements périodiques (annuels le plus souvent) dans le monde vivant, déterminée par les variations saisonnières du climat. On étudie surtout la phénologie des végétaux, mais aussi des animaux, des champignons, et même, dans le monde non vivant, des glaciers.</p>
+                                                <p><u>Etymologie :</u> du grec ancien phainein (« se montrer ») et grec ancien logos (« étude »)</p>
+                                                <p>Voici quatre exemples d'évènements « phénologiques » de la vie du chêne</p>
+                                                <ul class="ulPerso"> 
+                                                    <li>Apparition des bourgeons</li> 
+                                                    <li>Développement des feuilles</li>
+                                                    <li>Jaunissement des feuilles</li>
+                                                    <li>Chute des feuilles</li>
+                                                </ul>
+                                                <p>La phénologie ne concerne pas uniquement les espèces végétales, elle concerne également les espèces animales. Prenons l'exemple de la marmotte, et voici 4 exemples d'événements « phénologiques »</p>    
+                                                <ul class="ulPerso"> 
+                                                    <li>Naissance des bébés</li> 
+                                                    <li>Apparition du pelage d'hiver</li> 
+                                                    <li>Hibernation</li> 
+                                                    <li>Fin de l'hibernation</li>  
+                                                </ul>
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>Quelles sont les différences que l'on observe chez le chêne le 25 avril 1980 et le 25 avril 2006 ? </h4> 
+                                                <div class="cadreVert col-xs-12 col-lg-5">
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/climat/p1/etape5/phenologieChene.jpg" alt="" />
+                                                    <br/>
+                                                    <p class="text-center txtNoir">&Agrave; la même date de l'année mais à 26 ans d'écart, les feuilles du chêne sont plus vertes et plus grandes.</p>
+                                                    <span class="pull-right"><u>Source :</u> <a class="txtJaune" href="http://www.educapoles.org/fr/multimedia/animation_detail/biodiverst_les_rythmes_naturels" title="Cliquer sur le lien pour voir l'exemple sur le site officiel">EducaPoles</a></span>                                                    
+                                                </div>
+                                                <div class=" col-xs-12 col-lg-7">
+                                                    <h5>Pourquoi observe-t-on ces différences ?</h5> 
+                                                    <p>On observe ces différences car en avril 2006, les températures sont bien plus élevées qu'en avril 1980. C'est-à-dire qu'il fait plus chaud en 2006 qu'en 1980 à la même époque.</p>
+                                                    <h5>Qu'est-ce qu'un décalage phénologique ?</h5> 
+                                                    <p>C'est quand le changement de rythme d'une espèce ne se fait pas au même rythme que celui d'autres espèces qui y sont associées.</p> 
+
+                                                    <h5>Y-a-t-il un décalage phénologique entre le chêne et la phalène brumeuse ?</h5>
+                                                    <p>Non, la phalène brumeuse s'est adaptée à l'apparition précoce des feuilles du chêne, il n'y a pas de décalage.</p> 
+                                                    
+                                                    <h5>Comment pourrait-on expliquer cela ?</h5> 
+                                                    <p>Il est possible que le facteur déterminant de la phénologie du chêne, la température, soit le même que celui de la phalène brumeuse.</p> 
+                                                    
+                                                    <h5>Y-a-t-il un décalage phénologique entre la phalène brumeuse et la mésange charbonnière ?</h5>
+                                                    <p>Oui, la mésange charbonnière n'a pas avancé sa période de ponte et donc les petits ne peuvent bénéficier des chenilles du papillon pour leur nourriture. </p>
+                                                    <h5>Comment pourrait-on expliquer cela ? </h5>
+                                                    <p>Il est possible que le facteur déterminant de la phénologie de la phalène brumeuse (la température) soit diffèrent de celui de la mésange charbonnière (ensoleillement, durée du jour). </p>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-5" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-5" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>           
+                            </div> 
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"40.2,75","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"44.2,80","hidden":true}'></div>
+
+                        <div class="marqueur" id="bio-a-6">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"47,83","tooltip_offset":"-7.5,6","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Séance 6 - Impacts sur les océans</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Impacts sur les océans</h3>
+                                <div id="carousel-bio-P1-6" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-6" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-6" data-slide-to="1" ></li>
+                                        <li data-target="#carousel-bio-P1-6" data-slide-to="2" ></li>
+                                        <li data-target="#carousel-bio-P1-6" data-slide-to="3" ></li>
+                                        <li data-target="#carousel-bio-P1-6" data-slide-to="4" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p></p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item ">
+                                            <div class="col-xs-12">                                            
+                                                <h4></h4>                                      
+                                            </div>    
+                                        </div>
+                                        <div class="item ">
+                                            <div class="col-xs-12">                                            
+                                                <h4></h4>                                      
+                                            </div>    
+                                        </div>
+                                        <div class="item ">
+                                            <div class="col-xs-12">                                            
+                                                <h4></h4>                                      
+                                            </div>    
+                                        </div>
+                                        <div class="item ">
+                                            <div class="col-xs-12">                                            
+                                                <h4></h4>                                      
+                                            </div>    
+                                        </div> 
+                                    </div>
+                                </div>  
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-6" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-6" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>              
+                            </div> 
+                        </div>
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"44.2,80","hidden":true}'></div>
+
+                        <div class="marqueur" id="bio-a-7">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"45,69","tooltip_offset":"-7,7","panel_pos":"0.4,0.7"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Séance 7 - Les métiers<br/></div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Les métiers</h3>
+                                <div id="carousel-bio-P1-7" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-7" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-7" data-slide-to="1" ></li>
+                                        <li data-target="#carousel-bio-P1-7" data-slide-to="2" ></li>
+                                        <li data-target="#carousel-bio-P1-7" data-slide-to="3" ></li>
+                                        <li data-target="#carousel-bio-P1-7" data-slide-to="4" ></li>
+                                        <li data-target="#carousel-bio-P1-7" data-slide-to="5" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>Quels sont les différents métiers en lien avec ce domaine ?</p>
+                                                </div>
+                                            </div>                                                 
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                <u>Biologiste en environnement</u><br/>
+                                                http://etudiant.aujourdhui.fr/etudiant/metiers/fiche-metier/biologiste-en-environnement.html
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>    
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>           
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-7" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-7" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div> 
+                        </div>   
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"41.6,64","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"41.6,60","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"40,55","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"40,52","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"49,42","hidden":true}'></div>
+
+                        <div class="marqueur" id="bio-a-8">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"41,42","tooltip_offset":"-5.5,6","panel_pos":"0.4,0.9"}'>
+                                <img class="etoilePleine logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPoints.svg" alt="Etoile pleine" />
+                                <img class="etoileVide logoEtoile" src="++resource++unice.medites.images/parcours-pedagogiques/liPointsBlanc.svg" alt="Etoile vide" />
+                            </div>
+                            <div class="HE_Tooltip">Séance 8 - Comment refroidir la terre ?</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Comment refroidir la terre ?</h3>
+                                <div id="carousel-bio-P1-8" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <div id="great-1-bio-a-8" class="displayNone">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>Bien joué !</p>
+                                        <p class="pointsXP pointsJeu1"><i>Tu remportes :</i><u><span> 20</span> points</u></p>
+                                    </div> 
+                                    <div id="great-2-bio-a-8" class="displayNone">
+                                        <div class="alert-close txtBlanc"><i class="fa fa-times"></i></div>
+                                        <p>&Ccedil;a t'a plu ?</p>
+                                        <p class="pointsXP pointsJeu2"><i>Tu remportes :</i><u><span>20</span> points</u></p>
+                                    </div>
+                                    <div id="solution-bio-a-8" class="modal fade " tabindex="-1" role="dialog" aria-labelledby="solution--bio-a-8" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h3 class="modal-title" id="solution--bio-a-8">Solution</h3>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <img class="img-responsive" src="++resource++unice.medites.images/parcours-pedagogiques/biodiversite/climat/p1/etape8/solution.png" alt="" />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-8" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-8" data-slide-to="1"></li>
+                                        <li data-target="#carousel-bio-P1-8" data-slide-to="2" class="liPoints liJ1Points"></li>
+                                        <li data-target="#carousel-bio-P1-8" data-slide-to="3" class="liPoints liJ2Points"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>xxx</p>
+                                                </div>
+                                            </div>
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                                    
+                                            </div>    
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4>xxx</h4>
+                                                
+                                                <div class="jeuBtn">
+                                                    <span class="solutionBtn" data-toggle="modal" data-target="#solution-bio-a-8">
+                                                        <a data-toggle="tooltip" data-placement="left" title="Afficher la solution"><i class="fa fa-lightbulb-o fa-2x"></i></a>
+                                                    </span>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                         <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                
+                                            </div>
+                                        </div>      
+                                    </div>
+                                </div>  
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-8" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-8" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div>
+                        </div>     
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"44,45","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"48,45","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"49,46","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"52,53","hidden":true}'></div>
+                        
+                        <div class="marqueur" id="bio-a-9">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"55,51","tooltip_offset":"-7,7","panel_pos":"0.4,0.9"}'><i class="fa fa-gears"></i></div>
+                            <div class="HE_Tooltip">Séance 9 - Impacts de l'Homme<br/>Différents scénarios possibles<br/></div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Impacts de l'Homme / Différents scénarios possibles</h3>
+                                <div id="carousel-bio-P1-9" class="carousel carouselParallaxe slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-9" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-9" data-slide-to="1" ></li>
+                                        <li data-target="#carousel-bio-P1-9" data-slide-to="2" ></li>
+                                        <li data-target="#carousel-bio-P1-9" data-slide-to="3" ></li>
+                                        <li data-target="#carousel-bio-P1-9" data-slide-to="4" ></li>
+                                        <li data-target="#carousel-bio-P1-9" data-slide-to="5" ></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p></p>
+                                                </div>
+                                            </div>                                                 
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>    
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>           
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-9" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-9" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>  
+                            </div> 
+                        </div>     
+
+                        <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"61,65","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"68,72","hidden":true}'></div>
+                        <div class="HE_Marker" data-hawkeye='{"pos":"69.4,74","hidden":true}'></div>
+
+                        <div class="marqueur derniereEtape" id="bio-a-10">
+                            <div class="HE_Marker" data-hawkeye='{"pos":"69.5,80","tooltip_offset":"-4.5,7","panel_pos":"0.4,0.9"}'>
+                                <i class="fa fa-gears"></i>
+                            </div>
+                            <div class="HE_Tooltip">Séance 10 - Quiz</div>
+                            <div class="HE_Panel">
+                                <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Quiz</h3>
+                                <div id="carousel-bio-P1-10" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                    <ol class="carousel-indicators sansPuce">
+                                        <li data-target="#carousel-bio-P1-10" data-slide-to="0" class="active"></li>
+                                        <li data-target="#carousel-bio-P1-10" data-slide-to="1" class="liPoints liQPoints"></li>
+                                    </ol>
+                                    <div class="carousel-inner" role="listbox">      
+                                        <div class="item active">
+                                            <div class="introSeance">
+                                                <img alt="Avatar en mouvement" src="" class="img-responsive" />
+                                                <div> 
+                                                    <p>
+                                                        Oh nooooooon ! :P
+                                                    </p>
+                                                </div>
+                                            </div>    
+                                        </div>  
+                                        <div class="item">
+                                            <div class="col-xs-12">
+                                                <h4></h4>
+                                                
+                                            </div>
+                                        </div>        
+                                    </div>
+                                </div>   
+                                <div class="bottomPanel">
+                                    <a class="pull-left glyphiconButton" href="#carousel-bio-P1-10" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Précédente</span>
+                                    </a>
+                                    <a class="pull-right glyphiconButton" href="#carousel-bio-P1-10" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Suivant</span>
+                                    </a> 
+                                </div>   
+                            </div>  
+                        </div>   
+                    </div> 
+                    <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-full')"
+                         tal:attributes="src maVariable/url; alt string:Image représentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                         tal:condition="context/image_principale" />    
+                </section>
+                <script src="++resource++unice.medites.javascripts/libs/climat.js"></script>  
+                <script src="++resource++unice.medites.javascripts/libs/parcours.js"></script>              
+                <script src="++resource++unice.medites.javascripts/libs/jQuiz/jQuizMe-2.2.1.js"></script> 
+                <metal:block use-macro="context/medites_macros/macros/parcours" />
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+            </metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

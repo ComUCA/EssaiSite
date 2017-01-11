@@ -1,0 +1,832 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<!-- <tal:block condition="not:context/@@plone_portal_state/anonymous">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block> -->
+
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block 
+    define="infos view/infos;
+            variableFichiers python:view.champsRepeat('medites_fichiers_intranet',context.documents_medites);
+            variableFichiersPartage python:view.champsRepeat('fichiers_intranet');
+            variableCommentaire python:view.champsRepeat('medites_commentaire_intranet',context.commentaires);
+            variableMembres python:view.champsRepeat('membre');
+            variableParcours python:view.champsRepeat('medites_parcours_intranet');
+            variableLogo python:view.champsRepeat('medites_intranet_logo',context.logos);
+            variableSuivi python:view.champsRepeat('medites_suivi_parcours_intranet');
+            roles python:user.getRolesInContext(here);
+            access python:'Manager' in roles or 'Contributor' in roles or 'Editor' in roles;
+            variableSousAdmin python:'SousAdmin' in user.getGroups();
+            "> 
+
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">		
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core" tal:define="widgets nocall:context/@@view">
+<!-- carrousel 
+                <section class="container-fluid emplacement"></section>
+-->
+<!-- contenu --> 
+                <section class="container-fluid dark tourist6">                 
+                    <div class="content presentation"> 
+                        <ol class="breadcrumb">
+                            <li><a href="../accueil">Accueil</a></li>
+                            <li tal:content="infos/title" tal:attributes="class string:active" />
+                        </ol>
+                        <h1 tal:content="infos/title"></h1>
+                    </div>
+                </section>
+                <section class="container-fluid dark intranet">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 row-eq-height row">
+<!-- agenda google -->
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="item">
+                                    <div class="topCol">
+                                        <i class="fa fa-calendar fa-3x"></i><h3>Agenda</h3>
+                                    </div>
+                                    <div class="contentCol">
+                                        <div tal:condition="context/google_agenda" tal:replace="structure context/google_agenda/output" />                                
+                                    </div>
+                                </div>        
+                            </div>    
+<!-- discussion -->
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="item">
+                                    <div class="topCol">       
+                                        <a title="Instructions pour publier une étape" class="font27px" data-toggle="modal" data-target="#aideDiscussion" href="#">
+                                            <i class="fa fa-question-circle"></i> 
+                                        </a>
+                                        <div class="modal fade bs-example-modal-lg" id="aideDiscussion" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h2 class="modal-title">Aide</h2>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img  src="++resource++unice.medites.images/intranet/aideDiscussion.jpg" alt="image tutoriel" class="img-responsive" />
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <a href="commentaires/++add++medites_commentaire_intranet" title="Ajouter une discussion">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>
+                                        </a>
+                                        <i class="fa fa-comments-o fa-3x"></i><h3>Discussion</h3> 
+                                    </div>
+                                    <div class="contentCol">
+                                      <!--   <a data-toggle="lightbox" href="++resource++unice.medites.images/intranet/poster-A2-MEDITES-normal.jpg">
+                                            <img src="++resource++unice.medites.images/intranet/poster-A2-MEDITES-mini.jpg" class="img-all" />
+                                        </a> -->
+                                        <ul class="ulPerso">
+                                            <li tal:repeat="medites_commentaire_intranet variableCommentaire" define="roles python:user.getRolesInContext(here);access python:'Manager' in roles or 'Contributor' in roles or 'Editor' in roles;">
+                                                <tal:block define="variableSousCommentaire python:view.champsRepeat('medites_commentaire_intranet', medites_commentaire_intranet);"> 
+                                                    <a title="Ouvrir le contenu dans une fenêtre" data-toggle="modal" href="#" tal:attributes="data-target string:#${medites_commentaire_intranet/getId}">
+                                                        <span tal:content="medites_commentaire_intranet/title" /> - <span tal:condition="medites_commentaire_intranet/intranet_auteur" tal:content="medites_commentaire_intranet/intranet_auteur" /> 
+                                                    </a>
+                                                    <div tal:attributes="id medites_commentaire_intranet/getId" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content">
+                                                                <div class="modal-body">
+                                                                    <div tal:condition="medites_commentaire_intranet/intranet_description_commentaire" tal:content="structure medites_commentaire_intranet/intranet_description_commentaire/output" />
+                                                                    <div class="reponses" tal:condition="variableSousCommentaire">
+                                                                        <tal:block repeat="reponse variableSousCommentaire">
+                                                                            <span tal:content="reponse/title" /> - <span tal:condition="reponse/intranet_auteur" tal:content="reponse/intranet_auteur" /> 
+                                                                            <div tal:condition="reponse/intranet_description_commentaire" tal:content="structure reponse/intranet_description_commentaire/output" />
+                                                                        </tal:block>
+                                                                    </div>
+                                                                    <a tal:attributes="href string:${medites_commentaire_intranet/absolute_url}/++add++medites_commentaire_intranet" title="Ajouter une réponse à la discussion" class="ajoutReponse">
+                                                                        <i class="fa fa-plus-circle fa-lg"></i>
+                                                                        Ajouter une réponse
+                                                                    </a>
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <a tal:condition="access" tal:attributes="href string:${medites_commentaire_intranet/absolute_url}/edit;title string:Modifier la publication">
+                                                        &nbsp;<i class="fa fa-pencil fa-lg"></i>&nbsp;
+                                                    </a>
+                                                    <a tal:condition="access" tal:attributes="href string:${medites_commentaire_intranet/absolute_url}/delete_confirmation;title string:Supprimer la publication">
+                                                        &nbsp;<i class="fa fa-trash fa-lg"></i>&nbsp;
+                                                    </a> 
+                                                     <a tal:attributes="href string:${medites_commentaire_intranet/absolute_url}/++add++medites_commentaire_intranet" title="Ajouter une réponse à la discussion">
+                                                        <i class="fa fa-plus-circle fa-lg"></i>
+                                                        Ajouter une réponse
+                                                    </a>
+                                                </tal:block>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>        
+                            </div> 
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 row-eq-height row">
+<!-- documents MEDITES -->
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="item">
+                                    <div class="topCol">
+                                        <a tal:condition="variableSousAdmin" href="documents_medites/++add++medites_fichiers_intranet" title="Ajouter une discussion">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>
+                                        </a>
+                                        <i class="fa fa-file-o fa-3x"></i><h3>Documents MEDITES</h3>
+                                    </div>
+                                    <div class="contentCol">
+                                        <ul class="ulPerso tourist2">
+                                            <li tal:repeat="medites_fichiers_intranet variableFichiers">   
+                                                <a title="Ouvrir le contenu dans une fenêtre" data-toggle="modal" href="#" tal:attributes="data-target string:#${medites_fichiers_intranet/getId}">
+                                                    <span tal:content="medites_fichiers_intranet/title" /> 
+                                                </a>
+                                                <div tal:attributes="id medites_fichiers_intranet/getId" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <div tal:condition="medites_fichiers_intranet/intranet_description_fichiers" tal:content="structure medites_fichiers_intranet/intranet_description_fichiers/output" />
+                                                                <a tal:attributes="href string:${medites_fichiers_intranet/absolute_url}/@@download/intranet_fichier/${medites_fichiers_intranet/intranet_fichier/filename}; title string:T&eacute;l&eacute;charger le fichier">
+                                                                    <i class="fa fa-download fa-2x"></i>
+                                                                </a> 
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>  
+                                                <a tal:condition="variableSousAdmin" tal:attributes="href string:${medites_fichiers_intranet/absolute_url}/edit;title string:Modifier la publication">
+                                                    &nbsp;<i class="fa fa-pencil fa-lg"></i>&nbsp;
+                                                </a>
+                                                <a tal:condition="variableSousAdmin" tal:attributes="href string:${medites_fichiers_intranet/absolute_url}/delete_confirmation;title string:Supprimer la publication">
+                                                    &nbsp;<i class="fa fa-trash fa-lg"></i>&nbsp;
+                                                </a>  
+                                            </li>
+                                        </ul>        
+                                    </div>
+                                </div>        
+                            </div>    
+<!-- echange de fichiers -->
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="item">
+                                    <div class="topCol">
+                                        <a title="Instructions pour publier un fichier de partage" class="font27px" data-toggle="modal" data-target="#aideFichier" href="#">
+                                            <i class="fa fa-question-circle"></i> 
+                                        </a>
+                                        <div class="modal fade bs-example-modal-lg" id="aideFichier" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                        <h2 class="modal-title">Aide</h2>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img  src="++resource++unice.medites.images/intranet/aideFichier.jpg" alt="image tutoriel" class="img-responsive" />
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a href="++add++fichiers_intranet" title="Ajouter un fichier">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>
+                                        </a>
+                                        <i class="fa fa-file-o fa-3x"></i><h3>&Eacute;change d'informations</h3>
+                                    </div>
+                                    <div class="contentCol">
+                                        <ul class="ulPerso tourist3">
+                                            <li tal:repeat="fichiers_intranet variableFichiersPartage" define="roles python:user.getRolesInContext(here);
+        access python:'Manager' in roles or 'Contributor' in roles or 'Editor' in roles;">   
+                                                <a title="Ouvrir le contenu dans une fenêtre" data-toggle="modal" href="#" tal:attributes="data-target string:#${fichiers_intranet/getId}">
+                                                    <span tal:content="fichiers_intranet/title" /> 
+                                                </a>
+                                                <div tal:attributes="id fichiers_intranet/getId" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <p tal:condition="fichiers_intranet/intranet_description_fichiers" tal:content="fichiers_intranet/intranet_description_fichiers" />
+                                                                <a tal:attributes="href string:${fichiers_intranet/absolute_url}/@@download/intranet_fichier/${fichiers_intranet/intranet_fichier/filename}; title string:T&eacute;l&eacute;charger le fichier">
+                                                                    <i class="fa fa-download fa-2x"></i>
+                                                                </a> 
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>   
+                                                <a tal:condition="access" tal:attributes="href string:${fichiers_intranet/absolute_url}/edit;title string:Modifier la publication">&nbsp;<i class="fa fa-pencil fa-lg"></i>&nbsp;</a>
+                                                <a tal:condition="access" tal:attributes="href string:${fichiers_intranet/absolute_url}/delete_confirmation;title string:Supprimer la publication">&nbsp;<i class="fa fa-trash fa-lg"></i>&nbsp;</a> 
+                                            </li>
+                                        </ul>        
+                                    </div>
+                                </div>        
+                            </div>    
+
+                        </div>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 row-eq-height row">
+<!-- suivi de parcours -->
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                <div class="item">
+                                    <div class="topCol">
+                                        <i class="fa fa-share fa-3x"></i><h3>Suivi parcours</h3>
+                                    </div>
+                                    <div class="contentCol">
+                                        <h4 class="txtJaune">
+                                            Cette rubrique "Suivi Parcours" a trois objectifs principaux : 1) Alimenter les pages MEDITES dans mon Collège, 2) Télécharger vos livrables MEDITES et 3) Nous permettre de suivre le bon déroulement de votre parcours. 
+                                        </h4>
+                                        <p class="marginTop35">Pour les parcours de la phase 3 (2016 - 2017), nous vous invitons à directement déposer les résumés, supports et photos des séances dans le dossier relatif à la classe dont vous êtes en charge. <br/>
+                                        Pour ce faire, rendez-vous dans la section "Shared with me" du dossier de partage Google drive :<a class="txtJaune" href="https://drive.google.com/drive/u/0/shared-with-me" title="Lien du dossier de partage"> Lien direct</a>.</p>
+                                        <p>(<u>Note :</u> Pour accéder au dossier, vous devez impérativement vous connecter  avec l'un des identifiants que nous vous avons fourni : etablissements.phase3.medites@gmail.com ou partenaires.phase3.medites@gmail.com)</p>
+                                        <!-- <ul class="ulPerso parcours tourist4 marginTop35">
+                                            <li class="col-md-12 puceVerte">   
+                                                Biodiversité
+                                                <ul>
+                                                    <li class="col-md-2">   
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#bioDiv1" href="#">
+                                                            <span>Biodiversité des insectes</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="bioDiv1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/biodiversite-des-insectes/college-les-vallergues-cannes"  title="Accéder à la page de l'établissement">Collège les Vallergues<br/>Cannes</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/biodiversite-des-insectes/college-du-fenouillet-la-crau"  title="Accéder à la page de l'établissement">Collège du Fenouillet<br/>la Crau</a>
+                                                                            </li>
+                                                                        </ul>       
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md-2">   
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#bioDiv2" href="#">
+                                                            <span>Observation des plantes</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="bioDiv2" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/observation-des-plantes/college-les-muriers-cannes-la-bocca"  title="Accéder à la page de l'établissement">Collège les Mûriers<br/>Cannes la Bocca</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/observation-des-plantes/college-canteperdix-grasse"  title="Accéder à la page de l'établissement">Collège Canteperdrix<br/>Grasse</a>
+                                                                            </li>
+
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/observation-des-plantes/college-la-bourgade-la-trinite"  title="Accéder à la page de l'établissement">Collège la Bourgade<br/>La Trinité</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md-2">   
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#bioDiv3" href="#">
+                                                            <span>Biodiversité, alimentation et santé</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="bioDiv3" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/biodiversite-alimentation-et-sante/college-joseph-vernier-nice"  title="Accéder à la page de l'établissement">Collège Joseph Vernier<br/>Nice</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/biodiversite-alimentation-et-sante/college-la-marquisanne-toulon"  title="Accéder à la page de l'établissement">Collège la Marquisanne<br/>Toulon</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md-2">   
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#bioDiv4" href="#">
+                                                            <span>Changement climatique vu à travers ses impacts</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="bioDiv4" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/changement-climatique-vu-a-travers-ses-impacts/college-general-ferrie-draguignan" title="Accéder à la page de l'établissement">Collège Général Ferrié<br/>Draguignan</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/changement-climatique-vu-a-travers-ses-impacts/college-de-la-cite-scolaire-thomas-edison-lorgues" title="Accéder à la page de l'établissement">Collège de la cité scolaire Thomas Edison<br/>Lorgues</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/changement-climatique-vu-a-travers-ses-impacts/college-leonard-de-vinci-montauroux" title="Accéder à la page de l'établissement">Collège Léonard de Vinci<br/>Montauroux</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/biodiversite/changement-climatique-vu-a-travers-ses-impacts/college-jules-romain-nice" title="Accéder à la page de l'établissement">Collège Jules Romain<br/>Nice</a>
+                                                                            </li>                                                                        
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li>    
+
+                                            <li class="col-md-12 puceRose">   
+                                                Temps, histoire, évolution
+                                                <ul>
+                                                    <li class="col-md-2">   
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#tHE1" href="#">
+                                                            <span>Sur le fil du temps</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="tHE1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href=""  title="Accéder à la page de l'établissement"><br/></a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href=""  title="Accéder à la page de l'établissement"><br/></a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>    
+                                            </li>  
+
+                                            <li class="col-md-12 puceJaune">   
+                                                Vivant, matière, technologie
+                                                <ul>
+                                                    <li class="col-md-2">   
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#vMT1" href="#">
+                                                            <span>Architecture du Vivant</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="vMT1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/formes-architecture-du-vivant/college-carnot-grasse"  title="Accéder à la page de l'établissement">Collège Carnot<br/>Grasse</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/formes-architecture-du-vivant/college-les-baous-saint-jeannet"  title="Accéder à la page de l'établissement">Collège les Baous<br/>Saint Jeannet</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md-2">                                                        
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#vMT2" href="#">
+                                                            <span>Sensoriel</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="vMT2" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/sensoriel/college-les-muriers-cannes-la-bocca"  title="Accéder à la page de l'établissement">Collège les Mûriers<br/>Cannes la Bocca</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/sensoriel/college-louis-nucera-nice" title="Accéder à la page de l'établissement">Collège louis Nucéra<br/>Nice</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md-2">  
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#vMT3" href="#">
+                                                            <span>Activité physique, santé et nouvelles technologies</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="vMT3" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/activite-physique-sante-et-nouvelles-technologies/college-maurice-jaubert-nice" title="Accéder à la page de l'établissement">Collège Maurice Jaubert<br/>Nice</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/activite-physique-sante-et-nouvelles-technologies/college-picasso-vallauris" title="Accéder à la page de l'établissement">Collège Picasso<br/>Vallauris</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                    <li class="col-md-2">                                                        
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#vMT4" href="#">
+                                                            <span>Euclide</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="vMT4" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/miroirs/college-sidney-bechet-antibes" title="Accéder à la page de l'établissement">Collège Sidney Bechet<br/>Antibes</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/miroirs/college-carnot-grasse" title="Accéder à la page de l'établissement">Collège Carnot<br/>Grasse</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/miroirs/college-saint-hilaire-grasse" title="Accéder à la page de l'établissement">Collège Saint-Hilaire<br/>Grasse</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/miroirs/college-frederic-mistral-nice" title="Accéder à la page de l'établissement">Collège Frédéric Mistral<br/>Nice</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/vivant-matiere-technologie/miroirs/lp-euca-nice" title="Accéder à la page de l'établissement">LP Euca<br/>Nice</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </li> 
+
+                                            <li class="col-md-12 puceRouge">   
+                                                Sciences du numérique
+                                                <ul>
+                                                    <li class="col-md-2">   
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#sN1" href="#">
+                                                            <span>Démarche numérique</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="sN1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/sciences-du-numerique/demarche-numerique/college-sidney-bechet-antibes" title="Accéder à la page de l'établissement">Collège Sidney Bechet<br/>Antibes</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/sciences-du-numerique/demarche-numerique/lp-jacques-dolle-antibes" title="Accéder à la page de l'établissement">LP Jacques Dolle<br/>Antibes</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>    
+                                            </li>  
+
+                                           <li class="col-md-12 puceBleue">   
+                                                Terre, océan, univers
+                                                <ul>
+                                                    <li class="col-md-2">  
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#tOU1" href="#">
+                                                            <span>Terre Solide</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="tOU1" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/terre-solide/college-marie-mauron-fayence" title="Accéder à la page de l'établissement">Collège Marie Mauron<br/>Fayence</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/terre-solide/college-saint-blaise-saint-sauveur-sur-tinee" title="Accéder à la page de l'établissement">Collège Saint Blaise<br/>Saint Sauveur sur Tinée</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/terre-solide/college-simon-wiesenthal-st-vallier-de-thiey" title="Accéder à la page de l'établissement">Collège Simon Wiesenthal<br/>St Vallier de Thiey</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/terre-solide/college-picasso-vallauris" title="Accéder à la page de l'établissement">Collège Picasso<br/>Vallauris</a>
+                                                                            </li>                                                                            
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md-2">    
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#tOU2" href="#">
+                                                            <span>Océan : Observation et découverte</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="tOU2" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/ocean-observation-et-decouverte/college-la-bourgade-la-trinite" title="Accéder à la page de l'établissement">Collège la Bourgade<br/>La Trinité</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/ocean-observation-et-decouverte/college-yves-montand-vinon-sur-verdon" title="Accéder à la page de l'établissement">Collège Yves Montand<br/>Vinon sur Verdon</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md-2">    
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#tOU3" href="#">
+                                                            <span>L'Homme et l'Océan : études et impacts</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="tOU3" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/hommes-et-ocean-etudes-et-impacts/college-leau-vive-breil-sur-roya" title="Accéder à la page de l'établissement">Collège l'Eau Vive<br/>Breil sur Roya</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/hommes-et-ocean-etudes-et-impacts/lp-francis-de-croisset-grasse" title="Accéder à la page de l'établissement">LP Francis Crosset<br/>Grasse</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md-2">    
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#tOU4" href="#">
+                                                            <span>Observation de l'univers</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="tOU4" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/observation-univers/lp-les-coteaux-cannes" title="Accéder à la page de l'établissement">LP les Coteaux<br/>Cannes</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/observation-univers/college-general-ferrie-draguignan" title="Accéder à la page de l'établissement">Collège général Férrié<br/>Draguignan</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/observation-univers/college-maurice-jaubert-nice" title="Accéder à la page de l'établissement">Collège Maurice Jaubert<br/>Nice</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/observation-univers/college-django-reinhardt-toulon" title="Accéder à la page de l'établissement">Collège Django Reinhardt<br/>Toulon</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="col-md-2">   
+                                                        <a title="Voir le contenu" data-toggle="modal" data-target="#tOU5" href="#">
+                                                            <span>Espace et instrumentation</span> 
+                                                        </a>
+                                                        <div class="modal fade bs-example-modal-lg" id="tOU5" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                            <div class="modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-body">
+                                                                        <ul class="ulPerso col-md-12">
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/espace-et-instrumentation/lp-jacques-dolle-antibes" title="Accéder à la page de l'établissement">Lp Jacques Dolle<br/>Antibes</a>
+                                                                            </li>
+                                                                            <li class="col-md-3">
+                                                                                <a href="phase-2/terre-ocean-univers/espace-et-instrumentation/lp-pasteur-nice" title="Accéder à la page de l'établissement">LP Pasteur<br/>Nice</a>
+                                                                            </li>
+                                                                        </ul>      
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+
+                                                </ul>
+                                            </li>    
+
+                                        </ul>    -->     
+                                    </div>
+                                </div>        
+                            </div>     
+
+                            <div class="col-xs-6 col-sm-6 col-md-6">
+
+                                <div class="item">
+                                   
+                                    <div class="topCol topColV2">
+                                        <a tal:condition="variableSousAdmin" href="logos/++add++medites_intranet_logo" title="Ajouter un logo">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-plus-sign"></span>
+                                        </a>
+                                        <i class="fa fa-file-image-o fa-3x"></i><h3>Logos</h3>
+                                    </div>
+                                    <div class="contentCol contentColV2">
+                                        <ul class="ulPerso liste tourist5">
+                                            <li tal:repeat="medites_intranet_logo variableLogo">   
+                                                <a title="Ouvrir le contenu dans une fenêtre" data-toggle="modal" href="#" tal:attributes="data-target string:#${medites_intranet_logo/getId}">
+                                                    <span tal:content="medites_intranet_logo/title" /> 
+                                                </a>
+                                                <div tal:attributes="id medites_intranet_logo/getId" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <img tal:define="scales_logo medites_intranet_logo/@@images; maVariable python:scales_logo.scale('apercu_logo', scale='preview')"
+                                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Logo de ${context/title}"
+                                                                     tal:condition="medites_intranet_logo/apercu_logo" />
+
+                                                                <a tal:attributes="href string:${medites_intranet_logo/absolute_url}/@@download/intranet_logo/${medites_intranet_logo/intranet_logo/filename}; title string:T&eacute;l&eacute;charger le fichier">
+                                                                    <i class="fa fa-download fa-2x"></i>
+                                                                </a> 
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>              
+                                                <a tal:condition="variableSousAdmin" tal:attributes="href string:${medites_intranet_logo/absolute_url}/edit;title string:Modifier le logo">
+                                                    &nbsp;<i class="fa fa-pencil fa-lg"></i>&nbsp;
+                                                </a>
+                                                <a tal:condition="variableSousAdmin" tal:attributes="href string:${medites_intranet_logo/absolute_url}/delete_confirmation;title string:Supprimer le logo">
+                                                    &nbsp;<i class="fa fa-trash fa-lg"></i>&nbsp;
+                                                </a>  
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>  
+                            </div>
+                        </div>
+                    </div>
+                </section>  
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+  			</metal:content-core>
+            <script src="++resource++unice.medites.javascripts/libs/tourist/jquery.qtip.js"></script>
+            <script src="++resource++unice.medites.javascripts/libs/tourist/underscore-1.4.4.js"></script>
+            <script src="++resource++unice.medites.javascripts/libs/tourist/backbone-1.0.0.js"></script>
+            <script type="text/javascript">
+                $(function(){
+                    $('.alert-close').on('click', function(c){
+                        $(this).parent().fadeOut('slow', function(c){});
+                    }); 
+                    visiteIntranet = localStorage.getItem("Visite-Intranet");
+                    if (visiteIntranet < 5) {   
+                        if (isNaN(visiteIntranet)) {visiteIntranet = 1}                
+                        localStorage.setItem("Visite-Intranet", visiteIntranet +1);  
+
+                        STEP_OPTIONS = {
+                            one: 1,
+                            two: 2
+                        };
+                        STEPS = [
+                            {
+                                content: '<h3>Bienvenue dans l\'intranet de MEDITES !</h3><p>Ce message est destiné à vous accompagner lors de votre première visite de l\'intranet MEDITES.<br/><strong>Note : </strong>Les popup d\'aides s\'ouvriront automatiquement à chacune de <u>vos premières 5 premières visites</u> (depuis un navigateur web ou ordinateur différent).<br/>N\'hésitez pas à nous faire part de vos suggestions et éventuels dysfonctionnement.<br/>Bonne visite !</p>',
+                                highlightTarget: true,
+                                nextButton: true,
+                                okButton: true,
+                                target: $('.tourist6'),
+                                my: 'top center',
+                                at: 'bottom center'
+                            },
+                            {
+                                content: '<h3>Agenda commun</h3><p>Cet agenda est édité avec l\'application GoogleAgenda, vous y retrouverez les événements MEDITES comme nos réunions et autres dates importantes</p>',
+                                highlightTarget: true,
+                                nextButton: true,
+                                okButton : true,
+                                target: $('iframe'),
+                                my: 'left center',
+                                at: 'right center'
+                            },
+                            {
+                                content: '<h3>Documents MEDITES</h3><p>Retrouvez ici les comptes rendus de nos réunions, les fichiers d\'inscriptions, et autres documents  propres à MEDITES</p>',
+                                highlightTarget: true,
+                                nextButton: true,
+                                okButton: true,
+                                target: $('.tourist2'),
+                                my: 'left center',
+                                at: 'right center'
+                            },
+                            {
+                                content: '<h3>&Eacute;change d\'informations</h3><p>Cet espace est dédié à l\'échange de fichiers. Vous pouvez l\'utiliser à votre guise.</p>',
+                                highlightTarget: true,
+                                nextButton: true,
+                                okButton: true,
+                                target: $('.tourist3'),
+                                my: 'right center',
+                                at: 'left center'
+                            },
+                            {
+                                content: '<h3>Suivi parcours</h3><p>Cette zone est la plus importante de l\'intranet. C\'est à partir d\'ici que vous accèderez à l\'espace dédié au parcours de votre collège. Une page par parcours et par collège a été mise en place, il vous suffit de cliquer sur votre parcours dans un premier temps, puis sur votre collège dans un second temps.</p>',
+                                highlightTarget: true,
+                                nextButton: true,
+                                okButton: true,
+                                target: $('.tourist4'),
+                                my: 'left center',
+                                at: 'right center'
+                            },
+                            {
+                                content: '<h3>Logos</h3><p>Retrouvez ici les logos des différents partenaires scientifiques de MEDITES.</p>',
+                                highlightTarget: true,
+                                nextButton: true,
+                                okButton: true,
+                                target: $('.tourist5'),
+                                my: 'right center',
+                                at: 'left center'
+                            },
+                            {
+                                content: '<h3>De manière générale</h3><p>Vous pourrez ajouter des publications dans une section en cliquant sur le bouton <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> qui se trouve à droite du titre de celle-ci. La modification ou la suppression de contenu se fera à l\'aide des boutons <i class="fa fa-pencil fa-lg"></i> et <i class="fa fa-trash fa-lg"></i> situé à droite des publications.</p>',
+                                highlightTarget: true,
+                                okButton: true,
+                                target: $('.tourist6'),
+                                my: 'top center',
+                                at: 'bottom center'
+                            }
+                        ]
+                        TOUR = new Tourist.Tour({
+                            stepOptions: STEP_OPTIONS,
+                            steps: STEPS,
+                            //cancelStep: @finalQuit
+                            //successStep: @finalSucceed
+                            tipClass: 'QTip',
+                            tipOptions:{
+                                style: {
+                                    classes: 'qtip-tour qtip-bootstrap'
+                                }
+                            }
+                        });
+                        TOUR.start();
+                    }
+                });
+            </script>
+            <script src="++resource++unice.medites.javascripts/libs/tourist/tourist.js"></script>
+            <link rel="stylesheet" href="++resource++unice.medites.javascripts/libs/tourist/jquery.qtip.css" type="text/css" media="screen" />
+            <link rel="stylesheet" href="++resource++unice.medites.javascripts/libs/tourist/tourist.css" type="text/css" media="screen" />
+        </div>
+    </metal:block>
+</tal:block>

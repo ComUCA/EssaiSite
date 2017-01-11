@@ -1,0 +1,1 @@
+<tal:block content="structure view/laboratoires_csv"></tal:block>

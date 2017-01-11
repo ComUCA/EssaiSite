@@ -1,0 +1,663 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+
+<!-- ################################################################################################## -->
+<!-- ### CHAPEAU ###################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="entete">
+
+    <tal:block condition="python:view.access()['access']">
+        <div tal:condition="python:context.relative_url_matches(['/faculte-des-lettres-arts-sciences-humaines'])"
+            tal:define="templates python:['template1_view', 'template1bis_view', 'template2_view', 'template2bis_view', 'template2ter_view', 'template3_view', 'template4_view', 'template5_view', 'template6_view', 'template6bis_view', 'template6ter_view', 'template7_view', 'template8_view', 'templateAffiche_view', 'listingsimple_view', 'listingpanel_view', 'listingonglets_view', 'listingboutons_view', 'listingboutons2niveaux_view']"
+            class="dropdown pull-right bouton_modification_template">
+
+            <a data-toggle="dropdown" class="btn btn-warning btn-xs" href="#">
+                <i class="fa fa-th fa-lg"></i> Changer de template<b class="caret"></b>
+            </a>
+
+            <ul class="dropdown-menu">
+                <li tal:repeat="t templates" class="text-left">
+                    <a tal:attributes="href string:${context/absolute_url}/selectViewTemplate?templateId=${t}" tal:content="python:t[:-5]"/>
+                </li>
+            </ul>
+        </div>
+    </tal:block>
+
+    <tal:options tal:condition="document">
+        <tal:block tal:define="item document;
+            opt_title TRUE; opt_desc TRUE; opt_desctrunc FALSE; opt_image not:item/image_default; opt_imageratio string:ratio4:3;
+            opt_title python:(not context.Title().strip().lower() == item['title'].strip().lower());">
+
+            <ul tal:attributes="class python:'row canal_fil_importance3 %s' % ('entete_complete' if item['text'] and item['entete_complete'] else 'entete_simple')">
+                <li class="col-md-12">
+
+                    <div tal:condition="python:view.access()['access']" class="text-right visualClear">
+                        <a class="btn btn-warning btn-xs" tal:attributes="href string:./masquer_entete?came_from=${context/absolute_url}&subject=#ExclureContenuTemplate">
+                            <i class="fa fa-eye-slash"></i> Masquer l'en-tête
+                        </a>
+                    </div>
+
+                    <tal:block condition="python:item['text'] and not item['entete_complete']" define="opt_modal TRUE">
+                        <tal:block condition="opt_image">
+                            <metal:block use-macro="context/templates_macro/macros/thumb_link"></metal:block>
+                        </tal:block>
+                        <metal:block use-macro="context/templates_macro/macros/titledesc_link"></metal:block>
+                        <br/>
+                        <metal:block use-macro="context/templates_macro/macros/more_link"></metal:block>
+                    </tal:block>
+
+                    <tal:block condition="python:(not item['text']) or (item['text'] and item['entete_complete'])">
+                        <tal:block condition="opt_image">
+                            <metal:block use-macro="context/templates_macro/macros/thumb_no_link"></metal:block>
+                        </tal:block>
+                        <metal:block use-macro="context/templates_macro/macros/titledesc_no_link"></metal:block>
+                    </tal:block>
+
+                </li>
+            </ul>
+
+            <tal:block condition="python:item['text'] and not item['entete_complete']">
+                <metal:block use-macro="context/templates_macro/macros/item_modal"></metal:block>
+            </tal:block>
+
+            <tal:block condition="python: item['text'] and item['entete_complete']">
+                <tal:block condition="item/entete_complete">
+                    <br/><div class="visualClear"></div>
+                    <tal:block content="structure item/text"/>
+                </tal:block>
+            </tal:block>
+
+            <tal:block define="opt_entete TRUE">
+                <metal:block use-macro="context/templates_macro/macros/edit"></metal:block>
+            </tal:block>
+
+        </tal:block>
+
+    </tal:options>
+
+    <div tal:condition="python:view.access()['access'] and not document"
+        tal:define="document2 python:view.document('page2.html');" class="text-right visualClear">
+
+        <a tal:condition="not:document2" tal:attributes="href string:./auto_entete_script?came_from=${context/absolute_url}"
+            class="btn btn-warning btn-xs">
+            <i class="fa fa-plus"></i> Créer une en-tête
+        </a>
+        <a tal:condition="document2" tal:attributes="href string:./afficher_entete?came_from=${context/absolute_url}"
+            class="btn btn-warning btn-xs">
+            <i class="fa fa-eye"></i> Afficher l'en-tête
+        </a>
+    </div>
+
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### ITEM ######################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="item" tal:define="opt_modal python:'#AffichagePopup' in list(context.Subject());">
+
+	<tal:block condition="opt_image">
+		<metal:block use-macro="context/templates_macro/macros/thumb_link"></metal:block>
+	</tal:block>
+
+	<metal:block use-macro="context/templates_macro/macros/titledesc_link"></metal:block>
+
+    <tal:block condition="opt_boutonsavoirplus">
+		<metal:block use-macro="context/templates_macro/macros/more_link"></metal:block>
+	</tal:block>
+
+    <tal:block define="opt_entete FALSE">
+        <metal:block use-macro="context/templates_macro/macros/edit"></metal:block>
+    </tal:block>
+
+    <metal:block use-macro="context/templates_macro/macros/state"></metal:block>
+
+    <metal:block tal:condition="opt_modal" use-macro="context/templates_macro/macros/item_modal"></metal:block>
+
+</metal:block>
+
+<metal:block define-macro="item_template5" tal:define="opt_modal FALSE">
+
+    <tal:block define="opt_desc FALSE">
+        <metal:block use-macro="context/templates_macro/macros/titledesc_link"></metal:block>
+    </tal:block>
+
+    <tal:block condition="opt_image">
+        <metal:block use-macro="context/templates_macro/macros/thumb_link"></metal:block>
+    </tal:block>
+
+    <tal:block define="opt_title FALSE">
+        <metal:block use-macro="context/templates_macro/macros/titledesc_link"></metal:block>
+    </tal:block>
+
+    <tal:block condition="opt_boutonsavoirplus">
+        <metal:block use-macro="context/templates_macro/macros/more_link"></metal:block>
+    </tal:block>
+
+    <tal:block define="opt_entete FALSE">
+        <metal:block use-macro="context/templates_macro/macros/edit"></metal:block>
+    </tal:block>
+
+    <metal:block use-macro="context/templates_macro/macros/state"></metal:block>
+</metal:block>
+
+<metal:block define-macro="item_template6">
+
+    <div tal:define="href python:'#' if not item['dexterity'] else '%s/?ajax_load=1' % item['url']">
+
+        <a tal:condition="opt_image" data-toggle="modal"
+            tal:attributes="href href; style string:background-image: url(${item/image}); data-target string:#${item/uuid};
+            title string:En savoir plus sur '${item/title}';
+            class python:'template6_image %s %s %s' % (item['image_size'], item['image_position'], 'image_alt_word' if item['image_alt_word'] else '')">
+            <em tal:condition="item/image_alt_word" tal:content="structure item/image_alt_word"/>
+        </a>
+
+        <a tal:attributes="href href; data-target string:#${item/uuid}; title string:En savoir plus sur '${item/title}';" class="template6_texte ellipsis" data-toggle="modal">
+            <span>
+                <h2 tal:condition="opt_title" tal:content="item/title"/>
+                <metal:block use-macro="context/templates_macro/macros/desc"></metal:block>
+            </span>
+        </a>
+
+        <a tal:condition="opt_boutonsavoirplus" tal:attributes="href href; data-target string:#${item/uuid}; title string:En savoir plus sur '${item/title}';" class="template6_lien" data-toggle="modal">
+            <i class="fa fa-plus-circle fa-2x"></i>
+        </a>
+
+    </div>
+
+    <tal:block define="opt_entete FALSE">
+        <metal:block use-macro="context/templates_macro/macros/edit"></metal:block>
+    </tal:block>
+
+    <metal:block use-macro="context/templates_macro/macros/state"></metal:block>
+
+</metal:block>
+
+<metal:block define-macro="item_template6bis">
+
+    <div>
+        <a tal:condition="opt_image"
+            tal:attributes="href item/url; style string:background-image: url(${item/image});
+            title string:En savoir plus sur '${item/title}';
+            class python:'template6_image %s %s %s' % (item['image_size'], item['image_position'], 'image_alt_word' if item['image_alt_word'] else '')">
+            <em tal:condition="item/image_alt_word" tal:content="structure item/image_alt_word"/>
+        </a>
+
+        <a tal:attributes="href item/url ; title string:En savoir plus sur '${item/title}';" class="template6_texte ellipsis">
+            <span>
+                <h2 tal:condition="opt_title" tal:content="item/title"/>
+                <metal:block use-macro="context/templates_macro/macros/desc"></metal:block>
+            </span>
+        </a>
+    </div>
+
+    <tal:block define="opt_entete FALSE">
+        <metal:block use-macro="context/templates_macro/macros/edit"></metal:block>
+    </tal:block>
+
+    <a tal:condition="opt_boutonsavoirplus" tal:attributes="href item/url; title string:En savoir plus sur '${item/title}';"
+        class="template6_lien_hors btn btn-primary btn-inverted">
+        <small>En savoir plus</small>
+    </a>
+
+    <metal:block use-macro="context/templates_macro/macros/state"></metal:block>
+
+</metal:block>
+
+<metal:block define-macro="item_modal">
+
+    <div tal:attributes="id item/uuid" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" tal:content="item/title"/>
+                </div>
+                <div class="modal-body">
+                
+                    <tal:block content="structure item/text"/>
+
+                    <tal:block condition="python: item['type'] in ['FormFolder']"
+                        tal:define="form python:item['item']">
+                        <tal:block tal:define="form nocall:form/@@embedded" tal:replace="structure form"/>
+                    </tal:block>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### ELEMENTS ##################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="thumb_link">
+	<a tal:attributes="
+        href python:'%s%s' % (item['url'], '/image_view_fullscreen' if item['type']=='Image' else '') if not opt_modal else '#';
+        data-target python:'#%s'% item['uuid'] if opt_modal else '';
+        data-toggle python:'modal' if opt_modal else '';
+        class python:'thumb_link image_ratio %s %s' % (opt_imageratio, 'image_alt_word' if item['image_alt_word'] else '');
+        title string:En savoir plus sur '${item/title}';">
+        <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+            <em tal:condition="item/image_alt_word" tal:content="structure item/image_alt_word"/>
+            <img tal:attributes="src item/image; title item/title"/>
+        </span>
+    </a>
+</metal:block>
+
+<metal:block define-macro="thumb_no_link">
+	<span tal:attributes="class string:thumb_link image_ratio ${opt_imageratio}">
+        <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+            <img tal:attributes="src item/image; title item/title"/>
+        </span>
+    </span>
+</metal:block>
+
+<metal:block define-macro="titledesc_link">
+    <a tal:attributes="
+        href python:item['url'] if not opt_modal else '#';
+        data-target python:'#%s'% item['uuid'] if opt_modal else '';
+        data-toggle python:'modal' if opt_modal else '';
+        class python:'details_link' if opt_image else 'no_thumb details_link';
+        title string:En savoir plus sur '${item/title}';">
+        <h2 tal:condition="opt_title" tal:content="item/title"/>
+		<metal:block use-macro="context/templates_macro/macros/desc"></metal:block>
+    </a>
+</metal:block>
+
+<metal:block define-macro="titledesc_no_link">
+	<div tal:attributes="class python:'details_link' if opt_image else 'no_thumb details_link'">
+        <h2 tal:condition="opt_title" tal:content="item/title"/>
+		<metal:block use-macro="context/templates_macro/macros/desc"></metal:block>
+    </div>
+</metal:block>
+
+<metal:block define-macro="desc">
+	<tal:block condition="opt_desc">
+        <!-- <span tal:condition="not:opt_desctrunc" tal:content="item/description"/>
+        <span tal:condition="opt_desctrunc" tal:content="item/desc_trunc"/> -->
+        <span tal:condition="not:opt_desctrunc" tal:content="structure python:'<br/>'.join(item['description'].split('\n')) if item['description'] else ''"/>
+        <span tal:condition="opt_desctrunc" tal:content="structure python:'<br/>'.join(item['desc_trunc'].split('\n')) if item['desc_trunc'] else ''"/>
+    </tal:block>
+</metal:block>
+
+<metal:block define-macro="more_link">
+    <a tal:attributes="
+        href python:item['url'] if not opt_modal else '#';
+        data-target python:'#%s'% item['uuid'] if opt_modal else '';
+        data-toggle python:'modal' if opt_modal else '';
+        title string:En savoir plus sur '${item/title}';" class="btn btn-primary btn-sm btn-inverted btn-more">
+	    <span>En savoir plus</span>
+	</a>
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### EDITION ###################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="edit">
+    <div class="text-right visualClear" tal:condition="item/access"
+        tal:define="came_from opt_came_from|context/absolute_url;
+        entete_complete string:#EnteteCompleteTemplate;
+        image_complete string:#FilUNSImageComplete;
+        image_haut string:#FilUNSImageHaut;
+        exclure_template string:#ExclureContenuTemplate;
+        image_validee string:#RedactionImageValidee;
+        contenu_valide string:#RedactionContenuValide;">
+
+        <ul class="dropdown-list">
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="btn btn-warning btn-xs" href="#">
+                    <i class="fa fa-pencil fa-lg"></i> Modifier
+                    <b class="caret"></b>
+                </a>
+                <ul  class="dropdown-menu pull-right" role="menu">
+                    <li class="text-left dropdown-header">CONTENUS</li>
+
+                    <li class="text-left">
+                        <a tal:attributes="href string:${item/real_url}/edit;
+                            title string:Modifier les contenus de '${item/title}';">
+                            <i class="fa fa-pencil"></i> Modifier les contenus
+                        </a>
+                    </li>
+
+                    <li class="text-left dropdown-header">MISE EN PAGE</li>
+
+                    <tal:block condition="opt_entete">
+                        <li tal:condition="python:not entete_complete in item['subjects']" class="text-left"
+                            tal:define="query python:view.urlencode({'subject': entete_complete, 'came_from': came_from});">
+                            <a  tal:attributes="href string:${item/real_url}/ajouter_subject?${query};
+                                title string:Afficher l'entête complète de '${item/title}';">
+                                <i class="fa fa-align-justify"></i> Afficher l'entête complète
+                            </a>
+                        </li>
+                        <li tal:condition="python:entete_complete in item['subjects']" class="text-left"
+                            tal:define="query python:view.urlencode({'subject': entete_complete, 'came_from': came_from});">
+                            <a  tal:attributes="href string:${item/real_url}/supprimer_subject?${query};
+                                title string:Afficher l'entête simple de '${item/title}';">
+                                <i class="fa fa-reorder"></i> Afficher l'entête simple
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                    </tal:block>
+
+                    <li tal:condition="python:not image_complete in item['subjects']" class="text-left"
+                        tal:define="query python:view.urlencode({'subject': image_complete, 'came_from': came_from});">
+                        <a  tal:attributes="href string:${item/real_url}/ajouter_subject?${query};
+                            title string:Afficher l'image entière de '${item/title}';">
+                            <i class="fa fa-expand"></i> Afficher l'image entière
+                        </a>
+                    </li>
+                    <li tal:condition="python:image_complete in item['subjects']" class="text-left"
+                        tal:define="query python:view.urlencode({'subject': image_complete, 'came_from': came_from});">
+                        <a  tal:attributes="href string:${item/real_url}/supprimer_subject?${query};
+                            title string:Afficher l'image zoomée de '${item/title}';">
+                            <i class="fa fa-compress"></i> Afficher l'image zoomée
+                        </a>
+                    </li>
+
+                    <li tal:condition="python:not image_haut in item['subjects']" class="text-left"
+                        tal:define="query python:view.urlencode({'subject': image_haut, 'came_from': came_from});">
+                        <a  tal:attributes="href string:${item/real_url}/ajouter_subject?${query};
+                            title string:Afficher le haut de l'image de '${item/title}';">
+                            <i class="fa fa-caret-square-o-up"></i> Afficher le haut de l'image
+                        </a>
+                    </li>
+                    <li tal:condition="python:image_haut in item['subjects']" class="text-left"
+                        tal:define="query python:view.urlencode({'subject': image_haut, 'came_from': came_from});">
+                        <a  tal:attributes="href string:${item/real_url}/supprimer_subject?${query};
+                            title string:Afficher le centre de l'imagede '${item/title}';">
+                            <i class="fa fa-minus-square-o"></i> Afficher le centre de l'image
+                        </a>
+                    </li>
+
+                    <li class="divider"></li>
+                    <li class="text-left dropdown-header">VALIDATION</li>
+
+                    <li tal:condition="python:not image_validee in item['subjects']" class="text-left"
+                        tal:define="query python:view.urlencode({'subject': image_validee, 'came_from': came_from});">
+                        <a  tal:attributes="href string:${item/real_url}/ajouter_subject?${query};
+                            title string:Valider l'image '${item/title}';">
+                            <i class="fa fa-times-circle fa-lg fa-fw text-danger"></i>
+                            <i class="fa fa-chevron-right text-muted"></i>
+                            <i class="fa fa-check-circle fa-lg fa-fw text-success"></i>
+                            Valider l'image
+                        </a>
+                    </li>
+                    <li tal:condition="python:image_validee in item['subjects']" class="text-left"
+                        tal:define="query python:view.urlencode({'subject': image_validee, 'came_from': came_from});">
+                        <a  tal:attributes="href string:${item/real_url}/supprimer_subject?${query};
+                            title string:Invalider l'image de '${item/title}';">
+                            <i class="fa fa-check-circle fa-lg fa-fw text-success"></i>
+                            <i class="fa fa-chevron-right text-muted"></i>
+                            <i class="fa fa-times-circle fa-lg fa-fw text-danger"></i>
+                            Invalider l'image
+                        </a>
+                    </li>
+                    <li tal:condition="python:not contenu_valide in item['subjects']" class="text-left"
+                        tal:define="query python:view.urlencode({'subject': contenu_valide, 'came_from': came_from});">
+                        <a  tal:attributes="href string:${item/real_url}/ajouter_subject?${query};
+                            title string:Valider le contenu de '${item/title}';">
+                            <i class="fa fa-times-circle fa-lg fa-fw text-danger"></i>
+                            <i class="fa fa-chevron-right text-muted"></i>
+                            <i class="fa fa-check-circle fa-lg fa-fw text-success"></i>
+                            Valider le contenu
+                        </a>
+                    </li>
+                    <li tal:condition="python:contenu_valide in item['subjects']" class="text-left"
+                        tal:define="query python:view.urlencode({'subject': contenu_valide, 'came_from': came_from});">
+                        <a  tal:attributes="href string:${item/real_url}/supprimer_subject?${query};
+                            title string:Invalider le contenu de '${item/title}';">
+                            <i class="fa fa-check-circle fa-lg fa-fw text-success"></i>
+                            <i class="fa fa-chevron-right text-muted"></i>
+                            <i class="fa fa-times-circle fa-lg fa-fw text-danger"></i>
+                            Invalider le contenu
+                        </a>
+                    </li>
+
+                    <!--<tal:block condition="python:'Manager' in item['roles']">-->
+                        <li class="divider"></li>
+                        <li class="text-left dropdown-header">ADMINISTRATEUR</li>
+
+                        <li tal:condition="python:not exclure_template in item['subjects']" class="text-left"
+                            tal:define="query python:view.urlencode({'subject': exclure_template, 'came_from': came_from});">
+                            <a  tal:attributes="href string:${item/real_url}/ajouter_subject?${query};
+                                title string:Masquer du template '${item/title}';">
+                                <span class="label label-danger"><i class="fa fa-eye-close"></i> admin</span> Masquer du template
+                            </a>
+                        </li>
+                    <!--</tal:block>-->
+
+                </ul>
+            </li>
+        </ul>
+    </div>
+</metal:block>
+
+<metal:block define-macro="state">
+    <span tal:condition="python:item['access'] and item['state']=='private'" class="label label-danger label-private">
+        Privé
+    </span>
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### DEXTERITY #################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="chapitre">
+
+    <h2 tal:condition="opt_titre" tal:content="opt_titre"/>
+
+    <div class="row" tal:condition="python:opt_image or opt_description">
+        <div tal:condition="opt_image" class="col-sm-3">
+            <tal:block define="opt_image opt_image_name; opt_scale string:preview; opt_imageratio string: ; opt_title opt_titre;">
+                <metal:block use-macro="context/templates_macro/macros/dexterity_thumb_link"></metal:block>
+            </tal:block>
+        </div>
+        <div tal:condition="opt_description" tal:attributes="class python:'col-sm-9' if opt_image else 'col-sm-12';">
+            <p><strong tal:content="opt_description"/></p>
+        </div>
+    </div>
+
+    <div tal:condition="opt_texte" class="row">
+        <div class="col-sm-12">
+            <div tal:replace="structure opt_texte/output"/>
+        </div>
+    </div>
+
+    <div tal:condition="opt_lien" class="row">
+        <div class="col-sm-12 text-right">
+            <a tal:attributes="href opt_lien" class="btn btn-primary btn-sm">
+                <i class="fa fa-plus"></i> <tal:block content="python:opt_lien_titre if opt_lien_titre else 'En savoir plus'"/>
+            </a>
+        </div>
+    </div>
+
+    <div class="visualClear"></div>
+
+</metal:block>
+
+<metal:block define-macro="dexterity_thumb_link">
+    <tal:block define="scales context/@@images;
+                       thumb python:scales.scale(opt_image, scale=opt_scale);
+                       full python:scales.scale(opt_image, scale='full')">
+        <a tal:attributes="href full/url; class string:thumb_link image_ratio ${opt_imageratio};">
+            <span tal:attributes="style string:background-image: url(${thumb/url});" class="image_top">
+                <img tal:attributes="src thumb/url; alt opt_title;"/>
+            </span>
+        </a>
+    </tal:block>
+</metal:block>
+
+
+<!-- ################################################################################################## -->
+<!-- ### DIVERS ####################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="folder_list_group">
+    <div class="panel panel-info">
+        <div tal:condition="item/description" tal:content="item/description" class="panel-heading"/>
+        <div class="list-group">
+            <a tal:repeat="subitem subitems" tal:attributes="href subitem/url" class="list-group-item">
+                <h4 class="list-group-item-heading">
+                    <span tal:condition="python:subitem['type'] in ['Event']" tal:content="python:subitem['dates']['start_localized']" class="label label-info"/>
+                    <tal:block content="subitem/title"/>
+                </h4>
+                <p tal:condition="subitem/description" tal:content="subitem/description" class="list-group-item-text text-muted"/>
+            </a>
+        </div>
+    </div>
+</metal:block>
+
+<metal:block define-macro="tree">
+
+    <table class="table table-bordered table-condensed table-hover">
+        <thead>
+            <tr class="active">
+                <th class="fullwidth">Rubrique</th>
+                <th class="fullwidth">Validation<br/>rédacteur</th>
+                <th class="fullwidth">Validation<br/>automatique</th>
+                <th class="fullwidth">Template</th>
+                <th class="fullwidth">Accès</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <metal:block use-macro="context/templates_macro/macros/tree_nodes"></metal:block>
+        </tbody>
+    </table>
+
+</metal:block>
+
+<metal:block define-macro="tree_nodes">
+
+    <tal:block repeat="n node">
+            <tr tal:define="item n/object; opt_entete FALSE;
+                text_trunc python:view.getTextTrunc(item['text']);
+                defaultDesc python:view.idDefaultText(item['description']);
+                defaultText python:view.idDefaultText(text_trunc);
+                defaultPage python:item['item'].getProperty('default_page');
+                opt_came_from string:${context/absolute_url}/resume; level python:item['level']*30+5;"
+                tal:condition="python:not item['layout'] in ['link_redirect_view'] and not item['type'] in ['File'] ">
+
+                <td tal:attributes="style string:padding-left:${level}px;">
+                    <a tal:attributes="href item/url"><strong tal:content="item/title"/></a><br/>
+
+                    <tal:block condition="not:defaultPage">
+                        <small tal:attributes="class python:'text-danger' if defaultDesc else 'text-muted'"
+                            tal:content="python:item['desc_trunc'] if item['desc_trunc'] else 'PAS DE DESCRIPTION'"/>
+                        <br/>
+                        <small><strong tal:attributes="class python:'text-danger' if defaultText else 'text-muted'"
+                            tal:content="python:text_trunc if text_trunc else 'PAS DE CONTENU'"/></small>
+                    </tal:block>
+                </td>
+
+                <td class="text-center" style="white-space: nowrap;">
+                    <tal:block condition="not:defaultPage">
+                        <span tal:condition="python:not '#RedactionImageValidee' in item['subjects']" class="label label-danger" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-picture-o fa-lg"></i><br/>image
+                        </span>
+                        <span tal:condition="python:'#RedactionImageValidee' in item['subjects']" class="label label-success" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-picture-o fa-lg"></i><br/>image
+                        </span>
+                        <span tal:condition="python:not '#RedactionContenuValide' in item['subjects']" class="label label-danger" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-align-justify fa-lg"></i><br/>contenu
+                        </span>
+                        <span tal:condition="python:'#RedactionContenuValide' in item['subjects']" class="label label-success" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-align-justify fa-lg"></i><br/>contenu
+                        </span>
+                    </tal:block>
+                </td>
+
+                <td class="text-center" style="white-space: nowrap;">
+                    <tal:block condition="not:defaultPage">
+                        <span tal:condition="item/image_default" class="label label-danger" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-picture-o fa-lg"></i><br/>image
+                        </span>
+                        <span tal:condition="not:item/image_default" class="label label-success" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-picture-o fa-lg"></i><br/>image
+                        </span>
+                        <span tal:condition="python:defaultDesc" class="label label-danger" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-info-circle fa-lg"></i><br/>desc
+                        </span>
+                        <span tal:condition="python:not defaultDesc" class="label label-success" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-info-circle fa-lg"></i><br/>desc
+                        </span>
+                        <span tal:condition="python:defaultText" class="label label-danger" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-align-justify fa-lg"></i><br/>contenu
+                        </span>
+                        <span tal:condition="python:not defaultText" class="label label-success" style="display: inline-block; padding:.5em;">
+                            <i class="fa fa-align-justify fa-lg"></i><br/>contenu
+                        </span>
+                    </tal:block>
+                </td>
+
+                <td class="text-muted">
+                    <tal:block condition="not:defaultPage">
+                        <small tal:content="item/layout"/><br/>
+                    </tal:block>
+                </td>
+
+                <td class="text-muted">
+                    <tal:block condition="not:defaultPage">
+                        <i class="fa fa-user fa-fw"></i>
+                        <small tal:content="python:', '.join(item['editors'])"/><br/>
+                        <i class="fa fa-group fa-fw text-muted"></i>
+                        <small tal:content="python:', '.join(item['editors_groups'])"/>
+                    </tal:block>
+                </td>
+
+                <td>
+                    <tal:block condition="not:defaultPage">
+                        <metal:block use-macro="context/templates_macro/macros/edit"></metal:block>
+                    </tal:block>
+                </td>
+
+            </tr>
+
+            <tal:block define="node n/children">
+                <metal:block use-macro="context/templates_macro/macros/tree_nodes"></metal:block>
+            </tal:block>
+    </tal:block>
+</metal:block>
+
+<metal:block define-macro="tree_nodes_excel">
+    <tal:block repeat="n node">
+        <tr tal:define="item n/object" tal:condition="python:item['type'] in ['Folder', 'Document']">
+            <td tal:condition="python:item['level']>=1"/>
+            <td tal:condition="python:item['level']>=2"/>
+            <td tal:condition="python:item['level']>=3"/>
+            <td tal:condition="python:item['level']>=4"/>
+            <td>
+                <small tal:content="item/title"/>
+            </td>
+            <td tal:condition="python:item['level']<=0"/>
+            <td tal:condition="python:item['level']<=1"/>
+            <td tal:condition="python:item['level']<=2"/>
+            <td tal:condition="python:item['level']<=3"/>
+            <td>
+                <small tal:content="item/type"/>
+            </td>
+            <td>
+                <small tal:content="python:'%s%s%s%s&&&' % ('@@@'*item['level'], item['title'], '@@@'*(5-item['level']), item['type'])"/>
+            </td>
+        </tr>
+
+        <tal:block define="node n/children">
+            <metal:block use-macro="context/templates_macro/macros/tree_nodes_excel"></metal:block>
+        </tal:block>
+    </tal:block>
+</metal:block>
+
+</metal:content-core>
+</body>
+</html>

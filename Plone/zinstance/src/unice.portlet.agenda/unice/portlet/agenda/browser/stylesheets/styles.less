@@ -1,0 +1,71 @@
+@ratio: 1/2;
+//@ratio: 3/4;
+
+.portlet.portletAgenda {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    div.row > div {
+        padding-right: 0;
+        padding-left: 0;
+
+        &.col-md-1 {
+            text-align: center;
+            background-color: #006fa4;
+
+            &, a, a:hover, a:focus, a:visited {
+                color: #FFF !important;
+                text-decoration: none !important;
+            }
+
+            @media (max-width: 991px) {
+                padding: 5px;
+            }
+            @media (min-width: 992px) {
+                line-height: unit(ceil((1170 * 0.916666666666) / 3 * @ratio) - 1, px);
+                border-top-left-radius: 3px;
+                border-bottom-left-radius: 3px;
+            }
+        }
+    }
+
+    .image_ratio {
+        span {
+            padding-top: 100% * @ratio;
+        }
+    }
+    .bx-wrapper .bx-caption {
+        padding-top: 10px;
+
+        background: -moz-linear-gradient(top,  rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.5)));
+        background: -webkit-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+        background: -o-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+        background: -ms-linear-gradient(top,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+        background: linear-gradient(to bottom,  rgba(0,0,0,0) 0%,rgba(0,0,0,0.5) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#80000000',GradientType=0 );
+
+        span {
+            padding: 5px;
+            min-height: 44px;
+
+            em {
+                position: absolute;
+                width: 34px;
+                text-align: center;
+                background-color: #5cb85c;
+                border-radius: 3px;
+                font-style: normal;
+                font-weight: bold;
+                text-shadow: none;
+            }
+            strong, small {
+                margin-left: 34px + 3px;
+            }
+        }
+    }
+    .bx-wrapper .bx-pager {
+        bottom: -20px;
+    }
+
+}

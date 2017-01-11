@@ -1,0 +1,358 @@
+@couleurFond: #006fa4;
+@couleurFondSombre: darken(@couleurFond, 10%);
+@couleurFondSaturee: lighten(spin(lighten(@couleurFond, 9%), -10), 1%);
+
+
+// TEMPORAIRE
+body.template-formations_view,
+body.template-formations_mobile_view {
+	div#portlets-in-header .portlet.portletNavigation nav.navbar-style-logo .navbar-collapse {
+		display: none !important;
+	}
+}
+// TEMPORAIRE
+
+body.template-formation_view.portaltype-formation,
+body.template-formation_mobile_view.portaltype-formation {
+
+	h1.documentFirstHeading {
+		text-align: center;
+		font-size: 24px;
+		margin-bottom: 30px;
+    	margin-top: 30px;
+	}
+	p.title_print, img.logo_print {
+		display: none;
+	}
+	h2 {
+	    font-size: 14px;
+	    font-weight: 300 !important;
+	    margin-top: 0;
+	}
+	.panel-default h2 {
+	   	color: #000 !important;
+	}
+	.panel-primary h2 {
+	   	color: #FFF !important;
+	}
+
+	#content {
+		.tab-content {
+	    	padding: 20px 0;
+	    	margin-left: 1px;
+	    	margin-right: 1px;
+	    	border: 5px solid @couleurFond;
+
+	    	.col-md-9, .col-md-3 {
+	    		padding-left: 20px;
+				padding-right: 20px;
+	    	}
+
+	    	.col-md-9 h2 {
+	    		display: none;
+	    	}
+		}
+	}
+
+	@import "items";
+}
+
+body.template-formations_view,
+body.template-formations_mobile_view  {
+	#liste_formations ul {
+		margin: 0;
+		margin-left: 20px;
+		padding: 0;
+		list-style: none;
+
+		li a {
+			border-bottom: 0 !important;
+		}
+	}
+}
+
+#content ul.nav.nav-pills, ul.nav.nav-pills {
+	list-style: none !important;
+	margin: 0 !important;
+
+	> li {
+		border: 1px solid #FFF;
+		border-bottom-width: 0;
+
+		> a {
+			background-color: #F5F5F5;
+		    color: #666;
+		}
+		&.active > a {
+			background-color: @couleurFond;
+	    	color: #FFF;
+		}
+		&.success > a {
+			background-color: #5CB85C;
+		}
+	}
+}
+ul.nav.nav-pills.nav-tabs > li > a {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.centered-pills { text-align:center; }
+.centered-pills ul.nav-pills { display:inline-block; }
+.centered-pills ul.nav-pills > li { display:inline; text-align: left; }
+.centered-pills ul.nav-pills > li > a { float:left; }
+* html .centered-pills ul.nav-pills { display:inline; }
+*+html .centered-pills ul.nav-pills { display:inline; }
+
+#content ul.dropdown-menu, ul.dropdown-menu {
+	list-style: none;
+	margin: 0;
+}
+
+#content .panel-body, .panel-body {
+	word-wrap: break-word;
+}
+
+/************************************************************************************/
+
+// body.template-formation_view.portaltype-formation,
+// body.template-formation_mobile_view.portaltype-formation,
+// body.section-formation {
+
+// 	#portlets-in-header section.portlet-portletNavigationTree-position-2 {
+// 		ul.navbar-nav, form.navbar-form {
+// 			visibility: hidden;
+// 		}
+// 	}
+// 	#portlets-in-header section.-position-3,
+// 	#portlets-in-header section.portlet-portletNavigationTree-position-4,
+// 	#portlets-in-header section.portlet-portletNavigationTree-position-5,
+// 	.breadcrumb > li:nth-child(2) {
+// 		display: none;
+// 	}
+// 	.breadcrumb > li:nth-child(2) + li:before {
+// 		content: " ";
+// 	}
+// }
+
+/************************************************************************************/
+
+body.template-formations_view,
+body.template-formations_mobile_view  {
+
+	.recherche_initiale {
+		#moteur_recherche_formation {
+			display: none;
+		}
+		#liste_formations div.panel.panel-info div.panel-heading {
+			span {
+				display: none;
+			}
+		}
+	}
+
+	form#recherche_formation {
+		.form-group {
+			float: none;
+
+			.form-control, & + button {
+				border-radius: 4px;
+			}
+		}
+
+		#recherche_formation_multicriteres {
+			display: none;
+		}
+
+		label.checkbox-inline {
+			display: block;
+		}
+
+		div.col-md-3 {
+			padding-left: 1px;
+			padding-right: 1px;
+		}
+
+		div.panel-heading, li.list-group-item {
+			padding: 3px 6px;
+		}
+
+		ul.list-group {
+			@media (min-width: 768px) {
+				min-height: 167px;
+			}
+		}
+	}
+}
+
+/*** MOBILE *******************************************************************************/
+
+body.template-formations_mobile_view,
+body.template-formation_mobile_view {
+
+	background-color: #FFF;
+
+	nav#navigation_globale,
+	div#portal-column-one, div#portal-column-two,
+	ol.breadcrumb,
+	h1.documentFirstHeading,
+	footer a {
+		display: none !important;
+	}
+
+	div#portal-column-content {
+		width: auto;
+	}
+
+	#wrap > .container,
+	footer.container {
+		max-width: none;
+	}
+
+	#portal-columns, #portal-column-content {
+		padding: 0;
+	}
+	#content {
+		padding-left: 15px;
+    	padding-right: 15px;
+	}
+	div.portlet.portletCarousel .bx-wrapper {
+		padding-bottom: 0;
+	}
+
+	form#recherche_formation {
+		input#recherche {
+			display: inline-block;
+			width: auto;
+			border-top-right-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		button {
+			border-top-left-radius: 0;
+			border-bottom-left-radius: 0;
+		}
+	}
+}
+body.template-formations_view,
+body.template-formations_mobile_view,
+body.template-formation_mobile_view {
+
+	#liste_formations div.panel.panel-info div.panel-heading {
+		text-align: center;
+	}
+
+	#content a.list-group-item {
+		&, &:hover, &:focus {
+			padding-right: 32px;
+			background-image: url('++resource++unice.gof.images/chevron.png');
+			background-position: right center;
+			background-repeat: no-repeat;
+			background-size: auto 16px;
+			color:#000 !important;
+
+			strong {
+				font-weight: normal;
+			}
+		}
+	}
+}
+
+body.template-formation_mobile_view.portaltype-formation {
+	#portlets-in-header {
+		display: none !important;
+	}
+	h1.documentFirstHeading {
+		display: block !important;
+		margin-bottom: 10px;
+		background-image: url('./++theme++ThemeUNS/assets/img/logo_traits.png');
+		background-position: left center;
+		background-repeat: no-repeat;
+		background-size: auto 53px;
+		min-height: 53px;
+		padding-left: 2442 * 53 / 1580px;
+	}
+}
+/***************************************************************************/
+
+
+body.template-formations_composantes {
+	h1#parent-fieldname-title {
+		display: none;
+	}
+
+	a.list-group-item-info {
+		font-weight: 700;
+	}
+	.tab-content {
+		.panel-group {
+			margin-bottom: 0;
+
+			.panel-heading a {
+				text-decoration: none !important;
+			}
+		}
+		.panel-collapse .panel-body {
+			padding: 0;
+		}
+		.list-group {
+			margin-bottom: 0;
+
+			.list-group-item {
+				border-left-width: 0;
+				border-right-width: 0;
+
+				padding-right: 32px;
+				background-image: url('++resource++unice.gof.images/chevron.png');
+				background-position: right center;
+				background-repeat: no-repeat;
+				background-size: auto 16px;
+				text-decoration: none !important;
+
+				&:first-child {
+					border-top-width: 0;
+					border-radius: 0;
+				}
+				&:last-child {
+					border-bottom-width: 0;
+					border-radius: 0;
+				}
+
+				.list-group-item-heading {
+					font-size: 16px;
+				}
+				.list-group-item-text {
+					margin-bottom: 0 !important;
+
+					small {
+					    white-space:nowrap;
+					    text-overflow:ellipsis;
+					    overflow:hidden;
+					    display: block;
+					}
+				}
+			}
+		}
+	}
+}
+
+/***************************************************************************/
+
+.ajax_load {
+	@padding: 3px;
+	background-image: url('++resource++unice.gof.images/ajax-loader.gif');
+	background-position: @padding center;
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	min-height: 16px + 2*@padding;
+	padding-left: 16px + 2*@padding !important;
+
+	-webkit-transition: padding-left 500ms ease-out 0.5s, background-position 500ms ease-out 0.5s;
+    -moz-transition: padding-left 500ms ease-out 0.5s, background-position 500ms ease-out 0.5s;
+    -o-transition: padding-left 500ms ease-out 0.5s, background-position 500ms ease-out 0.5s;
+    transition: padding-left 500ms ease-out 0.5s, background-position 500ms ease-out 0.5s;
+
+	&.loading_done {
+		//background-image: none;
+		background-position: -16px center;
+		padding-left: inherit !important;
+	}
+}

@@ -1,0 +1,132 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="parents">
+
+    <div class="list-group">
+        <tal:block repeat="parent parents">
+            <tal:block define="grandpa python:parent.aq_parent;
+                                items python:parents[parent]">
+
+                <span class="list-group-item well well-sm">
+                    <tal:block content="grandpa/Title"/>/<tal:block content="parent/Title"/>
+                </span>
+
+                <tal:block repeat="item items">
+
+                    <a tal:define="normalizeString nocall: context/plone_utils/normalizeString;
+                                    state_class python:'state-' + normalizeString(item['state']);"
+                        tal:attributes="href item/url; class string:list-group-item ${state_class};
+                                        data-subjects python: ','.join(item['subjects']);
+                                        data-popover-content string:#${item/uuid}"
+                        rel="popover" data-placement="bottom">
+
+
+                        <p class="row">
+                            <!-- <span class="col col-md-8"> -->
+                                <span class="thumb_link image_ratio ratio1:1">
+                                    <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                        <img tal:attributes="src item/image;"/>
+                                    </span>
+                                </span>
+
+                                <strong tal:content="item/title"/>
+                                <small tal:content="item/description"/>
+                                <small tal:content="item/dates/localized"/>
+                            <!-- </span> -->
+                                <span class="col- col-md-4- subjects">
+                                    <span class="label label-default">
+                                        <i class="fa fa-tags"/> <span tal:attributes="data-prefix-theme prefix_themes"/>
+                                    </span>
+                                    <span tal:repeat="canal canaux" class="label label-default">
+                                        <i class="fa fa-desktop"/> <tal:block content="canal"/> <i class="fa fa-star"/>
+                                        <span tal:attributes="
+                                            data-prefix-canal string:${prefix_canaux}${canal};
+                                            data-prefix-importance python:canaux[canal];"/>
+                                    </span>
+
+                                    <!-- <tal:block content="item/canaux"/><br/>
+                                    <tal:block content="item/importances"/> -->
+                                </span>
+                                <span class="visualClear"/>
+                        </p>
+                    </a>
+
+                    <metal:block use-macro="context/gestion_macro/macros/popover"></metal:block>
+
+                </tal:block>
+
+            </tal:block>
+        </tal:block>
+    </div>
+
+</metal:block>
+
+<metal:block define-macro="popover">
+
+    <div tal:attributes="id item/uuid" style="display:none;">
+         <div tal:attributes="rel item/uuid">
+            <strong><i class="fa fa-tags"/> Thèmes :</strong><br/>
+            <div class="btn-group">
+                <tal:block repeat="theme themes">
+                    <button type="button" class="btn btn-default btn-sm" data-type="themes"
+                        tal:attributes="data-subjects string:#FilUNSTheme${theme}">
+                        <i class="fa fa-tag"/> <tal:block content="theme"/>
+                    </button>
+                </tal:block>
+            </div>
+            <hr/>
+
+            <strong><i class="fa fa-desktop"/> Canaux :</strong><br/>
+            <tal:block repeat="canal canaux">
+                <strong style="width: 48%;display: inline-block;text-align: right;" tal:content="canal"/> :
+                <div class="btn-group" style="width: 48%; margin-bottom:1px;"
+                    tal:define="prefix_importance python:canaux[canal]">
+                    <tal:block repeat="importance python:importances[prefix_importance]">
+                        <tal:block define="subjects string:${prefix_canaux}${canal},${prefix_importance}${importance};">
+                            <button type="button" class="btn btn-default btn-sm" style="width: 4em;"
+                                tal:attributes="data-subjects subjects" data-type="canaux">
+                                <i class="fa fa-star"/> <tal:block content="importance"/>
+                            </button>
+                        </tal:block>
+                    </tal:block>
+                </div>
+                <br/>
+            </tal:block>
+            <hr/>
+        </div>
+    </div>
+
+</metal:block>
+
+<!-- <metal:block define-macro="previews">
+
+    <ul class="nav nav-pills nav-justified">
+        <tal:block repeat="tab previews">
+            <li tal:attributes="class python:'active' if repeat['tab'].index == 0 else ''">
+                <a data-toggle="tab" tal:attributes="href string:#${tab}">
+                    <tal:block content="tab"/>
+                 </a>
+            </li>
+        </tal:block>
+    </ul>
+
+    <div class="tab-content">
+        <tal:block repeat="tab previews">
+            <div tal:attributes="id tab; class python:'tab-pane active' if repeat['tab'].index == 0 else 'tab-pane'">
+                <iframe style="border:0;" width="300%" height="1800px"
+                    tal:attributes="src python:previews[tab];"/>
+            </div>
+        </tal:block>
+    </div>
+</metal:block> -->
+</metal:content-core>
+</body>
+
+</html>

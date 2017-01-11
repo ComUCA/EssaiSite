@@ -1,0 +1,218 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="fil">
+
+    <tal:listing condition="batch">
+
+        <tal:block tal:define="
+            prefix_themes string:#FilUNSTheme;
+            prefix_canaux string:#FilUNSCanal;
+
+            themes python:view.themes(prefix_themes);
+            canaux python:view.canaux(prefix_canaux, {'*':'#FilUNSImp', 'FilUNS':'#FilUNSImportance'});
+            importances python:view.importances(canaux);">
+
+            <tal:block condition="batch"
+                tal:define="classement python:view.classementItems(batch, prefix_themes, themes, prefix_canaux, canaux, importances, 200)">
+
+                <h2>A la une :</h2>
+                <tal:block condition="python:'1' in classement">
+                    <ul class="bxslider canal_fil_importance1" data-slider-captions="1"
+                        tal:define="auto python:len(classement['1'])>1"
+                        tal:attributes="data-slider-auto python:'1' if auto else '0'; data-slider-pager python:'1' if auto else '0';">
+
+                        <li tal:repeat="item classement/1"
+                            tal:attributes="class item/themeCls">
+
+                            <tal:block tal:condition="python:item['type'] != 'video'">
+
+                                <a tal:attributes="href string:${item/url}/@@article_view;" class="thumb_link image_ratio ratio2:1">
+                                    <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                        <img tal:attributes="src item/image; title python:view.captions(item)"/>
+                                    </span>
+                                    <strong tal:content="item/theme"/>
+                                </a>
+
+                            </tal:block>
+
+                            <tal:block condition="python:item['type'] == 'video'">
+                                <div class="carousel_video_iframe" tal:content="structure item/item/iframe"/>
+                            </tal:block>
+
+                        </li>
+                    </ul>
+                </tal:block>
+
+                <h2>Focus :</h2>
+                <tal:block condition="python:'2' in classement">
+                    <ul class="canal_fil_importance2">
+
+                        <tal:block repeat="item classement/2">
+
+                            <tal:block define="index repeat/item/index;">
+
+                                <tal:block condition="python:index % 2 == 0">
+                                    <tal:block replace="structure string:&lt;div class='row'&gt;"/>
+                                </tal:block>
+
+                                <li tal:attributes="class string:${item/themeCls} col-md-6">
+
+                                    <tal:block tal:condition="python:item['type'] != 'Link'">
+
+                                        <a tal:attributes="href string:${item/url}/@@article_view;" class="thumb_link image_ratio ratio2:1">
+                                            <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                                <img tal:attributes="src item/image; title python:view.captions(item)"/>
+                                            </span>
+                                            <strong tal:content="item/theme"/>
+                                        </a>
+
+                                        <a tal:attributes="href string:${item/url}/@@article_view;" class="details_link">
+                                            <strong tal:content="item/title"/><br/>
+                                            <span class="discreet">
+                                                <i class="fa fa-calendar-empty"></i> <small tal:content="item/dates/localized"/>
+                                                <tal:block condition="item/location">
+                                                    - <i class="fa fa-map-marker"></i> <small tal:content="item/location"/>
+                                                </tal:block>
+                                            </span><br/>
+                                            <span tal:content="item/desc_trunc"/>
+                                        </a>
+
+                                    </tal:block>
+
+                                    <tal:block condition="python:item['type'] == 'Link'">
+                                        <div class="responsive_player">
+                                            <iframe tal:attributes="src item/remote_url" width="800" height="400" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                                        </div>
+
+                                        <a tal:attributes="href string:${item/url}/@@article_view;" class="details_link">
+                                            <strong tal:content="item/title"/><br/>
+                                            <span class="discreet">
+                                                <i class="fa fa-calendar-empty"></i> <small tal:content="item/dates/localized"/>
+                                                <tal:block condition="item/location">
+                                                    - <i class="fa fa-map-marker"></i> <small tal:content="item/location"/>
+                                                </tal:block>
+                                            </span><br/>
+                                            <span tal:content="item/desc_trunc"/>
+                                        </a>
+
+                                    </tal:block>
+
+
+                                    <a tal:attributes="href string:${item/url}/@@article_view;" class="more">
+                                        <span>Lire la suite</span>
+                                    </a>
+
+                                </li>
+
+                                <tal:block condition="python:index % 2 == 2-1">
+                                    <tal:block replace="structure string:&lt;/div&gt;"/>
+                                </tal:block>
+
+                            </tal:block>
+
+                        </tal:block>
+
+                        <tal:block condition="python:len(classement['2']) % 2 != 0">
+                            <tal:block replace="structure string:&lt;/div&gt;"/>
+                        </tal:block>
+                    </ul>
+                </tal:block>
+
+                <div class="more_items">
+                    <a href="#">Plus d'actualités</a>
+                </div>
+
+                <h2>Plus d'actualites :</h2>
+                <tal:block condition="python:'3' in classement">
+                    <ul class="row canal_fil_importance3">
+                        <li class="col-md-12" tal:repeat="item classement/3"
+                            tal:attributes="class item/themeCls">
+
+                            <tal:block tal:condition="python:item['type'] != 'Link'">
+
+                                <a tal:attributes="href string:${item/url}/@@article_view;" class="thumb_link image_ratio ratio2:1">
+                                    <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                        <img tal:attributes="src item/image; title python:view.captions(item)"/>
+                                    </span>
+                                    <strong tal:content="item/theme"/>
+                                </a>
+
+                                <a tal:attributes="href string:${item/url}/@@article_view;" class="details_link">
+                                    <strong tal:content="item/title"/><br/>
+                                    <span class="discreet">
+                                        <i class="fa fa-calendar-empty"></i> <small tal:content="item/dates/localized"/>
+                                        <tal:block condition="item/location">
+                                            - <i class="fa fa-map-marker"></i> <small tal:content="item/location"/>
+                                        </tal:block>
+                                    </span><br/>
+                                    <span tal:content="item/desc_trunc"/>
+                                </a>
+
+                            </tal:block>
+
+
+                            <tal:block condition="python:item['type'] == 'Link'">
+                                <div class="responsive_player">
+                                    <iframe tal:attributes="src item/remote_url" width="800" height="400" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                                </div>
+
+                                <a tal:attributes="href string:${item/url}/@@article_view;" class="details_link">
+                                    <strong tal:content="item/title"/><br/>
+                                    <span class="discreet">
+                                        <i class="fa fa-calendar-empty"></i> <small tal:content="item/dates/localized"/>
+                                        <tal:block condition="item/location">
+                                            - <i class="fa fa-map-marker"></i> <small tal:content="item/location"/>
+                                        </tal:block>
+                                    </span><br/>
+                                    <span tal:content="item/desc_trunc"/>
+                                </a>
+
+                            </tal:block>
+
+                            <span class="visualClear"/>
+                        </li>
+                    </ul>
+                </tal:block>
+
+                <br/>
+                <h2>Abonnements :</h2>
+                <div class="text-center">
+                    <a href="./accueil/@@rss_view" class="btn btn-warning btn-sm">
+                        <i class="fa fa-rss"></i> S'abonner au flux "<tal:block content="context/title"/>"
+                    </a>
+                </div>
+
+
+                <br/>
+                <h2>Archives :</h2>
+                <div class="text-center">
+                    <div class="btn-group">
+                        <strong>Archives "<tal:block content="context/title"/>" :</strong><br/>
+                        <!-- <a href="./archives/archives-de-la-semaine" class="btn btn-default"><i class="fa fa-time"></i> Archives de la semaine</a> -->
+                        <a href="./archives/archives-du-mois" class="btn btn-default"><i class="fa fa-time"></i> Archives du mois</a>
+                        <a href="./archives/toutes-les-archives" class="btn btn-default"><i class="fa fa-time"></i> Toutes les archives</a>
+                    </div>
+                </div>
+
+            </tal:block>
+
+        </tal:block>
+
+    </tal:listing>
+
+    <p class="discreet" tal:condition="not: batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+</metal:content-core>
+</body>
+
+</html>

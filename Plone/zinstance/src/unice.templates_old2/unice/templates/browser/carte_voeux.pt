@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+
+        <meta charset="utf-8">
+        <title tal:content="context/Title"/>
+        <meta name="description" tal:attributes="content context/Description"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+        <link href="++resource++unice.theme.stylesheets/libs/bootstrap.min.css" rel="stylesheet">
+        <link href="++resource++unice.theme.stylesheets/libs/font-awesome.min.css" rel="stylesheet">
+        <link href="++resource++unice.templates.stylesheets/libs/jasny-bootstrap.min.css" rel="stylesheet">
+        <link href="++resource++unice.templates.stylesheets/carte_voeux.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+        <script src="++resource++unice.theme.javascripts/libs/jquery.min.js"></script>
+    </head>
+
+    <body tal:define="type python:context.portal_type.lower();
+        folder python:type=='folder'; document python:type=='document';
+        image python:context.getText().replace('<p>', '').replace('</p>', '') if document else '';
+        colors python:{'carte-de-voeux1': '#CDA228', 'carte-de-voeux2': '#000000', 'carte-de-voeux3': '#CDA228', 'carte-de-voeux4': '#000000'}">
+
+        <div tal:attributes="class python:'container %s' % type" id="body">
+
+                <div tal:condition="folder" class="row text-center">
+                    <div class="col-md-12">
+                        <h1>
+                            <img src="++theme++ThemeUNS/assets/img/logo.png" alt="Université Nice Sophia Antipolis">
+                            Carte de voeux de l'UNS
+                        </h1>
+                    </div>
+                </div>
+
+                <div class="row text-center">
+
+                    <div tal:condition="folder" class="col-md-5 col-md-push-7">
+                        <div class="alert alert-warning" role="alert"><strong>Etape 1 :</strong> Remplissez les champs</div>
+
+                        <form role="form" id="form">
+                            <div class="form-group">
+                                <label for="input_img" class="sr-only">Image</label>
+                                <select id="input_img" class="form-control">
+                                    <option value="carte-de-voeux1">Carte de voeux "50 ans" fond noir (français)</option>
+                                    <option value="carte-de-voeux2">Carte de voeux "50 ans" fond blanc (français)</option>
+                                    <option value="carte-de-voeux3">Carte de voeux "50 ans" fond noir (anglais)</option>
+                                    <option value="carte-de-voeux4">Carte de voeux "50 ans" fond blanc (anglais)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="input_titre" class="sr-only">Titre</label>
+                                <input type="text" class="form-control" id="input_titre" value="Titre...">
+                            </div>
+                            <div class="form-group">
+                                <label for="input_texte" class="sr-only">Texte</label>
+                                <textarea class="form-control" rows="3" id="input_texte">Texte...</textarea>
+                            </div>
+                        </form>
+
+                        <div class="alert alert-warning" role="alert"><strong>Etape 2 :</strong> Cliquez pour créer la carte et la téléchager</div>
+                        <button type="button" id="button_lien" class="btn btn-primary btn-block">
+                            <i class="fa fa-check-circle"></i> CRÉER LA CARTE
+                        </button><br/>
+                        <textarea class="form-control" rows="3" id="input_lien" readonly onclick="this.focus();this.select()" style="display:none;"></textarea>
+                    </div>
+
+                    <div tal:condition="folder" class="col-md-7 col-md-pull-5">
+                        <div id="carte">
+                            <img id="img"
+                                tal:attributes="src python:'++resource++unice.templates.images/%s.jpg' % image if document else ''"/>
+                            <div id="textes" tal:attributes="class python:image if document else ''">
+                                <div id="titre">
+                                    <tal:block condition="document" content="context/Title"/>
+                                </div>
+                                <div id="texte">
+                                    <tal:block condition="document" content="context/Description"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div tal:condition="document" class="col-md-12">
+                        <div class="alert alert-warning" role="alert">
+                            <i class="fa fa-cloud-download fa-2x"></i> <strong class="lead">Pour télécharger votre carte, clic droit sur l'image et "Enregistrer l'image sous..."</strong><br/>
+                            <i class="fa fa-bookmark"></i> Vous pouvez également mettre cette page en favori pour retrouver votre carte<!-- <br/>
+                            <i class="fa fa-pencil-square-o"></i> Pour modifier votre carte, vous pouvez <a href="#" class="btn btn-default btn-xs" onclick="window.history.back();"><i class="fa fa-arrow-circle-left"></i> revenir à l'éditeur</a> -->
+                        </div>
+                        <canvas id="carteCanvas" width="1200" height="900" style="display:none;"
+                            tal:attributes="data-image python:'++resource++unice.templates.images/%s.jpg' % image;
+                            data-titre context/Title; data-texte context/Description; data-color python:colors[image];">
+                            Votre navigateur semble trop ancien ou ne gère pas les standards en vigueur, merci de le mettre à jour ou d'utiliser Chrome, Firefox ou Safari.
+                        </canvas>
+                        <img id="imageCanvas" style="width:100%; height:auto;"/><br/><br/>
+                    </div>
+
+                </div>
+
+        </div>
+
+        <script src="++resource++unice.theme.javascripts/libs/bootstrap.min.js"></script>
+        <script src="++resource++unice.templates.javascripts/libs/jasny-bootstrap.min.js"></script>
+        <script src="++resource++unice.templates.javascripts/libs/jquery.fittext.js"></script>
+        <script src="++resource++unice.templates.javascripts/libs/jquery.storageapi.min.js"></script>
+        <script src="++resource++unice.templates.javascripts/carte_voeux.js"></script>
+
+    </body>
+</html>

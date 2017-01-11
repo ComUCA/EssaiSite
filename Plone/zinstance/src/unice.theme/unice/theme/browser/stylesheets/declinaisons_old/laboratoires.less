@@ -1,0 +1,22 @@
+@import "declinaisons";
+
+@couleurFond: #005572;
+@couleurFondSombre: darken(@couleurFond, 10%);
+
+.portlets-in-header(@couleurFond, @couleurFond);
+.declinaison();
+.navigation-principale-large-centree();
+
+div.portlet.portletCarousel.carousel_bandeau .bx-caption span strong,
+div.portlet.portletCarousel.carousel_bandeau .bx-caption span small {
+    font-weight: 100;
+}
+
+ol.breadcrumb > li:nth-child(2) {
+    display: none;
+
+    & + li:before {
+        content: " ";
+    }
+}
+

@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="group">
+
+    <a tal:attributes="href string:${context/absolute_url}/@@formation_fiche_view" class="btn btn-default btn-block">
+        <i class="fa fa-print fa-lg"></i> Imprimer la fiche
+    </a><br/>
+
+	<tal:block define="group python:view.fieldsets['outils']">
+
+	    <tal:repeat repeat="widget group/widgets/values">
+
+	    	<tal:item define="name widget/name; id python:name.replace('.', '-')">
+
+			    <div class="panel panel-default" tal:attributes="id string:${id}-panel">
+					<div class="panel-heading">
+						<h2 tal:content="structure string:${widget/label} :" tal:attributes="id string:${id}-label" class="panel-title"/>
+					</div>
+					<div class="panel-body" tal:content="structure widget/value" tal:attributes="id string:${id}-value"/>
+				</div>
+
+			</tal:item>
+
+		</tal:repeat>
+
+	</tal:block>
+
+</metal:block>
+</metal:content-core>
+</body>
+</html>

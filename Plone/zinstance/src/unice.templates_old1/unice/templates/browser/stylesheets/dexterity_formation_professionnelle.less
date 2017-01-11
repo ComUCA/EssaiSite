@@ -1,0 +1,76 @@
+@couleurFond: #006fa4;
+@couleurBordure: #CCC;
+
+body.template-formation_professionnelle_view {
+    #portal-column-content {
+        .nav-pills {
+            margin: 0 !important;
+
+            > li {
+                border: 1px solid @couleurBordure;
+                border-bottom-width: 0;
+                background-color: #FFF;
+
+                &:first-child {
+                    border-top-left-radius: 3px;
+                }
+                &:last-child {
+                    border-top-right-radius: 3px;
+                }
+
+                > a {
+                    color: #666;
+                    border-radius: 0;
+                }
+                &.active > a {
+                    background-color: @couleurBordure;
+                    color: #FFF;
+                }
+            }
+        }
+
+        .tab-content {
+            padding: 0;
+            margin-left: 0;
+            margin-right: 0;
+            border: 1px solid @couleurBordure;
+
+            .col-md-9, .col-md-3 {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .col-md-9 h2 {
+                display: none;
+            }
+        }
+
+        .panel-body {
+            word-wrap: break-word;
+        }
+    }
+
+    h2, h3{
+        text-align: center;
+
+        i {
+            font-size: 80%;
+        }
+    }
+
+    p, ul, ol, il {
+        text-align: justify;
+    }
+
+    hr {
+        border-top-color: @couleurBordure;
+        margin-left: -15px;
+        margin-right: -15px;
+    }
+
+    div.fp_renseignements_adresse p {
+        margin: 0 !important;
+        padding-left: 1.14286em + 0.285714em;
+    }
+
+}

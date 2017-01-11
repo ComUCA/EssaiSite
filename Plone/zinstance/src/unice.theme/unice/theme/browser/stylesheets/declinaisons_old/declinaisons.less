@@ -1,0 +1,212 @@
+@import "../nuancier";
+
+.gradient(@start, @stop, @important:~'') {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(@start), to(@stop));
+    background-image: -webkit-linear-gradient(top, @start, @stop) @important;
+    background-image:    -moz-linear-gradient(top, @start, @stop) @important;
+    background-image:     -ms-linear-gradient(top, @start, @stop) @important;
+    background-image:      -o-linear-gradient(top, @start, @stop) @important;
+    background-image:         linear-gradient(top, @start, @stop) @important;
+}
+
+
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+
+.portlets-in-header(@start:#888, @stop:#555) {
+    #portlets-in-header div.portlet.portletNavigation.navbar-style-noir,
+    #portlets-in-header div.portlet.portletNavigation.navbar-style-logo,
+    div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.dropdown-menu,
+    .portlet.portletTitre {
+        background-color: @start !important;
+    }
+
+    div.portlet.portletNavigation.navbar-style-plan {
+        background-color: #f7f5f0;
+
+        &, nav.navbar ul.row li a {
+            color: #000;
+        }
+    }
+
+    div.portlet.portletCarousel {
+        .gradient(@start, @stop);
+    }
+}
+
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+
+.navigation-principale-large() {
+    div.portlet.portletNavigation nav.navbar.navbar-style-principal {
+        width: auto;
+    }
+    .navigation-principale-nettoyage();
+}
+.navigation-principale-large-centree() {
+    div.portlet.portletNavigation.navbar-style-principal {
+        background-color: @couleurFond;
+    }
+    .navigation-principale-nettoyage();
+}
+.navigation-principale-nettoyage() {
+    div.portlet.portletNavigation nav.navbar.navbar-style-principal {
+        div.navbar-collapse {
+            ul.navbar-nav > li > a {
+                font-size: 16px;
+                text-transform: none;
+                font-stretch: initial;
+            }
+            &:before, &:after {
+                display: none;
+            }
+        }
+    }
+}
+
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+
+.declinaison() {
+
+    /*****************************************************************************************************/
+    /*** GENERAL *****************************************************************************************/
+    /*****************************************************************************************************/
+
+    a {
+    	color:@couleurFond;
+    	&:hover, &:focus {
+    		color:@couleurFondSombre;
+    	}
+    }
+
+    .btn-primary {
+    	background-color: @couleurFond;
+    	border-color: @couleurFondSombre;
+    	&:hover, &:focus {
+    		background-color: @couleurFondSombre;
+    	}
+    }
+    .btn.btn-inverted.btn-primary, #content .btn.btn-inverted.btn-primary {
+
+    }
+
+    .btn.btn-inverted, #content .btn.btn-inverted {
+        &.btn-primary {
+            color: @couleurFond !important;
+            border: 1px solid @couleurFond !important;
+
+            &:hover, &:focus {
+                background-color: @couleurFond;
+            }
+        }
+    }
+
+
+    ul.nav.navbar-nav ul.dropdown-menu > li > a {
+    	&:hover, &:focus {
+    		background-color: @couleurFond !important;
+    	}
+    }
+
+    div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav {
+        .open > a, .open > a:hover, .open > a:focus,
+        .active > a, .active > a:hover, .active > a:focus {
+            background-color: @couleurFondSombre !important;
+        }
+    }
+    div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.navbar-nav ul.dropdown-menu {
+        background-color: @couleurFondSombre !important;
+    }
+
+    .portlet.portletAgenda div.row>div.col-md-1,
+    #portal-column-one .portlet.portletNavigationTree>.portletItem .navTree>.navTreeCurrentNode a.navTreeCurrentItem,
+    #portal-column-one .portlet.portletNavigationTree>.portletItem .navTree>.navTreeCurrentNode:hover a.navTreeCurrentItem,
+    div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal {
+        background-color: @couleurFond;
+    }
+
+    .portlet.portletTitre .container {
+        background-color: saturate(@couleurFond, 25%);
+    }
+
+    #portal-columns {
+        h1, h2, h3 {
+            color:@couleurFond;
+        }
+    }
+    footer {
+        .credits {
+            background-color: @couleurFond;
+        }
+    }
+
+    /*****************************************************************************************************/
+    /*** PORTLETS ****************************************************************************************/
+    /*****************************************************************************************************/
+
+
+    #viewlet-below-content .BelowPortletManager4 li.active a {
+        
+        background-color: @couleurFond !important;
+        color: #FFF !important;
+
+    }
+
+    dl.portlet.portletCoordonnees .portletHeader {
+        background-color: @couleurFond;
+        color: #FFF;
+    }
+
+    dl.portlet.portletCoordonnees .portletHeader span{
+        color:#FFF;
+    }
+
+    div#portal-column-content, #portal-column-one, #portal-column-two {
+    	dl.portlet dt {
+            color: @couleurFond;
+            a, a:hover, a:focus {
+                color: @couleurFond;
+            }
+        }
+    }
+
+    dl.portlet.portletTwitterPortlet {
+        .tweetDate {
+            color: @couleurFond;
+        }
+    }
+
+
+    @media (min-width: 992px) {
+    	div.portletEventsContainer dl.portlet.portletEvents {
+    		dt.portletHeader {
+    			background-color: @couleurFond;
+    		}
+    		.bx-wrapper .bx-controls-direction {
+                a, a:hover, a:focus {
+                    background-color: @couleurFondSombre;
+                }
+            }
+    	}
+    }
+
+    dl.portlet.portletCalendar {
+    	.todaynoevent strong {
+    		background-color: @couleurFond;
+    	}
+    	.event strong {
+    		border: 1px solid @couleurFond;
+    	}
+    }
+
+    div.portlet.portletA_La_Une .dossier_actu_evenement_header {
+
+        background-color: @couleurFond;
+
+    }
+
+}

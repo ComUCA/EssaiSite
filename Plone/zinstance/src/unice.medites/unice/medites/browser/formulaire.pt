@@ -1,0 +1,32 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+            <metal:content-core define-macro="content-core"
+                        tal:define="widgets nocall:context/@@view">
+                <section class="container-fluid container-md-height dark">                 
+                    <div class="content presentation"> 
+                        <ol class="breadcrumb">
+                            <li><a href="http://medites.fr">Accueil</a></li>
+                            <li tal:content="infos/title" tal:attributes="class string:active" />
+                        </ol>
+                        <h1 tal:content="infos/title"></h1>
+                        
+                        <p>Ce questionnaire a pour <b>UNIQUE</b> but d’évaluer les parcours MEDITES que vous allez suivre au cours de cette année scolaire. Il <b>N’EST PAS</b> fait pour évaluer vos connaissances ou vos résultats scolaires même si quelques questions portent sur l’école et vos notes. Nous vous remercions de répondre <b>LE PLUS SINCEREMENT</b> possible à l’ensemble des questions : il n’y a pas de bonnes ou de mauvaises réponses !!! Merci pour votre aide.</p>
+                        <tal:block replace="structure context/@@embedded" />
+<!--                         <img alt="Logos des partenaires principaux" class="img-responsive center" src="++resource++unice.medites.images/pages/logosPartenaires.jpg" />
+ -->                    </div>
+
+                </section>                   
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+  			</metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

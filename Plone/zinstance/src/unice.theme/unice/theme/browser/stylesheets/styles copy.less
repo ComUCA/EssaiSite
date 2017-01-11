@@ -1,0 +1,839 @@
+@import "nuancier";
+
+/*****************************************************************************************************/
+/*** GENERAL *****************************************************************************************/
+/*****************************************************************************************************/
+
+body {
+
+    #content a:link {
+        text-decoration:underline;
+    }
+    #content a.btn {
+        text-decoration:none;
+    }
+
+
+/*** STYLE MENU BACKOFFICE CONTENUS RICHES *****************************************************************************************/
+
+    #folder-contents-item-contenus-riches, #folder-contents-item-contenus-riches td {
+
+        background: khaki !important;
+
+        a:before {
+
+            content: "\f005";
+
+        }
+
+        a {
+
+            color: black !important;
+            font-weight: bold !important;
+        }
+
+
+    }
+
+
+    #folder-contents-item-actualites {
+
+        a:before {
+
+            content: "\f006";
+            color: black !important;
+
+        }
+
+    }
+
+    #folder-contents-item-evenements-1 {
+
+        a:before {
+
+            content: "\f073";
+            color: black !important;
+
+        }
+
+    }
+
+    #folder-contents-item-documents-telechargeables {
+
+        a:before {
+
+            content: "\f019";
+            color: black !important;
+
+        }
+
+    }
+
+
+    #folder-contents-item-carousel {
+
+        a:before {
+
+            content: "\f04e";
+            color: black !important;
+
+        }
+
+    }
+
+
+    #folder-contents-item-images {
+
+        a:before {
+
+            content: "\f03e";
+            color: black !important;
+
+        }
+    }
+
+    #folder-contents-item-videos {
+
+        a:before {
+
+            content: "\f03d";
+            color: black !important;
+
+        }
+
+    }
+
+    #folder-contents-item-liens-utiles {
+
+        a:before {
+
+            content: "\f0c1";
+            color: black !important;
+
+        }
+
+    }
+
+    #folder-contents-item-chiffres-cles {
+
+        a:before {
+
+            content: "\f080";
+            color: black !important;
+
+        }
+
+    }
+
+    #folder-contents-item-editos {
+
+        a:before {
+
+            content: "\f10e";
+            color: black !important;
+
+        }
+
+    }
+
+    #folder-contents-item-publicites {
+
+        a:before {
+
+            content: "\f005";
+            color: black !important;
+
+        }
+
+    }
+
+    #folder-contents-item-focus-profil {
+
+        a:before {
+
+            content: "\f183";
+            color: black !important;
+
+        }
+
+}
+
+
+    #folder-contents-item-reseaux-sociaux {
+
+        a:before {
+
+            content: "\f045";
+            color: black !important;
+
+        }
+
+}
+    #folder-contents-item-contenus-obsoletes {
+
+        a:before {
+
+            content: "\f187";
+            color: black !important;
+
+        }
+
+}
+
+    #folder-contents-item-contenus-prives {
+
+        a:before {
+
+            content: "\f023";
+            color: black !important;
+
+        }
+
+}
+
+#folder-contents-item-page.html, #folder-contents-item-page.html td {
+
+    margin: -8px;
+    padding: 8px;
+    background-color: black !important;
+
+}
+
+/*** FIN STYLE MENU BACKOFFICE CONTENUS RICHES *****************************************************************************************/
+
+
+}
+
+
+
+/*** STYLE SEPARATIONS BACKOFFICE *****************************************************************************************/
+
+
+tr[id$="separation"], tr[id$="separation"] td {
+
+    background: none repeat scroll 0 0 #D3D3D3 !important;
+
+    a{
+
+        color:black !important;
+    }
+
+}
+
+
+#portal-columns {
+    background-color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    h1, h2, h3 {
+        font-family: "Roboto";
+        font-weight: 100;
+        color:@couleurFond;
+    }
+}
+
+#portal-columns {
+    background-color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    h1, h2, h3 {
+        font-family: "Roboto";
+        font-weight: 100;
+        color:@couleurFond;
+    }
+}
+
+
+/*****************************************************************************************************/
+/*** GRILLE ******************************************************************************************/
+/*****************************************************************************************************/
+
+.container {
+    padding-right: 0;
+    padding-left: 0;
+}
+.row {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 10px;
+}
+
+@media (min-width: 992px) {
+    @delta: 4%;
+    #portal-column-one, #portal-column-two, #portal-column-content {
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    #portal-column-one.col-md-3 {
+        width: 25% - @delta;
+        padding-left: 0;
+    }
+    #portal-column-two.col-md-3 {
+        width: 25% - @delta;
+        padding-right: 0;
+        margin-top: 50px;
+    }
+    #portal-column-content{
+        &.col-md-6 {
+            width: 50% + 2*@delta;
+        }
+        &.col-md-9 {
+            width: 75% + @delta;
+            padding-right: 0;
+        }
+    }
+}
+
+
+/*****************************************************************************************************/
+/*** CONTENT *****************************************************************************************/
+/*****************************************************************************************************/
+
+#content {
+    font-size:100%;
+}
+.documentDescription {
+    color: #666;
+    font-size: 85%;
+    margin-bottom: 30px;
+}
+
+/*****************************************************************************************************/
+/*** BREADCRUMB **************************************************************************************/
+/*****************************************************************************************************/
+
+#portal-column-content.col-md-6 .breadcrumb {
+    @media (min-width: 992px) {
+        margin-right: -210px;
+    }
+    @media (min-width: 1200px) {
+        margin-right: -250px;
+    }
+}
+
+.breadcrumb {
+    background-color: @couleurAlt;
+    border: 1px solid darken(@couleurAlt, 5%);
+}
+.breadcrumb > li + li:before {
+    content: "\25B8";
+}
+
+.breadcrumb > li:first-child {
+    display: block;
+    @media screen and (min-width: 768px) {
+        display: inline-block;
+    }
+}
+.breadcrumb > li:first-child + li:before {
+    content: " ";
+}
+
+/*****************************************************************************************************/
+/*** TABS ********************************************************************************************/
+/*****************************************************************************************************/
+
+.tab-content {
+    padding: 10px;
+    border:1px solid #ddd;
+    border-top-width: 0;
+    .radius-bottom-left(4px);
+    .radius-bottom-right(4px);
+
+    dl.portlet {
+        margin: 0;
+    }
+}
+
+
+/*****************************************************************************************************/
+/*** FOOTER ******************************************************************************************/
+/*****************************************************************************************************/
+
+@footerHeight: 60px;
+html, body {
+    height: 100%;
+}
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -@footerHeight;
+    padding: 0 0 @footerHeight;
+}
+footer {
+    font-size: 80%;
+
+    .credits {
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: @couleurFond;
+        color: #FFF;
+        ul {
+            margin-bottom: 0;
+
+            li a {
+                &, &:hover, &:focus {
+                    color: #FFF;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .manageFooterPortletsLink {
+        margin: 0 !important;
+    }
+}
+
+
+/*****************************************************************************************************/
+/*** FORMULAIRES *************************************************************************************/
+/*****************************************************************************************************/
+
+.form-group {
+    float: left;
+    .form-control {
+        .radius-top-right(0);
+        .radius-bottom-right(0);
+    }
+
+    & + button {
+        .radius-top-left(0);
+        .radius-bottom-left(0);
+    }
+}
+
+.plone_jscalendar,
+#archetypes-fieldname-startDate,
+#archetypes-fieldname-endDate,
+#archetypes-fieldname-effectiveDate,
+#archetypes-fieldname-expirationDate {
+    select {
+        display: inline;
+        width: auto;
+    }
+}
+
+/*****************************************************************************************************/
+/*** RIBBON ******************************************************************************************/
+/*****************************************************************************************************/
+
+dl#portlet-success-stories {
+    position: relative;
+}
+
+/*****************************************************************************************************/
+/*** IMAGES CARREES **********************************************************************************/
+/*****************************************************************************************************/
+
+.carre {
+    display: inline-block;
+    background-position: center center;
+    background-size: cover;
+
+    img {
+        display: none;
+    }
+}
+.img-cerclee {
+    border:4px solid #FFF;
+    .box-shadow(0, 0, 2px, #000);
+}
+
+/*****************************************************************************************************/
+/*** OVERLAY *****************************************************************************************/
+/*****************************************************************************************************/
+
+div#exposeMask {
+    background-color: #000 !important;
+    .opacity(50) !important;
+}
+.pb-ajax, .pb-image, .overlay iframe {
+    border-width: 0 !important;
+    .box-shadow-none() !important;
+}
+
+
+/*****************************************************************************************************/
+/*** CONTENT LEAD IMAGE ******************************************************************************/
+/*****************************************************************************************************/
+
+body.portaltype-collection, body.portaltype-folder {
+    #viewlet-above-content-body .newsImageContainer {
+        display: none;
+    }
+}
+
+/*****************************************************************************************************/
+/*** CORRECTIONS STYLES PLONES ***********************************************************************/
+/*****************************************************************************************************/
+
+.breadcrumbSeparator {
+    display: none
+}
+
+.icons-on {
+    .contenttype-document,
+    .contenttype-event,
+    .contenttype-folder,
+    .contenttype-link,
+    .contenttype-news-item,
+    .contenttype-plone-site,
+    .contenttype-collection,
+    .contenttype-topic,
+    .contenttype-file,
+    .contenttype-image,
+    .contenttype-file,
+    .contenttype-formfolder,
+    .contenttype-portlet-page,
+    .contenttype-atsuccessstoryfolder {
+        display: inline-block;
+        line-height: inherit;
+        background-image: none !important;
+
+        img {
+            display: none;
+        }
+    }
+
+    .navTreeItem a img {
+        display: none;
+    }
+}
+
+#content .field input[type="text"][name$=".title"], #archetypes-fieldname-title input {
+    font-size: inherit;
+}
+
+table.listing th {
+    color: inherit;
+    background: inherit;
+}
+table.listing td.draggable {
+    background: inherit !important;
+    border-bottom: inherit;
+}
+
+dl.portlet {
+    font-size: 100%;
+}
+dl.portlet ul.navTreeLevel0 > .navTreeItem {
+    padding: 0;
+}
+
+#content-core p {
+    text-align: justify;
+}
+#content-core {
+    img.image-inline, img.image-left, img.image-right {
+        max-width: 100%;
+    }
+}
+
+#ajax-spinner {
+    @size: 30px;
+    width: @size;
+    height: @size;
+    margin-left: -(@size / 2);
+    margin-top: -(@size / 2);
+    padding-left: (@size - 16) / 2;
+    padding-top: (@size - 16) / 2;
+    .radius(@size / 2);
+    background-color: #FFFFFF;
+}
+
+div.overlaybg div.close, div.overlay div.close {
+    .opacity(100);
+}
+
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+    color: #ffffff !important;
+    text-decoration: none !important;
+    background-color: @couleurFond !important;
+    display: block !important;
+}
+
+#content {
+    ul {
+        &.list-group, &.list-unstyled {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            li {
+                margin: 0;
+            }
+        }
+
+        &.list-group li.list-group-item {
+            margin-bottom: -1px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+
+
+
+
+#dashboard {
+    font-size: 100%;
+}
+
+body.section-newsletter #carousel_fond,
+body.section-newsletter footer,
+body.section-newsletter .breadcrumb,
+body.section-newsletter h1.documentFirstHeading {
+    display: none;
+}
+
+body.section-newsletter dl.portlet {
+    border-width:0 !important;
+}
+
+body.section-newsletter .portletStaticText {
+    background-color: #FFF;
+}
+body.section-newsletter .portletStaticText h3 {
+    margin-bottom:0;
+}
+body.section-newsletter .portletStaticText img {
+    width:100%;
+}
+
+body.section-newsletter .portletHeader,
+body.section-newsletter .portletHeader a,
+body.section-newsletter .portletHeader a:hover,
+body.section-newsletter .portletHeader a:focus {
+    background-color: @couleurFond !important;
+    color: #FFF !important;
+    border-width:0 !important;
+}
+
+body.section-newsletter #content {
+    margin-top: 0;
+}
+
+body.section-newsletter  dl.portlet#portlet-success-stories .portletItem {
+    clear: both;
+}
+body.section-newsletter  dl.portlet#portlet-success-stories .portletItem a img {
+    width:15%;
+    float:left;
+    margin-right:10px;
+}
+body.section-newsletter  dl.portlet#portlet-success-stories .portletFooter {
+    display: none;
+}
+
+
+
+body.template-atct_edit,
+body.template-edit,
+body.template-folder_constraintypes_form,
+body.template-fg_base_view_p3 {
+    .label {
+        color: inherit;
+        padding: 0;
+        font-size: inherit;
+    }
+}
+
+/*****************************************************************************************************/
+/*** STYLES ELEMENTS DIVERS **************************************************************************/
+/*****************************************************************************************************/
+
+/*********** TAL PORTLETS **********/
+
+/**** BOUTON ACCES FORMULAIRES *****/
+
+
+a.bouton-formulaire-inscription {
+
+    background: none repeat scroll 0 0 #71CAFF;
+    color: #FFFFFF;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+a.bouton-formulaire-inscription:hover {
+
+    background: #1C85C4;
+
+}
+
+
+/**** BOUTON ACCES LIENS EXTERNES *****/
+
+a.bouton-acces-liens-externes {
+
+    background: none repeat scroll 0 0 #71CAFF;
+    color: #FFFFFF;
+    display: block !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    float: left;
+    margin-top:10px;
+}
+
+a.bouton-acces-liens-externes:hover {
+
+    background: #1C85C4;
+
+}
+
+
+#parent-fieldname-description {
+
+    // border-bottom: 1px solid;
+    color: #006FA4;
+    font-size: 20px;
+    font-weight: 300;
+    padding-bottom: 15px;
+
+}
+
+/*******************************************************************************/
+/********** STYLES FRED ********************************************************/
+/*******************************************************************************/
+
+
+/********** STYLES TEMPLATES ********************************************************/
+
+.template {
+
+ul.canal_fil_importance3 {
+
+    background: none repeat scroll 0 0 #F5F8FC;
+    padding: 0 10px !important;
+
+    h2{
+
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+    }
+
+}
+
+.template-template5_view ul.canal_fil_importance2{
+
+    li.col-md-6 {
+
+        box-shadow: 0 1px 4px -3px;
+        padding: 0;
+        margin:10px;
+
+        h2{
+
+            padding-left: 10px;
+
+        }
+
+        a.more {
+
+                background: none repeat scroll 0 0 #000000;
+                color: #FFFFFF !important;
+        }
+
+    }
+
+    a.details_link:first-child {
+
+        background: none repeat scroll 0 0 #F5F8FC;
+        border-top: 2px none #000000;
+        margin-bottom: 10px;
+        padding: 10px 0;
+
+    }
+
+
+}
+
+a.external-link, a.internal-link, span.external-link, span.internal-link, href {
+
+    text-decoration: underline !important;
+}
+
+}
+
+
+span.btn-primary a {
+
+    color: white !important;
+}
+
+
+
+
+/***  STYLE AGENDA ***************************************/
+
+
+
+.portletEventsContainer h3:before {
+  content: "\f105";
+}
+
+.portletEventsContainer dl.portlet.portletEvents {
+
+   height: 130px !important;
+
+           h3 {
+               line-height: 129px !important;
+               }
+
+            a.bx-next {
+                height: 128px !important;
+                }
+
+            dd.portletItem ul li {
+                height: 130px !important;
+
+                a {
+                height: 50px !important;
+                    }
+                }
+
+            .bx-wrapper {
+
+                .bx-viewport {
+                    height:129px !important;
+                    ul {
+                        /*width: auto !important;*/
+                        }
+
+                    }
+
+                ul li {
+                    padding: 10px !important;
+
+                    span {
+                            font-size:12px !important;
+                        }
+
+                    }
+                ul li:hover {
+                    background-color: rgba(245,248,252, 0.2) !important;
+
+                }
+
+                a {
+                  font-stretch:condensed;
+                    }
+
+                }
+    }

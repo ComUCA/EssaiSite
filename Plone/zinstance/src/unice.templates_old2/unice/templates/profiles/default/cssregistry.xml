@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<object name="portal_css">
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/styles.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_document_structure.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_espaceuns.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_laboratoire.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_chercheur.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_axe_interdisciplinaire.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_formation_professionnelle.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_projet_dsd.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/emargement.css"
+    media="print" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_ressource_externe.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_profil.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_membre.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+ <stylesheet title=""
+    id="++resource++unice.templates.stylesheets/dexterity_fiche_projet_pi.css"
+    media="" rel="stylesheet" rendering="import"
+    cacheable="True" compression="safe" cookable="True"
+    enabled="1" expression=""/>
+
+</object>

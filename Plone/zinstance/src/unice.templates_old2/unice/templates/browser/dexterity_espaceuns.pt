@@ -1,0 +1,226 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="main">
+
+    <tal:block define="video python:view.video(context.video)">
+
+        <div class="espace_bandeau">
+            <div class="espace_photo_panoramique">
+                <img tal:replace="structure context/@@images/photo_panoramique/full"/>
+            </div>
+            <div tal:condition="video" class="espace_photo_vignette">
+                <a href="#" data-toggle="modal" data-target="#video_modal" class="image_ratio ratio16:9">
+                    <!-- <img tal:attributes="src video/picture"/> -->
+
+                        <span tal:attributes="style string:background-image: url(${video/picture});">
+                            <img tal:attributes="src video/picture; title string:Vidéo de l'espace ${context/title}"/>
+                        </span>
+
+                    <i class="fa fa-youtube-play fa-4x"></i>
+                </a>
+            </div>
+            <div class="espace_titres">
+                <h2 tal:content="context/title"/>
+                <h3>
+                    <tal:block condition="context/places_assises">
+                        Places assises : <tal:block content="context/places_assises"/>
+                    </tal:block>
+                    <tal:block condition="context/places_debout">
+                        Places debout : <tal:block content="context/places_debout"/>
+                    </tal:block>
+                </h3>
+            </div>
+        </div>
+
+        <div class="espace_contenu" tal:define="nc string:<span class='text-muted'>N.C.</span>; father nocall:here/aq_inner/aq_parent;">
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Spécifications</h2>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <ul>
+                                        <li>
+                                            <strong>Campus :</strong>
+                                            <tal:block content="father/Title"/>
+                                        </li>
+                                        <li>
+                                            <strong>Bâtiment :</strong>
+                                            <tal:block content="structure python:context.batiment or nc"/>
+                                        </li>
+                                        <li>
+                                            <strong>Salle :</strong>
+                                            <tal:block content="structure python:context.salle or nc"/>
+                                        </li>
+                                        <li>
+                                            <strong>Hauteur sous plafond :</strong>
+                                            <tal:block content="structure python:context.hauteur or nc"/>
+                                        </li>
+                                        <li>
+                                            <strong>Longueur :</strong>
+                                            <tal:block content="structure python:context.longueur or nc"/>
+                                            <strong>x Largeur :</strong>
+                                            <tal:block content="structure python:context.largeur or nc"/>
+                                        </li>
+                                        <li>
+                                            <strong>Diamètre :</strong>
+                                            <tal:block content="structure python:context.diametre or nc"/>
+                                        </li>
+                                        <li>
+                                            <strong>Superficie :</strong>
+                                            <tal:block content="structure python:context.superficie or nc"/>
+                                        </li>
+                                        <li>
+                                            <strong>Places assises :</strong>
+                                            <tal:block content="structure python:context.places_assises or nc"/>
+                                        </li>
+                                        <li>
+                                            <strong>Places debout :</strong>
+                                            <tal:block content="structure python:context.places_debout or nc"/>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i tal:condition="context/videoprojecteur" class="fa-li fa fa-check-circle fa-lg"></i>
+                                            <i tal:condition="not:context/videoprojecteur" class="fa-li fa fa-circle-o fa-lg"></i>
+                                            Vidéoprojecteur
+                                        </li>
+                                        <li>
+                                            <i tal:condition="context/visioconference" class="fa-li fa fa-check-circle fa-lg"></i>
+                                            <i tal:condition="not:context/visioconference" class="fa-li fa fa-circle-o fa-lg"></i>
+                                            Visio-conférence
+                                        </li>
+                                        <li>
+                                            <i tal:condition="context/climatisation" class="fa-li fa fa-check-circle fa-lg"></i>
+                                            <i tal:condition="not:context/climatisation" class="fa-li fa fa-circle-o fa-lg"></i>
+                                            Climatisation
+                                        </li>
+                                        <li>
+                                            <i tal:condition="context/parking" class="fa-li fa fa-check-circle fa-lg"></i>
+                                            <i tal:condition="not:context/parking" class="fa-li fa fa-circle-o fa-lg"></i>
+                                            Parking
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-6">
+                                    <ul class="fa-ul">
+                                        <li>
+                                            <i tal:condition="context/sonorisation" class="fa-li fa fa-check-circle fa-lg"></i>
+                                            <i tal:condition="not:context/sonorisation" class="fa-li fa fa-circle-o fa-lg"></i>
+                                            Sonorisation
+                                        </li>
+                                        <li>
+                                            <i tal:condition="context/estrade" class="fa-li fa fa-check-circle fa-lg"></i>
+                                            <i tal:condition="not:context/estrade" class="fa-li fa fa-circle-o fa-lg"></i>
+                                            Estrade
+                                        </li>
+                                        <li>
+                                            <i tal:condition="context/wifi" class="fa-li fa fa-check-circle fa-lg"></i>
+                                            <i tal:condition="not:context/wifi" class="fa-li fa fa-circle-o fa-lg"></i>
+                                            Wifi
+                                        </li>
+                                        <li>
+                                            <i tal:condition="context/acces_handicape" class="fa-li fa fa-check-circle fa-lg"></i>
+                                            <i tal:condition="not:context/acces_handicape" class="fa-li fa fa-circle-o fa-lg"></i>
+                                            Accès handicapé
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <strong>Connectique disponible :</strong><br/>
+                                    <tal:block content="structure python:context.connectique or nc"/>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="row">
+                        <div class="col-md-3">
+                            <h2>Tarifs</h2>
+                        </div>
+                        <div class="col-md-9 text-right espace_tarif_principal">
+                            <strong tal:content="context/tarif_principal"/><br/>
+                            <small tal:condition="context/horaires_inclus">
+                                Horaires inclus dans le prix :<br/>
+                                <tal:block content="context/horaires_inclus"/>
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>Frais de personnel assistant :</strong><br/>
+                            <span tal:condition="context/frais_personnel" class="pre" tal:content="structure python:context.frais_personnel.output"/>
+                            <span tal:condition="not:context/frais_personnel" class="pre" tal:content="structure nc"/>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Options supplémentaires :</strong><br/>
+                            <span tal:condition="context/options_supplementaires" class="pre" tal:content="structure python:context.options_supplementaires.output or nc"/>
+                            <span tal:condition="not:context/options_supplementaires" class="pre" tal:content="structure nc"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" tal:condition="context/contact">
+                <div class="col-md-12 text-center">
+                    <a tal:attributes="href string:mailto:${context/contact}; title string:Nous contacter à l'adresse ${context/contact}" class="btn btn-primary">
+                        Contact : <tal:block content="context/contact"/>
+                    </a>
+                </div>
+            </div>
+
+            <div class="visualClear"></div>
+
+        </div>
+
+        <div tal:condition="video"  class="modal fade" id="video_modal" tabindex="-1" role="dialog" aria-labelledby="video_modal_label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title" id="video_modal_label">
+                            Visite de l'espace "<tal:block content="context/title"/>"
+                        </h4>
+                    </div>
+                    <div class="modal-body" tal:content="structure video/embed"/>
+                </div>
+            </div>
+        </div>
+
+    </tal:block>
+
+
+</metal:main>
+
+</body>
+</html>
+

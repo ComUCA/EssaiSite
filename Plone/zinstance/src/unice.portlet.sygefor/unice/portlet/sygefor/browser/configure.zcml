@@ -1,0 +1,30 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.portlet.sygefor">
+
+    <!-- PAGE TEMPLATES -->
+    <browser:page
+        name="sygefor"
+        for="*"
+        permission="zope2.View"
+        class=".sygefor.Sygefor"
+        template="sygefor.pt"/>
+
+    <!-- CSS, JS & IMG -->
+    <browser:resourceDirectory
+        name="unice.portlet.sygefor.stylesheets"
+        directory="stylesheets"
+        />
+
+    <browser:resourceDirectory
+        name="unice.portlet.sygefor.javascripts"
+        directory="javascripts"
+        />
+    <browser:resourceDirectory
+        name="unice.portlet.sygefor.images"
+        directory="images"
+        />
+
+
+</configure>

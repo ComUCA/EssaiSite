@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.portlet.indicateurs">
+
+    <!-- Resource directory for images -->
+    <browser:resourceDirectory
+        name="unice.portlet.indicateurs.stylesheets"
+        directory="stylesheets"
+        />
+
+    <browser:resourceDirectory
+        name="unice.portlet.indicateurs.javascripts"
+        directory="javascripts"
+        />
+
+    <browser:resourceDirectory
+        name="unice.portlet.indicateurs.images"
+        directory="images"
+        />
+
+</configure>

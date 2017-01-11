@@ -1,0 +1,140 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;
+            variableParcours python:view.champsRepeat('parcours_pedagogiques');
+            variableLogos python:view.champsRepeat('logos_partenaires');
+            variableMetiers python:view.champsRepeat('metiers');
+            variablePartenaires python:view.champsRepeat('partenaires');">
+
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+            <!--<tal:block content="infos"/>-->
+            
+            <!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+            <metal:content-core define-macro="content-core"
+                        tal:define="widgets nocall:context/@@view">
+ 
+                <section class="container-fluid emplacement-normal" tal:condition="context/image_principale">
+                    <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-full')"
+                         tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative de la th&eacute;matique ${context/title}; class string:img-responsive"
+                         />              
+                </section>
+
+                <section class="container-fluid container-md-height dark">                 
+                    <div class="content presentation"> 
+                        <ol class="breadcrumb">
+                            <li><a href="../../accueil">Accueil</a></li>
+                            <li>Th&eacute;matiques</li>
+                            <li tal:content="infos/title" class="active"></li>
+                        </ol>
+                    
+                        <h1 tal:content="infos/title"></h1>
+                        <p tal:replace="structure widgets/++widget++contenu/render"></p>
+                    </div>
+                </section>
+
+                <section class="container-fluid biodiv">
+                    <div class="row">
+                        <div class="row-same-height row-full-height">
+
+                            <div class="col-xs-6 col-sm-4 col-md-4 col-xs-height col-full-height col1 parcours" tal:condition="variableParcours">
+                                <div class="item">
+                                    <div class="topCol">
+                                        <img src="++resource++unice.medites.images/parcours-icon.png" alt="" /><h3 class="visible-lg">Parcours p&eacute;dagogiques</h3>
+                                    </div>
+                                    <div class="contentCol">                        
+                                        <ul class="ulPerso">
+                                            <li tal:repeat="parcours_pedagogiques variableParcours"> 
+                                                <a tal:attributes="title string:Atteindre la page; 
+                                                                   href string:../../parcours-pedagogiques/${parcours_pedagogiques/lien}"
+                                                   tal:content="parcours_pedagogiques/title"
+                                                   tal:condition="parcours_pedagogiques/lien" />  
+
+                                                <span tal:content="parcours_pedagogiques/title"
+                                                      tal:condition="not:parcours_pedagogiques/lien" />   
+                                            </li>
+                                       </ul>
+                                    </div>
+                                    <div class="footCol"></div>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6 col-sm-4 col-md-4 col-xs-height col-full-height col2 photographie" tal:condition="variableMetiers">
+                                <div class="item">
+                                    <div class="topCol">
+                                        <i class="fa fa-graduation-cap fa-3x"></i><h3 class="visible-lg">M&eacute;tiers</h3>
+                                    </div>
+                                    <div class="contentCol">
+                                        <ul class="ulPerso">
+                                            <li tal:repeat="metiers variableMetiers">        
+                                                <a tal:attributes="href string:#; 
+                                                                   title string:Afficher la description du m&eacute;tier; 
+                                                                   data-toggle string:modal;
+                                                                   data-target string:#${metiers/identifiant};"
+                                                   tal:condition="metiers/title">
+                                                   <h4 tal:content="metiers/title" />
+                                                </a>    
+                                                <div tal:attributes="id metiers/identifiant;
+                                                                     class string:modal fade bs-example-modal-lg;   
+                                                                     tabindex string:-1;
+                                                                     role string:dialog;
+                                                                     aria-labelledby string:id${metiers/identifiant}; 
+                                                                     aria-hidden string:true;"
+                                                     tal:condition="metiers/identifiant">   
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                                <h3 tal:attributes="class string:modal-title; id string:id${metiers/identifiant};"
+                                                                tal:content="metiers/title" />
+                                                            </div>    
+                                                            <div class="modal-body">     
+                                                                <tal:block condition="metiers/contenu" replace="structure metiers/contenu/output" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="footCol"></div>
+                                </div>    
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-md-4 col-xs-height col-full-height col3 partenaires" tal:condition="variableLogos">
+                                <div class="item">
+                                    <div class="topCol">
+                                        <i class="fa fa-users fa-3x"></i><h3 class="visible-lg">Partenaires</h3>
+                                    </div>
+                                    <div class="contentCol">
+                                        <ul class="logos-partenaires">
+                                            <li class="col-xs-6 col-sm-3 col-md-2" tal:repeat="logos_partenaires variableLogos">
+                                                <a tal:attributes="href logos_partenaires/lien; 
+                                                                   title string:Afficher la page du partenaire;"
+                                                   tal:condition="logos_partenaires/logo">
+                                                   <img tal:define="scales_logo logos_partenaires/@@images; maVariable python:scales_logo.scale('logo', scale='mini');"
+                                                        tal:attributes="src maVariable/url; alt string:Logo du partenaire ${context/title};class string:img-all;"
+                                                        tal:condition="logos_partenaires/logo" />
+                                                </a>
+                                            </li>
+                                        </ul>        
+                                    </div>
+                                    <div class="footCol"></div>
+                                </div>
+                            </div> 
+
+                        </div>        
+                    </div>
+                </section>
+
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+
+            </metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

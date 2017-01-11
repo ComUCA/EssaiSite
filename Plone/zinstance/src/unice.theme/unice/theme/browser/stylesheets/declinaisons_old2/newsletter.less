@@ -1,0 +1,66 @@
+@couleurFond: #006fa4;
+@couleurFondSombre: #004c71;
+@couleurFondSaturee: #03b6de;
+
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 650px;
+    }
+}
+
+.breadcrumb,
+h1.documentFirstHeading,
+#content-core p.discreet,
+footer .credits,
+#navigation_globale {
+    display: none !important;
+}
+
+footer {
+    text-align: center;
+    background-color: #FFF;
+    font-size: 100%;
+
+    p {
+        margin-bottom: 0;
+    }
+}
+
+#portlets-in-header .portlet-position-1 {
+	display: none;
+}
+#portlets-in-header .portlet-position-2 {
+    background-color: @couleurFondSombre;
+
+    .navbar-default {
+        color:#FFF;
+        border-bottom: 4px solid @couleurFondSaturee;
+        background-image: url("../../../img/logo_blanc.png");
+        background-position: 10px center;
+
+        h1 {
+            font-size: 30px;
+            border: 0;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        h3 {
+            font-family: "Roboto";
+            font-weight: 100;
+            margin: 0;
+            display: inline-block;
+
+            font-size: 14px;
+            margin-top: 4px;
+        }
+    }
+}
+
+
+#portlets-below .portletNavigationTree {
+    li.section-agenda, li.section-newsletter {
+        display: none;
+    }
+}

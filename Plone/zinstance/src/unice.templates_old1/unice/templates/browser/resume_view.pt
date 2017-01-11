@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="main">
+
+    <h1 TAL:content="string:Synthèse de '${context/title}'"/>
+
+    <div class="alert alert-success">
+        <i class="fa fa-th-large"></i>
+        <tal:block content="python:len(view.objetsType(('Folder', 'Collection')))"/> template(s)&nbsp;&nbsp;
+
+        <i class="fa fa-file-text"></i>
+        <tal:block content="python:len(view.objetsType(('Document', 'document_structure')))"/> document(s)&nbsp;&nbsp;
+
+        <i class="fa fa-star-empty"></i>
+        <tal:block content="python:len(view.objetsType(('News')))"/> actualité(s)&nbsp;&nbsp;
+
+        <i class="fa fa-calendar-empty"></i>
+        <tal:block content="python:len(view.objetsType(('Event')))"/> événement(s)&nbsp;&nbsp;
+
+        <i class="fa fa-cloud-download"></i>
+        <tal:block content="python:len(view.objetsType(('File')))"/> fichier(s)&nbsp;&nbsp;
+
+        <i class="fa fa-picture"></i>
+        <tal:block content="python:len(view.objetsType(('Images')))"/> image(s)&nbsp;&nbsp;
+
+        <i class="fa fa-link"></i>
+        <tal:block content="python:len(view.objetsType(('Link')))"/> lien(s)
+    </div>
+
+    <tal:block define="TRUE python:True; FALSE python:False; opt_exclude python:['contenus-riches', 'dossier-3', 'document-2']; tree python:view.tree(context, opt_exclude); node tree;">
+        <metal:block use-macro="context/templates_macro/macros/tree"></metal:block>
+    </tal:block>
+
+</metal:main>
+
+</body>
+</html>
+

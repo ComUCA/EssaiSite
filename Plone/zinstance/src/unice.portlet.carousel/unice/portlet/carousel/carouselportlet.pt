@@ -1,0 +1,88 @@
+<html tal:omit-tag=""
+    xmlns="http://www.w3.org/1.09/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+
+
+    <div tal:define="dossier_carousel view/dossier_carousel; items python:dossier_carousel['items'];
+                     dossier_listing view/dossier_listing;
+
+                     extra_css python:view.data.extra_css if view.data.extra_css else '';
+                     captions_hidden python:'carousel_captions_hidden' if view.data.captions_hidden else '';
+                     captions python:'carousel_captions_out' if view.data.captions_out else '';
+                     captions_block python:'carousel_captions_block' if view.data.captions_block else 'carousel_captions_inline';
+                     display_type python:'carousel_'+view.data.display_type;
+                     hero_mode python:'carousel_hero_mode' if view.data.hero_mode else '';
+                     split_mode python:'carousel_split_mode' if dossier_listing else '';"
+        tal:attributes="id view/data/extra_id; class string:portlet portletCarousel ${extra_css} ${captions} ${captions_hidden} ${captions_block} ${display_type} ${hero_mode} ${split_mode};">
+
+        <div tal:attributes="id dossier_carousel/uuid;
+            class python:'portletItem container' if view.data.display_type in ['bandeau', 'composante'] else 'portletItem';
+            style python:'background-color:%s' % view.data.listing_color if view.data.listing_color else ''">
+
+            <div class="col-md-9 carousel_carousel" tal:omit-tag="not:dossier_listing">
+                <ul class="bxslider" data-slider-captions="1"
+                    tal:define="auto python:len(items)>1"
+                    tal:attributes="data-slider-auto python:'1' if auto else '0'; data-slider-pager python:'1' if auto else '0';">
+
+                    <li tal:repeat="item items" tal:attributes="class python:'carousel_video_container' if item['type'] == 'video' else ''">
+
+                        <tal:block tal:condition="python:item['type'] != 'video'">
+                            <a tal:attributes="href item/url" class="thumb_link image_ratio">
+                                <span tal:attributes="style string:background-image: url(${item/image_full}); class string:${item/image_size} ${item/image_position}">
+                                    <img tal:attributes="src item/image_full; title python:view.captions(item)"/>
+                                </span>
+                            </a>
+                        </tal:block>
+
+                        <tal:block tal:condition="python:item['type'] == 'video'">
+                            <div class="carousel_video_image">
+                                <a tal:attributes="href item/url" class="thumb_link image_ratio">
+                                    <span tal:attributes="style string:background-image: url(${item/image_full}); class string:${item/image_size} ${item/image_position}">
+                                        <img tal:attributes="src item/image_full; title python:view.captions(item)"/>
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="carousel_video_iframe" tal:content="structure item/item/iframe"/>
+                        </tal:block>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div tal:condition="dossier_listing"
+                tal:define="cls python:'carousel_listing_noheader' if view.data.omit_header else 'carousel_listing_header'"
+                tal:attributes="class string:col-md-3 portlet carousel_listing ${cls}">
+                <div tal:condition="not:view/data/omit_header" class="portletHeader">
+                    <span tal:content="view/header"/>
+                </div>
+
+                <div class="list-group" style="margin: 0;">
+                    <tal:block repeat="item python:dossier_listing['items']">
+
+                        <a class="list-group-item" tal:attributes="href item/url">
+
+                            <span class="carre img-circle- img-cerclee pull-left" data-width="40">
+                                <img tal:attributes="src item/image; alt item/title;"/>
+                            </span>
+
+                            <h4 class="list-group-item-heading" tal:content="item/title"/>
+                            <p class="list-group-item-text"><small tal:content="item/desc_trunc"/></p>
+                            <div class="visualClear"/>
+                        </a>
+                    </tal:block>
+                </div>
+
+            </div>
+
+            <div class="visualClear"></div>
+
+        </div>
+
+    </div>
+
+</html>
+

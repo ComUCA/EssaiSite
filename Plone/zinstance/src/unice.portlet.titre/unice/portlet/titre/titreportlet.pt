@@ -1,0 +1,22 @@
+<html tal:omit-tag=""
+    tal:condition="nocall:view/item"
+    xmlns="http://www.w3.org/1.09/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+	xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+	i18n:domain="unice.portlet.titre">
+
+
+    <div tal:attributes="id view/data/extra_id; class string:portlet portletTitre ${view/data/extra_css}">
+
+        <div class="container" tal:attributes="style string:background-image:url(${view/image})">
+            <h1 tal:content="structure view/data/custom_header"/>
+        </div>
+        <!-- <div class="container">
+            <h1 tal:content="structure view/data/custom_header"/>
+        </div> -->
+
+    </div>
+
+
+</html>

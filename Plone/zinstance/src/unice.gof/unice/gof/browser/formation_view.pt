@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="content-core">
+<metal:content-core define-macro="content-core">
+
+    <div class="ajax_load" tal:condition="python:'inscription' in request">
+    <!-- <div class="ajax_load"> -->
+        <a tal:attributes="href python:'%s/codes_inscriptions' % context.absolute_url()">S'inscrire à la formation</a>
+    </div>
+
+    <metal:block use-macro="context/formation_macro/macros/formation"></metal:block>
+
+</metal:content-core>
+</metal:main>
+
+</body>
+</html>

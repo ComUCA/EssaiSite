@@ -1,0 +1,1051 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,100&subset=latin,latin-ext);
+/*****************************************************************************************/
+/*** UTILITAIRES *************************************************************************/
+/*****************************************************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+.fontAwesome {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: 0.25em;
+  text-align: center;
+}
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/*****************************************************************************************/
+/*** NUANCIERS ***************************************************************************/
+/*****************************************************************************************/
+body.section-filuns,
+body.template-article_view {
+  /*** GENERAL *****************************************************************************************/
+
+  /*** MENUS *******************************************************************************************/
+
+  /*** PORTLETS ****************************************************************************************/
+
+  /*** AGENDA ******************************************************************************************/
+
+  /*** ONGLETS AGENDA **********************************************************************************/
+
+  /*****************************************************************************************************/
+
+}
+body.section-filuns,
+body.template-article_view {
+  background-color: #fff;
+}
+body.section-filuns div#carousel_fond,
+body.template-article_view div#carousel_fond,
+body.section-filuns .breadcrumb > li:nth-child(2),
+body.template-article_view .breadcrumb > li:nth-child(2),
+body.section-filuns.subsection-accueil h1.documentFirstHeading,
+body.template-article_view.subsection-accueil h1.documentFirstHeading,
+body.section-filuns.subsection-accueil .breadcrumb,
+body.template-article_view.subsection-accueil .breadcrumb {
+  display: none;
+}
+@media (min-width: 768px) {
+  body.section-filuns #portal-column-two,
+  body.template-article_view #portal-column-two {
+    margin-top: 87px;
+  }
+  body.section-filuns.subsection-accueil #portal-column-two,
+  body.template-article_view.subsection-accueil #portal-column-two {
+    margin-top: 0;
+  }
+}
+body.section-filuns .breadcrumb,
+body.template-article_view .breadcrumb {
+  background-color: transparent;
+}
+body.section-filuns .breadcrumb > li:nth-child(2) + li:before,
+body.template-article_view .breadcrumb > li:nth-child(2) + li:before {
+  content: " ";
+}
+body.section-filuns h2,
+body.template-article_view h2 {
+  font-size: 16px;
+  display: none;
+}
+body.section-filuns h3,
+body.template-article_view h3 {
+  font-size: 14px;
+}
+body.section-filuns h4,
+body.template-article_view h4 {
+  font-size: 12px;
+}
+body.section-filuns.section-filunssubsection-accueil #portal-column-one .portletNavigationTree,
+body.template-article_view.section-filunssubsection-accueil #portal-column-one .portletNavigationTree,
+body.section-filuns.section-filunssubsection-accueil #portal-column-two .portletNavigationTree,
+body.template-article_view.section-filunssubsection-accueil #portal-column-two .portletNavigationTree {
+  margin-top: 90px;
+}
+body.section-filuns #portal-column-one .portletNavigationTree .portletHeader,
+body.template-article_view #portal-column-one .portletNavigationTree .portletHeader,
+body.section-filuns #portal-column-two .portletNavigationTree .portletHeader,
+body.template-article_view #portal-column-two .portletNavigationTree .portletHeader,
+body.section-filuns #portlets-below .portletNavigationTree .portletHeader,
+body.template-article_view #portlets-below .portletNavigationTree .portletHeader {
+  display: none;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li {
+  font-size: 18px;
+  font-family: "Roboto";
+  font-weight: 300;
+  border-top-width: 0 !important;
+  border-left-width: 0 !important;
+  border-right-width: 0 !important;
+  padding-top: 2px;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li:last-child,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li:last-child,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li:last-child,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li:last-child,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li:last-child,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li:last-child {
+  border-bottom-width: 0 !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li a {
+  -webkit-border-radius: 0  !important;
+  -moz-border-radius: 0  !important;
+  border-radius: 0  !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li a {
+  border-left: 8px solid #CCC;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li a.navTreeCurrentItem {
+  background-color: #CCC !important;
+  color: #FFF !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li a:before,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li a:before,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li a:before,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li a:before,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li a:before,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li a:before,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li a:after,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li a:after,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li a:after,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li a:after,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li a:after,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li a:after {
+  display: none !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a {
+  border-color: #006fa4;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a.navTreeCurrentItem {
+  background-color: #006fa4 !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a {
+  border-color: #006fa4;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-institutionnel a.navTreeCurrentItem {
+  background-color: #006fa4 !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-formation a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-formation a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-formation a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-formation a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-formation a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-formation a {
+  border-color: #5e3a3c;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-formation a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-formation a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-formation a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-formation a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-formation a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-formation a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-formation a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-formation a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-formation a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-formation a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-formation a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-formation a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-formation a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-formation a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-formation a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-formation a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-formation a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-formation a.navTreeCurrentItem {
+  background-color: #5e3a3c !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-recherche a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-recherche a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-recherche a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-recherche a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-recherche a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-recherche a {
+  border-color: #468500;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-recherche a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-recherche a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-recherche a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-recherche a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-recherche a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-recherche a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-recherche a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-recherche a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-recherche a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-recherche a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-recherche a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-recherche a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-recherche a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-recherche a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-recherche a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-recherche a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-recherche a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-recherche a.navTreeCurrentItem {
+  background-color: #468500 !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-international a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-international a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-international a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-international a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-international a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-international a {
+  border-color: #6a2790;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-international a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-international a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-international a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-international a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-international a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-international a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-international a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-international a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-international a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-international a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-international a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-international a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-international a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-international a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-international a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-international a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-international a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-international a.navTreeCurrentItem {
+  background-color: #6a2790 !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-culture a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-culture a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-culture a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-culture a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-culture a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-culture a {
+  border-color: #cf0505;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-culture a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-culture a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-culture a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-culture a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-culture a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-culture a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-culture a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-culture a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-culture a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-culture a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-culture a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-culture a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-culture a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-culture a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-culture a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-culture a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-culture a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-culture a.navTreeCurrentItem {
+  background-color: #cf0505 !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-sport a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-sport a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-sport a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-sport a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-sport a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-sport a {
+  border-color: #ef9120;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-sport a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-sport a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-sport a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-sport a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-sport a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-sport a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-sport a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-sport a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-sport a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-sport a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-sport a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-sport a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-sport a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-sport a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-sport a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-sport a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-sport a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-sport a.navTreeCurrentItem {
+  background-color: #ef9120 !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a {
+  border-color: #006fa4;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a.navTreeCurrentItem {
+  background-color: #006fa4 !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a {
+  border-color: #ffffff;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:focus,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:focus,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:focus,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:focus,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:focus,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:focus,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem {
+  background-color: #ffffff !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives {
+  text-align: right;
+  margin-top: 20px;
+  padding-top: 0;
+  border-top: 2px solid #DDD;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a {
+  border-width: 0;
+  color: #FFF !important;
+  padding: 10px 0 !important;
+  background-color: #006fa4 !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a:before,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a:before,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a:before,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a:before,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a:before,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a:before,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a:after,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-agenda a:after,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a:after,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-agenda a:after,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a:after,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-agenda a:after,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:after {
+  display: inline-block !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage {
+  text-align: center;
+  border: 0;
+  margin-bottom: 10px;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: 0.25em;
+  text-align: center;
+  content: "\f015";
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-homepage a:after {
+  display: none !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives {
+  text-align: center;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover {
+  color: #666 !important;
+  background-color: #FFF !important;
+  border: 1px solid #CCC !important;
+  border-radius: 4px !important;
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:before,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:before,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:before,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:before,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:before,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:before,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:before,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:before,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:before,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:before,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:before,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:before,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:before,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:before,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:before,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:before,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:before,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:before,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:before {
+  content: "\f017";
+}
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:after,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:after,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:after,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:after,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:after,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:after,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:after,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:after,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:after,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:after,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:after,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:after,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a:hover:after,
+body.section-filuns #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:after,
+body.template-article_view #portal-column-one .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:after,
+body.section-filuns #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:after,
+body.template-article_view #portal-column-two .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:after,
+body.section-filuns #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:after,
+body.template-article_view #portlets-below .portletNavigationTree > .portletItem > .navTree li.section-archives a.navTreeCurrentItem:hover:after {
+  display: none !important;
+}
+body.section-filuns ul#portal-homepage,
+body.template-article_view ul#portal-homepage {
+  display: inline-block;
+}
+body.section-filuns .theme-institutionnel .image_ratio,
+body.template-article_view .theme-institutionnel .image_ratio {
+  border-color: #006fa4 !important;
+}
+body.section-filuns .theme-institutionnel .image_ratio strong,
+body.template-article_view .theme-institutionnel .image_ratio strong {
+  background-color: #006fa4;
+}
+body.section-filuns .theme-formation .image_ratio,
+body.template-article_view .theme-formation .image_ratio {
+  border-color: #5e3a3c !important;
+}
+body.section-filuns .theme-formation .image_ratio strong,
+body.template-article_view .theme-formation .image_ratio strong {
+  background-color: #5e3a3c;
+}
+body.section-filuns .theme-recherche .image_ratio,
+body.template-article_view .theme-recherche .image_ratio {
+  border-color: #468500 !important;
+}
+body.section-filuns .theme-recherche .image_ratio strong,
+body.template-article_view .theme-recherche .image_ratio strong {
+  background-color: #468500;
+}
+body.section-filuns .theme-international .image_ratio,
+body.template-article_view .theme-international .image_ratio {
+  border-color: #6a2790 !important;
+}
+body.section-filuns .theme-international .image_ratio strong,
+body.template-article_view .theme-international .image_ratio strong {
+  background-color: #6a2790;
+}
+body.section-filuns .theme-culture .image_ratio,
+body.template-article_view .theme-culture .image_ratio {
+  border-color: #cf0505 !important;
+}
+body.section-filuns .theme-culture .image_ratio strong,
+body.template-article_view .theme-culture .image_ratio strong {
+  background-color: #cf0505;
+}
+body.section-filuns .theme-sport .image_ratio,
+body.template-article_view .theme-sport .image_ratio {
+  border-color: #ef9120 !important;
+}
+body.section-filuns .theme-sport .image_ratio strong,
+body.template-article_view .theme-sport .image_ratio strong {
+  background-color: #ef9120;
+}
+body.section-filuns .theme-agenda .image_ratio,
+body.template-article_view .theme-agenda .image_ratio {
+  border-color: #006fa4 !important;
+}
+body.section-filuns .theme-agenda .image_ratio strong,
+body.template-article_view .theme-agenda .image_ratio strong {
+  background-color: #006fa4;
+}
+body.section-filuns div#portal-column-one dl.portlet dt.portletHeader,
+body.template-article_view div#portal-column-one dl.portlet dt.portletHeader,
+body.section-filuns div#portal-column-two dl.portlet dt.portletHeader,
+body.template-article_view div#portal-column-two dl.portlet dt.portletHeader {
+  font-size: 16px;
+  border-bottom: 2px solid #DDD;
+  padding: 5px 0;
+  margin-bottom: 5px;
+}
+body.section-filuns #portlets-in-header .portlet-portletNavigationTree-position-1 form,
+body.template-article_view #portlets-in-header .portlet-portletNavigationTree-position-1 form {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+body.section-filuns #portlets-in-header .portlet-portletNavigationTree-position-1 form input.form-control,
+body.template-article_view #portlets-in-header .portlet-portletNavigationTree-position-1 form input.form-control,
+body.section-filuns #portlets-in-header .portlet-portletNavigationTree-position-1 form button.btn,
+body.template-article_view #portlets-in-header .portlet-portletNavigationTree-position-1 form button.btn {
+  padding: 1px 5px;
+  height: 20px;
+}
+body.section-filuns #portlets-in-header .portlet-portletTAL-position-1,
+body.template-article_view #portlets-in-header .portlet-portletTAL-position-1 {
+  background-image: none;
+  text-align: center;
+}
+body.section-filuns #portlets-in-header .portlet-portletTAL-position-1 .navbar-default,
+body.template-article_view #portlets-in-header .portlet-portletTAL-position-1 .navbar-default {
+  min-height: 94px;
+}
+body.section-filuns #portlets-in-header .portlet-portletTAL-position-1 .navbar-default h1,
+body.template-article_view #portlets-in-header .portlet-portletTAL-position-1 .navbar-default h1,
+body.section-filuns #portlets-in-header .portlet-portletTAL-position-1 .navbar-default h2,
+body.template-article_view #portlets-in-header .portlet-portletTAL-position-1 .navbar-default h2 {
+  font-family: "Roboto";
+  font-weight: 100;
+  margin: 0;
+  display: inline-block;
+}
+body.section-filuns #portlets-in-header .portlet-portletTAL-position-1 .navbar-default h1,
+body.template-article_view #portlets-in-header .portlet-portletTAL-position-1 .navbar-default h1 {
+  letter-spacing: 10px;
+  border-bottom: 1px solid #00b5d7;
+}
+body.section-filuns #portlets-in-header .portlet-portletTAL-position-1 .navbar-default h2,
+body.template-article_view #portlets-in-header .portlet-portletTAL-position-1 .navbar-default h2 {
+  font-size: 18px;
+  margin-top: 2px;
+}
+@media (min-width: 992px) {
+  body.section-filuns #portlets-in-header .portlet-portletTAL-position-1 .navbar-default,
+  body.template-article_view #portlets-in-header .portlet-portletTAL-position-1 .navbar-default {
+    padding-right: 144px;
+  }
+}
+body.section-filuns dl.portlet.portletTwitterPortlet .portletHeader,
+body.template-article_view dl.portlet.portletTwitterPortlet .portletHeader,
+body.section-filuns dl.portlet.portletTwitterPortlet .portletHeader a,
+body.template-article_view dl.portlet.portletTwitterPortlet .portletHeader a {
+  background-color: #FFF;
+  color: #006fa4 !important;
+}
+body.section-filuns dl.portlet.portletTwitterPortlet .portletHeader a:after,
+body.template-article_view dl.portlet.portletTwitterPortlet .portletHeader a:after {
+  /*color: #FFF !important;
+                background-color: @couleurFond;
+                padding: 1px 3px;*/
+
+  display: none;
+}
+body.section-filuns dl.portlet.portletTwitterPortlet .portletItem,
+body.template-article_view dl.portlet.portletTwitterPortlet .portletItem {
+  font-size: 12px;
+  border-width: 0;
+  border-bottom-width: 1px;
+}
+body.section-filuns dl.portlet.portletTwitterPortlet .portletItem .tweetDate,
+body.template-article_view dl.portlet.portletTwitterPortlet .portletItem .tweetDate {
+  text-align: right;
+}
+body.section-filuns dl.portlet.portletVimeo .controls,
+body.template-article_view dl.portlet.portletVimeo .controls {
+  padding: 0;
+}
+body.section-filuns dl.portlet.portletVimeo .controls .playpause .icon-stack,
+body.template-article_view dl.portlet.portletVimeo .controls .playpause .icon-stack {
+  font-size: 1.25em;
+}
+body.section-filuns dl.portlet.portletSlider .bx-wrapper .bx-pager,
+body.template-article_view dl.portlet.portletSlider .bx-wrapper .bx-pager {
+  text-align: right;
+  bottom: -20px;
+}
+body.section-filuns dl.portlet.portletSlider .bx-wrapper .bx-pager a,
+body.template-article_view dl.portlet.portletSlider .bx-wrapper .bx-pager a {
+  text-align: center;
+  background: #DDD;
+}
+body.section-filuns dl.portlet.portletSlider .bx-wrapper .bx-pager a.active,
+body.template-article_view dl.portlet.portletSlider .bx-wrapper .bx-pager a.active {
+  background: #006fa4;
+}
+body.section-filuns.subsection-agenda dl.portlet.portletSlider .portletItem .bx-wrapper .bx-caption,
+body.template-article_view.subsection-agenda dl.portlet.portletSlider .portletItem .bx-wrapper .bx-caption {
+  background-color: #006fa4;
+  border-top: 3px solid #00b5d7;
+  left: 66%;
+  width: auto;
+  top: 0;
+  padding-right: 30px;
+}
+body.section-filuns.subsection-agenda dl.portlet.portletSlider .portletItem .bx-wrapper .bx-caption span,
+body.template-article_view.subsection-agenda dl.portlet.portletSlider .portletItem .bx-wrapper .bx-caption span {
+  font-size: 18px;
+  white-space: normal;
+}
+body.section-filuns.subsection-agenda dl.portlet.portletSlider .portletItem .bx-wrapper .bx-caption span small,
+body.template-article_view.subsection-agenda dl.portlet.portletSlider .portletItem .bx-wrapper .bx-caption span small {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  display: inline-block;
+  padding-top: 5px;
+}
+body.section-filuns #calendar,
+body.template-article_view #calendar {
+  background-color: #f5f5f5;
+  clear: both;
+}
+body.section-filuns #calendar .fc-header,
+body.template-article_view #calendar .fc-header {
+  border: 1px solid #004c71;
+  background-color: #004c71;
+  border-bottom-width: 0;
+}
+body.section-filuns #calendar .fc-header td,
+body.template-article_view #calendar .fc-header td {
+  padding: 10px;
+}
+body.section-filuns #calendar .fc-header .fc-header-title h2,
+body.template-article_view #calendar .fc-header .fc-header-title h2,
+body.section-filuns #calendar .fc-header .fc-button,
+body.template-article_view #calendar .fc-header .fc-button {
+  margin-bottom: 0;
+  color: #FFF;
+}
+body.section-filuns #calendar .fc-header .fc-header-title h2,
+body.template-article_view #calendar .fc-header .fc-header-title h2 {
+  font-size: 24px;
+  display: block;
+}
+body.section-filuns #calendar .fc-content th.ui-widget-header,
+body.template-article_view #calendar .fc-content th.ui-widget-header {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid #DDD;
+  font-weight: 300;
+  font-family: "Roboto";
+}
+body.section-filuns #calendar .fc-content th.ui-widget-header.fc-first,
+body.template-article_view #calendar .fc-content th.ui-widget-header.fc-first {
+  border-left: 1px solid #DDD;
+}
+body.section-filuns #calendar .fc-content th.ui-widget-header.fc-last,
+body.template-article_view #calendar .fc-content th.ui-widget-header.fc-last {
+  border-right: 1px solid #DDD;
+}
+body.section-filuns #calendar .fc-content .fc-view-month th:nth-child(6),
+body.template-article_view #calendar .fc-content .fc-view-month th:nth-child(6),
+body.section-filuns #calendar .fc-content .fc-view-month td:nth-child(6),
+body.template-article_view #calendar .fc-content .fc-view-month td:nth-child(6),
+body.section-filuns #calendar .fc-content .fc-view-month th:nth-child(7),
+body.template-article_view #calendar .fc-content .fc-view-month th:nth-child(7),
+body.section-filuns #calendar .fc-content .fc-view-month td:nth-child(7),
+body.template-article_view #calendar .fc-content .fc-view-month td:nth-child(7) {
+  -webkit-opacity: 0.66;
+  -khtml-opacity: 0.66;
+  -moz-opacity: 0.66;
+  opacity: 0.66;
+  filter: alpha(opacity=66);
+}
+body.section-filuns #calendar .fc-content .fc-view-agendaWeek th:nth-child(7),
+body.template-article_view #calendar .fc-content .fc-view-agendaWeek th:nth-child(7),
+body.section-filuns #calendar .fc-content .fc-view-agendaWeek td:nth-child(7),
+body.template-article_view #calendar .fc-content .fc-view-agendaWeek td:nth-child(7),
+body.section-filuns #calendar .fc-content .fc-view-agendaWeek th:nth-child(8),
+body.template-article_view #calendar .fc-content .fc-view-agendaWeek th:nth-child(8),
+body.section-filuns #calendar .fc-content .fc-view-agendaWeek td:nth-child(8),
+body.template-article_view #calendar .fc-content .fc-view-agendaWeek td:nth-child(8) {
+  -webkit-opacity: 0.66;
+  -khtml-opacity: 0.66;
+  -moz-opacity: 0.66;
+  opacity: 0.66;
+  filter: alpha(opacity=66);
+}
+body.section-filuns #calendar .ui-widget-content,
+body.template-article_view #calendar .ui-widget-content {
+  border-color: #DDD;
+}
+body.section-filuns .ui-state-default,
+body.template-article_view .ui-state-default {
+  background-image: none;
+  background-color: #004c71;
+  border-color: #FFF;
+  color: #FFF;
+}
+body.section-filuns .ui-state-default.ui-state-active,
+body.template-article_view .ui-state-default.ui-state-active {
+  background-color: #FFF;
+  color: #004c71 !important;
+}
+body.section-filuns .ui-state-default .ui-icon,
+body.template-article_view .ui-state-default .ui-icon {
+  background-image: url('http://tice207.unice.fr:8080/Test/++resource++jquery-ui-themes/sunburst/images/ui-icons_ffffff_256x240.png');
+}
+body.section-filuns .ui-state-default .ui-icon.ui-icon-circle-triangle-w,
+body.template-article_view .ui-state-default .ui-icon.ui-icon-circle-triangle-w {
+  background-position: -96px -16px;
+}
+body.section-filuns .ui-state-default .ui-icon.ui-icon-circle-triangle-e,
+body.template-article_view .ui-state-default .ui-icon.ui-icon-circle-triangle-e {
+  background-position: -32px -16px;
+}
+body.section-filuns a.fc-event,
+body.template-article_view a.fc-event {
+  color: #FFF !important;
+  text-decoration: none !important;
+  padding: 5px;
+}
+body.section-filuns .fc-day.ui-state-highlight,
+body.template-article_view .fc-day.ui-state-highlight {
+  background-image: none;
+  background-color: #FFF;
+}
+body.section-filuns .fc-day.ui-state-highlight .fc-day-number,
+body.template-article_view .fc-day.ui-state-highlight .fc-day-number {
+  background-color: #006fa4;
+  border-radius: 50%;
+  color: #FFF;
+}
+body.section-filuns #SFQuery,
+body.template-article_view #SFQuery {
+  background-color: #f5f5f5;
+  border: 1px solid #DDD;
+  border-top-width: 0;
+  padding: 10px;
+}
+body.section-filuns #SFQuery .enableFormTabbing ul.formTabs,
+body.template-article_view #SFQuery .enableFormTabbing ul.formTabs,
+body.section-filuns #SFQuery .enableFormTabbing #fieldset-Subject,
+body.template-article_view #SFQuery .enableFormTabbing #fieldset-Subject,
+body.section-filuns #SFQuery .enableFormTabbing #fieldsetlegend-Subject,
+body.template-article_view #SFQuery .enableFormTabbing #fieldsetlegend-Subject {
+  display: none;
+}
+body.section-filuns #SFQuery .SFQuery_input,
+body.template-article_view #SFQuery .SFQuery_input {
+  margin-bottom: 0;
+}
+body.section-filuns #portlets-below,
+body.template-article_view #portlets-below {
+  margin-bottom: 0;
+}
+body.section-filuns .BelowTitlePortletManager1.width-full.position-0,
+body.template-article_view .BelowTitlePortletManager1.width-full.position-0 {
+  width: 100%;
+  margin-left: -100%;
+}
+body.section-filuns #content ul.nav-agenda,
+body.template-article_view #content ul.nav-agenda {
+  margin: 0 !important;
+  border-bottom: 0;
+}
+body.section-filuns #content ul.nav-agenda li,
+body.template-article_view #content ul.nav-agenda li {
+  display: inline-block !important;
+  margin-bottom: 0;
+}
+body.section-filuns #content ul.nav-agenda li a,
+body.template-article_view #content ul.nav-agenda li a {
+  border: 0;
+  background-color: #006fa4;
+  color: #FFF;
+  -webkit-border-radius: 0 ;
+  -moz-border-radius: 0 ;
+  border-radius: 0 ;
+}
+body.section-filuns #content ul.nav-agenda li a:hover,
+body.template-article_view #content ul.nav-agenda li a:hover {
+  background-color: #004c71;
+}
+body.section-filuns.template-solgemafullcalendar_view #content ul.nav-agenda li a.cal_view,
+body.template-article_view.template-solgemafullcalendar_view #content ul.nav-agenda li a.cal_view,
+body.section-filuns.template-standard_view #content ul.nav-agenda li a.list_view,
+body.template-article_view.template-standard_view #content ul.nav-agenda li a.list_view {
+  background-color: #004c71;
+}
+body.section-filuns.template-standard_view #content-core,
+body.template-article_view.template-standard_view #content-core {
+  clear: both;
+  border: 1px solid #006fa4;
+  padding: 10px;
+}
+body.section-filuns.template-standard_view #content-core dl,
+body.template-article_view.template-standard_view #content-core dl {
+  margin-bottom: 0;
+}
+body.section-filuns div.managePortletsLink,
+body.template-article_view div.managePortletsLink,
+body.section-filuns a.managePortletsFallback,
+body.template-article_view a.managePortletsFallback {
+  clear: both;
+}
+@media (min-width: 768px) {
+  body.template-article_view #portal-column-two {
+    margin-top: 0;
+  }
+}
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*** GESTION *****************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+body.template-filuns_gestion_view .container {
+  max-width: none;
+}
+body.template-filuns_gestion_view .panel .list-group,
+body.template-filuns_gestion_view .panel .list-group li {
+  margin: 0 !important;
+}
+body.template-filuns_gestion_view .panel .list-group a,
+body.template-filuns_gestion_view .panel .list-group a:focus,
+body.template-filuns_gestion_view .panel .list-group a:hover {
+  color: #000 !important;
+  text-decoration: none !important;
+}
+body.template-filuns_gestion_view .panel .list-group a.state-private,
+body.template-filuns_gestion_view .panel .list-group a:focus.state-private,
+body.template-filuns_gestion_view .panel .list-group a:hover.state-private {
+  color: #C00 !important;
+}
+body.template-filuns_gestion_view footer,
+body.template-filuns_gestion_view #plone-document-byline {
+  display: none;
+}

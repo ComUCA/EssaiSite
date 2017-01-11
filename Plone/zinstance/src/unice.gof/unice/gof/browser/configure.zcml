@@ -1,0 +1,125 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.gof">
+
+  	<include package="plone.app.contentmenu" />
+
+
+    <!-- PAGE TEMPLATES -->
+    <browser:page
+        name="schemaGOF"
+        for="*"
+        permission="zope2.View"
+        class=".gof.GOF"
+        template="schema.pt"/>
+
+    <browser:page
+        name="updateGOF"
+        for="*"
+        permission="zope2.View"
+        class=".gof.GOF"
+        template="update.pt"/>
+
+    <browser:page
+        name="formations_view"
+        for="*"
+        permission="zope2.View"
+        class=".gof.GOF"
+        template="formations_folderview.pt"/>
+    <browser:page
+        name="formations_mobile_view"
+        for="*"
+        permission="zope2.View"
+        class=".gof.GOF"
+        template="formations_mobile_folderview.pt"/>
+    <browser:page
+        name="recherche"
+        for="*"
+        permission="zope2.View"
+        class=".gof.GOF"
+        template="recherche.pt"/>
+    <browser:page
+        name="codes_inscriptions"
+        for="*"
+        permission="zope2.View"
+        class=".gof.GOF"
+        template="codes_inscriptions.pt"/>
+
+    <browser:page
+        name="formations_composantes"
+        for="*"
+        permission="zope2.View"
+        class=".gof.GOF"
+        template="formations_composantes.pt"/>
+
+    <browser:page
+        name="formation_view"
+        for="*"
+        permission="zope2.View"
+        class="plone.dexterity.browser.view.DefaultView"
+        template="formation_view.pt"/>
+    <browser:page
+        name="formation_fiche_view"
+        for="*"
+        permission="zope2.View"
+        class=".gof.GOF"
+        template="formation_fiche_view.pt"/>
+    <browser:page
+        name="formations_livret_view"
+        for="*"
+        permission="zope2.View"
+        class=".gof.GOF"
+        template="formations_livret_view.pt"/>
+    <browser:page
+        name="formation_mobile_view"
+        for="*"
+        permission="zope2.View"
+        class="plone.dexterity.browser.view.DefaultView"
+        template="formation_mobile_view.pt"/>
+    <browser:page
+        name="formation_macro"
+        for="*"
+        permission="zope2.View"
+        template="formation_macro.pt"/>
+
+    <browser:page
+        name="formation_macro_outils"
+        for="*"
+        permission="zope2.View"
+        template="formation_macro_outils.pt"/>
+    <browser:page
+        name="formation_macro_presentation"
+        for="*"
+        permission="zope2.View"
+        template="formation_macro_presentation.pt"/>
+    <browser:page
+        name="formation_macro_admission"
+        for="*"
+        permission="zope2.View"
+        template="formation_macro_admission.pt"/>
+    <browser:page
+        name="formation_macro_programme"
+        for="*"
+        permission="zope2.View"
+        template="formation_macro_programme.pt"/>
+    <browser:page
+        name="formation_macro_debouches"
+        for="*"
+        permission="zope2.View"
+        template="formation_macro_debouches.pt"/>
+
+    <!-- CSS, JS & IMG -->
+    <browser:resourceDirectory
+        name="unice.gof.stylesheets"
+        directory="stylesheets"/>
+
+    <browser:resourceDirectory
+        name="unice.gof.javascripts"
+        directory="javascripts"/>
+
+    <browser:resourceDirectory
+        name="unice.gof.images"
+        directory="images"/>
+
+</configure>

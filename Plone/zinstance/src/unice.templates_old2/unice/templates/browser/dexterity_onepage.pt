@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html tal:define="parallax python:'#AffichageParallax' in list(context.Subject());
+    mode_affichage python:'linear' if not parallax else 'parallax';
+
+
+    scales context/@@images;
+    lang request/lang|string:fr;
+    parts python:view.getOnePageParts();
+    items python:parts['items'];
+    defaults python:view.getOnePageDefaults(scales);
+
+    logo1_href python:'http://www.consulat-suede.fr' if context.relative_url_matches(['/nobel2015']) else defaults['logo1_href'];
+
+    theme python:'inverse' if context.portal_type == 'onepage' else 'default';
+    exclure_template string:ExclureContenuTemplate;
+    mois python:['-', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];">
+
+    <head xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+
+        <meta charset="utf-8">
+        <title tal:content="context/Title"/>
+        <meta name="description" tal:attributes="content context/Description"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+
+        <meta property="og:url" tal:attributes="content context/absolute_url"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" tal:attributes="content context/Title"/>
+        <meta property="og:description" tal:attributes="content context/Description"/>
+        <tal:block repeat="item items">
+            <tal:block define="locales python:item[lang];">
+                <tal:block condition="locales">
+                    <tal:block condition="item/hero">
+                        <meta property="og:image" tal:attributes="content locales/contentleadimage"/>
+                    </tal:block>
+                </tal:block>
+            </tal:block>
+        </tal:block>
+
+        <link href="++resource++unice.theme.stylesheets/libs/bootstrap.min.css" rel="stylesheet">
+        <link href="++resource++unice.theme.stylesheets/libs/font-awesome.min.css" rel="stylesheet">
+        <link href="++resource++unice.templates.stylesheets/libs/jasny-bootstrap.min.css" rel="stylesheet">
+        <link href="++resource++unice.templates.stylesheets/dexterity_onepage.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+        <link href="forms.css" rel="stylesheet">
+        <link href="authoring.css" rel="stylesheet">
+
+        <tal:block repeat="style python:[
+            {'css': 'mt180.css', 'urls': ['/mt180']},
+            {'css': '50ans.css', 'urls': ['/50ans', '/cartes-de-visite']},
+            {'css': '50ans_santedufutur.css', 'urls': ['/50ans/santedufutur', '/50ans/reseauxdufutur']},
+            {'css': 'cartemultiservices.css', 'urls': ['/cartemultiservices', '/universitedebout']},
+            {'css': 'sophiacolorrace.css', 'urls': ['/sophiacolorrace']},
+            {'css': 'uca_elections.css', 'urls': ['/uca/elections']},
+            {'css': 'uca_jedi.css', 'urls': ['/uca/ucajedi']},
+            {'css': 'uca_h2020.css', 'urls': ['/uca/h2020']},
+            {'css': 'droso2016.css', 'urls': ['/droso2016']},
+            {'css': 'colloques_iseo.css', 'urls': ['/colloques/iseo']},
+            ]">
+            <link tal:condition="python:context.relative_url_matches(style['urls'])"
+                  tal:attributes="href string:++resource++unice.templates.stylesheets/onepage/${style/css}"
+                  rel="stylesheet"/>
+        </tal:block>
+
+        <tal:block repeat="style python:[
+            {'css': 'uca_elections.css', 'urls': ['univ-cotedazur.fr/elections']},
+            {'css': 'uca_jedi.css', 'urls': ['univ-cotedazur.fr/ucajedi']},
+            {'css': 'uca_h2020.css', 'urls': ['univ-cotedazur.fr/h2020']},
+            ]">
+            <link tal:condition="python:context.absolute_url_matches(style['urls'])"
+                  tal:attributes="href string:++resource++unice.templates.stylesheets/onepage/${style/css}"
+                  rel="stylesheet"/>
+        </tal:block>
+
+        <script src="++resource++unice.theme.javascripts/libs/jquery.min.js"></script>
+        <script src="++resource++unice.templates.javascripts/libs/modernizr.touch.js"></script>
+        <script src="++resource++unice.templates.javascripts/libs/Chart.min.js"></script>
+        <script src="++resource++unice.templates.javascripts/libs/imagelightbox.min.js"></script>
+        <script src="++resource++unice.templates.javascripts/graphs.js"></script>
+
+        <script tal:condition="parallax">
+            $(function(){
+                if (navigator.userAgent.match(/(iPod|iPhone|iPad|Android)/)) {
+                    $('.parallax-container').height( $(window).height() * 0.5 | 0 );
+                } else {
+                    $(window).resize(function(){
+                        var parallaxHeight = Math.max($(window).height() * 0.7, 200) | 0;
+                        $('.parallax-container').height(parallaxHeight);
+                    }).trigger('resize');
+                }
+            });
+        </script>
+        <script tal:condition="parallax" src="++resource++unice.templates.javascripts/libs/parallax.min.js"></script>
+
+    </head>
+
+    <body tal:attributes="class string:no-js affichage_${mode_affichage}"
+        data-spy="scroll" data-target=".main-navbar" data-offset="50">
+
+        <tal:block condition="defaults/display_site_menu">
+            <nav tal:define="site_menu python:view.getOnePageSiteMenu();"
+                id="offcanvas" class="navmenu navmenu-inverse navmenu-fixed-left offcanvas" role="navigation">
+                <a class="navmenu-brand" tal:attributes="href site_menu/parent/absolute_url" tal:content="site_menu/parent/title"/>
+                <ul class="nav navmenu-nav">
+                    <li tal:repeat="menu python:site_menu['items']">
+                        <a tal:attributes="href menu/absolute_url" tal:content="menu/title"/>
+                    </li>
+                </ul>
+            </nav>
+        </tal:block>
+
+        <nav tal:attributes="class string:navbar navbar-${theme} navbar-fixed-top main-navbar" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button tal:condition="defaults/display_site_menu"
+                        type="button" class="navbar-toggle offcanvas-toggle" data-toggle="offcanvas" data-target="#offcanvas" data-canvas="body">
+                        <i class="fa fa-chevron-left"></i> Menu
+                    </button>
+
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Rubriques</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+
+                    <tal:block define="logo defaults/logo1_image; captions defaults/logo1_captions; href logo1_href;">
+                        <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_logo"></metal:block>
+                    </tal:block>
+                    <tal:block define="logo defaults/logo2_image; captions defaults/logo2_captions; href defaults/logo2_href;">
+                        <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_logo"></metal:block>
+                    </tal:block>
+                    <tal:block define="logo defaults/logo3_image; captions defaults/logo3_captions; href defaults/logo3_href;">
+                        <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_logo"></metal:block>
+                    </tal:block>
+                </div>
+                <div class="container">
+                    <div class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown" tal:condition="parts/access">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <span class="label label-danger">Gestion</span> <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="./createObject?type_name=Document" target="_blank">
+                                        <i class="fa fa-plus fa-lg fa-fw"></i> Ajouter un bloc
+                                    </a></li>
+                                    <li><a href="./createObject?type_name=Folder" target="_blank">
+                                        <i class="fa fa-plus fa-lg fa-fw"></i> Ajouter un dossier
+                                    </a></li>
+                                    <li><a href="./folder_contents" target="_blank">
+                                        <i class="fa fa-sort fa-lg fa-fw"></i> Réordonner les rubriques
+                                    </a></li>
+                                </ul>
+                            </li>
+
+                            <tal:block repeat="item items">
+                                <tal:block condition="python:exclure_template not in list(item['item'].Subject())">
+                                    <li tal:define="locales python:item[lang]"
+                                        tal:condition="python:not repeat['item'].index == 1 if locales and locales['text']['type'] == 'chercheur' else (locales or item['access'])">
+                                        <a tal:attributes="href string:#${item/uuid}">
+                                            <i tal:condition="python:locales and locales['fa_icon']"
+                                                tal:attributes="class string:${locales/fa_icon} visible-xs-inline-block"></i>
+                                            <tal:block content="python:locales['title'] if locales and 'title' in locales else item['item'].Title()"/>
+                                        </a>
+                                    </li>
+                                </tal:block>
+                            </tal:block>
+
+                            <!-- <li class="dropdown" tal:condition="python:len(parts['locales'])>1">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-flag"></i> <span class="visible-xs-inline-block">Langues</span> <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li tal:repeat="locale parts/locales"
+                                        tal:attributes="class python:'active' if locale == lang else ''">
+                                        <a tal:attributes="href string:${context/absolute_url}?lang=${locale};"
+                                            tal:content="python:parts['langs'][locale]"/>
+                                    </li>
+                                </ul>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <tal:block repeat="item items">
+            <tal:block define="locales python:item[lang]; fallback python:item['fallbacks'][lang];">
+
+                <tal:block condition="python:repeat['item'].index == 1">
+                    <tal:block replace="structure string:&lt;div id=&quot;content&quot;&gt;"/>
+                </tal:block>
+
+                <tal:block condition="locales">
+                    <tal:block condition="item/hero">
+                        <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_hero"></metal:block>
+                    </tal:block>
+
+                    <div tal:condition="not:item/hero"
+                        tal:attributes="class string:regular onepage_text_${locales/text/type};">
+
+                        <div tal:condition="not:parallax" class="container">
+                            <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_subtitle"></metal:block>
+                            <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_content"></metal:block>
+                            <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_iframe"></metal:block>
+                        </div>
+
+                        <div tal:condition="parallax">
+                            <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_parallax"></metal:block>
+                            <div class="parallax-contents"
+                                tal:attributes="style python:'border-left: 10px solid %s' % locales['text']['details']['themeColor'] if locales['text']['details']['themeColor'] else '';">
+                                <div class="container">
+                                    <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_subtitle"></metal:block>
+                                    <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_content"></metal:block>
+                                    <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_iframe"></metal:block>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tal:block>
+
+
+                <div tal:condition="python:not locales and item['access']">
+                    <div class="container">
+                        <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_subtitle"></metal:block>
+                    </div>
+                </div>
+
+                <tal:block condition="repeat/item/end">
+                    <tal:block replace="structure string:&lt;/div&gt;"/>
+                </tal:block>
+
+            </tal:block>
+        </tal:block>
+
+        <footer tal:condition="defaults/footer" class="text-center">
+            <tal:block replace="structure defaults/footer"/>
+        </footer>
+
+        <script src="++resource++unice.theme.javascripts/libs/bootstrap.min.js"></script>
+        <script src="++resource++unice.templates.javascripts/libs/jasny-bootstrap.min.js"></script>
+        <script src="++resource++unice.templates.javascripts/libs/jquery.scrollme.min.js"></script>
+        <script src="++resource++unice.templates.javascripts/dexterity_onepage.js"></script>
+
+
+        <script tal:condition="python:context.relative_url_matches('/uca/ucajedi')">
+            $("h2:contains('UCAJEDI')").each(function() {
+                $(this).html($(this).html().replace('UCAJEDI', 'UCA<sup>JEDI</sup>'));
+            });
+
+            var fields = [
+                'co-investissement-dans-des-equipements-de-plateformes-collaboratives',
+                'co-investissement-dans-des-fonds-pour-l2019innovation-incluant-des-bourses-de-these',
+                'co-investissement-dans-des-chaires-industrielles',
+                'proposer-des-stages-en-entreprise-en-france-et-a-l2019etranger-pour-les-programmes-de-masters-et-de-doctorat',
+                'participer-aux-enseignements-d2019uca',
+                'participer-a-la-creation-de-programmes-courts-de-formation-continue',
+                'repondre-avec-uca-a-des-appels-a-projets-internationaux',
+                'se-porter-par-convention-partenaire-d2019uca-de-ses-evenements-de-ses-formations',
+                'proposer-des-prix-entreprise-innovation',
+                'prendre-part-a-la-creation-d2019un-fonds-d2019investissement-prive',
+                'prendre-part-a-la-creation-de-la-fondation-partenariale',
+                'formaliser-les-engagements-par-une-lettre-de-partenariat',
+            ];
+            $.each(fields, function(i, v){
+                $('#'+v).click(function() {
+                    if($(this).is(':checked')) {
+                        $('#archetypes-fieldname-'+v+'-2').show('fast');
+                    } else {
+                        $('#archetypes-fieldname-'+v+'-2').hide('fast');
+                    }
+                });
+            });
+
+        </script>
+
+        <script tal:condition="python:context.relative_url_matches('/universitedebout')">
+            $('a[href*="/vos-messages/"]').each(function() {
+                if (!$(this).hasClass('btn')) {
+                    $(this).removeAttr('href');
+                }
+            })
+        </script>
+
+        <script>
+            function textCounter(field, countfield, maxlimit) {
+              var fieldval = $(field).val();
+              if (fieldval.length > maxlimit) {
+                  $(field).attr('value',  fieldval.substring(0, maxlimit));
+                  alert( 'Ce champ est limité à ' + maxlimit + ' caractères !' );
+              }
+              $('input[name="' + countfield + '"]').attr('value', Math.max(maxlimit - fieldval.length, 0));
+            }
+
+
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46086415-1', 'auto', {'allowLinker': true});
+          ga('require', 'linker');
+          ga('linker:autoLink', ['http://espe-nice-toulon.fr', 'univ-cotedazur.fr'] );
+          ga('send', 'pageview');
+
+        </script>
+
+    </body>
+</html>

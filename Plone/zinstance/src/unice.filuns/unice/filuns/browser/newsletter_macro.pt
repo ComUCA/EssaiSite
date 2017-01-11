@@ -1,0 +1,109 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<metal:content-core fill-slot="content-core">
+
+<!-- ############################################################################################ -->
+
+<metal:block define-macro="container">
+
+<table class="body">
+    <tr>
+        <td class="center" align="center" valign="top">
+            <center>
+                <table class="container">
+                    <tr>
+                        <td>
+                            <metal:block define-slot="container-content"></metal:block>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+        </td>
+    </tr>
+</table>
+
+</metal:block>
+
+<!-- ############################################################################################ -->
+
+<metal:block define-macro="row">
+    <table class="row">
+        <tr>
+            <metal:block define-slot="row-content"></metal:block>
+        </tr>
+    </table>
+
+</metal:block>
+
+<metal:block define-macro="subrow">
+    <table class="row">
+        <tr>
+            <td class="wrapper last">
+                <table class="twelve columns">
+                    <tr>
+                        <metal:block define-slot="subrow-content"></metal:block>
+                        <td class="expander"></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</metal:block>
+
+<!-- ############################################################################################ -->
+
+<metal:block define-macro="col">
+    <td tal:attributes="class string:wrapper ${offset} ${last}">
+
+        <table tal:attributes="class string:${wide} columns">
+            <tr>
+                <td tal:attributes="class python:'center' if center else ''">
+                    <center tal:omit-tag="not:center">
+                        <metal:block define-slot="col-content"></metal:block>
+                    </center>
+                </td>
+                <td class="expander"></td>
+            </tr>
+        </table>
+
+    </td>
+</metal:block>
+
+<metal:block define-macro="subcol">
+    <tal:block define="cls_center python:'center' if center else ''">
+        <td tal:attributes="class string:${wide} sub-columns ${last} ${cls_center}">
+            <center tal:omit-tag="not:center">
+                <metal:block define-slot="subcol-content"></metal:block>
+            </center>
+        </td>
+    </tal:block>
+</metal:block>
+
+<!-- ############################################################################################ -->
+
+<metal:block define-macro="image">
+    <tal:block define="size python:view.image_size(src, width)">
+        <img tal:attributes="src src; width size/width; height size/height; class python:'center' if center else ''; alt alt;"/>
+    </tal:block>
+</metal:block>
+
+<!-- ############################################################################################ -->
+
+<metal:block define-macro="button">
+    <table tal:attributes="class string:${size} ${color} ${cls}">
+        <tr>
+            <td>
+                <a tal:attributes="href href">
+                    <metal:block define-slot="button-content"></metal:block>
+                </a>
+            </td>
+        </tr>
+    </table>
+</metal:block>
+
+</metal:content-core>
+</html>

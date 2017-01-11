@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      i18n:domain="plone">
+      <style type="text/css" media="screen">@import url(./++resource++unice.theme.stylesheets/libs/bootstrap.css);</style>
+    </head>
+
+    <body tal:define="TRUE python:True; FALSE python:False; opt_exclude python:['contenus-riches', 'dossier-3', 'document-2']; tree python:view.tree(context, opt_exclude); node tree;">
+
+        <table class="table table-bordered table-condensed table-hover">
+            <tbody>
+                <metal:block use-macro="context/templates_macro/macros/tree_nodes_excel"></metal:block>
+            </tbody>
+        </table>
+    </body>
+
+</html>
+

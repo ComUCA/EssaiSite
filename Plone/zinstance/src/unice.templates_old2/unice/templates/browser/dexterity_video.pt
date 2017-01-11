@@ -1,0 +1,21 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="content-core">
+
+    <tal:block condition="context/iframe">
+        <div tal:define="uri python:view.detectUrlOrIframe(context.iframe)" class="embed-responsive embed-responsive-16by9">
+            <iframe tal:attributes="src uri" class="embed-responsive-item"/>
+        </div>
+    </tal:block>
+
+</metal:main>
+
+</body>
+</html>
+

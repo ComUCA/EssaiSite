@@ -1,0 +1,41 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="unice.intranet">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="unice.intranet.interfaces.IUniceIntranetLayer"
+      />
+
+  <!-- Publish static files -->
+  <browser:resourceDirectory
+      name="unice.intranet"
+      directory="static"
+      />
+
+    <browser:resourceDirectory
+        name="unice.intranet.stylesheets"
+        directory="stylesheets"/>
+
+    <browser:resourceDirectory
+        name="unice.intranet.javascripts"
+        directory="javascripts"/>
+
+    <browser:resourceDirectory
+        name="unice.intranet.images"
+        directory="images"/>
+
+  <!-- Control panel -->
+   <browser:page
+      name="intranet-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".controlpanel.IntranetControlPanelForm"
+      permission="cmf.ManagePortal"
+      />
+
+  <adapter factory=".controlpanel.IntranetControlPanelAdapter" />
+</configure>

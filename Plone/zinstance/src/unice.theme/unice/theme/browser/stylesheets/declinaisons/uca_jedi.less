@@ -1,0 +1,104 @@
+@import "declinaisons";
+
+@couleurFond: #0085A3;
+@couleurFondSombre: darken(@couleurFond, 5%);
+
+@rouge: #ED5565, #DA4453;
+@orange: #FC6E51, #E9573F;
+@jaune: #FFCE54, #F6BB42;
+@vert_clair: #A0D468, #8CC152;
+@vert_fonce: #48CFAD, #37BC9B;
+@blue_clair: #4FC1E9, #3BAFDA;
+@blue_fonce: #5D9CEC, #4A89DC;
+@violet: #AC92EC, #967ADC;
+@rose: #EC87C0, #D770AD;
+@gris_clair: #F5F7FA, #E6E9ED;
+@gris_medium: #CCD1D9, #AAB2BD;
+@gris_fonce: #656D78, #434A54;
+
+@couleurs: @vert_fonce;
+
+body.template-template2ter_view .canal_fil_importance2 {
+
+    a.thumb_link {
+        background-color: #FFF;
+
+        &:after {
+            content: "";
+            background-color: extract(@couleurs, 2);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            mix-blend-mode: color;
+        }
+
+        span {
+            // -webkit-filter: grayscale(1) brightness(0.75) contrast(150%);
+        }
+    }
+
+
+    li.col-md-3 {
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        border-radius: 0;
+        background-color: transparent;
+
+        .image_ratio.ratio16\3a 9 {
+            border: 0 !important;
+
+            span {
+                padding-top: 100% !important;
+            }
+        }
+
+        a.btn.btn-primary {
+            display: none !important;
+        }
+
+
+        a.details_link {
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            text-align: center !important;
+            color: #000 !important;
+            background-color: fade(darken(extract(@couleurs, 2), 10%), 75%);
+
+            h2 {
+                font-weight: 700 !important;
+                margin: 10px 0 !important;
+                color: #FFF !important;
+                text-shadow: none;
+
+                &:before {
+                    content: "";
+                }
+            }
+
+            span {
+                color: #fff;
+                display: inline-block;
+                max-height: 0;
+                margin: 0 5px 5px !important;
+                overflow: hidden;
+                -moz-transition: max-height 0.75s ease;
+                -webkit-transition: max-height 0.75s ease;
+                -o-transition: max-height 0.75s ease;
+                transition: max-height 0.75s ease;
+            }
+        }
+
+        &:hover a.details_link span {
+            max-height: 300px;
+        }
+    }
+}
+
+
+

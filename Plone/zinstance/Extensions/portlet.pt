@@ -1,0 +1,60 @@
+<div tal:define="annuaire python:context.annuaire_dynamique.gredeg(context.annuaire.getFile())"
+    class="annuaire panel panel-info">
+    <div class="panel-heading">
+        <form>
+            <div class="form-group has-feedback">
+                <label class="control-label sr-only" for="search">Rechercher dans l'annuaire</label>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+                    <input type="text" class="form-control" id="search" placeholder="Rechercher dans l'annuaire..." data-list=".list-group" autocomplete="off"/>
+                </div>
+            </div>
+        </form>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="list-group">
+        <tal:block repeat="contact annuaire">
+            <a tal:define="civ contact/civilite; icon python:'Female' if civ in ['Mme', 'Mlle'] else 'Male'"
+                href="#" class="list-group-item">
+                <h4 class="list-group-item-heading col-sm-12 col-md-3" style="font-size: 14px; line-height: 2.21; margin-bottom: 0">
+                    <img tal:attributes="src string:http://icons.iconarchive.com/icons/icons8/ios7/256/Users-User-${icon}-4-icon.png" style="height: 30px; width: 30px;"/>
+                    <tal:block tal:content="string:${contact/nom} ${contact/prenom}"/>
+                </h4>
+                <p class="list-group-item-text col-sm-4 col-md-3"><small>
+                    <img tal:condition="python:contact['institution'] or contact['service']"
+                        src="http://icons.iconarchive.com/icons/icons8/ios7/128/Science-University-icon.png" style="float: left; width:16px; height:16px; margin: 7px 5px 0 0;"/>
+                    <tal:block condition="contact/institution" content="contact/institution"/><br />
+                    <tal:block condition="contact/service" content="contact/service"/>
+                </small></p>
+                <p class="list-group-item-text col-sm-4 col-md-3"><small>
+                    <img tal:condition="python:contact['mail'] or contact['tel']"
+                        src="http://icons.iconarchive.com/icons/icons8/ios7/128/Very-Basic-Speech-Bubble-icon.png" style="float: left; width:16px; height:16px; margin: 7px 5px 0 0;"/>
+                    <tal:block condition="contact/mail" content="contact/mail"/><br/>
+                    <tal:block condition="contact/tel" content="contact/tel"/>
+                </small></p>
+                <p class="list-group-item-text col-sm-4 col-md-3"><small>
+                    <img tal:condition="python:contact['adresse']"
+                        src="http://icons.iconarchive.com/icons/icons8/ios7/128/Maps-Map-Marker-icon.png" style="float: left; width:16px; height:16px; margin: 7px 5px 0 0;"/>
+                    <tal:block condition="contact/adresse" content="contact/adresse"/>
+                </small></p>
+                <span class="clearfix"/>
+            </a>
+        </tal:block>
+    </div>
+</div>
+
+<style>
+.annuaire.panel .panel-heading .form-group {
+    margin-bottom: 0;
+}
+.annuaire.panel .panel-heading .form-group input.form-control {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+</style>
+
+<script type="text/javascript" src="http://vdw.github.io/HideSeek/javascripts/vendor/jquery.hideseek.min.js"></script>
+<script type="text/javascript">
+    $('#search').hideseek({highlight: true, nodata: 'Aucun résultat ne correspond à votre recherche', ignore_accents: true});
+</script>

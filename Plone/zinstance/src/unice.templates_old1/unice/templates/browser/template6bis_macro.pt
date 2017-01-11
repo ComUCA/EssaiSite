@@ -1,0 +1,60 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="template">
+
+    <div tal:condition="batch" class="template">
+
+        <tal:block define=" items python:view.items(batch, ['page.html'], 200, isObjects=type(batch) is list);
+                            filtered python:view.filtered(items, '#ExclureContenuTemplate');
+                            TRUE python:True; FALSE python:False;">
+
+            <!-- CHAPEAU -->
+            <metal:block use-macro="context/templates_macro/macros/entete"></metal:block>
+
+            <hr tal:condition="document" class="visualClear"/>
+
+            <!-- ITEMS -->
+            <ul class="liste_template6">
+
+                <tal:block repeat="item filtered">
+
+                    <tal:block define="index repeat/item/index;">
+
+                        <div class="row">
+
+                            <li class="col-md-12"
+                                tal:define="opt_image TRUE; opt_title TRUE; opt_desc TRUE; opt_desctrunc FALSE; opt_boutonsavoirplus TRUE; opt_imageratio string:ratio4:3;">
+
+                                <metal:block use-macro="context/templates_macro/macros/item_template6bis"></metal:block>
+
+                            </li>
+
+                        </div>
+                    </tal:block>
+
+                </tal:block>
+
+            </ul>
+
+        </tal:block>
+
+        <div class="visualClear"/>
+
+    </div>
+
+    <p class="discreet" tal:condition="not:batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+</metal:content-core>
+</body>
+
+</html>

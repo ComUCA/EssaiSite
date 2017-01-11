@@ -1,0 +1,252 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <head>
+        <metal:javascriptslot fill-slot="javascript_head_slot">
+            <tal:block define="
+                prefix_themes string:#FilUNSTheme;
+                prefix_canaux string:#FilUNSCanal;
+
+                themes python:view.themes(prefix_themes);
+                canaux python:view.canaux(prefix_canaux, {'*':'#FilUNSImp', 'FilUNS':'#FilUNSImportance'});
+                importances python:view.importances(canaux);
+
+                item python:view.selfDetails(prefix_themes, themes, prefix_canaux, canaux, importances, 10000);">
+                <meta property="fb:title" tal:attributes="content item/title"/>
+                <meta property="fb:description" tal:attributes="content item/description" />
+                <meta property="fb:url" tal:attributes="content string:${context/absolute_url}/@@article_view" />
+                <meta property="fb:image" tal:attributes="content string:${item/image}/image.jpg" />
+
+            </tal:block>
+        </metal:javascriptslot>
+    </head>
+
+<body>
+
+<metal:content-core fill-slot="main"
+    tal:define="
+    prefix_themes string:#FilUNSTheme;
+    prefix_canaux string:#FilUNSCanal;
+
+    themes python:view.themes(prefix_themes);
+    canaux python:view.canaux(prefix_canaux, {'*':'#FilUNSImp', 'FilUNS':'#FilUNSImportance'});
+    importances python:view.importances(canaux);">
+
+    <tal:redirect condition="python:context.portal_type == 'Link'">
+        <tal:block define="dummy python:request.RESPONSE.redirect(context.remoteUrl)"/>
+    </tal:redirect>
+
+    <tal:block define="
+        father nocall:here/aq_inner/aq_parent;
+        grandfather nocall:father/aq_inner/aq_parent;
+        greatfather nocall:grandfather/aq_inner/aq_parent;
+
+        filuns string:${context/portal_url}/filuns;
+
+        item python:view.selfDetails(prefix_themes, themes, prefix_canaux, canaux, importances, 10000);
+
+        rubriques python:[
+            {'id':'institutionnel', 'title':'Institutionnel'},
+            {'id':'formation', 'title':'Formation'},
+            {'id':'recherche', 'title':'Recherche'},
+            {'id':'international', 'title':'International'},
+            {'id':'culture', 'title':'Culture'},
+            {'id':'sport', 'title':'Sport'},
+            {'id':'agenda', 'title':'Agenda'}
+        ];
+        reseaux python:[
+            {'id':'facebook', 'url':'https://www.facebook.com/UnivNiceSophia'},
+            {'id':'twitter', 'url':'https://twitter.com/Univ_Nice'},
+            {'id':'linkedin', 'url':'http://www.linkedin.com/company/universit-nice-sophia-antipolis?trk=cp_followed_name_universit-nice-sophia-antipolis'},
+            {'id':'vimeo', 'url':'https://vimeo.com/channels/unice'},
+            {'id':'youtube', 'url':'http://www.youtube.com/user/UnivNice?feature=watch'},
+            {'id':'google', 'url':'https://plus.google.com/u/0/b/104299740066935221672/104299740066935221672/posts'}];">
+
+
+        <metal:block use-macro="context/listing_macro/macros/publication_filuns"></metal:block>
+
+        <div id="portlets-in-header">
+            <div class="portlet-portletTAL-position-1" tal:define="toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+                <div class="navbar-default">
+                    <h1>
+                        <a tal:attributes="href filuns" title="Retour au Fil UNS">
+                            <i class="fa-fw"></i>
+                            <i class="fa-fw fa fa-reply"></i>
+                            Fil UNS
+                        </a>
+                    </h1><br/>
+                </div>
+            </div>
+        </div>
+
+        <div id="content-core" class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1 tal:content="context/Title"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <tal:block tal:condition="python:item['type'] != 'Link'">
+
+                            <a tal:attributes="href item/image" class="thumb_link image_ratio ratio2:1">
+                                <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                    <img tal:attributes="src item/image; title python:view.captions(item)"/>
+                                </span>
+                                <strong tal:content="item/legend"/>
+                            </a>
+
+                        </tal:block>
+
+                        <!-- <tal:block condition="python:item['type'] == 'Link'">
+
+                            <div class="responsive_player">
+                                <iframe tal:attributes="src item/remote_url" width="800" height="400" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                            </div>
+
+                        </tal:block> -->
+                    </div>
+                    <div class="col-md-12">
+                        <strong tal:attributes="class string:${item/themeCls}">
+                            <span class="puce image_ratio"></span>
+                            <tal:block content="item/theme"/>
+                        </strong>
+                        <p class="lead description" tal:content="context/Description"/>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="lead">
+                            <i class="fa fa-calendar-o"></i> <small tal:content="item/dates/localized"/>
+
+                            <tal:block condition="python:item['dates']['start_hour_localized'] or item['dates']['end_hour_localized']">
+                                - <i class="fa fa-clock-o">
+                                <tal:block condition="python:item['dates']['start_hour_localized'] == item['dates']['end_hour_localized']">
+                                    <small tal:content="item/dates/start_hour_localized"/>
+                                </tal:block>
+                                <tal:block condition="python:not item['dates']['start_hour_localized'] == item['dates']['end_hour_localized']">
+                                    <small tal:content="item/dates/start_hour_localized"/>
+                                    à <small tal:content="item/dates/end_hour_localized"/>
+                                </tal:block>
+                            </tal:block>
+
+                            <tal:block condition="item/location">
+                                - <i class="fa fa-map-marker"></i> <small tal:content="item/location"/>
+                            </tal:block>
+                        </p>
+                        <div class="text">
+                            <p tal:replace="structure here/aq_explicit/getText|nothing"/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong>Partager cet article :</strong>
+                        <!-- <span class='st_sharethis_large' displayText='ShareThis'></span>
+                        <span class='st_facebook_large' displayText='Facebook'></span>
+                        <span class='st_twitter_large' displayText='Tweet'></span>
+                        <span class='st_googleplus_large' displayText='Google +'></span>
+                        <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                        <span class='st_pinterest_large' displayText='Pinterest'></span>
+                        <span class='st_email_large' displayText='Email'></span>
+                        <span class='st_print_large' displayText='Imprimer'></span> -->
+                        <!-- AddThis Button BEGIN -->
+                        <!-- <div class="addthis_toolbox addthis_default_style addthis_32x32_style">
+                            <a class="addthis_button_email"></a>
+                            <a class="addthis_button_print"></a>
+                            <a class="addthis_button_facebook"></a>
+                            <a class="addthis_button_twitter"></a>
+                            <a class="addthis_button_pinterest_share"></a>
+                            <a class="addthis_button_google_plusone_share"></a>
+                            <a class="addthis_button_linkedin"></a>
+                            <a class="addthis_button_viadeo"></a>
+                            <a class="addthis_button_compact"></a><a class="addthis_counter addthis_bubble_style"></a>
+                        </div>
+                        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52fc9bec296ec444"></script> -->
+                        <!-- AddThis Button END -->
+                        <div class="addthis_sharing_toolbox"></div>
+
+                    </div>
+                </div>
+
+                <div class="visualClear"></div>
+
+            </div>
+            <div id="portal-column-two" class="col-md-3">
+
+                <dl class="portlet portletNavigationTree">
+
+                    <dd class="portletItem lastItem">
+                        <ul class="navTree navTreeLevel0" style="margin-left: 0;">
+                            <li class="navTreeItem visualNoMarker navTreeFolderish section-homepage">
+                                <a tal:attributes="href filuns" style="text-decoration:none">Toute l'actualité</a>
+                            </li>
+                            <li tal:repeat="rubrique rubriques"
+                                tal:attributes="class string:navTreeItem visualNoMarker navTreeFolderish section-${rubrique/id}">
+                                <a tal:attributes="href string:${filuns}/${rubrique/id}" tal:content="rubrique/title" style="text-decoration:none"/>
+                            </li>
+                        </ul>
+                    </dd>
+
+                </dl>
+                
+                <div style="overflow:hidden">
+                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://widget.mailjet.com/75c6689bf4f5b6102c76934e17c576543693203d.html" width="242" height="138"></iframe>
+                </div>
+
+                <!-- <div class="text-center">
+                    <strong>Nous suivre :</strong><br/>
+                    <a tal:repeat="reseau reseaux" tal:attributes="href reseau/url">
+                        <img tal:attributes="src string:${context/portal_url}/++resource++unice.theme.images/social/${reseau/id}.png"/>
+                    </a>
+                </div> -->
+                <div class="text-center">
+                    <div class="addthis_horizontal_follow_toolbox"></div>
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript">
+            var addthis_config = {"data_track_addressbar":true};
+            var addthis_share = {
+                url_transforms : {
+                    shorten: {
+                        twitter: 'bitly'
+                    }
+                },
+                shorteners : {
+                    bitly : {}
+                },
+                passthrough : {
+                    twitter: {
+                        via: "Univ_Nice"
+                    }
+                }
+            };
+        </script>
+        <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52fc9bec296ec444"></script>
+        <script type="text/javascript">
+            function meta(property, content) {
+                var viewPortTag=document.createElement('meta');
+                viewPortTag.setAttribute('property', property);
+                viewPortTag.setAttribute('content', content);
+                document.getElementsByTagName('head')[0].appendChild(viewPortTag);
+            }
+        </script>
+
+    </tal:block>
+
+</metal:content-core>
+
+</body>
+
+</html>

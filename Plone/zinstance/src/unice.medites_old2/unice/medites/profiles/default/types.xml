@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!-- This file registers new types with portal_types. The types are
+     then configured with the corresponding files in types/*.xml. Note
+     that spaces are allowed in type names, but the corresponding XML file
+     uses an underscore instead. The "Factory-based Type Information with
+     dynamic views" refers to an FTI from Products.CMFDynamicViewFTI,
+     which supports Plone's "display" menu.
+  -->
+<object name="portal_types" meta_type="Plone Types Tool">
+
+ <object name="Folder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="Collection"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="Document"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="accueil"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="ajout_etapes"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="blocs_partenaires"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="etapes"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="fichiers"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="galerie_photos"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="intervenants"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="logos_partenaires"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="medites_dans_mon_college"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="membre"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="metiers"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="parcours_pedagogiques"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="parcours"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="partenaire"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="partenaires"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="thematique"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+</object>

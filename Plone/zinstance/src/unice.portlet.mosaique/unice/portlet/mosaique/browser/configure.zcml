@@ -1,0 +1,42 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.portlet.mosaique">
+
+    <!-- Resource directory for images -->
+    <browser:resourceDirectory
+        name="unice.portlet.mosaique.stylesheets"
+        directory="stylesheets"
+        />
+
+    <browser:resourceDirectory
+        name="unice.portlet.mosaique.javascripts"
+        directory="javascripts"
+        />
+
+    <browser:resourceDirectory
+        name="unice.portlet.mosaique.images"
+        directory="images"
+        />
+
+
+
+    <browser:page
+        name="rss_view"
+        for="*"
+        permission="zope2.View"
+        class=".rss_view.AffichageMosaique"
+        template="rss_view.pt"/>
+
+    <browser:menuItem
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        menu="plone_displayviews"
+        title="Affichage mosaique"
+        action="rss_view"
+        description="Affichage des elements d'un dossier sous forme de mosaique"/>
+
+    <class class=".rss_view.AffichageMosaique">
+        <implements interface="plone.app.layout.globals.interfaces.IViewView" />
+    </class>
+
+</configure>

@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <head>
+        <metal:javascriptslot fill-slot="javascript_head_slot">
+            <tal:block define="
+                prefix_themes string:#FilUNSTheme;
+                prefix_canaux string:#FilUNSCanal;
+
+                themes python:view.themes(prefix_themes);
+                canaux python:view.canaux(prefix_canaux, {'*':'#FilUNSImp', 'FilUNS':'#FilUNSImportance'});
+                importances python:view.importances(canaux);
+
+                item python:view.selfDetails(prefix_themes, themes, prefix_canaux, canaux, importances, 10000);">
+                <meta property="fb:title" tal:attributes="content item/title"/>
+                <meta property="fb:description" tal:attributes="content item/description" />
+                <meta property="fb:url" tal:attributes="content string:${context/absolute_url}/@@article_reseaux_view" />
+                <meta property="fb:image" tal:attributes="content string:${item/image}/image.jpg" />
+
+            </tal:block>
+        </metal:javascriptslot>
+    </head>
+
+<body>
+
+<div metal:fill-slot="content-core">
+
+    AAAA
+
+</div>
+
+</body>
+
+</html>

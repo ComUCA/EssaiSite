@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="template">
+
+    <div tal:condition="batch" class="template">
+
+        <tal:block define=" items python:view.items(batch, ['page.html'], isObjects=type(batch) is list, desc_max=200);
+                            filtered python:view.filtered(items, '#ExclureContenuTemplate');
+                            TRUE python:True; FALSE python:False;
+
+                            max_n1 python:4;
+                            max_n2 python:3;
+                            filtered python:filtered[0:max_n1];">
+
+<!-- CHAPEAU -->
+<metal:block use-macro="context/templates_macro/macros/entete"></metal:block>
+
+<!-- ITEMS -->
+<div class="row">
+
+    <div class="row-sm-height">
+
+        <tal:block repeat="parent filtered">
+            <div tal:attributes="class string:col-sm-3 col-sm-height col-sm-bottom bloc_labo bloc_labo_${parent/item/id}">
+                <h3 tal:content="parent/title" class="text-center"/>
+                <div class="triangle hidden-xs"></div>
+                <ul tal:define="subbatch python:view.getFolderContents(parent['real_item']);
+                        subitems python:view.items(subbatch, ['page.html'], isObjects=parent['real_item'].portal_type == 'Folder');
+                        subfiltered python:view.filtered(subitems, '#ExclureContenuTemplate');
+                        opt_imageratio string:ratio1:1;"
+                    class="content list-unstyled">
+                    <tal:block condition="subfiltered">
+                        <li tal:repeat="item python:subfiltered[0:max_n2]">
+                            <a tal:attributes="href item/url">
+                                <metal:block use-macro="context/templates_macro/macros/thumb_no_link"></metal:block>
+                                <span class="description">
+                                    <strong tal:content="item/title"/><br/>
+                                    <tal:block content="item/desc_trunc"/>
+                                </span>
+                                <strong style="display: block; clear: both;"></strong>
+                            </a>
+                        </li>
+                    </tal:block>
+                    <tal:block condition="not:subfiltered">
+                        <li class="text-center text-muted">Aucun élément</li>
+                    </tal:block>
+                </ul>
+                <a tal:attributes="href parent/url" class="btn btn-primary btn-block more">
+                    <i class="fa"></i>
+                    <tal:block condition="parent/description" content="parent/description"/>
+                    <tal:block condition="not:parent/description">Tous les éléments</tal:block>
+                </a>
+            </div>
+        </tal:block>
+
+    </div>
+</div>
+
+        </tal:block>
+
+        <div class="visualClear"/>
+
+    </div>
+
+    <p class="discreet" tal:condition="not:batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+</metal:content-core>
+</body>
+
+</html>

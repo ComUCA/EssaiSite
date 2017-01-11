@@ -1,0 +1,139 @@
+@import "utils";
+
+@couleurFond: #0B6D8D;
+@couleurFondSombre: darken(@couleurFond, 10%);
+@couleurFondSaturee: lighten(spin(lighten(@couleurFond, 9%), -10), 1%);
+
+
+body.site-espe {
+	background-color: #FFF;
+
+	/*** LAYOUT *******************************************/
+
+	div#wrap > div.container,
+	footer.container {
+		max-width: none;
+	}
+
+
+	#portlets-in-header {
+		background-color: @couleurFond;
+		.gradient(lighten(@couleurFond, 7%), @couleurFond);
+	}
+	#portlets-in-header > div,
+	#portal-columns {
+		float: none;
+		margin-left: auto;
+    	margin-right: auto;
+		@media (min-width: 768px)  { max-width: 750px;  }
+		@media (min-width: 992px)  { max-width: 970px;  }
+		@media (min-width: 1200px) { max-width: 1170px; }
+	}
+
+	ol.breadcrumb {
+		border: 1px solid @couleurFond;
+		background-color: #FFF;
+	}
+
+	footer.container {
+		font-size: 100%;
+		.credits {
+			background-color: @couleurFond;
+
+			a {
+				color: #FFF !important;
+			}
+		}
+	}
+
+	/*** MENUS ********************************************/
+
+	div.portlet.portletNavigation {
+		nav.navbar-style-noir.navbar-height-small {
+			background-color: transparent;
+			border-bottom: 0;
+
+			.navbar-nav > li > a {
+				color: #DDD !important;
+			}
+		}
+		nav.navbar-style-logo {
+			background-color: #fff;
+
+			.navbar-brand img {
+				/*height: 120px;*/
+				margin-bottom: 27px;
+    			margin-top: 24px;
+			}
+			.navbar-form {
+				margin-top: 50px;
+			}
+		}
+
+		nav.navbar.navbar-style-principal {
+			background-color: transparent;
+
+			div.navbar-collapse {
+				padding: 0;
+
+				ul.navbar-nav > li {
+					border-left-width: 0;
+
+					& > a {
+						font-stretch: normal;
+			    		text-transform: none;
+			    	}
+		    	}
+		    }
+		}
+	}
+
+	#content #content-core {
+		.btn.btn-primary {
+			color: #FFF;
+		}
+	}
+}
+
+	/*** FOOTER ********************************************/
+
+
+.liens-rapides {
+
+	background: none repeat scroll 0 0 #09546B;
+    padding: 15px 0 15px 20px;
+
+    ul.list-inline {
+
+    	margin-bottom: 0;
+
+    	/*li:before {
+  			content: "\f105";
+		}*/
+    }
+
+    
+
+    a{
+
+    	color: white;
+    	font-size: 12px !important;
+    }
+
+  	/*a:before {
+  		content: "\f105";
+	}*/
+
+	a:hover {
+
+		color: #ededed;
+	}
+
+}
+
+.icon-angle-right:before {
+
+    color: #FFFFFF !important;
+    padding: 0 10px  !important;
+
+}

@@ -1,0 +1,135 @@
+<html tal:omit-tag=""
+    xmlns="http://www.w3.org/1.09/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+    xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="unice.portlet.imagelegendee" tal:define="item python:view.imagelegendee; type python:item.portal_type;scales item/@@images">
+
+    <dl tal:attributes="id view/data/extra_id; class string:portlet portletImageLegendee ${view/data/extra_css}">
+
+        <dt tal:condition="not:view/data/omit_header" class="portletHeader">
+            <span tal:content="view/header"/>
+        </dt>
+
+        <dd class="portletItem">
+
+            <a tal:condition="python:not type in ['chercheur']" tal:attributes="href view/imagelegendee/absolute_url; title view/imagelegendee/Description" class="imagelegendee">
+                <img tal:condition="python:not type in ['Image', 'News Item', 'Event']"
+                    tal:replace="structure python:view.contentLeadImage()"/>
+                <img tal:condition="python:type in ['Image', 'News Item', 'Event']"
+                    tal:replace="structure python:view.imagelegendee.tag(scale='large', css_class='')"/>
+                <span tal:condition="not:view/data/hide_captions">
+                    <strong tal:content="view/header"/><br/>
+                    <span tal:condition="view/data/sous_titre">
+                        <i class="fa fa-double-angle-right"/> <tal:block content="view/data/sous_titre"/>
+                    </span>
+                </span>
+            </a>
+
+        </dd>
+
+    </dl>
+
+
+        <div tal:condition="python:type in ['chercheur']">
+
+<!--<tal:block condition="python: item['item'].mode_d_affichage=='vertical'">
+
+                <div class="row">-->
+
+                        <div class="card hovercard">
+                            <span tal:condition="item/illustration" tal:define="thumb python:scales.scale('illustration', scale='full')"
+                                tal:attributes="class string:thumb_link image_ratio ratio4:3 .illustration-profil">
+                                <span tal:attributes="style string:background-image: url(${thumb/url});">
+                                    <img class="illustration-profil" tal:attributes="src thumb/url; title item/title"/>
+                                </span>
+                            </span>
+
+                            <span tal:condition="not:item/illustration"
+                            tal:define="blurred python:['bleu_jaune', 'bleu_rose', 'bleu_vert', 'blue_rouge', 'gris_rose', 'noir_marron', 'rose_violet'];
+                                random python:context.shuffle(blurred)[0];">
+                                <img tal:attributes="src string:++resource++unice.templates.images/blurred/${random}.jpg" class="illustration-profil"/>
+                            </span>
+
+                            <div class="avatar">
+                                <span tal:define="thumb python:scales.scale('contentleadimage', scale='preview')"
+                                    tal:attributes="class string:thumb_link image_ratio ratio1:1">
+                                    <span tal:attributes="style string:background-image: url(${thumb/url});">
+                                        <img tal:attributes="src thumb/url; title item/title"/>
+                                    </span>
+                                </span>
+                            </div>
+
+
+                            <div class="info">
+                                <div class="title"><a tal:attributes="href item/absolute_url">
+                                    <span tal:content="item/title"/></a>
+                                </div>
+
+
+
+                                <!-- <div class="desc diplome_univ">
+                                 <a tal:attributes="href item/item/lien_d_acc_s_au_dipl_me" target="_blank" tal:content="item/item/diplome_universitaire">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                </div>
+                                <div class="desc" tal:content="item/item/metier"></div>-->
+                            </div>
+
+                            <div class="info2" tal:condition="item/fonction1">
+                                <div class="title "><i class="fa fa-university"></i><a tal:attributes="href item/fonction_url1">
+                                    <span tal:content="item/fonction1"/></a>
+                                </div>
+                            </div>
+
+                            <div class="bottom">
+
+<a tal:condition="item/facebook" class="btn btn-facebook btn-sm" rel="publisher"tal:attributes="href item/facebook" target="_blank">
+                                    <i class="fa fa-facebook"></i></a>
+
+<a tal:condition="item/twitter" class="btn btn-twitter btn-sm" tal:attributes="href item/twitter" target="_blank">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+<a tal:condition="item/linkedin" class="btn btn-linkedin btn-sm" tal:attributes="href item/linkedin" target="_blank">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+<a tal:condition="item/siteweb" class="btn btn-external-link btn-sm" tal:attributes="href item/siteweb" target="_blank">
+                                    <i class="fa fa-external-link"></i>
+                                </a>
+
+
+
+ <!--                                <a class="btn btn-primary btn-twitter btn-sm" tal:attributes="href item/item/twitter" target="_blank">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm" rel="publisher"tal:attributes="href item/item/google_" target="_blank">
+                                    <i class="fa fa-google-plus"></i>
+                                </a>
+                                <a class="btn btn-primary btn-sm" rel="publisher"tal:attributes="href item/item/facebook" target="_blank">
+                                    <i class="fa fa-facebook"></i>
+                                </a> -->
+                                <!--<a class="btn btn-warning btn-sm" rel="publisher" href="https://plus.google.com/shahnuralam">
+                                    <i class="fa fa-behance"></i>
+                                </a>-->
+                            </div>
+
+                        </div>
+
+            <!--</tal:block>
+
+            <tal:block condition="python: item['item'].mode_d_affichage=='horizontal'">
+
+                <div class="row show-grid">
+                    <div class="span4" data-original-title="" title="">4</div>
+                    <div class="span3 offset2">3 offset 2</div>
+                </div>
+
+            </tal:block>
+
+            </div>-->
+
+        </div>
+
+
+
+</html>

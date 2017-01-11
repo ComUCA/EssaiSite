@@ -1,0 +1,57 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;
+            variableActualites python:view.champsRepeat('medites_actualites');">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">		
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core" tal:define="widgets nocall:context/@@view">
+<!-- carrousel 
+                <section class="container-fluid emplacement"></section>
+-->
+<!-- contenu --> 
+                <section class="container-fluid dark">                 
+                    <div class="content presentation"> 
+                        <ol class="breadcrumb">
+                            <li><a href="../accueil">Accueil</a></li>
+                            <li tal:content="infos/title" tal:attributes="class string:active" />
+                        </ol>
+                        <h1 tal:content="infos/title"></h1>
+                    </div>
+                </section>
+                <section class="container-fluid dark actualites">
+                    <div class="row cs-style-3 grid row-eq-height" >
+                        <div class="col-xs-6 col-sm-4 col-md-2" tal:repeat="medites_actualites variableActualites">  
+                            <div class="item text-center">
+                                <figure>
+                                    <a tal:attributes="title string:Lire l'actualit&eacute;; 
+                                                       href medites_actualites/absolute_url"
+                                       tal:condition="medites_actualites/absolute_url">    
+                                        <img tal:define="scales_image medites_actualites/@@images; maVariable python:scales_image.scale('image', scale='preview')"
+                                             tal:attributes="src maVariable/url; alt string:Photo du ${medites_actualites/title}; class string:img-all"
+                                             tal:condition="medites_actualites/image" />   
+                                        <figcaption>
+                                            <h2 tal:content="medites_actualites/Title" />
+                                            
+                                            <span class="bouton">
+                                                <i class="fa fa-chevron-circle-down fa-2x"></i>
+                                            </span>
+                                        </figcaption>
+                                    </a>    
+                                </figure>
+                            </div>
+                        </div>
+                    </div>          
+                </section>  
+                <div class="container-fluid gradient"></div>
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+  			</metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

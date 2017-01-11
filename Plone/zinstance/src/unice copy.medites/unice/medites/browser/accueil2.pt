@@ -1,0 +1,150 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="not:context/@@plone_portal_state/anonymous">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="context/@@plone_portal_state/anonymous"
+    define="infos view/infos;
+            scales context/@@images;">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core"
+                        tal:define="widgets nocall:context/@@view">
+               <!--  <section class="container-fluid emplacement embed-responsive">
+                    <iframe style="" src="//player.vimeo.com/video/110353157" width="" height="" frameborder="0"></iframe>
+                </section> -->
+<!--            <section class="container-fluid emplacement embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item" style="" src="//player.vimeo.com/video/110353157" width="" height="" frameborder="0"></iframe>
+                </section> -->
+
+                <section class="container-fluid emplacement">
+                    <a href="parcours-pedagogiques/ocean-observation-et-decouverte" title="Rends toi directement sur le parcours en cliquant sur l'image">
+                        <img src="++resource++unice.medites.images/accueil_parcours-ocean.jpg" alt="" class="img-responsive" border="0" />
+                    </a>    
+                </section>
+
+                <section class="container-fluid dark accueil">
+                    <div class="row cs-style-3 grid">
+                        <div class="row-same-height row-full-height">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-md-height col-full-height">
+                                <div class="item">
+                                    <div class="content presentation accueil"> 
+                                        <h1>MEDITES en quelques mots...</h1>
+                                        <div class="visible-md visible-lg" tal:content="structure widgets/++widget++contenu/render"></div>
+                                        <div class="visible-lg" tal:content="structure widgets/++widget++contenu_suite/render"></div>
+                                        <a class="btn btnPerso pull-right" href="#" role="button">Pr&eacute;sentation d&eacute;taill&eacute;e</a>   
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-md-height col-full-height">
+                                <div class="col-xs-6 col-sm-12 col-md-6 col-full-height">  
+                                    <div class="item bloc-partenaires "> 
+                                        <figure>
+                                            <a tal:attributes="href context/bloc1_lien; title string:Voir la page">
+                                                <img tal:define="scales_accueil context/@@images; maVariable python:scales_accueil.scale('bloc1_image', scale='accueil-partenaire')"
+                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Image de ${context/bloc1_titre}"
+                                                     tal:condition="context/bloc1_image" />
+                                                <figcaption>
+                                                    <h2 tal:content="context/bloc1_titre" tal:condition="context/bloc1_titre" />
+                                                    <span class="visible-lg" tal:content="context/bloc1_contenu" tal:condition="context/bloc1_contenu"></span>   
+                                                </figcaption>
+                                            </a>    
+                                        </figure>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-12 col-md-6 col-half-height">  
+                                    <div class="item bloc-tpHistEvo ">
+                                       <figure>
+                                            <a tal:attributes="href context/bloc2_lien; title string:Voir la page">
+                                                <img tal:define="scales_accueil context/@@images; maVariable python:scales_accueil.scale('bloc2_image', scale='accueil-bloc')"
+                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Image de ${context/bloc2_titre}"
+                                                     tal:condition="context/bloc2_image" />
+                                                <figcaption>
+                                                    <h2 tal:content="context/bloc2_titre" tal:condition="context/bloc2_titre" />
+                                                    <span class="visible-lg" tal:content="context/bloc2_contenu" tal:condition="context/bloc2_contenu"></span>   
+                                                </figcaption>
+                                            </a>    
+                                        </figure>
+                                    </div>
+                                    <div class="item bloc-sciNum ">
+                                       <figure>
+                                            <a tal:attributes="href context/bloc4_lien; title string:Voir la page">
+                                                <img tal:define="scales_accueil context/@@images; maVariable python:scales_accueil.scale('bloc4_image', scale='accueil-bloc')"
+                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Image de ${context/bloc4_titre}"
+                                                     tal:condition="context/bloc4_image" />
+                                                <figcaption>
+                                                    <h2 tal:content="context/bloc4_titre" tal:condition="context/bloc4_titre"/>
+                                                    <span class="visible-lg" tal:content="context/bloc4_contenu" tal:condition="context/bloc4_contenu"></span>   
+                                                </figcaption>
+                                            </a>    
+                                        </figure>
+                                    </div>    
+                                </div>    
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-md-height col-full-height">
+                                <div class="col-xs-6 col-sm-12 col-md-6 col-half-height">  
+                                    <div class="item bloc-biodiv ">
+                                       <figure>
+                                            <a tal:attributes="href context/bloc3_lien; title string:Voir la page">
+                                                <img tal:define="scales_accueil context/@@images; maVariable python:scales_accueil.scale('bloc3_image', scale='accueil-bloc')"
+                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Image de ${context/bloc3_titre}"
+                                                     tal:condition="context/bloc3_image" />
+                                                <figcaption>
+                                                    <h2 tal:content="context/bloc3_titre" tal:condition="context/bloc3_titre" />
+                                                    <span class="visible-lg" tal:content="context/bloc3_contenu" tal:condition="context/bloc3_contenu"></span>   
+                                                </figcaption>
+                                            </a>    
+                                        </figure>
+                                    </div>
+                                    <div class="item bloc-terOceUni ">
+                                        <figure>
+                                            <a tal:attributes="href context/bloc5_lien; title string:Voir la page">
+                                                <img tal:define="scales_accueil context/@@images; maVariable python:scales_accueil.scale('bloc5_image', scale='accueil-bloc')"
+                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Image de ${context/bloc5_titre}"
+                                                     tal:condition="context/bloc5_image" />
+                                                <figcaption>
+                                                    <h2 tal:content="context/bloc5_titre" tal:condition="context/bloc5_titre" />
+                                                    <span class="visible-lg" tal:content="context/bloc5_contenu" tal:condition="context/bloc5_contenu"></span>   
+                                                </figcaption>
+                                            </a>    
+                                        </figure>
+                                    </div>
+                                </div>    
+                                <div class="col-xs-6 col-sm-12 col-md-6 col-half-height">
+                                    <div class="item bloc-vivMatTech ">
+                                        <figure>
+                                            <a tal:attributes="href context/bloc6_lien; title string:Voir la page">
+                                                <img tal:define="scales_accueil context/@@images; maVariable python:scales_accueil.scale('bloc6_image', scale='accueil-bloc')"
+                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Image de ${context/bloc6_titre}"
+                                                     tal:condition="context/bloc6_image" />
+                                                <figcaption>
+                                                    <h2 tal:content="context/bloc6_titre" tal:condition="context/bloc6_titre" />
+                                                    <span class="visible-lg" tal:content="context/bloc6_contenu" tal:condition="context/bloc6_contenu"></span>   
+                                                </figcaption>
+                                            </a>    
+                                        </figure>
+                                    </div>
+                                    <div class="item bloc-actuMedites ">
+                                        <figure>
+                                            <a tal:attributes="href context/bloc7_lien; title string:Voir la page">
+                                                <img tal:define="scales_accueil context/@@images; maVariable python:scales_accueil.scale('bloc7_image', scale='accueil-bloc')"
+                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Image de ${context/bloc7_titre}"
+                                                     tal:condition="context/bloc7_image" />
+                                                <figcaption>
+                                                    <h2 tal:content="context/bloc7_titre" tal:condition="context/bloc7_titre" />
+                                                    <span class="visible-lg" tal:content="context/bloc7_contenu" tal:condition="context/bloc7_contenu"></span>   
+                                                </figcaption>
+                                            </a>    
+                                        </figure>          
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+  			</metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

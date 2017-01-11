@@ -1,0 +1,326 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master">
+
+    <metal:content-core fill-slot="content-core">
+
+        <!-- ============================== -->
+        <!-- MACRO STRUCTURE HTML BOOTSTRAP -->
+        <!-- ============================== -->
+        <metal:block define-macro="master">
+
+            <!DOCTYPE html>
+            <html>
+                <head xmlns="http://www.w3.org/1999/xhtml"
+                  xmlns:metal="http://xml.zope.org/namespaces/metal"
+                  xmlns:tal="http://xml.zope.org/namespaces/tal">
+
+                    <meta charset="utf-8">
+                    <title tal:content="context/Title"/>
+                    <meta name="description" tal:attributes="content context/Description"/>
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+                    <script src="//code.jquery.com/jquery-latest.min.js"></script>
+                    <link href="++resource++unice.medites.stylesheets/libs/bootstrap.min.css" rel="stylesheet" />
+                    <link href="++resource++unice.medites.stylesheets/libs/font-awesome.min.css" rel="stylesheet" />
+                    <!--<link href="++resource++unice.medites.stylesheets/styles.css" rel="stylesheet">-->
+                    <link href="++resource++unice.medites.stylesheets/style.css" rel="stylesheet" />
+                    <link href="http://fonts.googleapis.com/css?family=Roboto:100italic,100,300italic,300,400italic,400,500italic,500,700italic,700,900italic,900" rel="stylesheet" type="text/css" />
+
+                    <link href="++resource++unice.medites.javascripts/libs/lightbox/dist/ekko-lightbox.min.css" rel="stylesheet" />
+                    <!-- eye hawk -->
+                    <link rel="stylesheet"  href="++resource++unice.medites.javascripts/libs/hawkeye/css/jquery-hawkeye-1.2.css" type="text/css" media="all" />
+                    <script type="text/javascript" src="++resource++unice.medites.javascripts/libs/hawkeye/js/jquery-hawkeye-1.2.min.js"></script>
+                    <script src="++resource++unice.medites.javascripts/libs/jquery.cookie.js"></script>
+                    <script src="++resource++unice.medites.javascripts/libs/hover-effect/modernizr.custom.js"></script>
+                    <link href="++resource++unice.medites.javascripts/libs/hover-effect/component.css" rel="stylesheet" />
+                    <link href="++resource++unice.medites.javascripts/libs/hover-effect/default.css" rel="stylesheet" />
+                    <link href="forms.css" rel="stylesheet" />
+                    <link href="authoring.css" rel="stylesheet" />
+
+                    <!--[if lt IE 9]>
+                        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+                        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+                    <![endif]-->   
+                </head>
+
+                <body role="document">
+
+                    <metal:block use-macro="context/medites_macros/macros/navbar"></metal:block>
+
+                    <section class="container-fluid" role="main">
+                        <metal:block define-slot="body"></metal:block>
+                    </section>
+      
+                    <script src="++resource++unice.medites.javascripts/libs/offcanvas.js"></script>  <!-- menu responsive -->
+                    <script src="++resource++unice.medites.javascripts/libs/bootstrap.min.js"></script>
+                    <script src="livesearch.js"></script>
+                    <script src="++resource++unice.medites.javascripts/libs/ie10-viewport-bug-workaround.js"></script>
+                    <!-- menu responsive -->
+<!--                     <script src="++resource++unice.medites.javascripts/libs/offcanvas.js"></script>  
+ -->                    <!-- lightbox -->
+                    <script src="++resource++unice.medites.javascripts/libs/lightbox/dist/ekko-lightbox.min.js"></script>
+                    <script src="++resource++unice.medites.javascripts/scripts.js"></script> 
+                    <script src="++resource++unice.medites.javascripts/libs/hover-effect/toucheffects.js"></script>
+                    <script src="++resource++unice.medites.javascripts/libs/fittext/jquery.fittext.js"></script>
+                    <script type="text/javascript">         
+                        $("h2").fitText(0.7);
+                        $("figcaption h3").fitText(1.15);
+                        $(".presentation").fitText(3.7, { minFontSize: '12px', maxFontSize: '16px' });
+                    </script>
+                </body>
+            </html>
+
+        </metal:block>
+
+        <!-- ===================== -->
+        <!-- MACRO MENU NAVIGATION -->
+        <!-- ===================== -->
+        <metal:block define-macro="navbar">
+
+            <header>
+                <div class="container-fluid entete">
+                    <ul class="nav navbar-left visible-lg">
+                        <li><a href="#" title=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                        <li><a href="#" title=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                        <li><a href="#" title=""><i class="fa fa-google-plus fa-2x"></i></a></li>
+                    </ul>
+                </div>
+
+
+            <nav class="navbar navbar-default">
+              <div class="container-fluid">
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                </div>
+                <a class="logo" tal:attributes="href context/portal_url">
+                    <img class="visible-lg" src="++resource++unice.medites.images/logo-MEDITES_100px.png" width="240" class="img-responsive" alt="Logo Medites"/>
+                    <img class="visible-md" src="++resource++unice.medites.images/logo-MEDITES_100px.png" width="200" class="img-responsive" alt="Logo Medites"/>
+                    <img class="visible-sm" src="++resource++unice.medites.images/logo-MEDITES_100px.png" width="180" class="img-responsive" alt="Logo Medites"/>
+                    <img class="visible-xs" src="++resource++unice.medites.images/logo-MEDITES_100px.png" width="140" class="img-responsive" alt="Logo Medites"/>
+                </a>
+                <div class="collapse navbar-collapse" id="navbar" tal:define="navigation view/navigation">
+                    <ul class="nav navbar-nav">
+                        <tal:block repeat="item python:navigation['items']">
+                            <li tal:condition="not:item/contents"><a tal:attributes="href item/item/absolute_url" tal:content="item/item/title" /></li>
+                            <li class="dropdown" tal:condition="item/contents">
+                                <a tal:attributes="href item/item/absolute_url" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <tal:block content="item/item/title"/><span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li tal:repeat="subitem item/contents">
+                                        <a tal:attributes="href subitem/absolute_url" tal:content="subitem/title" role="menuitem"  />
+                                    </li>
+                                </ul>
+                            </li>
+                        </tal:block>
+                        <li class="dropdown">
+                            <a  class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </a>    
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <tal:block tal:define="navigation_root_url context/@@plone_portal_state/navigation_root_url;
+                                        search_input_id string:searchGadget;" i18n:domain="plone">
+                                        <form id="searchGadget_form" action="@@search" class="navbar-form navbar-right" role="search"
+                                                  tal:attributes="action string:${navigation_root_url}/@@search; id string:${search_input_id}_form;">
+                                            <div class="LSBox">
+                                                <div class="form-group has-feedback">
+                                                    <label class="sr-only" tal:attributes="for search_input_id" i18n:translate="text_search">Search Site</label>
+                                                    <input name="SearchableText" type="text" size="15" value="" title="Search Site" placeholder="Search Site" accesskey="4"
+                                                               i18n:attributes="title title_search_site;  placeholder title_search_site"
+                                                               tal:attributes="value request/form/SearchableText|nothing; id search_input_id"
+                                                               class="form-control searchField" />
+                                                    <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+                                                    <span class="sr-only">(Recherche)</span>
+                                                </div>
+                                                <div class="LSResult" id="LSResult">
+                                                    <div class="LSShadow" id="LSShadow"></div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </tal:block>
+                                </li>
+                            </ul>            
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            </nav>
+
+
+     <!--            <nav role="navigation">
+                    <div class="container">
+                        <a class="logo" tal:attributes="href context/portal_url">
+                            <img class="visible-lg" src="++resource++unice.medites.images/logo-MEDITES_100px.png" width="240" class="img-responsive" alt="Logo Medites"/>
+                            <img class="visible-md" src="++resource++unice.medites.images/logo-MEDITES_100px.png" width="200" class="img-responsive" alt="Logo Medites"/>
+                            <img class="visible-sm" src="++resource++unice.medites.images/logo-MEDITES_100px.png" width="180" class="img-responsive" alt="Logo Medites"/>
+                            <img class="visible-xs" src="++resource++unice.medites.images/logo-MEDITES_100px.png" width="140" class="img-responsive" alt="Logo Medites"/>
+                        </a>
+
+                        <div class="row row-offcanvas row-offcanvas-right">      
+
+                            <div id="navbar" class="visible-md visible-lg" tal:define="navigation view/navigation">
+                                <ul class="nav navbar-right">
+                                    <tal:block repeat="item python:navigation['items']">
+                                        <li tal:condition="not:item/contents">
+                                            <a tal:attributes="href item/item/absolute_url" tal:content="item/item/title"/>
+                                        </li>
+                                        
+                                        <li tal:condition="item/contents" class="dropdown">
+                                            <a tal:attributes="href item/item/absolute_url" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false">
+                                                <tal:block content="item/item/title"/>
+                                                <span class="caret"></span>
+                                            </a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li tal:repeat="subitem item/contents">
+                                                    <a tal:attributes="href subitem/absolute_url" tal:content="subitem/title" role="menuitem"  />
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </tal:block>
+                                </ul>                               
+                            </div>
+
+
+
+
+
+
+
+                            <div class="visible-xs visible-sm" role="navigation">
+                                <div class="container">
+                                    <div class="navbar-header">
+                                        <button type="button" class="navbar-toggle" data-toggle="offcanvas" data-target=".navbar-collapse#myBar"> 
+                                            <span class="icon-bar"></span> 
+                                            <span class="icon-bar"></span> 
+                                            <span class="icon-bar"></span> 
+                                        </button>
+                                    </div>
+                                    <div class="sidebar-offcanvas showhide navbar-collapse" id="sidebar" role="navigation"> 
+                                        <div class="sidebar-nav" tal:define="navigation view/navigation">
+                                            <ul class="nav navbar-nav">
+                                                <tal:block repeat="item python:navigation['items']">
+                                                    <li tal:condition="not:item/contents">
+                                                        <a tal:attributes="href item/item/absolute_url;class string:dropdown-toggle; data-toggle string:dropdown; role string:button; aria-expanded string:false;" tal:content="item/item/title" />
+                                                    </li>
+                                                    <li tal:condition="item/contents" class="dropdown">
+                                                        <a tal:attributes="href item/item/absolute_url" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" role="button" aria-expanded="false">
+                                                            <tal:block content="item/item/title"/>
+                                                            <span class="caret"></span>
+                                                        </a>
+                                                        <ul class="dropdown-menu" role="menu">
+                                                            <li tal:repeat="subitem item/contents">
+                                                                <a tal:attributes="href subitem/absolute_url" tal:content="subitem/title" role="menuitem"  />
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </tal:block>    
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>     
+                            </div><!-- sidebar nav --> 
+<!--
+                        </div>
+                    </div>        
+                </nav> -->
+            </header>        
+        </metal:block>
+
+        <!-- ========================= -->
+        <!-- MACRO MENU FOOTER ACCUEIL -->
+        <!-- ========================= -->
+        <metal:block define-macro="footerAccueilNavbar">
+            <div class="container-fluid gradient"></div>
+            <footer class="container-fluid">
+                <div class="container">       
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <ul>
+                            <li>Pr&eacute;sentation</li>
+                            <li><a href="#" title="../presentation">Qui sommes-nous ?</a></li>
+                            <li><a href="#" title="../partenaires">Liste de nos partenaires</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <ul>
+                            <li>Informations pratiques</li>
+                            <li><a href="#" title="">Documents &agrave; t&eacute;l&eacute;charger</a></li>
+                            <li><a href="#" title="">FAQ</a></li>
+                        </ul>               
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <ul>
+                            <li>Divers</li>
+                            <li><a href="../actualites-csti" title="">Actualit&eacute; CSTI</a></li>
+                            <li><a href="../contact" title="">Contactez-nous</a></li>
+                            <li><a href="http://localhost:8080/Medites/login" title="">Connexion</a></li>
+                        </ul>               
+                    </div>
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="http://www.gouvernement.fr/investissements-d-avenir-cgi" title="Se rendre sur le site internet">
+                            <img src="++resource++unice.medites.images/logo-invAvenir.png" width="150" class="img-responsive" alt="Logo Investissement d'Avenir"/>
+                        </a>              
+                    </div> 
+                </div>
+                <div class="subFooter">
+                    &copy; 2015 MEDITES - <a href="#" title="">Mentions l&eacute;gales</a> - <a href="#" title="">Plan du site</a> - <a href="#" class="scrollup"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
+                </div>
+                
+            </footer>
+        </metal:block>    
+
+        <!-- ================== -->
+        <!-- MACRO MENU FOOTER  -->
+        <!-- ================== -->
+        <metal:block define-macro="footerNavbar">
+            <div class="container-fluid gradient"></div>
+            <footer class="container-fluid">
+                <a href="#menuFooter" data-toggle="collapse" aria-expanded="false" class="menuFooterButton"><i class="fa fa-bars fa-2x"></i></a>
+                <div id="menuFooter" class="collapse">
+                    <div class="container">         
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <ul>
+                                <li>Pr&eacute;sentation</li>
+                                <li><a href="#" title="http://localhost:8080/Medites/presentation">Qui sommes-nous ?</a></li>
+                                <li><a href="#" title="http://localhost:8080/Medites/partenaires">Liste de nos partenaires</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <ul>
+                                <li>Informations pratiques</li>
+                                <li><a href="#" title="">Documents &agrave; t&eacute;l&eacute;charger</a></li>
+                                <li><a href="#" title="">FAQ</a></li>
+                            </ul>               
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <ul>
+                                <li>Divers</li>
+                                <li><a href="http://localhost:8080/Medites/actualites-csti" title="">Actualit&eacute; CSTI</a></li>
+                                <li><a href="http://localhost:8080/Medites/contact" title="">Contactez-nous</a></li>
+                                <li><a href="http://localhost:8080/Medites/login" title="">Connexion</a></li>
+                            </ul>               
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-3">
+                            <a href="http://www.gouvernement.fr/investissements-d-avenir-cgi" title="Se rendre sur le site internet">
+                                <img src="++resource++unice.medites.images/logo-invAvenir.png" width="150" class="img-responsive" alt="Logo Investissement d'Avenir"/>
+                            </a>              
+                        </div>                         
+                    </div>
+                </div>
+            
+                <div class="subFooter">
+                    &copy; 2015 MEDITES - <a href="#" title="">Mentions l&eacute;gales</a> - <a href="#" title="">Plan du site</a> - <a href="#navbar"><i class="fa fa-chevron-circle-up fa-2x"></i></a>
+                </div>
+            </footer>
+        </metal:block>   
+
+
+    </metal:content-core>
+</html>

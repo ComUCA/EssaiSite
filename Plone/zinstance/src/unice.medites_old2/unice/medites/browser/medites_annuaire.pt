@@ -1,0 +1,62 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            variableMembres python:view.champsRepeat('membre');">
+
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">		
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core" tal:define="widgets nocall:context/@@view">
+
+<!-- contenu --> 
+                <section class="container-fluid dark">                 
+                    <div class="content presentation"> 
+                        <ol class="breadcrumb">
+                            <li><a href="../accueil">Accueil</a></li>
+                            <li tal:content="infos/title" tal:attributes="class string:active" />
+                        </ol>
+                        <h1 tal:content="infos/title"></h1>
+                    </div>
+                </section>
+                <section class="container-fluid dark annuaire">
+                    <table class="sortable"> 
+                        <thead> 
+                            <tr> 
+                                <th><i class="fa fa-user fa-2x"></i><!--  Nom - Prénom --></th> 
+                                <th><i class="fa fa-envelope fa-2x"></i><!--  Email --></th> 
+                          <!--  Numéro de téléphone      <th><i class="fa fa-phone fa-2x"></i> </th> -->
+                                <th><i class="fa fa-home fa-2x"></i><!--  Structure --></th> 
+                                <th><i class="fa fa-cogs fa-2x"></i><!--  Parcours scientifique --></th>
+                            </tr>    
+                        </thead> 
+                        <tbody> 
+                            <tr tal:repeat="membre variableMembres"> 
+                                <td><span tal:content="membre/title" class="nomPrenom" />&nbsp;<span tal:content="membre/prenom" class="nomPrenom" tal:condition="membre/prenom" /></td> 
+                                <td>
+                                    <a tal:condition="membre/email" tal:attributes="href string:mailto: ${membre/email}; title string:Lui écrire un email"><span tal:content="membre/email"/></a><br/>
+                                    <a tal:condition="membre/second_email" tal:attributes="href string:mailto: ${membre/second_email}; title string:Lui écrire un email"><span tal:content="membre/second_email"/></a>
+                                </td> 
+                       <!--  Numéro de téléphone            <td>
+                                    <span tal:condition="membre/telephone" tal:content="membre/telephone" />
+                                </td> -->
+                                <td>
+                                    <span tal:condition="membre/structure" tal:content="membre/structure" />
+                                </td> 
+                                <td>
+                                    <span tal:condition="membre/parcours_scientifique" tal:content="membre/parcours_scientifique" class="nettoyage" />
+                                </td> 
+                            </tr> 
+                        </tbody> 
+                    </table>                       
+                </section>  
+                <div class="container-fluid gradient"></div>
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+  			</metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

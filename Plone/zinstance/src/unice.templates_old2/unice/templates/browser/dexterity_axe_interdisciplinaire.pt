@@ -1,0 +1,207 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="main"
+    tal:define="
+    _ python:view.traduction; locale view/locale;
+
+    contenus python:view.getFolderContentsByTypes(context, False);
+    intervenants python:view.getIntervenantsByTypes(contenus['responsable_axe_interdisciplinaire']) if 'responsable_axe_interdisciplinaire' in contenus else {};
+    labs view/laboratoires; access view/access;
+    banniere python:context.banniere or 'geometric01';
+    style_banniere string:background-image: url('++resource++unice.templates.images/banners/${banniere}.jpg');">
+
+    <div class="axe">
+
+        <div class="banniere">
+            <!-- <div tal:condition="context/contentleadimage" class="contentleadimage">
+                <img tal:replace="structure context/@@images/contentleadimage/full"/>
+            </div> -->
+            <div class="title" tal:attributes="style style_banniere">
+                <div>
+                    <h1 id="parent-fieldname-title" tal:content="context/Title"/>
+                    <div tal:condition="python:locale=='fr'" class="dropdown">
+                        <button class="btn btn-primary btn-inverted dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+                            <i class="fa fa-bars"></i> <strong>Projets de l'axe</strong> <span class="caret"></span>
+                        </button>
+                        <ul tal:condition="python:'projet_axe_interdisciplinaire' in contenus" class="dropdown-menu" role="menu">
+                            <li tal:repeat="projet contenus/projet_axe_interdisciplinaire" role="presentation">
+                                <a tal:attributes="data-target string:#projet${repeat/projet/number}" data-toggle="modal" href="#">
+                                    Projet <tal:block content="repeat/projet/number"/> : <tal:block content="projet/titre_court"/>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <a tal:condition="context/site_internet" tal:attributes="href context/site_internet"
+                        class="btn btn-primary btn-inverted">
+                        <i class="fa fa-external-link"></i>
+                        <tal:block content="python:_('Site internet')"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <h2>
+            <tal:block content="python:_('Responsables')"/>
+            <a tal:condition="access/access" href="++add++responsable_axe_interdisciplinaire" class="btn btn-warning btn-xs">
+                <i class="fa fa-plus fa-lg"></i> Ajouter
+            </a>
+        </h2>
+        <ul class="list-inline" tal:condition="python:'Responsable' in intervenants">
+            <tal:block repeat="i python:intervenants['Responsable']">
+                <li tal:define="
+                    lab python:', <a href=\'%s\'>%s</a>' % (labs[i.laboratoire]['url'], i.laboratoire.upper()) if i.laboratoire else '';
+                    email python:', <a href=\'mailto:%s\'>%s</a>' % (i.adresse_email, i.adresse_email) if i.adresse_email else '';
+                    sep python:'' if repeat['i'].end else ' ;; '">
+                    <tal:block content="structure python:'%s%s%s%s' % (i.Title().decode('utf-8'), lab, email, sep)"/>
+                    <tal:block condition="access/access">
+                        <a tal:attributes="href string:${i/absolute_url}/edit" class="btn btn-warning btn-xs">
+                            <i class="fa fa-pencil fa-lg"></i>&nbsp;<span class="sr-only">Modifier</span>
+                        </a>
+                        <a tal:attributes="href string:${i/absolute_url}/delete_confirmation" class="btn btn-warning btn-xs">
+                            <i class="fa fa-trash-o fa-lg"></i>&nbsp;<span class="sr-only">Supprimer</span>
+                        </a>
+                    </tal:block>
+                </li>
+            </tal:block>
+        </ul>
+
+        <h2>
+            <tal:block content="python:_('Comité de pilotage')"/>
+        </h2>
+        <ul class="list-inline" tal:condition="python:u'Comité de pilotage' in intervenants">
+            <tal:block repeat="i python:intervenants[u'Comité de pilotage']">
+                <li tal:define="
+                    lab python:' (<a href=\'%s\'>%s</a>)' % (labs[i.laboratoire]['url'], i.laboratoire.upper()) if i.laboratoire else '';
+                    sep python:'' if repeat['i'].end else ' ;; '">
+                    <tal:block content="structure python:'%s%s%s' % (i.Title().decode('utf-8'), lab, sep)"/>
+                    <tal:block condition="access/access">
+                        <a tal:attributes="href string:${i/absolute_url}/edit" class="btn btn-warning btn-xs">
+                            <i class="fa fa-pencil fa-lg"></i>&nbsp;<span class="sr-only">Modifier</span>
+                        </a>
+                        <a tal:attributes="href string:${i/absolute_url}/delete_confirmation" class="btn btn-warning btn-xs">
+                            <i class="fa fa-trash-o fa-lg"></i>&nbsp;<span class="sr-only">Supprimer</span>
+                        </a>
+                    </tal:block>
+                </li>
+            </tal:block>
+        </ul>
+
+        <h2>
+            <tal:block content="python:_('Résumé')"/>
+        </h2>
+        <tal:block condition="context/resume" content="structure context/resume/output"/>
+
+        <h2>
+            <tal:block content="python:_('Thèmes principaux')"/>
+        </h2>
+        <tal:block condition="context/themes_principaux" content="structure context/themes_principaux/output"/>
+
+        <tal:block condition="python:locale=='fr'">
+            <h2>
+                <tal:block content="python:_('Laboratoires impliqués')"/>
+                <a tal:condition="access/access" href="++add++laboratoire_axe_interdisciplinaire" class="btn btn-warning btn-xs">
+                    <i class="fa fa-plus fa-lg"></i> Ajouter
+                </a>
+            </h2>
+            <ul class="fa-ul" tal:condition="python:'laboratoire_axe_interdisciplinaire' in contenus">
+                <tal:block repeat="lab_axe contenus/laboratoire_axe_interdisciplinaire">
+                    <tal:block condition="python:lab_axe.laboratoire and lab_axe.laboratoire in labs">
+                        <li tal:define="lab python:labs[lab_axe.laboratoire]">
+                            <i class="fa-li fa fa-angle-right"></i>
+                            <a tal:attributes="href lab/url" tal:content="lab/title"/>
+                            <tal:block condition="access/access">
+                                <a tal:attributes="href string:${lab_axe/absolute_url}/edit" class="btn btn-warning btn-xs">
+                                    <i class="fa fa-pencil fa-lg"></i>&nbsp;<span class="sr-only">Modifier</span>
+                                </a>
+                                <a tal:attributes="href string:${lab_axe/absolute_url}/delete_confirmation" class="btn btn-warning btn-xs">
+                                    <i class="fa fa-trash-o fa-lg"></i>&nbsp;<span class="sr-only">Supprimer</span>
+                                </a>
+                            </tal:block>
+                        </li>
+                    </tal:block>
+                    <tal:block condition="python:not(lab_axe.laboratoire and lab_axe.laboratoire in labs)">
+                        <li>
+                            <i class="fa-li fa fa-angle-right"></i>
+                            <a tal:omit-tag="not:lab_axe/autre_structure_lien" tal:attributes="href lab_axe/autre_structure_lien">
+                                <tal:block content="lab_axe/Title"/>
+                            </a>
+                            <tal:block condition="access/access">
+                                <a tal:attributes="href string:${lab_axe/absolute_url}/edit" class="btn btn-warning btn-xs">
+                                    <i class="fa fa-pencil fa-lg"></i>&nbsp;<span class="sr-only">Modifier</span>
+                                </a>
+                                <a tal:attributes="href string:${lab_axe/absolute_url}/delete_confirmation" class="btn btn-warning btn-xs">
+                                    <i class="fa fa-trash-o fa-lg"></i>&nbsp;<span class="sr-only">Supprimer</span>
+                                </a>
+                            </tal:block>
+                        </li>
+                    </tal:block>
+                </tal:block>
+            </ul>
+        </tal:block>
+
+        <tal:block condition="python:locale=='fr'">
+            <h2>
+                Projets ou chantiers spécifiques en cours
+                <a tal:condition="access/access" href="++add++projet_axe_interdisciplinaire" class="btn btn-warning btn-xs">
+                    <i class="fa fa-plus fa-lg"></i> Ajouter
+                </a>
+            </h2>
+            <ul class="fa-ul" tal:condition="python:'projet_axe_interdisciplinaire' in contenus">
+                <li tal:repeat="projet contenus/projet_axe_interdisciplinaire">
+                    <a tal:attributes="data-target string:#projet${repeat/projet/number}" data-toggle="modal" href="#">
+                        <i class="fa-li fa fa-chevron-right"></i>
+                        <strong>Projet <tal:block content="repeat/projet/number"/> : <tal:block content="projet/Title"/></strong>
+                    </a>
+                    <tal:block condition="access/access">
+                        <a tal:attributes="href string:${projet/absolute_url}/edit" class="btn btn-warning btn-xs">
+                            <i class="fa fa-pencil fa-lg"></i>&nbsp;<span class="sr-only">Modifier</span>
+                        </a>
+                        <a tal:attributes="href string:${projet/absolute_url}/delete_confirmation" class="btn btn-warning btn-xs">
+                            <i class="fa fa-trash-o fa-lg"></i>&nbsp;<span class="sr-only">Supprimer</span>
+                        </a>
+                    </tal:block>
+                </li>
+            </ul>
+        </tal:block>
+
+    </div>
+
+    <tal:block tal:condition="python:'projet_axe_interdisciplinaire' in contenus"
+        repeat="projet contenus/projet_axe_interdisciplinaire">
+
+        <div tal:define="contenus_projet python:view.getFolderContentsByTypes(projet, False);
+            intervenants_projet python:view.getIntervenantsByTypes(contenus_projet['responsable_axe_interdisciplinaire']) if 'responsable_axe_interdisciplinaire' in contenus_projet else {};"
+            tal:attributes="id string:projet${repeat/projet/number}"
+            class="modal fade projet" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header" tal:attributes="style style_banniere">
+                        <div>
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+                            <h3 class="modal-title">
+                                Projet <tal:block content="repeat/projet/number"/> : <tal:block content="projet/Title"/>
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+
+                        <metal:block use-macro="context/projet_axe_interdisciplinaire_view/macros/projet"></metal:block>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </tal:block>
+
+</metal:main>
+
+</body>
+</html>
+

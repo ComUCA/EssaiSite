@@ -1,0 +1,81 @@
+.espe_parcours {
+
+    div.row {
+        margin-bottom: 20px;
+
+        & > div {
+
+            div.btn {
+                cursor: auto;
+
+                a {
+                    text-decoration: underline;
+                }
+
+                &.btn-primary {
+                    background-color: #192F3D;
+                    border-color: #192F3D;
+
+                    &.btn-inverted {
+                        background-color: #FFF !important;
+                        color: #192F3D !important;
+                    }
+                }
+                &.btn-warning {
+                    background-color: #EC9858;
+                    border-color: #EC9858;
+
+                    &.btn-inverted {
+                        background-color: #FFF !important;
+                        color: #EC9858 !important;
+                    }
+                }
+                &.btn-info {
+                    background-color: #2791A3;
+                    border-color: #2791A3;
+
+                    &.btn-inverted {
+                        background-color: #FFF !important;
+                        color: #2791A3 !important;
+                    }
+                }
+
+                &.btn-primary, &.btn-info, &.btn-warning {
+                    min-height: 38px;
+                    line-height: 38px;
+                    padding-top: 0;
+                    padding-bottom: 0;
+
+                }
+                &.btn-default {
+                    @media (min-width: 768px) {
+                        min-height: 86px;
+                    }
+                    padding-top: 2px;
+                    padding-bottom: 2px;
+                    color: #2791A3;
+                    border-color: #2791A3;
+                    background-color: #FFF;
+                }
+            }
+
+            ul {
+                white-space: normal;
+                text-align: left;
+                margin: 0 !important;
+                padding-left: 10px;
+                padding-right: 10px;
+
+                li {
+                    display: inline-block;
+
+                    &:before {
+                        content: "\2022";
+                        margin-right: 0.25em;
+                    }
+                }
+            }
+        }
+    }
+
+}

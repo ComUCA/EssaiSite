@@ -1,0 +1,240 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+          scales context/@@images;
+          variableEtablissements python:view.champsRepeat('partenaires');
+          ">
+  <metal:block use-macro="context/medites_macros/macros/master">
+    <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+      <metal:content-core define-macro="content-core"
+                          tal:define="widgets nocall:context/@@view">
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1TFavxa1-vQFzsw360e2PyBIzhWv-tIE"></script>
+        <section class="row emplacement-normal row-same-height">
+<!-- contenu -->
+          <div class="dark col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-height col-lg-height col-full-height">
+            <div class="content presentation ">
+              <ol class="breadcrumb">
+                <li><a href="../accueil">Accueil</a></li>
+                <li class="active">MEDITES dans mon collège phase 1</li>
+              </ol>
+              <h1 tal:content="infos/title" tal:condition="infos/title"></h1>
+              <div tal:content="structure widgets/++widget++contenu/render" tal:condition="context/contenu" class="text-justify" />
+              <div id="legend" class="legendEtablissements hidden-xs">
+                <ul>
+                  <li><img src="++resource++unice.medites.images/gmap/terOceUni.png" alt="" /> - Terre, Océan, Univers</li>
+                  <li><img src="++resource++unice.medites.images/gmap/sciNum.png" alt="" /> - Sciences du Numérique</li>
+                  <li><img src="++resource++unice.medites.images/gmap/biodiv.png" alt="" /> - Biodiversité</li>
+                  <li><img src="++resource++unice.medites.images/gmap/tpHistEvo.png" alt="" /> - Temps, Histoire, &Eacute;volution</li>
+                  <li><img src="++resource++unice.medites.images/gmap/vivMatTech.png" alt="" /> - Vivant, Matière, Technologie</li>
+                  <li><img src="++resource++unice.medites.images/gmap/toutesThema.png" alt="" /> - Plusieurs thématiques</li>
+                  <li><img src="++resource++unice.medites.images/gmap/p1.png" alt="" /> - Phase 1</li>
+                  <li><img src="++resource++unice.medites.images/gmap/p2.png" alt="" /> - Phase 2</li>                
+                </ul>  
+              </div>
+            </div>
+          </div>
+          <!-- carrousel -->
+          <div class="carto col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-height col-lg-height col-full-height embed-responsive zIndex1">
+            <div id="map" class="embed-responsive-item"></div>
+          </div>
+        </section>
+        <div class="displayNone scriptGoogleMap">
+          [<tal:block repeat="partenaires variableEtablissements">
+              ['<h4><tal:block condition="partenaires/title" replace="partenaires/title" /></h4><br/>
+                <div tal:condition="partenaires/adresse_postale" tal:content="structure partenaires/adresse_postale/output" />
+                <p tal:attributes="class string:google-${partenaires/classe};" tal:condition="partenaires/parcours" tal:content="partenaires/parcours" />
+                <u><a title="Ouvrir le contenu dans une fenêtre" data-toggle="modal" href="#" tal:attributes="data-target string:#${partenaires/getId}">Afficher le détail des séances</a></u>',
+            <tal:block condition="partenaires/latitude_googlemap" replace="structure partenaires/latitude_googlemap" />,
+            <tal:block condition="partenaires/longitude_googlemap" replace="structure partenaires/longitude_googlemap" />,
+            '++resource++unice.medites.images/gmap/<tal:block replace="partenaires/classe" condition="partenaires/classe" />-p1.png'],
+          </tal:block>]
+        </div>    
+        <section class="container-fluid partenaires colleges dark">
+          <div class="row cs-style-3 grid " >
+            <div class="col-xs-4 col-sm-3 col-md-2 col-lg-2" tal:repeat="partenaires variableEtablissements">
+              <div tal:attributes="class string:item bloc-${partenaires/classe};" tal:condition="partenaires/classe">
+                <figure>
+                  <h2 tal:condition="partenaires/college" tal:content="partenaires/college" />
+                  <p tal:condition="partenaires/ville" tal:content="partenaires/ville" />
+                  <p tal:content="partenaires/classe_etablissement" tal:condition="partenaires/classe_etablissement" />
+                  <h3 tal:content="partenaires/parcours" tal:condition="partenaires/parcours" />
+                  <a title="Ouvrir le contenu dans une fenêtre" data-toggle="modal" href="#" tal:attributes="data-target string:#${partenaires/getId}">
+                    <figcaption>
+                      <p class="noMargin">Afficher les séances</p>
+                    </figcaption>
+                  </a>
+                  <div tal:attributes="id partenaires/getId" class="modal fade bs-example-modal-lg modal-mdmc" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                          <h2 class="modal-title">MEDITES dans mon collège phase 1</h2>
+                        </div>
+                        <div class="modal-body">
+                          <div tal:attributes="id string:carrousel-${partenaires/getId}" class="carousel slide" data-ride="carousel" data-interval="false">                          
+                            <div class="carousel-inner" role="listbox">
+                              <div class="item active">
+                                <p tal:condition="partenaires/url_du_parcours">Parcours : <a tal:attributes="href partenaires/url_du_parcours" title="Se rendre sur la page du parcours" tal:content="partenaires/parcours"></a></p>
+                                <p tal:condition="partenaires/ville">Ville : <tal:block tal:content="partenaires/ville" /></p>
+                                <p tal:condition="partenaires/college">Collège : <tal:block tal:content="partenaires/college" /></p>
+                                <p tal:condition="partenaires/classe_etablissement">Classe : <tal:block tal:content="partenaires/classe_etablissement" /></p>
+                                <p tal:condition="partenaires/url_du_site_internet">Site internet : <a title="Accéder au site web de l'établissement" tal:attributes="href partenaires/url_du_site_internet" tal:content="partenaires/url_du_site_internet"></a></p>
+                              </div>
+                              <tal:block define="variableEtape python:view.champsRepeat('medites_dans_mon_college', partenaires);"> 
+                                <div tal:repeat="etape variableEtape" class="item">
+                                  <h2 tal:content="etape/title" />
+                                  <!-- <div class="dateSeance" tal:condition="etape/date">Date de la séance : <tal:block content="etape/date"/></div>  -->
+                                  <div tal:condition="etape/contenu" tal:content="structure etape/contenu/output" />
+                                  <hr tal:condition="etape/fichier_1" />
+                                  <h3 tal:condition="etape/fichier_1">Documents</h3>
+                                  <ul class="sansPuce col-md-12 col-lg-12 row" tal:condition="etape/fichier_1">
+                                    <li class="col-md-3 col-lg-3" tal:condition="etape/fichier_1">
+                                      <a tal:attributes="href string:${etape/absolute_url}/@@download/fichier_1/${etape/fichier_1/filename}" title="Télécharger le fichier">
+                                        <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('apercu_fichier_1', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" tal:condition="etape/apercu_fichier_1" />
+                                      </a>
+                                    </li>
+                                    <li class="col-md-3 col-lg-3" tal:condition="etape/fichier_2">
+                                      <a tal:attributes="href string:${etape/absolute_url}/@@download/fichier_2/${etape/fichier_2/filename}" title="Télécharger le fichier">
+                                        <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('apercu_fichier_2', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" tal:condition="etape/apercu_fichier_2" />
+                                      </a>
+                                    </li>
+                                    <li class="col-md-3 col-lg-3" tal:condition="etape/fichier_3">
+                                      <a tal:attributes="href string:${etape/absolute_url}/@@download/fichier_3/${etape/fichier_3/filename}" title="Télécharger le fichier">
+                                        <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('apercu_fichier_3', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" tal:condition="etape/apercu_fichier_3" />
+                                      </a>
+                                    </li>
+                                    <li class="col-md-3 col-lg-3" tal:condition="etape/fichier_4">
+                                      <a tal:attributes="href string:${etape/absolute_url}/@@download/fichier_4/${etape/fichier_4/filename}" title="Télécharger le fichier">
+                                        <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('apercu_fichier_4', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" tal:condition="etape/apercu_fichier_4" />
+                                      </a>
+                                    </li>
+                                  </ul>
+                                  <hr class="col-lg-12" tal:condition="etape/image_1" />
+                                  <h3 tal:condition="etape/image_1">Photos</h3>
+                                  <ul class="sansPuce col-md-12 col-lg-12 row" tal:condition="etape/image_1">
+                                    <li class="col-md-3 col-lg-3" tal:condition="etape/image_1">
+                                      <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('image_1', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" tal:condition="etape/image_1" />
+                                    </li>
+                                    <li class="col-md-3 col-lg-3" tal:condition="etape/image_2">
+                                      <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('image_2', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" tal:condition="etape/image_2" />
+                                    </li>
+                                    <li class="col-md-3 col-lg-3" tal:condition="etape/image_3">
+                                      <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('image_3', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" tal:condition="etape/image_3" />
+                                    </li>
+                                    <li class="col-md-3 col-lg-3" tal:condition="etape/image_4">
+                                      <img tal:define="scales_photo etape/@@images; maVariable python:scales_photo.scale('image_4', scale='preview')" tal:attributes="src maVariable/url; alt string:Photo de ${context/title}; class string:img-all" tal:condition="etape/image_4" />
+                                    </li>
+                                  </ul> 
+                                  <br/>
+                                  <a tal:attributes="href string:${etape/lien_vers_la_galerie}; title string:Se rendre sur la galerie Flickr" tal:condition="etape/lien_vers_la_galerie" class="pull-right">Plus de photos</a>
+                                </div>
+                              </tal:block>
+                            </div>
+                            <ol class="carousel-indicators">
+                              <li tal:attributes="data-target string:#carrousel-${partenaires/getId};" data-slide-to="0" class="active">Présentation</li>
+                              <tal:block define="variableEtape python:view.champsRepeat('medites_dans_mon_college', partenaires);"> 
+                                <li tal:repeat="etape variableEtape" tal:attributes="data-target string:#carrousel-${partenaires/getId}; data-slide-to etape/numero_de_l_etape">Séance <tal:block tal:content="etape/numero_de_l_etape"/></li>
+                              </tal:block>
+                            </ol>
+                            <a class="left carousel-control" tal:attributes="href string:#carrousel-${partenaires/getId}" role="button" data-slide="prev">
+                              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" tal:attributes="href string:#carrousel-${partenaires/getId}" role="button" data-slide="next">
+                              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn" data-dismiss="modal">Fermer</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </section>  
+
+        <script>
+
+          var googleScript = $(".scriptGoogleMap").html();
+          googleScript = googleScript.replace(/([A-Za-z])'([A-Za-z0-9])/g, "$1\\'$2");
+          var locations = eval(googleScript.replace(/\s+/g,' '));
+
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            scrollwheel: false,
+            center: new google.maps.LatLng(43.6882405,7.207712),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+          var styles = [
+            {
+              stylers: [ ]},{
+              featureType: "water",
+              elementType: "geometry",
+              stylers: [
+                { hue: "#139bd5" },
+                { lightness: -50 },
+                { visibility: "simplified" }
+              ]
+            },
+            {
+              featureType: "landscape",
+              elementType: "geometry",
+              stylers: [
+                { hue: "#4eaa33" },
+                { lightness: -10 },
+                { saturation: 40 },
+                { visibility: "simplified" }
+              ]
+            },
+            {
+              featureType: "road",
+              elementType: "geometry",
+              stylers: [
+                { hue: "#ccc" },
+                { lightness: 50 },
+                { visibility: "simplified" }
+              ]
+            },
+            {
+              featureType: "road",
+              elementType: "labels",
+              stylers: [
+                { visibility: "off" }
+              ]
+            }
+          ];
+          map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(document.getElementById('legend'));
+          map.setOptions({styles: styles});
+          var infowindow = new google.maps.InfoWindow();
+          
+          var marker, i;
+          for (i = 0; i < locations.length; i++) {
+            marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            map: map,
+            icon: locations[i][3]
+          });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+          }
+        </script>
+        <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+      </metal:content-core>
+    </div>
+  </metal:block>
+</tal:block>

@@ -1,0 +1,154 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="unice.filuns">
+
+    <include package="plone.app.contentmenu" zcml:condition="installed plone.app.contentmenu" />
+
+    <!-- PAGE TEMPLATES -->
+    <browser:page
+        name="filuns_fil_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="fil_collectionview.pt"/>
+
+    <browser:page
+        name="filuns_listing_view"
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="listing_collectionview.pt"/>
+    <browser:page
+        name="filuns_listing_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="listing_collectionview.pt"/>
+
+    <browser:page
+        name="filuns_gestion_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="gestion_collectionview.pt"/>
+
+    <browser:page
+        name="newsletter_web_view"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="newsletter_web_collectionview.pt"/>
+
+    <browser:page
+        name="rss"
+        for="plone.app.collection.interfaces.ICollection"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="rss_collectionview.pt"/>
+
+    <browser:page
+        name="article_view"
+        for="*"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="article_view.pt"/>
+
+    <browser:page
+        name="article_reseaux_view"
+        for="*"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="article_reseaux_view.pt"/>
+
+
+    <browser:page
+        name="fil_macro"
+        for="*"
+        permission="zope2.View"
+        template="fil_macro.pt"/>
+
+    <browser:page
+        name="listing_macro"
+        for="*"
+        permission="zope2.View"
+        template="listing_macro.pt"/>
+
+    <browser:page
+        name="gestion_macro"
+        for="*"
+        permission="zope2.View"
+        template="gestion_macro.pt"/>
+
+    <browser:page
+        name="newsletter_macro"
+        for="*"
+        permission="zope2.View"
+        template="newsletter_macro.pt"/>
+
+    <browser:page
+        name="calendar_event_view"
+        for="*"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="calendar_event_view.pt"/>
+
+    <browser:page
+        name="ical"
+        for="*"
+        permission="zope2.View"
+        class=".filuns.AffichageFilUNS"
+        template="ical.pt"/>
+
+    <class class=".filuns.AffichageFilUNS">
+        <implements interface="plone.app.layout.globals.interfaces.IViewView" />
+    </class>
+
+    <!-- MENUS AFFICHAGE -->
+    <browser:menuItems
+        for="plone.app.collection.interfaces.ICollection"
+        menu="plone_displayviews">
+
+        <browser:menuItem
+            title="Fil UNS : Fil"
+            action="filuns_fil_view"/>
+
+        <browser:menuItem
+            title="Fil UNS : Listing"
+            action="filuns_listing_view"/>
+
+        <browser:menuItem
+            title="Fil UNS : Gestion"
+            action="filuns_gestion_view"/>
+
+        <browser:menuItem
+            title="Fil UNS : Newsletter Web"
+            action="newsletter_web_view"/>
+
+        <browser:menuItem
+            title="Fil UNS : RSS"
+            action="rss"/>
+
+        <browser:menuItem
+            title="Fil UNS : Article"
+            action="article_view"/>
+
+
+    </browser:menuItems>
+
+    <!-- CSS, JS & IMG -->
+    <browser:resourceDirectory
+        name="unice.filuns.stylesheets"
+        directory="stylesheets"/>
+
+    <browser:resourceDirectory
+        name="unice.filuns.javascripts"
+        directory="javascripts"/>
+
+    <browser:resourceDirectory
+        name="unice.filuns.images"
+        directory="images"/>
+
+</configure>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<object name="Collection"
+   meta_type="Factory-based Type Information with dynamic views"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n" purge="False">
+ <property name="view_methods" purge="False">
+  <element value="filuns_fil_view"/>
+ </property>
+  <property name="view_methods" purge="False">
+  <element value="filuns_listing_view"/>
+ </property>
+  <property name="view_methods" purge="False">
+  <element value="filuns_gestion_view"/>
+ </property>
+  <property name="view_methods" purge="False">
+  <element value="newsletter_web_view"/>
+ </property>
+ <property name="view_methods" purge="False">
+  <element value="rss"/>
+ </property>
+</object>

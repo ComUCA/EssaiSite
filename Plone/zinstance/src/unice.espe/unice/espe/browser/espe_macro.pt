@@ -1,0 +1,206 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+
+<!-- ################################################################################################## -->
+<!-- ### CHAPEAU ###################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="chapeau">
+
+	<tal:options tal:condition="document" tal:define="item document">
+
+		<ul class="row canal_fil_importance3">
+	        <li class="col-md-12">
+
+	        	<tal:block condition="opt_savoirplus">
+
+	        		<tal:block condition="opt_image">
+		        		<metal:block use-macro="context/espe_macro/macros/thumb_link"></metal:block>
+		        	</tal:block>
+
+		        	<metal:block use-macro="context/espe_macro/macros/titledesc_link"></metal:block>
+                    <br/>
+		        	<metal:block use-macro="context/espe_macro/macros/more_link"></metal:block>
+
+	        	</tal:block>
+
+	        	<tal:block condition="not:opt_savoirplus">
+
+	        		<tal:block condition="opt_image">
+	        			<metal:block use-macro="context/espe_macro/macros/thumb_no_link"></metal:block>
+	        		</tal:block>
+
+		        	<metal:block use-macro="context/espe_macro/macros/titledesc_no_link"></metal:block>
+
+	        	</tal:block>
+
+	        </li>
+	    </ul>
+
+	</tal:options>
+
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### ITEM ######################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="item">
+
+	<tal:block condition="opt_image">
+		<metal:block use-macro="context/espe_macro/macros/thumb_link"></metal:block>
+	</tal:block>
+
+	<metal:block use-macro="context/espe_macro/macros/titledesc_link"></metal:block>
+
+    <tal:block condition="opt_boutonsavoirplus">
+		<metal:block use-macro="context/espe_macro/macros/more_link"></metal:block>
+	</tal:block>
+
+</metal:block>
+
+<metal:block define-macro="item_template5">
+
+    <tal:block define="opt_desc FALSE">
+        <metal:block use-macro="context/espe_macro/macros/titledesc_link"></metal:block>
+    </tal:block>
+
+    <tal:block condition="opt_image">
+        <metal:block use-macro="context/espe_macro/macros/thumb_link"></metal:block>
+    </tal:block>
+
+    <tal:block define="opt_title FALSE">
+        <metal:block use-macro="context/espe_macro/macros/titledesc_link"></metal:block>
+    </tal:block>
+
+    <tal:block condition="opt_boutonsavoirplus">
+        <metal:block use-macro="context/espe_macro/macros/more_link"></metal:block>
+    </tal:block>
+
+</metal:block>
+
+<metal:block define-macro="item_template6">
+
+    <div>
+        <a tal:condition="opt_image" tal:attributes="href string:#; style string:background-image: url(${item/image}); data-target string:#${item/uuid}; title string:En savoir plus sur '${item/title}';" class="template6_image" data-toggle="modal"/>
+
+        <a tal:attributes="href string:# ; data-target string:#${item/uuid}; title string:En savoir plus sur '${item/title}';" class="template6_texte" data-toggle="modal">
+            <h2 tal:condition="opt_title" tal:content="item/title"/>
+            <metal:block use-macro="context/espe_macro/macros/desc"></metal:block>
+        </a>
+
+        <a tal:condition="opt_boutonsavoirplus" tal:attributes="href string:#; data-target string:#${item/uuid}; title string:En savoir plus sur '${item/title}';" class="template6_lien" data-toggle="modal">
+            <i class="icon-plus-sign icon-2x"></i>
+        </a>
+    </div>
+
+</metal:block>
+
+<metal:block define-macro="item_template6bis">
+
+    <div>
+        <a tal:condition="opt_image" tal:attributes="href item/url; style string:background-image: url(${item/image}); title string:En savoir plus sur '${item/title}';" class="template6_image"/>
+
+        <a tal:attributes="href item/url ; title string:En savoir plus sur '${item/title}';" class="template6_texte">
+            <h2 tal:condition="opt_title" tal:content="item/title"/>
+            <metal:block use-macro="context/espe_macro/macros/desc"></metal:block>
+        </a>
+    </div>
+
+    <a tal:condition="opt_boutonsavoirplus" tal:attributes="href item/url; title string:En savoir plus sur '${item/title}';" class="template6_lien_hors">
+        <small>En savoir plus</small>
+    </a>
+
+</metal:block>
+
+<metal:block define-macro="item_modal">
+
+    <div tal:attributes="id item/uuid" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" tal:content="item/title"/>
+                </div>
+                <div class="modal-body">
+                    <tal:block content="structure item/text"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### ELEMENTS ##################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="thumb_link">
+	<a tal:attributes="href item/url; class string:thumb_link image_ratio ${opt_imageratio}; title string:En savoir plus sur '${item/title}';">
+        <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+            <img tal:attributes="src item/image; title item/title"/>
+        </span>
+    </a>
+</metal:block>
+
+<metal:block define-macro="thumb_no_link">
+	<span tal:attributes="class string:thumb_link image_ratio ${opt_imageratio}">
+        <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+            <img tal:attributes="src item/image; title item/title"/>
+        </span>
+    </span>
+</metal:block>
+
+<metal:block define-macro="titledesc_link">
+	<a tal:attributes="href item/url; class python:'details_link' if opt_image else 'no_thumb details_link'; title string:En savoir plus sur '${item/title}';">
+        <h2 tal:condition="opt_title" tal:content="item/title"/>
+		<metal:block use-macro="context/espe_macro/macros/desc"></metal:block>
+    </a>
+</metal:block>
+
+<metal:block define-macro="titledesc_no_link">
+	<div tal:attributes="class python:'details_link' if opt_image else 'no_thumb details_link'">
+        <h2 tal:condition="opt_title" tal:content="item/title"/>
+		<metal:block use-macro="context/espe_macro/macros/desc"></metal:block>
+    </div>
+</metal:block>
+
+<metal:block define-macro="desc">
+	<tal:block condition="opt_desc">
+        <span tal:condition="not:opt_desctrunc" tal:content="item/description"/>
+        <span tal:condition="opt_desctrunc" tal:content="item/desc_trunc"/>
+    </tal:block>
+</metal:block>
+
+<metal:block define-macro="more_link">
+	<a tal:attributes="href item/url; title string:En savoir plus sur '${item/title}';" class="more">
+	    <span>En savoir plus</span>
+	</a>
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### DEXTERITY #################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="dexterity_thumb_link">
+    <tal:block define="scales context/@@images;
+                       thumb python:scales.scale(opt_image, scale=opt_scale);
+                       full python:scales.scale(opt_image, scale='full')">
+        <a tal:attributes="href full/url; class string:thumb_link image_ratio ${opt_imageratio};">
+            <span tal:attributes="style string:background-image: url(${thumb/url});" class="image_top">
+                <img tal:attributes="src thumb/url; title context/title"/>
+            </span>
+        </a>
+    </tal:block>
+</metal:block>
+
+</metal:content-core>
+</body>
+</html>

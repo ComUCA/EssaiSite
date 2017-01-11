@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+        <div metal:fill-slot="content-core">
+
+            <tal:block tal:define="
+                prefix_themes string:#FilUNSTheme;
+                prefix_canaux string:#FilUNSCanal;
+
+                previews python:{'Homepage':'../../', 'FilUNS':'../../recherche', 'Newsletter':'../../newsletter'};
+
+                themes python:view.themes(prefix_themes);
+                canaux python:view.canaux(prefix_canaux, {'*':'#FilUNSImp', 'FilUNS':'#FilUNSImportance'});
+                importances python:view.importances(canaux);
+
+                batch python:context.results();">
+
+                <tal:block condition="batch"
+                        tal:define="classement python:view.classementGestion(batch, prefix_themes, themes, prefix_canaux, canaux, importances, 100, None)">
+
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <div class="list-group">
+                                <tal:block repeat="item python:classement">
+
+
+                                    <a tal:define="normalizeString nocall: context/plone_utils/normalizeString;
+                                                    state_class python:'state-' + normalizeString(item['state']);"
+                                        tal:attributes="href item/url; class string:list-group-item ${state_class};
+                                                        data-subjects python: ','.join(item['subjects']);
+                                                        data-popover-content string:#${item/uuid}"
+                                        rel="popover" data-placement="bottom">
+
+
+                                        <p class="row">
+                                            <!-- <span class="col col-md-8"> -->
+                                                <span class="thumb_link image_ratio ratio1:1">
+                                                    <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                                        <img tal:attributes="src item/image;"/>
+                                                    </span>
+                                                </span>
+
+                                                <strong tal:content="item/title"/>
+                                                <small tal:content="item/description"/>
+                                                <small tal:content="item/dates/localized"/>
+                                            <!-- </span> -->
+                                                <span class="col- col-md-4- subjects">
+                                                    <span class="label label-default">
+                                                        <i class="fa fa-tags"/> <span tal:attributes="data-prefix-theme prefix_themes"/>
+                                                    </span>
+                                                    <span tal:repeat="canal canaux" class="label label-default">
+                                                        <i class="fa fa-desktop"/> <tal:block content="canal"/> <i class="fa fa-star"/>
+                                                        <span tal:attributes="
+                                                            data-prefix-canal string:${prefix_canaux}${canal};
+                                                            data-prefix-importance python:canaux[canal];"/>
+                                                    </span>
+
+                                                    <!-- <tal:block content="item/canaux"/><br/>
+                                                    <tal:block content="item/importances"/> -->
+                                                </span>
+                                                <span class="visualClear"/>
+                                        </p>
+                                    </a>
+
+                                    <metal:block use-macro="context/gestion_macro/macros/popover"></metal:block>
+
+                                </tal:block>
+                            </div>
+
+                            <!-- <ul class="nav nav-pills nav-justified">
+                                <tal:block repeat="tab classement/ordre">
+                                    <li tal:attributes="class python:'active' if repeat['tab'].index == 0 else ''">
+                                        <a data-toggle="tab" tal:attributes="href string:#${tab}">
+                                            <i tal:attributes="class python:classement['classement'][tab]['icon']"></i>
+                                            <tal:block content="python:classement['classement'][tab]['title']"/>
+                                         </a>
+                                    </li>
+                                </tal:block>
+                            </ul>
+
+                            <div class="tab-content">
+                                <tal:block repeat="tab classement/ordre">
+                                    <div tal:attributes="id tab; class python:'tab-pane active' if repeat['tab'].index == 0 else 'tab-pane'"
+                                        tal:define="parents python:classement['classement'][tab]['parents']">
+
+                                        <div class="panel panel-default">
+                                            <metal:block use-macro="context/gestion_macro/macros/parents"></metal:block>
+                                        </div>
+
+                                    </div>
+                                </tal:block>
+                            </div> -->
+                        </div>
+
+
+                        <!-- <div class="col-md-4">
+                            <metal:block use-macro="context/gestion_macro/macros/previews"></metal:block>
+                        </div> -->
+                    </div>
+
+                </tal:block>
+
+            </tal:block>
+        </div>
+    </body>
+
+</html>

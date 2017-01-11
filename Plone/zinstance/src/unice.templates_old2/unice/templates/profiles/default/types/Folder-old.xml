@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<object name="Folder"
+   meta_type="Factory-based Type Information with dynamic views"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n" purge="False">
+ <property name="view_methods" purge="False">
+  <element value="template1_view"/>
+  <element value="template1bis_view"/>
+  <element value="template2_view"/>
+  <element value="template2bis_view"/>
+  <element value="template2ter_view"/>
+  <element value="template3_view"/>
+  <element value="template4_view"/>
+  <element value="template5_view"/>
+  <element value="template6_view"/>
+  <element value="template6bis_view"/>
+  <element value="template6ter_view"/>
+  <element value="template7_view"/>
+  <element value="templateAffiche_view"/>
+
+  <element value="listingsimple_view"/>
+  <element value="listingpanel_view"/>
+  <element value="listingonglets_view"/>
+  <element value="listingboutons_view"/>
+  <element value="listingboutons2niveaux_view"/>
+
+  <element value="espaces_campus_uns_view"/>
+
+  <element value="projets_dsd_deposes_view"/>
+  <element value="projets_dsd_en_cours_view"/>
+
+  <element value="resume"/>
+
+  <element value="mobile_view"/>
+
+  <element value="onepage_view"/>
+
+  <element value="carte_voeux"/>
+
+ </property>
+</object>

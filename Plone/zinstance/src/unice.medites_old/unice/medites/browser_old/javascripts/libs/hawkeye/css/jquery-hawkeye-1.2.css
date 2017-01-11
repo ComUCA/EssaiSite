@@ -1,0 +1,11 @@
+/* $HawkEye v1.2 jQuery Plugin || Crusader 12 || If you did not purchase this plugin from Code Canyon, please notify us at info@Crusader12.com */
+@charset "utf-8";
+.hawkeye {position:relative;}/* MAIN HAWKEYE CONTAINER */
+.Marker_Container{width:inherit;height:inherit;position:absolute;/*z-index:9*/}
+.HE_Char {position:absolute;overflow:hidden;background-repeat:no-repeat;z-index:9999;}/* MARKER STYLES */
+div.HE_Tooltip {position:absolute;overflow:hidden;cursor:default;opacity:0;visibility:hidden;z-index:9999;}/* CONTENT DIV INSIDE TOOLTIP */
+div.HE_Tooltip a {text-decoration:none;cursor:pointer;}/* TOOLTIP ANCHORS */
+div.HE_Panel {visibility:hidden;opacity:0;position:absolute;z-index:9999999;top:0;left:0;cursor:pointer;}
+div.HE_Panel * {cursor:pointer;}
+.HE_Close, .HE_Next, .HE_Prev {cursor:pointer;}
+.HE_Marker {z-index:999;position:absolute;opacity:0;border-width:0px;border-color:transparent;border-style:solid;-moz-animation-fill-mode:forwards;-ms-animation-fill-mode:forwards;-webkit-animation-fill-mode:forwards;-o-animation-fill-mode:forwards;animation-fill-mode:forwards;background-repeat:no-repeat;}

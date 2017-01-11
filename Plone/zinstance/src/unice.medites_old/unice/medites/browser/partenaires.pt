@@ -1,0 +1,243 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="not:context/@@plone_portal_state/anonymous">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="context/@@plone_portal_state/anonymous"
+    define="infos view/infos;
+            scales context/@@images;
+            variablePart python:view.champsRepeat('blocs_partenaires');
+            variablePartenaires python:view.champsRepeat('partenaires');    
+">
+
+<!--     variablePartSci python:view.champsRepeat('blocs_partenaires_scientifiques');
+            variablePartAsso python:view.champsRepeat('blocs_partenaires_associatifs');
+            variablePartUNS python:view.champsRepeat('blocs_partenaires_uns'); -->
+
+
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+			<!--<tal:block content="infos"/>-->
+			
+			<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core"
+                        tal:define="widgets nocall:context/@@view">
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1TFavxa1-vQFzsw360e2PyBIzhWv-tIE"></script>
+   <!--     <script type="text/javascript">
+            $('#tabPartenaires a').click(function (e) {
+            e.preventDefault()
+            $(this).tab('show')
+            })
+        </script>   
+-->
+        <script type="text/javascript">
+            function initialize() {
+                var myLatlng = new google.maps.LatLng(43.4589296,6.4971079);
+                var mapOptions = {
+                    center: myLatlng,
+                    zoom: 12,
+                    scrollwheel: false
+                    };
+                var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+                var styles = [
+                      {
+                        stylers: [
+
+                        ]
+                      },{
+                        featureType: "water",
+                        elementType: "geometry",
+                        stylers: [
+                          { hue: "#139bd5" },
+                          { lightness: -50 },
+                          { visibility: "simplified" }
+                        ]
+                      },{
+                        featureType: "landscape",
+                        elementType: "geometry",
+                        stylers: [
+                          { hue: "#38b809" },
+                          { lightness: -10 },
+                          { saturation: 40 },
+                          { visibility: "simplified" }
+                        ]
+                      },{
+                        featureType: "road",
+                        elementType: "geometry",
+                        stylers: [
+                          { lightness: -50 },
+                          { visibility: "simplified" }
+                        ]
+                      },{
+                        featureType: "road",
+                        elementType: "labels",
+                        stylers: [
+                          { visibility: "off" }
+                        ]
+                      }
+                    ];
+                    map.setOptions({styles: styles});
+                }
+            google.maps.event.addDomListener(window, 'load', initialize);
+        </script>
+                <!-- carrousel -->
+                <section class="container-fluid emplacement">
+                    <div class="embed-responsive embed-responsive-16by9">
+                         <div id="map" class="embed-responsive-item"></div>
+                    </div>
+                </section>
+
+                <!-- contenu --> 
+                <section class="container-fluid container-md-height dark">                 
+                    <div class="content presentation "> 
+                        <ol class="breadcrumb">
+                            <li><a href="#">Accueil</a></li>
+                            <li class="active">Partenaires</li>
+                        </ol>
+                    
+                        <h1 tal:content="infos/title"></h1>
+                        <div tal:replace="structure widgets/++widget++contenu/render" />
+                    </div>
+                </section>
+                                
+                <!-- les partenaires -->
+
+
+
+
+                <section class="container-fluid partenaires dark">
+                    <div class="row cs-style-3 grid row-full-height" >
+                        <div class="col-xs-12 col-sm-6 col-md-12 col-md-height col-full-height">    
+                            <div class="col-xs-6 col-sm-4 col-md-1 col-full-height" tal:repeat="blocs_partenaires variablePart">  
+                                <div tal:attributes="class string:item bloc-${blocs_partenaires/classe};" tal:condition="blocs_partenaires/classe">
+                                    <figure>
+                                        <a tal:attributes="title string:Atteindre la page; 
+                                                           href blocs_partenaires/lien"
+                                           tal:condition="blocs_partenaires/title">    
+                                            <img tal:define="scales_image blocs_partenaires/@@images; maVariable python:scales_image.scale('image', scale='preview')"
+                                                 tal:attributes="src maVariable/url; alt string:Photo du partenaire ${blocs_partenaires/title}; class string:img-all"
+                                                 tal:condition="blocs_partenaires/image" />   
+                                            <figcaption>
+                                                <span tal:content="blocs_partenaires/type_de_partenaire" class="visible-lg-block" />
+                                                <span tal:content="blocs_partenaires/thematiques" class="visible-lg-block" />
+                                            </figcaption>
+                                        </a>    
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        
+                </section>        
+
+                <section class="container-fluid partenaires dark">
+                    <div class="row cs-style-3 grid row-full-height" >
+                        <div class="col-xs-12 col-sm-6 col-md-12 col-md-height col-full-height">    
+                            <div class="col-xs-6 col-sm-4 col-md-1 col-full-height" tal:repeat="partenaires variablePartenaires">  
+                                <div tal:attributes="class string:item bloc-${partenaires/classe};" tal:condition="partenaires/classe">
+                                    <figure>
+                                        <a tal:attributes="title string:Atteindre la page; 
+                                                           href partenaires/absolute_url"
+                                           tal:condition="partenaires/absolute_url">    
+                                            <img tal:define="scales_image partenaires/@@images; maVariable python:scales_image.scale('logo_bloc', scale='preview')"
+                                                 tal:attributes="src maVariable/url; alt string:Photo du partenaire ${partenaires/title}; class string:img-all"
+                                                 tal:condition="partenaires/logo_bloc" />   
+                                            <figcaption>
+                                                <span tal:content="partenaires/type_de_partenaire" class="visible-lg-block" />
+                                                <span tal:content="partenaires/thematiques" class="visible-lg-block" />
+                                            </figcaption>
+                                        </a>    
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>        
+                </section>  
+
+
+
+
+
+
+
+<!--
+                <section class="container-fluid partenaires dark" role="tabpanel">
+                    <ul class="nav nav-tabs row" role="tablist" id="tabPartenaires">
+                        <li role="presentation" class="col-xs-4 col-sm-4 col-md-4 active">
+                            <a href="#scientifiques" class="text-center" aria-controls="scientifiques" role="tab" data-toggle="tab" title="Afficher la liste de nos partenaires scientifiques">Partenaires scientifiques</a>
+                        </li>
+                        <li role="presentation" class="col-xs-4 col-sm-4 col-md-4">
+                            <a href="#uns" class="text-center" aria-controls="uns" role="tab" data-toggle="tab" title="Afficher la liste de nos partenaires UNS">Partenaires UNS</a>
+                        </li>
+                        <li role="presentation" class="col-xs-4 col-sm-4 col-md-4">
+                            <a href="#associatifs" class="text-center" aria-controls="associatifs" role="tab" data-toggle="tab" title="Afficher la liste de nos partenaires associatifs">Partenaires associatifs</a>
+                        </li>
+                    </ul>
+                    <div class="row cs-style-3 grid tab-content row-full-height" >
+                        <div class="col-xs-12 col-sm-6 col-md-12 col-md-height col-full-height tab-pane fade in active" role="tabpanel" id="scientifiques">
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-full-height" tal:repeat="blocs_partenaires_scientifiques variablePartSci">  
+                                <div tal:attributes="class string:item bloc-${blocs_partenaires_scientifiques/classe};" tal:condition="blocs_partenaires_scientifiques/classe">
+                                    <figure>
+                                        <a tal:attributes="title string:Atteindre la page; 
+                                                           href blocs_partenaires_scientifiques/lien"
+                                           tal:condition="blocs_partenaires_scientifiques/title">    
+                                            <img tal:define="scales_image blocs_partenaires_scientifiques/@@images; maVariable python:scales_image.scale('image', scale='preview')"
+                                                 tal:attributes="src maVariable/url; alt string:Photo du partenaire ${blocs_partenaires_scientifiques/title}; class string:img-all"
+                                                 tal:condition="blocs_partenaires_scientifiques/image" />   
+                                            <figcaption>
+                                                <h3 tal:content="blocs_partenaires_scientifiques/title" />
+                                                <span tal:content="blocs_partenaires_scientifiques/thematiques" class="visible-lg-block" />
+
+                                            </figcaption>
+                                        </a>    
+                                    </figure>
+                                </div>
+                            </div>    
+                        </div>
+                        <div class="col-xs-12 col-sm-6 col-md-12 col-md-height col-full-height tab-pane fade" role="tabpanel" id="uns">
+                           <div class="col-xs-6 col-sm-4 col-md-2 col-full-height" tal:repeat="blocs_partenaires_uns variablePartUNS">  
+                                <div tal:attributes="class string:item bloc-${blocs_partenaires_uns/classe};" tal:condition="blocs_partenaires_uns/classe">
+                                    <figure>
+                                        <a tal:attributes="title string:Atteindre la page; 
+                                                           href blocs_partenaires_uns/lien"
+                                           tal:condition="blocs_partenaires_uns/title">    
+                                            <img tal:define="scales_image blocs_partenaires_uns/@@images; maVariable python:scales_image.scale('image', scale='preview')"
+                                                 tal:attributes="src maVariable/url; alt string:Photo du partenaire ${blocs_partenaires_uns/title}; class string:img-all"
+                                                 tal:condition="blocs_partenaires_uns/image" />   
+                                            <figcaption>
+                                                <h3 tal:content="blocs_partenaires_uns/title" />
+                                                <span tal:content="blocs_partenaires_uns/thematiques" class="visible-lg-block" />
+                                            </figcaption>
+                                        </a>    
+                                    </figure>
+                                </div>
+                            </div>    
+                        </div>   
+                        <div class="col-xs-12 col-sm-6 col-md-12 col-md-height col-full-height tab-pane fade" role="tabpanel" id="associatifs">    
+                            <div class="col-xs-6 col-sm-4 col-md-2 col-full-height" tal:repeat="blocs_partenaires_associatifs variablePartAsso">  
+                                <div tal:attributes="class string:item bloc-${blocs_partenaires_associatifs/classe};" tal:condition="blocs_partenaires_associatifs/classe">
+                                    <figure>
+                                        <a tal:attributes="title string:Atteindre la page; 
+                                                           href blocs_partenaires_associatifs/lien"
+                                           tal:condition="blocs_partenaires_associatifs/title">    
+                                            <img tal:define="scales_image blocs_partenaires_associatifs/@@images; maVariable python:scales_image.scale('image', scale='preview')"
+                                                 tal:attributes="src maVariable/url; alt string:Photo du partenaire ${blocs_partenaires_associatifs/title}; class string:img-all"
+                                                 tal:condition="blocs_partenaires_associatifs/image" />   
+                                            <figcaption>
+                                                <h3 tal:content="blocs_partenaires_associatifs/title" />
+                                                <span tal:content="blocs_partenaires_associatifs/thematiques" class="visible-lg-block" />
+                                            </figcaption>
+                                        </a>    
+                                    </figure>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+-->
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+
+  			</metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

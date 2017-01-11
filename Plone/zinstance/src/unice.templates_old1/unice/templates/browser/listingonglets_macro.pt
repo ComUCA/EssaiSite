@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="template">
+
+    <div tal:condition="batch" class="template listingonglets">
+
+        <tal:block define=" items python:view.items(batch, ['page.html'], desc_max=90, isObjects=type(batch) is list);
+                            filtered python:view.filtered(items, '#ExclureContenuTemplate');
+                            TRUE python:True; FALSE python:False;
+                            max python:5; limit python:max if len(filtered)==max else max-1;
+                            filtered_under python:filtered[0:limit]; filtered_above python:filtered[limit:];">
+
+            <metal:block use-macro="context/templates_macro/macros/entete"></metal:block>
+
+            <br/>
+
+            <ul class="nav nav-pills nav-justified nav-tabs">
+                <tal:block repeat="item filtered_under">
+                    <li tal:attributes="class python:'active' if repeat['item'].index == 0 else ''">
+                        <a data-toggle="tab" tal:attributes="href string:#onglet-${item/uuid}">
+                            <tal:block content="item/title"/>
+                        </a>
+                    </li>
+                </tal:block>
+                <li tal:condition="python:len(filtered)>max">
+                    <a data-toggle="tab" href="#onglet-plus">
+                        <i class="fa fa-plus-circle"></i> Plus
+                    </a>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <tal:block repeat="item filtered_under">
+                    <div tal:attributes="id string:onglet-${item/uuid};
+                                         class python:'tab-pane fade in active' if repeat['item'].index == 0 else 'tab-pane fade'">
+
+                        <h1 tal:condition="item/description" tal:content="item/description" class="text-center"/>
+                        <div tal:condition="item/text" tal:content="structure item/text"/>
+                        <div class="visualClear"></div>
+                    </div>
+                </tal:block>
+
+                <div tal:condition="python:len(filtered)>max" id="onglet-plus" class="tab-pane fade">
+                    <tal:block repeat="item filtered_above">
+                        <h1 tal:condition="item/description" tal:content="item/description" class="text-center"/>
+                        <div tal:condition="item/text" tal:content="structure item/text"/>
+
+                        <hr tal:condition="python:repeat['item'].index < len(filtered_under)-2"/>
+                    </tal:block>
+                    <div class="visualClear"></div>
+                </div>
+
+            </div>
+
+        </tal:block>
+
+    </div>
+
+    <p class="discreet" tal:condition="not:batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+</metal:content-core>
+</body>
+
+</html>

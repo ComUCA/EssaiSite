@@ -1,0 +1,376 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") --> 
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;
+            variableMembres python:view.champsRepeat('membre');    
+            variableFichiers python:view.champsRepeat('fichiers');">
+
+    <metal:block use-macro="context/medites_macros/macros/master"> 
+        <div metal:fill-slot="body">
+		
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core" tal:define="widgets nocall:context/@@view">
+                
+    <!-- carrousel -->
+                    <section class="container-fluid emplacement-normal" tal:condition="context/photo_1_carrousel">
+                        <div tal:attributes="class string:carouselLogo-${context/classe};" tal:condition="context/classe" >
+                            <img tal:define="maVariable python:scales.scale('logo', scale='thumb')" tal:attributes="src maVariable/url; class string:img-responsive test" tal:condition="context/logo" />
+                        </div>
+                        <div class="carouselLogoPartenaires">
+                            <img tal:define="maVariable python:scales.scale('second_logo', scale='thumb')" tal:attributes="src maVariable/url; class string:img-responsive test" tal:condition="context/second_logo" />
+                            <img tal:define="maVariable python:scales.scale('troisieme_logo', scale='thumb')" tal:attributes="src maVariable/url; class string:img-responsive test" tal:condition="context/troisieme_logo" />
+                            <img tal:define="maVariable python:scales.scale('quatrieme_logo', scale='thumb')" tal:attributes="src maVariable/url; class string:img-responsive test" tal:condition="context/quatrieme_logo" />
+                            <img tal:define="maVariable python:scales.scale('cinquieme_logo', scale='thumb')" tal:attributes="src maVariable/url; class string:img-responsive test" tal:condition="context/cinquieme_logo" />
+                        </div>
+                        <div id="carousel-1" class="carousel slide" data-ride="carousel" data-interval="false">
+                            <ol class="carousel-indicators">
+                                <li data-target="#carousel-1" data-slide-to="0" tal:condition="context/photo_2_carrousel" class="active"></li>
+                                <li data-target="#carousel-1" data-slide-to="1" tal:condition="context/photo_2_carrousel"></li>
+                            </ol>
+
+                            <div class="carousel-inner" role="listbox">
+                                <div class="item active" tal:define="maVariable python:scales.scale('photo_1_carrousel', scale='extra-full')" tal:condition="context/photo_1_carrousel">
+                                    <img tal:attributes="src maVariable/url" class="img-responsive" />
+                                </div>
+                                <div class="item" tal:define="maVariable python:scales.scale('photo_2_carrousel', scale='extra-full')" tal:condition="context/photo_2_carrousel">
+                                    <img tal:attributes="src maVariable/url; class string:img-responsive test" />
+                                </div>
+                            </div>
+                        </div>             
+                    </section>
+    <!-- contenu --> 
+                    <section class="container-fluid container-md-height dark">                 
+                        <div class="content presentation"> 
+                            <ol class="breadcrumb">
+                                <li><a href="../../accueil">Accueil</a></li>
+                                <li><a href="../">Partenaires</a></li>
+                                <li tal:content="infos/title" tal:attributes="class string:active" />
+                            </ol>
+                            <h1 tal:content="infos/title" tal:condition="infos/title"></h1>
+                            <div tal:replace="structure widgets/++widget++contenu/render" tal:condition="context/contenu" />
+                        </div>
+                    </section>
+    <!-- conteneurs de couleurs -->
+                    <section class="container-fluid biodiv" tal:condition="context/adresse_postale">
+                        <div class="row">
+                            <div class="row-same-height row-full-height">
+
+                                <tal:block condition="not:variableFichiers">
+                                    <tal:block condition="not:variableMembres">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-height col-lg-height col-full-height col1 coordonnees">
+                                            <div class="item">
+                                                <div class="topCol">
+                                                    <i class="fa fa-map-marker fa-3x"></i><h3>Coordonn&eacute;es</h3>
+                                                </div>
+                                                <div class="contentCol">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" data-toggle="modal" data-target="#modal-map" title="Afficher le plan google map"><i class="fa fa-home fa-3x"></i></a>
+                                                            <span tal:replace="structure widgets/++widget++adresse_postale/render" tal:condition="context/adresse_postale"></span>
+                                                            <div id="modal-map" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="Plan" aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h3 class="modal-title" id="Plan">Cartographie</h3>
+                                                                        </div>    
+                                                                        <div class="modal-body">     
+                                                                            <div class="embed-responsive embed-responsive-16by9">
+                                                                                <div id="map" class="embed-responsive-item"></div>
+                                                                                <!-- <iframe tal:attributes="class string:embed-responsive-item;frameborder string:0; src string:http://maps.google.com/maps?z=12&amp;q=loc:${context/latitude_googlemap}+${context/longitude_googlemap}"></iframe> -->
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li tal:condition="context/url_du_site_internet">
+                                                            <img src="++resource++unice.medites.images/structure/web-icon.png" width="46" alt="Logo web" />
+                                                            <span><a tal:attributes="href string:http://${context/url_du_site_internet}; title string:Voir le site officiel" tal:content="context/url_du_site_internet"/></span>
+                                                        </li>
+                                                        <li tal:condition="context/numero_de_telephone">
+                                                            <i class="fa fa-phone fa-3x"></i> 
+                                                            <span tal:replace="structure widgets/++widget++numero_de_telephone/render"></span>
+                                                        </li>
+                                                        <li tal:condition="context/numero_de_fax">
+                                                            <i class="fa fa-fax fa-3x"></i> 
+                                                            <span tal:replace="structure widgets/++widget++numero_de_fax/render"></span>
+                                                        </li>
+                                                        <li tal:condition="context/email_de_contact">
+                                                            <i class="fa fa-envelope fa-3x"></i> 
+                                                            <span><a tal:attributes="href string:mailto: ${context/email_de_contact}; title string:Envoyer un email" tal:content="context/email_de_contact"/></span>
+                                                        </li>
+                                                        <li tal:condition="context/horaires">
+                                                            <i class="fa fa-clock-o fa-3x"></i> 
+                                                            <span tal:replace="structure widgets/++widget++horaires/render"></span>
+                                                        </li>
+                                                    </ul>   
+                                                </div>
+                                                <div class="footCol"></div>
+                                            </div>
+                                        </div>    
+
+                                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-height col-lg-height col-full-height col2 equipe">
+                                            <div class="item">
+                                                <div class="topCol">
+                                                    <i class="fa fa-map-marker fa-3x"></i><h3>Plan</h3>
+                                                </div>
+                                                <div class="contentCol">
+                                                    <div class="embed-responsive embed-responsive-16by9">
+                                                         <div id="map2" class="embed-responsive-item"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="footCol"></div>
+                                            </div>
+                                        </div>  
+                                    </tal:block>
+                                </tal:block>   
+
+                                <tal:block condition="variableFichiers">
+                                    <tal:block condition="variableMembres">
+                                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-height col-lg-height col-full-height col1 coordonnees">
+                                            <div class="item">
+                                                <div class="topCol">
+                                                    <i class="fa fa-map-marker fa-3x"></i><h3>Coordonn&eacute;es</h3>
+                                                </div>
+                                                <div class="contentCol">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" data-toggle="modal" data-target="#modal-map" title="Afficher le plan google map"><i class="fa fa-home fa-3x"></i></a>
+                                                            <span tal:replace="structure widgets/++widget++adresse_postale/render" tal:condition="context/adresse_postale"></span>
+                                                            <div id="modal-map" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="Plan" aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h3 class="modal-title" id="Plan">Cartographie</h3>
+                                                                        </div>    
+                                                                        <div class="modal-body">     
+                                                                            <div class="embed-responsive embed-responsive-16by9">
+                                                                                <div id="map" class="embed-responsive-item"></div>
+                                                                                <!-- <iframe tal:attributes="class string:embed-responsive-item;frameborder string:0; src string:http://maps.google.com/maps?z=12&amp;q=loc:${context/latitude_googlemap}+${context/longitude_googlemap}"></iframe> -->
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li tal:condition="context/url_du_site_internet">
+                                                            <img src="++resource++unice.medites.images/structure/web-icon.png" width="46" alt="Logo web" />
+                                                            <span><a tal:attributes="href string:http://${context/url_du_site_internet}; title string:Voir le site officiel" tal:content="context/url_du_site_internet"/></span>
+                                                        </li>
+                                                        <li tal:condition="context/numero_de_telephone">
+                                                            <i class="fa fa-phone fa-3x"></i> 
+                                                            <span tal:replace="structure widgets/++widget++numero_de_telephone/render"></span>
+                                                        </li>
+                                                        <li tal:condition="context/numero_de_fax">
+                                                            <i class="fa fa-fax fa-3x"></i> 
+                                                            <span tal:replace="structure widgets/++widget++numero_de_fax/render"></span>
+                                                        </li>
+                                                        <li tal:condition="context/email_de_contact">
+                                                            <i class="fa fa-envelope fa-3x"></i> 
+                                                            <span><a tal:attributes="href string:mailto: ${context/email_de_contact}; title string:Envoyer un email" tal:content="context/email_de_contact"/></span>
+                                                        </li>
+                                                        <li tal:condition="context/horaires">
+                                                            <i class="fa fa-clock-o fa-3x"></i> 
+                                                            <span tal:replace="structure widgets/++widget++horaires/render"></span>
+                                                        </li>
+                                                    </ul>   
+                                                </div>
+                                                <div class="footCol"></div>
+                                            </div>
+                                        </div>     
+                                    
+                                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-height col-lg-height col-full-height col2 equipe troisColonnes">
+                                            <div class="item">
+                                                <div class="topCol">
+                                                    <i class="fa fa-users fa-3x"></i><h3>&Eacute;quipe</h3>
+                                                </div>
+                                                <div class="contentCol">
+                                                    <ul class="grid cs-style-3">
+                                                        <li tal:repeat="membre variableMembres">
+                                                            <figure>
+                                                                <img tal:define="scales_membre membre/@@images; maVariable python:scales_membre.scale('photo', scale='mini')"
+                                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Photo de ${context/title}"
+                                                                     tal:condition="membre/photo" />
+                                                                <figcaption>
+                                                                    <div>
+                                                                        <strong tal:content="membre/prenom" tal:condition="membre/prenom" />
+                                                                        <strong tal:content="membre/title" class="text-uppercase"></strong>
+                                                                        <br/><br/><br class="hidden-md" />
+                                                                        <span tal:content="membre/metier" class="visibleHover hidden-xs"></span>
+                                                                        <a tal:attributes="href string:mailto: ${membre/email}; title string:Lui &eacute;crire un email"><i class="fa fa-envelope fa-2x"></i></a>
+                                                                    </div> 
+                                                                </figcaption>
+                                                            </figure>
+                                                        </li>   
+                                                    </ul>
+                                                </div>
+                                                <div class="footCol"></div>
+                                            </div>    
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 col-md-height col-lg-height col-full-height col3 documents troisColonnes">
+                                            <div class="item">
+                                                <div class="topCol">
+                                                    <i class="fa fa-file-text fa-3x"></i><h3>Documents</h3>
+                                                </div>
+                                                <div class="contentCol">                           
+                                                    <ul class="grid cs-style-3">
+                                                        <li tal:repeat="fichiers variableFichiers">
+                                                            <figure>
+                                                                <img tal:define="scales_fichiers fichiers/@@images; maVariable python:scales_fichiers.scale('apercu_du_fichier', scale='mini')"
+                                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt fichiers/title"
+                                                                     tal:condition="fichiers/apercu_du_fichier" />
+                                                                <figcaption>
+                                                                    <div>
+                                                                        <strong tal:content="fichiers/title" tal:condition="fichiers/title" /><br/><br/>
+                                                                        <a tal:attributes="href string:${fichiers/absolute_url}/@@download/document/${fichiers/document/filename}; title string:T&eacute;l&eacute;charger le fichier">
+                                                                            <i class="fa fa-download fa-2x"></i>
+                                                                        </a>  
+                                                                    </div>    
+                                                                </figcaption>
+                                                            </figure>
+                                                        </li>                                
+                                                    </ul> 
+                                                </div>
+                                                <div class="footCol"></div>
+                                            </div>    
+                                        </div>
+                                    </tal:block>
+                                </tal:block>
+
+                                <tal:block condition="variableMembres">
+                                    <tal:block condition="not:variableFichiers">
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-height col-lg-height col-full-height col1 coordonnees">
+                                            <div class="item">
+                                                <div class="topCol">
+                                                    <i class="fa fa-map-marker fa-3x"></i><h3 class="visible-lg">Coordonn&eacute;es</h3>
+                                                </div>
+                                                <div class="contentCol">
+                                                    <ul>
+                                                        <li>
+                                                            <a href="#" data-toggle="modal" data-target="#modal-map" title="Afficher le plan google map"><i class="fa fa-home fa-3x"></i></a>
+                                                            <span tal:replace="structure widgets/++widget++adresse_postale/render" tal:condition="context/adresse_postale"></span>
+                                                            <div id="modal-map" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="Plan" aria-hidden="true">
+                                                                <div class="modal-dialog modal-lg">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h3 class="modal-title" id="Plan">Cartographie</h3>
+                                                                        </div>    
+                                                                        <div class="modal-body">     
+                                                                            <div class="embed-responsive embed-responsive-16by9">
+                                                                                 <div id="map" class="embed-responsive-item"></div>
+                                                                            </div>     
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li tal:condition="context/url_du_site_internet">
+                                                            <img src="++resource++unice.medites.images/structure/web-icon.png" width="46" alt="Logo web" />
+                                                            <span><a tal:attributes="href string:http://${context/url_du_site_internet}; title string:Voir le site officiel" tal:content="context/url_du_site_internet"/></span>
+                                                        </li>
+                                                        <li tal:condition="context/numero_de_telephone">
+                                                            <i class="fa fa-phone fa-3x"></i> 
+                                                            <span tal:replace="structure widgets/++widget++numero_de_telephone/render"></span>
+                                                        </li>
+                                                        <li tal:condition="context/numero_de_fax">
+                                                            <i class="fa fa-fax fa-3x"></i> 
+                                                            <span tal:replace="structure widgets/++widget++numero_de_fax/render"></span>
+                                                        </li>
+                                                        <li tal:condition="context/email_de_contact">
+                                                            <i class="fa fa-envelope fa-3x"></i> 
+                                                            <span><a tal:attributes="href string:mailto: ${context/email_de_contact}; title string:Envoyer un email" tal:content="context/email_de_contact"/></span>
+                                                        </li>
+                                                        <li tal:condition="context/horaires">
+                                                            <i class="fa fa-clock-o fa-3x"></i> 
+                                                            <span tal:replace="structure widgets/++widget++horaires/render"></span>
+                                                        </li>
+                                                    </ul>   
+                                                </div>
+                                                <div class="footCol"></div>
+                                            </div>
+                                        </div>     
+                                    
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-md-height col-lg-height col-full-height col2 equipe deuxColonnes">
+                                            <div class="item">
+                                                <div class="topCol">
+                                                    <i class="fa fa-users fa-3x"></i><h3 class="visible-lg">&Eacute;quipe</h3>
+                                                </div>
+                                                <div class="contentCol">
+                                                    <ul class="grid cs-style-3">
+                                                        <li tal:repeat="membre variableMembres">
+                                                            <figure>
+                                                                <img tal:define="scales_membre membre/@@images; maVariable python:scales_membre.scale('photo', scale='mini')"
+                                                                     tal:attributes="src maVariable/url; class string:img-responsive; alt string:Photo de ${context/title}"
+                                                                     tal:condition="membre/photo" />
+                                                                <figcaption>
+                                                                    <div>
+                                                                        <strong tal:content="membre/prenom" tal:condition="membre/prenom" />
+                                                                        <strong tal:content="membre/title" class="text-uppercase"></strong>
+                                                                        <br/><br/><br class="hidden-md" />
+                                                                        <span tal:content="membre/metier" class="hidden-xs visibleHover"></span>
+                                                                         <a tal:attributes="href string:mailto: ${membre/email}; title string:Lui &eacute;crire un email"><i class="fa fa-envelope fa-2x"></i></a>
+                                                                    </div>   
+                                                                </figcaption>
+                                                            </figure>
+                                                        </li>   
+                                                    </ul>
+                                                </div>
+                                                <div class="footCol"></div>
+                                            </div>    
+                                        </div>                                
+                                    </tal:block>
+                                </tal:block>    
+                            </div>
+                        </div>
+                    </section>         
+                <tal:block replace="structure string:<script>" />
+                    function initialize() {
+                        var myLatlng = new google.maps.LatLng(<tal:block condition="context/latitude_googlemap" replace="structure context/latitude_googlemap" />,<tal:block condition="context/longitude_googlemap" replace="structure context/longitude_googlemap" />);
+                        var titre = "<tal:block condition='infos/title' replace='infos/title' />";
+                        titre = titre.replace(/([A-Za-z])'([A-Za-z0-9])/g, "$1\\'$2");
+                        var mapOptions = {
+                            center: myLatlng,
+                            zoom: 16,
+                            scrollwheel: false
+                            };
+                        var map = new google.maps.Map(document.getElementById('map'),mapOptions);
+                        var map2 = new google.maps.Map(document.getElementById('map2'),mapOptions);
+                        var marker = new google.maps.Marker({
+                              position: myLatlng,
+                              map: map,
+                              title: titre
+                          });
+                        var marker2 = new google.maps.Marker({
+                              position: myLatlng,
+                              map: map2,
+                              title: titre
+                          });                    
+                        $("#modal-map").on("shown.bs.modal", function(e) {
+                            google.maps.event.trigger(map, "resize");
+                            return map.setCenter(myLatlng);
+                            });
+                        }
+                    google.maps.event.addDomListener(window, 'load', initialize);
+                <tal:block replace="structure string:</script>" />
+                <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;callback=initialize&amp;key=AIzaSyC1TFavxa1-vQFzsw360e2PyBIzhWv-tIE"></script>
+
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+  			</metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

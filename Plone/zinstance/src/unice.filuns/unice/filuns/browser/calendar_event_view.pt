@@ -1,0 +1,149 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      tal:define="plone_view context/@@plone;
+                  view nocall:view | nocall:context/@@event_view | nocall:plone_view;
+                  dummy python: plone_view.mark_view(view);"
+      i18n:domain="plone"
+      tal:omit-tag="">
+
+<!-- <body>
+<metal:content-core fill-slot="main"> -->
+
+<div id="content" tal:define="
+    prefix_themes string:#FilUNSTheme;
+    prefix_canaux string:#FilUNSCanal;
+
+    themes python:view.themes(prefix_themes);
+    canaux python:view.canaux(prefix_canaux, {'*':'#FilUNSImp', 'FilUNS':'#FilUNSImportance'});
+    importances python:view.importances(canaux);
+
+    item python:view.selfDetails(prefix_themes, themes, prefix_canaux, canaux, importances, 10000);
+
+    toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+
+    <div class="row">
+        <div class="col-md-5 col-md-push-7">
+            <a tal:attributes="href item/image" class="thumb_link image_ratio ratio2:1">
+                <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                    <img tal:attributes="src item/image; title python:view.captions(item)"/>
+                </span>
+            </a>
+            <small tal:content="item/legend"/><br/><br/>
+
+            <div class="panel panel-default event_infos">
+                <div class="panel-body">
+                    <dl>
+                        <dt i18n:translate="event_when">When</dt>
+                        <dd>
+                            <span tal:content="python:toLocalizedTime(context.start())"/>
+                            <tal:word i18n:translate="event_when_differentday_optional_word_between_date_and_time" />
+                            <span tal:replace="python:toLocalizedTime(context.start(), time_only=1)"/>
+                            -
+                            <span tal:content="python:toLocalizedTime(context.end())"/>
+                            <tal:word i18n:translate="event_when_differentday_optional_word_between_date_and_time" />
+                            <span tal:replace="python:toLocalizedTime(context.end(), time_only=1)"/>
+                        </dd>
+
+                        <tal:block condition="context/location">
+                            <dt i18n:translate="event_where">Where</dt>
+                            <dd tal:content="context/location"/>
+                        </tal:block>
+
+                        <tal:block define="contact_email context/contact_email; contact_name python:context.contact_name() or None;"
+                                tal:condition="python:contact_name or contact_email">
+                            <dt i18n:translate="contact_name">Contact Name</dt>
+                            <dd>
+                                <a id="parent-fieldname-contactEmail" tal:condition="contact_email"
+                                   tal:replace="structure python:context.spamProtect(mailaddress=contact_email, mailname=contact_name, cssclass='email fn')"/>
+                                <span class="fn" tal:condition="not: contact_email"  tal:content="contact_name" />
+                            </dd>
+                        </tal:block>
+
+                        <tal:block condition="context/contact_phone">
+                            <dt i18n:translate="contact_phone">Contact Phone</dt>
+                            <dd tal:content="context/contact_phone"/>
+                        </tal:block>
+
+                        <tal:block condition="context/getAttendees|nothing">
+                            <dt i18n:translate="contact_attendees">Attendees</dt>
+                            <dd tal:content="structure python:'<br/>'.join(context.getAttendees())"/>
+                        </tal:block>
+
+                        <dt i18n:translate="heading_add_to_calendar">Add event to calendar</dt>
+                        <dd tal:define="here_url context/@@plone_context_state/object_url;
+                                        portal context/@@plone_portal_state/portal;">
+                            <a href="#"
+                               tal:attributes="href string:$here_url/vcs_view"
+                               title="Download this event in vCal format"
+                               i18n:attributes="title title_add_to_vcal;">
+                                <img tal:replace="structure portal/icon_export_vcal.png" src="" alt="" />
+                                <span i18n:translate="label_add_to_vcal">vCal</span></a>
+                            <a href="#"
+                               tal:attributes="href string:$here_url/ics_view"
+                               title="Download this event in iCal format"
+                               i18n:attributes="title title_add_to_ical;">
+                                <img tal:replace="structure portal/icon_export_ical.png" src="" alt="" />
+                                <span i18n:translate="label_add_to_ical">iCal</span></a>
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-7 col-md-pull-5">
+
+            <strong tal:attributes="class string:${item/themeCls}">
+                <span class="puce image_ratio"></span>
+                <tal:block content="item/theme"/>
+            </strong>
+            <p class="lead description">
+                <small tal:content="context/Description"/>
+            </p>
+            <div class="text">
+                <p tal:replace="structure here/aq_explicit/getText|nothing"/>
+            </div>
+
+        </div>
+    </div>
+
+
+    <p class="documentDescription kssattr-atfieldname-description kssattr-templateId-kss_generic_macros kssattr-macro-description-field-view"
+        id="parent-fieldname-description" tal:content="structure here/Description">
+        The Description
+    </p>
+
+    <p class="text-center">
+        <a tal:attributes="href string:${item/url}/@@article_view; title string:En savoir plus sur '${item/title}';" class="btn btn-primary">
+            En savoir plus
+        </a>
+    </p>
+
+
+
+    <!-- <tal:block define="actions context/@@plone_context_state/actions;
+                      object_actions python:actions['object']">
+        <ul style="float:left; width:45%;">
+            <li tal:repeat="action object_actions">
+              <a href=""
+                 target="_blank"
+                 tal:define="title action/title"
+                 tal:attributes="href action/url"
+                 i18n:translate=""
+                 i18n:domain="plone"
+                 tal:content="python: title=='View' and 'View details' or title">title</a>
+            </li>
+        </ul>
+    </tal:block> -->
+
+</div>
+
+<!-- </metal:content-core>
+</body>
+ -->
+</html>

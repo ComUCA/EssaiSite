@@ -1,0 +1,104 @@
+/*** PRESENTATION **************************************************************/
+.inline(lib_composante);
+.inline(domaine);
+.inline(mention);
+.inline(specialite);
+.inline(niveau);
+.inline(effectifs);
+.inline(lieux);
+.section(objectifs);
+.section(competences);
+
+/*** ADMISSION **************************************************************/
+.section(conditions);
+.section(inscription);
+.section(tarifs);
+.section(formcontinue);
+.section(inscriptions);
+
+/*** PROGRAMME **************************************************************/
+.section(programme);
+.section(rythme);
+.section(controle);
+
+/*** DEBOUCHES **************************************************************/
+.section(poursuite);
+.section(metiers);
+
+/*** ACCESSIBILITE **************************************************************/
+ul.list-unstyled, ul.list-unstyled li {
+    list-style: none !important;
+    margin: 0 !important;
+}
+ul.termes_accessibilite li * {
+    line-height: 2em;
+}
+ul.termes_accessibilite li .label {
+    display: inline-block;
+    width: 2.5em;
+}
+
+ul.termes_accessibilite li.terme_initiale .label {
+    background-color: #0A7B83;
+}
+ul.termes_accessibilite li.terme_continue .label {
+    background-color: #2AA876;
+}
+ul.termes_accessibilite li.terme_alternance .label {
+    background-color: #FFD265;
+}
+ul.termes_accessibilite li.terme_validation .label {
+    background-color: #F19C65;
+}
+ul.termes_accessibilite li.terme_distance .label {
+    background-color: #CE4D45;
+}
+
+/*** MOTSCLES **************************************************************/
+ul.termes_motscles li {
+    display: inline-block !important;
+    line-height: 1.75em !important;
+    margin-right: 0.25em !important;
+}
+
+/*** TELECHARGEMENTS **************************************************************/
+#form-widgets-telechargements-value a.btn {
+    padding-left: 2px;
+    padding-right: 2px;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    display: block;
+}
+
+/****************************************************************************/
+/****************************************************************************/
+/****************************************************************************/
+
+.inline(@id) {
+    #form-widgets-@{id}-label, #form-widgets-@{id}-value,
+    #form-widgets-@{id}-value ul, #form-widgets-@{id}-value ul li {
+        display: inline;
+    }
+    #form-widgets-@{id}-value:after {
+    	display: block;
+    	content: ' ';
+    }
+}
+
+.section(@id) {
+	#form-widgets-@{id}-label {
+		//margin-top: 2em;
+		padding: 3px 10px;
+		background-color: @couleurFond;
+	    color: #FFF !important;
+        border-radius: 2px;
+	}
+    #form-widgets-@{id}-value {
+		padding: 10px;
+    }
+
+    dd + #form-widgets-@{id}-label {
+		margin-top: 2em;
+    }
+}

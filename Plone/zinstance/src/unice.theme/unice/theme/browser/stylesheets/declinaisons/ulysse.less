@@ -1,0 +1,36 @@
+@import "declinaisons";
+
+@couleurFond: #A7B9C3;
+@couleurFondSombre: darken(@couleurFond, 20%);
+
+.portlets-in-header(@couleurFond, #FFF);
+.declinaison();
+
+div.portlet.portletNavigation nav.navbar.navbar-style-noir.navbar-height-small {
+    .navbar-text, .navbar-nav > li > a {
+        color: #474143 !important;
+    }
+    .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+        color: #000 !important;
+    }
+}
+
+.portlet.portletTitre .container {
+    background-color: @couleurFondSombre;
+}
+
+a {
+    color:@couleurFondSombre;
+    &:hover, &:focus {
+        color: darken(@couleurFondSombre, 20%);
+    }
+}
+#portal-columns {
+    h1, h2, h3 {
+        color:@couleurFondSombre;
+    }
+}
+nav.navbar-style-principal div.navbar-collapse:before,
+nav.navbar-style-principal div.navbar-collapse:after {
+    display: none !important;
+}

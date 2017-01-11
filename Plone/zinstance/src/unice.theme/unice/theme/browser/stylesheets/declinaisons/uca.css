@@ -1,0 +1,2051 @@
+/*****************************************************************************************/
+/*** UTILITAIRES *************************************************************************/
+/*****************************************************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+@import url(http://fonts.googleapis.com/css?family=Roboto:300,100&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Raleway:100,300);
+.fontAwesome {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: 0.25em;
+  text-align: center;
+}
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/**************************************************/
+/*****************************************************************************************/
+/*** NUANCIERS ***************************************************************************/
+/*****************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*****************************************************************************************************/
+/*******************************************************************************/
+/*** LIENS *********************************************************************/
+/*******************************************************************************/
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #967ADC !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #967ADC;
+}
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #967ADC;
+}
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #F6BB42 !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #F6BB42;
+}
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #F6BB42;
+}
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #37BC9B !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #37BC9B;
+}
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #37BC9B;
+}
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #4A89DC !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #4A89DC;
+}
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #4A89DC;
+}
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #986807 !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #986807;
+}
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #986807;
+}
+dl#relatedItemBox dd > span {
+  padding-left: 0 !important;
+}
+dl#relatedItemBox dd > span:before {
+  display: none;
+}
+/*******************************************************************************/
+/*** DECLINAISONS DES PAGES ****************************************************/
+/*******************************************************************************/
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence h1.documentFirstHeading,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #967ADC;
+  background-image: url("++resource++unice.theme.images/academy_networks.jpg");
+  background-size: cover;
+  background-position: top center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence h1.documentFirstHeading:before,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e616";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence #viewlet-below-content-title img.tileImage,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence #content h2,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 #content h2 {
+  background-color: #967ADC;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence #content h2 strong,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #F6BB42;
+  background-image: url("++resource++unice.theme.images/academy_complex.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e63d";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence #content h2 {
+  background-color: #F6BB42;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #37BC9B;
+  background-image: url("++resource++unice.theme.images/academy_space.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e64f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence #content h2 {
+  background-color: #37BC9B;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #4A89DC;
+  background-image: url("++resource++unice.theme.images/academy_living.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e6b8";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence #content h2 {
+  background-color: #4A89DC;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence h1.documentFirstHeading,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #986807;
+  background-image: url("++resource++unice.theme.images/academy_human.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence h1.documentFirstHeading:before,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e693";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence #viewlet-below-content-title img.tileImage,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence #content h2,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 #content h2 {
+  background-color: #986807;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence #content h2 strong,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+  background-image: url("++resource++unice.theme.images/center_modeling.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e619";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e605";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e65a";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e61d";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e60f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e6c3";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e60f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e691";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e643";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-jobs-at-uca h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+  background-image: url("++resource++unice.theme.images/jobs_at_uca.jpg");
+  background-size: cover;
+  background-position: center center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-jobs-at-uca h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e68f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-jobs-at-uca #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-jobs-at-uca #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-jobs-at-uca #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-uca-education-diplomas h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-uca-education-diplomas h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e6c1";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-uca-education-diplomas #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-uca-education-diplomas #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-uca-education-diplomas #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-digital-tools h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-digital-tools h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e60f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-digital-tools #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-digital-tools #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-digital-tools #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+.fa-jedi:before {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  content: "JEDI";
+  vertical-align: 50%;
+  font-size: 60%;
+  font-weight: 900;
+}
+/*******************************************************************************/
+/*** LIENS *********************************************************************/
+/*******************************************************************************/
+#content a[href$="academies-dexcellences/reseaux-information-societe-numerique"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #967ADC !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-dexcellences/reseaux-information-societe-numerique"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-dexcellences/reseaux-information-societe-numerique"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #967ADC;
+}
+#content a[href$="academies-dexcellences/reseaux-information-societe-numerique"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-dexcellences/reseaux-information-societe-numerique"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-dexcellences/reseaux-information-societe-numerique"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #967ADC;
+}
+#content a[href$="academies-dexcellences/systemes-complexes-1"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #F6BB42 !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-dexcellences/systemes-complexes-1"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-dexcellences/systemes-complexes-1"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #F6BB42;
+}
+#content a[href$="academies-dexcellences/systemes-complexes-1"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-dexcellences/systemes-complexes-1"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-dexcellences/systemes-complexes-1"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #F6BB42;
+}
+#content a[href$="academies-dexcellences/espace-environnement-risques-et-resilience-1"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #37BC9B !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-dexcellences/espace-environnement-risques-et-resilience-1"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-dexcellences/espace-environnement-risques-et-resilience-1"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #37BC9B;
+}
+#content a[href$="academies-dexcellences/espace-environnement-risques-et-resilience-1"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-dexcellences/espace-environnement-risques-et-resilience-1"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-dexcellences/espace-environnement-risques-et-resilience-1"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #37BC9B;
+}
+#content a[href$="academies-dexcellences/complexite-et-diversite-des-systemes-vivants-1"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #4A89DC !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-dexcellences/complexite-et-diversite-des-systemes-vivants-1"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-dexcellences/complexite-et-diversite-des-systemes-vivants-1"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #4A89DC;
+}
+#content a[href$="academies-dexcellences/complexite-et-diversite-des-systemes-vivants-1"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-dexcellences/complexite-et-diversite-des-systemes-vivants-1"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-dexcellences/complexite-et-diversite-des-systemes-vivants-1"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #4A89DC;
+}
+#content a[href$="academies-dexcellences/homme-idees-et-environnements-1"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #986807 !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-dexcellences/homme-idees-et-environnements-1"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-dexcellences/homme-idees-et-environnements-1"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #986807;
+}
+#content a[href$="academies-dexcellences/homme-idees-et-environnements-1"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-dexcellences/homme-idees-et-environnements-1"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-dexcellences/homme-idees-et-environnements-1"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #986807;
+}
+dl#relatedItemBox dd > span {
+  padding-left: 0 !important;
+}
+dl#relatedItemBox dd > span:before {
+  display: none;
+}
+/*******************************************************************************/
+/*** DECLINAISONS DES PAGES ****************************************************/
+/*******************************************************************************/
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-reseaux-information-societe-numerique h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #967ADC;
+  background-image: url("++resource++unice.theme.images/academy_networks.jpg");
+  background-size: cover;
+  background-position: top center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-reseaux-information-societe-numerique h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e616";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-reseaux-information-societe-numerique #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-reseaux-information-societe-numerique #content h2 {
+  background-color: #967ADC;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-reseaux-information-societe-numerique #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-systemes-complexes-1 h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #F6BB42;
+  background-image: url("++resource++unice.theme.images/academy_complex.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-systemes-complexes-1 h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e63d";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-systemes-complexes-1 #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-systemes-complexes-1 #content h2 {
+  background-color: #F6BB42;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-systemes-complexes-1 #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-espace-environnement-risques-et-resilience-1 h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #37BC9B;
+  background-image: url("++resource++unice.theme.images/academy_space.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-espace-environnement-risques-et-resilience-1 h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e64f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-espace-environnement-risques-et-resilience-1 #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-espace-environnement-risques-et-resilience-1 #content h2 {
+  background-color: #37BC9B;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-espace-environnement-risques-et-resilience-1 #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-complexite-et-diversite-des-systemes-vivants-1 h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #4A89DC;
+  background-image: url("++resource++unice.theme.images/academy_living.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-complexite-et-diversite-des-systemes-vivants-1 h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e6b8";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-complexite-et-diversite-des-systemes-vivants-1 #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-complexite-et-diversite-des-systemes-vivants-1 #content h2 {
+  background-color: #4A89DC;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-complexite-et-diversite-des-systemes-vivants-1 #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-homme-idees-et-environnements-1 h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #986807;
+  background-image: url("++resource++unice.theme.images/academy_human.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-homme-idees-et-environnements-1 h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e693";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-homme-idees-et-environnements-1 #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-homme-idees-et-environnements-1 #content h2 {
+  background-color: #986807;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-francais-idex-uca-jedi-academies-dexcellences-homme-idees-et-environnements-1 #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-francais-idex-uca-jedi-msi h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+  background-image: url("++resource++unice.theme.images/center_modeling.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-francais-idex-uca-jedi-msi h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e619";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-francais-idex-uca-jedi-msi #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-francais-idex-uca-jedi-msi #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-francais-idex-uca-jedi-msi #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+.fa-jedi:before {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  content: "JEDI";
+  vertical-align: 50%;
+  font-size: 60%;
+  font-weight: 900;
+}
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+@-webkit-keyframes hvr-pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@keyframes hvr-pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.animation-pulse {
+  display: inline-block;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+#portlets-in-header div.portlet.portletNavigation.navbar-style-noir,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.dropdown-menu,
+.portlet.portletTitre {
+  background-color: #FFF !important;
+}
+div.portlet.portletNavigation.navbar-style-plan {
+  background-color: #f7f5f0;
+}
+div.portlet.portletNavigation.navbar-style-plan,
+div.portlet.portletNavigation.navbar-style-plan nav.navbar ul.row li a {
+  color: #000;
+}
+div.portlet.portletCarousel {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#FFF), to(#FFF));
+  background-image: -webkit-linear-gradient(top, #FFF, #FFF) ;
+  background-image: -moz-linear-gradient(top, #FFF, #FFF) ;
+  background-image: -ms-linear-gradient(top, #FFF, #FFF) ;
+  background-image: -o-linear-gradient(top, #FFF, #FFF) ;
+  background-image: linear-gradient(top, #FFF, #FFF) ;
+}
+/*****************************************************************************************************/
+/*** GENERAL *****************************************************************************************/
+/*****************************************************************************************************/
+a {
+  color: #0085A3;
+}
+a:hover,
+a:focus {
+  color: #006980;
+}
+.btn-primary {
+  background-color: #0085A3;
+  border-color: #006980;
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #006980;
+}
+.btn.btn-inverted.btn-primary,
+#content .btn.btn-inverted.btn-primary {
+  color: #0085A3 !important;
+  border: 1px solid #0085A3 !important;
+}
+.btn.btn-inverted.btn-primary:hover,
+#content .btn.btn-inverted.btn-primary:hover,
+.btn.btn-inverted.btn-primary:focus,
+#content .btn.btn-inverted.btn-primary:focus {
+  background-color: #0085A3;
+}
+ul.nav.navbar-nav ul.dropdown-menu > li > a:hover,
+ul.nav.navbar-nav ul.dropdown-menu > li > a:focus {
+  background-color: #0085A3 !important;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .open > a,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .open > a:hover,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .open > a:focus,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .active > a,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .active > a:hover,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal .navbar-nav .active > a:focus {
+  background-color: #006980 !important;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.navbar-nav ul.dropdown-menu {
+  background-color: #006980 !important;
+}
+.portlet.portletAgenda div.row > div.col-md-1,
+#portal-column-one .portlet.portletNavigationTree > .portletItem .navTree > .navTreeCurrentNode a.navTreeCurrentItem,
+#portal-column-one .portlet.portletNavigationTree > .portletItem .navTree > .navTreeCurrentNode:hover a.navTreeCurrentItem,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal.navbar-height-normal {
+  background-color: #0085A3;
+}
+.portlet.portletTitre .container {
+  background-color: #0085a3;
+}
+#portal-columns h1,
+#portal-columns h2,
+#portal-columns h3 {
+  color: #0085A3;
+}
+footer .credits {
+  background-color: #0085A3;
+}
+/*****************************************************************************************************/
+/*** TINY MCE ****************************************************************************************/
+/*****************************************************************************************************/
+.alert-composante {
+  background-color: rgba(0, 133, 163, 0.1);
+  border-color: rgba(0, 133, 163, 0.2);
+  color: rgba(0, 133, 163, 0.8);
+}
+/*****************************************************************************************************/
+/*** PORTLETS ****************************************************************************************/
+/*****************************************************************************************************/
+#viewlet-below-content .BelowPortletManager4 li.active a {
+  background-color: #0085A3 !important;
+  color: #FFF !important;
+}
+dl.portlet.portletCoordonnees .portletHeader {
+  background-color: #0085A3;
+  color: #FFF;
+}
+dl.portlet.portletCoordonnees .portletHeader span {
+  color: #FFF;
+}
+div#portal-column-content dl.portlet dt,
+#portal-column-one dl.portlet dt,
+#portal-column-two dl.portlet dt {
+  color: #0085A3;
+}
+div#portal-column-content dl.portlet dt a,
+#portal-column-one dl.portlet dt a,
+#portal-column-two dl.portlet dt a,
+div#portal-column-content dl.portlet dt a:hover,
+#portal-column-one dl.portlet dt a:hover,
+#portal-column-two dl.portlet dt a:hover,
+div#portal-column-content dl.portlet dt a:focus,
+#portal-column-one dl.portlet dt a:focus,
+#portal-column-two dl.portlet dt a:focus {
+  color: #0085A3;
+}
+dl.portlet.portletTwitterPortlet .tweetDate {
+  color: #0085A3;
+}
+@media (min-width: 992px) {
+  div.portletEventsContainer dl.portlet.portletEvents dt.portletHeader {
+    background-color: #0085A3;
+  }
+  div.portletEventsContainer dl.portlet.portletEvents .bx-wrapper .bx-controls-direction a,
+  div.portletEventsContainer dl.portlet.portletEvents .bx-wrapper .bx-controls-direction a:hover,
+  div.portletEventsContainer dl.portlet.portletEvents .bx-wrapper .bx-controls-direction a:focus {
+    background-color: #006980;
+  }
+}
+dl.portlet.portletCalendar .todaynoevent strong {
+  background-color: #0085A3;
+}
+dl.portlet.portletCalendar .event strong {
+  border: 1px solid #0085A3;
+}
+div.portlet.portletA_La_Une .dossier_actu_evenement_header {
+  background-color: #0085A3;
+}
+div.portlet.portletNavigation.navbar-style-principal {
+  background-color: #0085A3;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse ul.navbar-nav > li > a {
+  font-size: 16px;
+  text-transform: none;
+  font-stretch: initial;
+}
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse:before,
+div.portlet.portletNavigation nav.navbar.navbar-style-principal div.navbar-collapse:after {
+  display: none;
+}
+#portal-columns h1,
+#portal-columns h2,
+#portal-columns h3,
+h1,
+h2,
+h3 {
+  font-family: "Raleway";
+  font-weight: 100;
+}
+a,
+a:link,
+a:visited {
+  color: #0085A3;
+}
+a.btn,
+a.btn:link,
+a.btn:visited {
+  color: #FFF !important;
+}
+div#wrap > div > div.container {
+  width: auto;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+@media (min-width: 992px) {
+  #portal-column-one.col-md-3,
+  #portal-column-two.col-md-3 {
+    margin-top: 56px;
+  }
+}
+body.subsection-english-english div#wrap > div > div.container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+body.subsection-english-english div#portal-column-content {
+  padding: 0;
+}
+body.subsection-english-english div#portal-columns {
+  padding-top: 0;
+}
+#plone-document-byline .documentByLine,
+#viewlet-above-content-body .newsImageContainer {
+  display: none;
+}
+#portal-columns {
+  background-color: transparent;
+}
+.breadcrumb {
+  background-color: #FFF;
+  border: 0;
+}
+#portal-column-content .breadcrumb {
+  display: none !important;
+}
+h1.documentFirstHeading {
+  margin: 0;
+  margin-bottom: 20px;
+  padding: 40px 10px;
+  text-align: center;
+  background-color: #0085A3;
+  color: #FFF !important;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+#content h1.documentFirstHeading {
+  display: none !important;
+}
+#content .documentDescription,
+#content #description,
+#parent-fieldname-description,
+ul.canal_fil_importance3 .details_link span {
+  color: #0085A3 !important;
+  font-size: 21px;
+  text-align: justify;
+  font-weight: 300;
+  margin-top: 30px;
+  padding: 0;
+}
+ul.canal_fil_importance3 .details_link span {
+  font-size: 14px;
+}
+.highlightedSearchTerm {
+  background-color: #f1c40f;
+}
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+.managedPortlet .managedPortletActions > span.draggable,
+.managedPortlet .managedPortletActions > a.left,
+.managedPortlet .managedPortletActions > a.right {
+  display: inline-block !important;
+}
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-principal,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo nav,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-principal nav {
+  width: 100% !important;
+  background-color: transparent !important;
+}
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo div.navbar-collapse ul.navbar-nav > li > a,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-principal div.navbar-collapse ul.navbar-nav > li > a {
+  color: #0085A3 !important;
+  padding: 10px !important;
+  font-stretch: initial !important;
+}
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo div.navbar-collapse ul.navbar-nav > li > a .caret,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-principal div.navbar-collapse ul.navbar-nav > li > a .caret {
+  border-top-color: #0085A3;
+  border-bottom-color: #0085A3;
+  display: inline-block;
+  margin-left: 2px;
+}
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo div.navbar-collapse ul.navbar-nav .open > a,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-principal div.navbar-collapse ul.navbar-nav .open > a,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo div.navbar-collapse ul.navbar-nav .open > a:hover,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-principal div.navbar-collapse ul.navbar-nav .open > a:hover {
+  background-color: #0085A3 !important;
+  color: #FFF !important;
+}
+#portlets-in-header div.portlet.portletNavigation.navbar-style-logo div.navbar-collapse ul.navbar-nav .open > a .caret,
+#portlets-in-header div.portlet.portletNavigation.navbar-style-principal div.navbar-collapse ul.navbar-nav .open > a .caret {
+  border-top-color: #FFF;
+  border-bottom-color: #FFF;
+}
+#portlets-in-header div.portlet.portletNavigation .dropdown-menu {
+  border: 0;
+}
+#portlets-in-header div.portlet.portletNavigation .dropdown-menu a {
+  border: 0;
+}
+#portlets-in-header div.portlet.portletNavigation .dropdown-menu a i.fa.fa-angle-right {
+  display: none;
+}
+#portlets-in-header div.portlet.portletNavigation #menu-idex-uca-jedi-uca-home,
+#portlets-in-header div.portlet.portletNavigation #menu-uca-labs-uca-home,
+#portlets-in-header div.portlet.portletNavigation #menu-uca-education-uca-home {
+  display: none;
+}
+#portlets-in-header div.portlet.portletCarousel {
+  background-color: transparent;
+  background-image: none;
+}
+#portlets-in-header div.portlet.portletCarousel .bx-wrapper {
+  margin-bottom: 0;
+}
+@media (min-width: 768px) {
+  #portlets-in-header div.portlet.portletCarousel .bx-caption {
+    padding-bottom: 30px;
+    padding-top: 30px;
+    background-color: transparent;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#000000));
+    background-image: -webkit-linear-gradient(top, transparent, #000000) ;
+    background-image: -moz-linear-gradient(top, transparent, #000000) ;
+    background-image: -ms-linear-gradient(top, transparent, #000000) ;
+    background-image: -o-linear-gradient(top, transparent, #000000) ;
+    background-image: linear-gradient(top, transparent, #000000) ;
+  }
+}
+#portlets-in-header div.portlet.portletCarousel .bx-caption span strong,
+#portlets-in-header div.portlet.portletCarousel .bx-caption span small {
+  font-weight: 100;
+}
+.titre_s_s {
+  background: #006980;
+  padding: 20px;
+  text-align: center;
+  margin-top: 20px;
+}
+.titre_s_s:hover,
+.titre_s_s:focus {
+  background: #003f4d;
+}
+.titre_s_s h3 {
+  margin: 0;
+  font-weight: 100;
+}
+.titre_s_s a {
+  color: #FFF !important;
+  text-decoration: none !important;
+}
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+div.portlet.portletAgenda .image_ratio span {
+  padding-top: 66.666%;
+}
+@media (min-width: 992px) {
+  div.portlet.portletAgenda div.row > div.col-md-1 {
+    line-height: 236px;
+  }
+}
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+#livesearch0,
+footer .credits {
+  display: none !important;
+}
+ol.breadcrumb > li:nth-child(1),
+ol.breadcrumb > li:nth-child(2),
+ol.breadcrumb > li:nth-child(3) {
+  display: none;
+}
+ol.breadcrumb > li:nth-child(1) + li:before,
+ol.breadcrumb > li:nth-child(2) + li:before,
+ol.breadcrumb > li:nth-child(3) + li:before {
+  content: " ";
+}
+div#portlets-in-header nav.navbar-style-logo {
+  padding: 10px;
+  text-align: center;
+  box-shadow: none;
+}
+div#portlets-in-header nav.navbar-style-logo .navbar-header,
+div#portlets-in-header nav.navbar-style-logo .navbar-brand {
+  float: none;
+}
+div#portlets-in-header nav.navbar-style-logo .navbar-brand:nth-child(2) img {
+  height: 60px;
+  margin-left: 50px;
+}
+div#portlets-in-header nav.navbar-style-logo .navbar-form #searchGadget {
+  width: 7em;
+}
+div#portlets-in-header nav.navbar-style-logo .navbar-form #searchGadget:focus {
+  width: 17em;
+}
+.modal-header {
+  background-color: #0085A3;
+  color: #FFF;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.modal-header .close {
+  color: #FFF;
+  opacity: 1;
+  text-shadow: none;
+}
+@media (min-width: 768px) {
+  .portletNavigation.navbar-style-principal .navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+    vertical-align: top;
+  }
+  .portletNavigation.navbar-style-principal .navbar .navbar-collapse {
+    text-align: center;
+  }
+  .portletNavigation.navbar-style-principal .navbar .navbar-collapse ul.navbar-nav > li {
+    border-width: 0 !important;
+  }
+}
+body.subsection-english-english ol.breadcrumb,
+body.subsection-english-english h1#parent-fieldname-title {
+  display: none !important;
+}
+body.subsection-english-presentation-uca-members .template .btn.btn-more {
+  display: none;
+}
+/*
+body.template-template2bis_view {
+    display:none !important;
+}*/
+body.template-template2bis_view #content hr,
+body.template-template2ter_view #content hr {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+body.template-template2bis_view #content ul.canal_fil_importance2,
+body.template-template2ter_view #content ul.canal_fil_importance2 {
+  margin: 0 !important;
+  margin-top: 40px !important;
+}
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row {
+  margin: 0 !important;
+}
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-4,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-4,
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-3,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 {
+  border: 0 none !important;
+  box-shadow: none !important;
+  margin-bottom: 0 !important;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0 !important;
+  height: 100%;
+}
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-4 .image_ratio.ratio16\3a 9,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-4 .image_ratio.ratio16\3a 9,
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-3 .image_ratio.ratio16\3a 9,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 .image_ratio.ratio16\3a 9 {
+  border: 0 !important;
+}
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-4 .image_ratio.ratio16\3a 9 span,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-4 .image_ratio.ratio16\3a 9 span,
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-3 .image_ratio.ratio16\3a 9 span,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 .image_ratio.ratio16\3a 9 span {
+  padding-top: 100% !important;
+}
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-4 .details_link,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-4 .details_link,
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-3 .details_link,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 .details_link {
+  text-align: center;
+}
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-4 .details_link h2,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-4 .details_link h2,
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-3 .details_link h2,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 .details_link h2 {
+  font-size: 14px;
+}
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-4 a,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-4 a,
+body.template-template2bis_view #content ul.canal_fil_importance2 div.row li.col-md-3 a,
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 a {
+  height: auto;
+}
+#content .template ul.canal_fil_importance3 {
+  background-color: transparent !important;
+}
+#content .template ul.canal_fil_importance3 li {
+  padding: 0 !important;
+}
+.portletAgenda > .container {
+  width: auto;
+}
+footer .FooterPortletManager1 .liste-membres a img {
+  width: auto;
+  height: 40px;
+  margin-right: 2px;
+  filter: url(data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='grayscale'><feColorMatrix type='matrix' values='0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0'/></filter></svg>#grayscale);
+  filter: gray;
+  -webkit-filter: grayscale(100%);
+  -webkit-transition: all .6s ease;
+  -webkit-backface-visibility: hidden;
+}
+footer .FooterPortletManager1 .liste-membres a img:hover {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(0%);
+}
+footer .FooterPortletManager1 .liste-membres a:nth-child(4) img {
+  height: 35px;
+}
+footer .FooterPortletManager1 .liste-membres a:nth-child(5) img {
+  height: 35px;
+}
+footer .FooterPortletManager1 .liste-membres a:nth-child(6) img {
+  height: 50px;
+}
+footer .FooterPortletManager1 .liste-membres a:nth-child(8) img {
+  height: 20px;
+}
+footer .FooterPortletManager1 .liste-membres a:nth-child(9) img {
+  height: 75px;
+}
+footer .FooterPortletManager1 .liste-membres a:nth-child(10) img {
+  height: 20px;
+}
+footer .FooterPortletManager1 .liste-membres a:nth-child(12) img {
+  height: 60px;
+}
+footer .FooterPortletManager1 .liste-membres a:nth-child(13) img {
+  height: 46px;
+}
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+#portal-columns {
+  padding-top: 0;
+}
+#portal-column-content {
+  padding: 0;
+}
+#content {
+  margin: 0;
+}
+#portlets-below {
+  margin-bottom: 0;
+}
+body.subsection-english-english #viewlet-below-content-title #portlets-below {
+  background-color: #F2F2F2;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+}
+div.portletEvenementiels div.portletHeader.panel-heading,
+dl.portlet.portletListing .portletHeader {
+  background-color: #0085A3 !important;
+  display: block !important;
+  text-align: center;
+  color: #FFF !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  border-radius: 0;
+  border: 0;
+  padding: 10px 15px !important;
+  text-transform: uppercase;
+}
+div.portletEvenementiels div.portletHeader.panel-heading,
+dl.portlet.portletListing .portletHeader,
+div.portletEvenementiels div.portletHeader.panel-heading span,
+dl.portlet.portletListing .portletHeader span {
+  font-weight: 700;
+}
+div.portletEvenementiels {
+  border: 0;
+}
+div.portletEvenementiels div.portletHeader.panel-heading {
+  margin-bottom: 10px;
+}
+div.portlet.portletEvenementiels .list-group-item {
+  border: 0 !important;
+  padding: 30px !important;
+  padding: 10px 20px !important;
+  background-color: #F2F2F2;
+}
+@media (min-width: 768px) {
+  div.portlet.portletEvenementiels .list-group-item {
+    width: 50%;
+    float: left;
+  }
+}
+div.portlet.portletEvenementiels .list-group-item h4.list-group-item-heading {
+  margin-top: 15px;
+}
+div.portlet.portletEvenementiels .list-group-item span.carre {
+  width: 80px !important;
+  height: 70px !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  width: 120px!important;
+  height: 120px!important;
+}
+div.portlet.portletEvenementiels .list-group-item p.list-group-item-text {
+  font-size: 12px;
+  margin: 0 !important;
+}
+div.portlet.portletEvenementiels .list-group-item p.list-group-item-text .text-muted {
+  display: none;
+}
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+body.template-template1_view #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  padding: 5px;
+  color: #FFF;
+  letter-spacing: 0;
+}
+body.template-template1_view #content h2 strong {
+  font-weight: 100;
+}
+body.template-template1_view #content h2:after {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f105";
+  float: right;
+}
+body.portaltype-document.template-document_view #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  padding: 5px;
+  color: #FFF;
+  letter-spacing: 0;
+}
+body.portaltype-document.template-document_view #content h2 strong {
+  font-weight: 100;
+}
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 {
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 .image_ratio.ratio16\3a 9 {
+  border: 0 !important;
+}
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 .image_ratio.ratio16\3a 9 span {
+  padding-top: 100% !important;
+}
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 a.btn.btn-primary {
+  display: none !important;
+}
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 div.row {
+  margin: 0 !important;
+}
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 .details_link {
+  display: none;
+}
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+ul.list-inline {
+  margin-left: -5px !important;
+  list-style: none !important;
+}
+ul.list-inline > li {
+  display: inline-block !important;
+}
+#fieldset-openid-login label,
+#login-form label {
+  text-align: center;
+}
+#fieldset-openid-login input,
+#login-form input {
+  width: 100%;
+}
+#login-forgotten-password {
+  display: none;
+}
+a.btn.btn-more {
+  display: none !important;
+}
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+body.template-solgemafullcalendar_view a.fc-event {
+  color: #FFF !important;
+}

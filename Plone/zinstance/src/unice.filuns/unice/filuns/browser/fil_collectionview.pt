@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+        <div metal:fill-slot="content-core">
+
+            <tal:results define="batch python:context.results();">
+
+                <metal:block use-macro="context/fil_macro/macros/fil"></metal:block>
+
+            </tal:results>
+
+        </div>
+    </body>
+
+</html>

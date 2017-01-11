@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<object name="formation"
+   meta_type="Factory-based Type Information with dynamic views"
+   i18n:domain="plone" xmlns:i18n="http://xml.zope.org/namespaces/i18n" purge="False">
+ <property name="view_methods" purge="False">
+  <element value="formation_view"/>
+  <element value="formation_fiche_view"/>
+  <element value="formation_mobile_view"/>
+ </property>
+</object>

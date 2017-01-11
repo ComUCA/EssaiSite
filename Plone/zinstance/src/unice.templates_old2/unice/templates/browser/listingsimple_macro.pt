@@ -1,0 +1,80 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="template">
+
+    <div tal:condition="batch" class="listingsimple">
+
+        <tal:block define=" items python:view.items(batch, ['page.html'], desc_max=90, isObjects=type(batch) is list);
+                            filtered python:view.filtered(items, '#ExclureContenuTemplate');
+                            TRUE python:True; FALSE python:False;
+
+                            icons python:{'File': 'fa-file-o', 'Image': 'fa-picture-o', 'Document': 'fa-file-text-o', 'Folder': 'fa-folder-open-o'};
+                            file_icons python:{'xls': 'xls'};">
+
+            <ul class="list-unstyled">
+
+                <li tal:repeat="item filtered"
+                    tal:define="opt_image TRUE; opt_title TRUE; opt_desc TRUE; opt_desctrunc TRUE; opt_boutonsavoirplus TRUE; opt_imageratio string:ratio4:3;" class="row">
+
+                    <a tal:attributes="href item/url; title item/description; class python: 'type_%s' % item['type'].lower();"
+                        tal:define="icon python:icons[item['type']] if item['type'] in icons else ''">
+
+                        <span class="col-xs-1 col-md-1 text-center listing_icon">
+                            <i tal:attributes="class python:'fa %s fa-fw fa-2x text-muted' % icon"></i>
+                        </span>
+                        <span class="col-xs-8 col-md-7 listing_titre">
+                            <strong tal:content="item/title"/><br/>
+                            <small tal:content="python: item['description'] if item['description'] else 'Pas de description'"
+                                class="text-muted"/>
+                        </span>
+                        <span tal:condition="python:not item['type'] in ['Folder']"
+                            class="col-xs-3 col-md-2 col-md-push-2 listing_download">
+                            <span class="btn btn-default btn-sm btn-block">
+                                <tal:block condition="python:item['type'] in ['File']">
+                                    <i class="fa fa-cloud-download fa-lg"></i> Télécharger
+                                </tal:block>
+                                <tal:block condition="python:item['type'] in ['Document']">
+                                    Voir le document <i class="fa fa-chevron-right"></i>
+                                </tal:block>
+                                <tal:block condition="python:item['type'] in ['Image']">
+                                    Voir l'image <i class="fa fa-chevron-right"></i>
+                                </tal:block>
+                            </span>
+                        </span>
+                        <span tal:condition="python:not item['type'] in ['Folder']"
+                            class="col-xs-11 col-md-2 col-md-pull-2 col-xs-offset-1 col-md-offset-0 listing_infos">
+                            <tal:block condition="item/dates/start_localized">
+                                <i class="fa fa-calendar-empty fa-fw text-muted"></i> <small tal:content="item/dates/start_localized" class="text-muted"/>&nbsp;
+                                <br class="hidden-xs hidden-sm"/>
+                            </tal:block>
+                            <tal:block condition="python:item['type'] in ['File', 'Image']">
+                                <i class="fa fa-info-sign fa-fw text-muted"></i> <small tal:content="item/item/getObjSize" class="text-muted"/>
+                            </tal:block>
+                        </span>
+
+                        <div class="visualClear"/>
+                    </a>
+                </li>
+
+            </ul>
+
+        </tal:block>
+
+    </div>
+
+    <p class="discreet" tal:condition="not:batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+</metal:content-core>
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+@import "uca_utils";
+
+@couleur_academy_networks: #967ADC;
+@couleur_academy_complex: #F6BB42;
+@couleur_academy_space: #37BC9B;
+@couleur_academy_living: #4A89DC;
+@couleur_academy_human: darken(#F6BB42, 30%);
+
+@icon2_academy_networks: "\e616";
+@icon2_academy_complex: "\e63d";
+@icon2_academy_space: "\e64f";
+@icon2_academy_living: "\e6b8";
+@icon2_academy_human: "\e693";
+
+@icon2_program_research: "\e6c3";
+@icon2_program_training: "\e60f";
+@icon2_program_international: "\e691";
+@icon2_program_innovation: "\e643";
+
+@icon2_center_modeling: "\e619";
+@icon2_center_health: "\e605";
+@icon2_center_smart: "\e65a";
+@icon2_center_digital: "\e61d";
+@icon2_center_pedagogy: "\e60f";
+
+@icon2_jobs_at_uca: "\e68f";
+@icon2_digital_tools: "\e6c1";
+
+/*******************************************************************************/
+/*** LIENS *********************************************************************/
+/*******************************************************************************/
+
+a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"] {
+    .academy_link(@couleur_academy_networks);
+}
+a[href$="academies-of-excellence/complex-systems-academy-of-excellence"] {
+    .academy_link(@couleur_academy_complex);
+}
+a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"] {
+    .academy_link(@couleur_academy_space);
+}
+a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"] {
+    .academy_link(@couleur_academy_living);
+}
+a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"] {
+    .academy_link(@couleur_academy_human);
+}
+.academy_link(@c) {
+    #content &:not(.thumb_link):not(.details_link) {
+        display: inline-block;
+        padding: 0 0.25em;
+        border-radius: 3px;
+        text-decoration: none !important;
+        font-weight: normal;
+        color: @c !important;
+        background-color: transparent;
+        margin-bottom: 0.25em;
+
+        &:hover, &:focus {
+            color: #FFF !important;
+            background-color: @c;
+
+            &:before {
+                color: #FFF;
+            }
+        }
+
+        &:before {
+            .fontawesome();
+            content: "\f005";
+            color: @c;
+        }
+    }
+
+    // dl#relatedItemBox &:not(.thumb_link) {
+    //     &:before {
+    //         // text-shadow: 0 0 0 #FFF, 0 1px 0 #FFF, 1px 1px 0 #FFF, 1px 0 0 #FFF;
+    //     }
+    // }
+}
+
+dl#relatedItemBox dd > span {
+    padding-left: 0 !important;
+
+    &:before {
+        display: none;
+    }
+}
+
+/*******************************************************************************/
+/*** DECLINAISONS DES PAGES ****************************************************/
+/*******************************************************************************/
+
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 {
+    .academy_title(@couleur_academy_networks, @icon2_academy_networks, 'academy_networks.jpg', top);
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence {
+    .academy_title(@couleur_academy_complex, @icon2_academy_complex, 'academy_complex.jpg', bottom);
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence {
+    .academy_title(@couleur_academy_space, @icon2_academy_space, 'academy_space.jpg', bottom);
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence {
+    .academy_title(@couleur_academy_living, @icon2_academy_living, 'academy_living.jpg', bottom);
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 {
+    .academy_title(@couleur_academy_human, @icon2_academy_human, 'academy_human.jpg', bottom);
+}
+
+/*******************************************************************************/
+
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions {
+    .academy_title(@couleurFond, @icon2_center_modeling, 'center_modeling.jpg', bottom);
+}
+
+/*******************************************************************************/
+
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center {
+    .academy_title(@couleurFond, @icon2_center_health, @no_bg: true);
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center {
+    .academy_title(@couleurFond, @icon2_center_smart, @no_bg: true);
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center {
+    .academy_title(@couleurFond, @icon2_center_digital, @no_bg: true);
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation {
+    .academy_title(@couleurFond, @icon2_center_pedagogy, @no_bg: true);
+}
+
+/*******************************************************************************/
+
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program {
+    .academy_title(@couleurFond, @icon2_program_research, @no_bg: true);
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program {
+    .academy_title(@couleurFond, @icon2_program_training, @no_bg: true);
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program {
+    .academy_title(@couleurFond, @icon2_program_international, @no_bg: true);
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program {
+    .academy_title(@couleurFond, @icon2_program_innovation, @no_bg: true);
+}
+
+/*******************************************************************************/
+
+body.subsection-english-jobs-at-uca {
+    .academy_title(@couleurFond, @icon2_jobs_at_uca, 'jobs_at_uca.jpg', center);
+}
+
+body.subsection-english-uca-education-diplomas {
+    .academy_title(@couleurFond, @icon2_digital_tools, @no_bg: true);
+}
+
+/*******************************************************************************/
+
+body.subsection-english-digital-tools {
+    .academy_title(@couleurFond, @icon2_center_pedagogy, @no_bg: true);
+}
+
+/*******************************************************************************/
+
+.academy_title(@c, @i, @bg:'', @bg_pos:'', @no_bg:false) {
+    h1.documentFirstHeading {
+        margin: 0 -15px;
+        padding: 40px 10px;
+        text-align: center;
+        color: #FFF;
+        background-color: @c;
+
+        & when (@no_bg = false) {
+            background-image: url("++resource++unice.theme.images/@{bg}");
+            background-size: cover;
+            background-position: @bg_pos center;
+            text-shadow: 0 0 5px #000, 0 0 5px #000;
+        }
+
+        .angled_up20();
+
+        &:before {
+            .pe-2x();
+            content: @i;
+            display: block;
+            margin-bottom: 0.125em;
+        }
+    }
+    #viewlet-below-content-title img.tileImage {
+        display: none;
+    }
+
+    #content h2 {
+        background-color: @c;
+        border-radius: 2px;
+        font-size: 24px;
+        padding: 5px;
+        color: #FFF !important;
+        letter-spacing: 0;
+
+        strong {
+            font-weight: 100;
+        }
+    }
+}
+
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+
+.fa-jedi {
+    &:before {
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        content: "JEDI";
+        vertical-align: 50%;
+        font-size: 60%;
+        font-weight: 900;
+    }
+}
+

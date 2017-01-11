@@ -1,0 +1,128 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="not:context/@@plone_portal_state/anonymous">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="context/@@plone_portal_state/anonymous"
+    define="infos view/infos;
+            scales context/@@images;
+            variablePartenaires python:view.champsRepeat('partenaires');">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core"
+                        tal:define="widgets nocall:context/@@view">
+      <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1TFavxa1-vQFzsw360e2PyBIzhWv-tIE"></script> 
+        <section class="row emplacement-normal row-same-height">
+<!-- contenu --> 
+          <div class="dark col-sm-12 col-md-6 col-md-height col-full-height">                 
+              <div class="content presentation "> 
+                  <ol class="breadcrumb">
+                      <li><a href="../accueil">Accueil</a></li>
+                      <li class="active">Partenaires</li>
+                  </ol>
+                  <h1 tal:content="infos/title" tal:condition="infos/title"></h1>
+                  <div tal:replace="structure widgets/++widget++contenu/render" tal:condition="context/contenu" />
+              </div>
+          </div>
+          <!-- carrousel -->
+          <div class="carto col-sm-12 col-md-6 col-md-height col-full-height">
+            <div class="embed-responsive col-full-height">
+              <div id="map" class="embed-responsive-item"></div> 
+            </div> 
+<!--        <div class="embed-responsive col-full-height">
+              <iframe class="embed-responsive-item" src="https://www.google.com/maps/d/embed?mid=zS2r_3zAj_WU.kQvgNM7n454E" width="" height=""></iframe> 
+            </div> -->
+          </div>
+        </section>
+<!-- les partenaires --> 
+        <section class="container-fluid partenaires white">
+          <div class="row cs-style-3 grid row-full-height" >
+            <div class="col-md-height col-full-height">    
+              <div class="col-xs-4 col-sm-3 col-md-2 col-lg-1 col-full-height" tal:repeat="partenaires variablePartenaires">  
+                <div tal:attributes="class string:item bloc-${partenaires/classe};" tal:condition="partenaires/classe">
+                  <figure>
+                    <a tal:attributes="title string:Atteindre la page; 
+                                       href partenaires/absolute_url"
+                       tal:condition="partenaires/absolute_url">    
+                      <img tal:define="scales_image partenaires/@@images; maVariable python:scales_image.scale('logo_bloc', scale='preview')"
+                           tal:attributes="src maVariable/url; alt string:Photo du partenaire ${partenaires/title}; class string:img-all"
+                           tal:condition="partenaires/logo_bloc" />   
+                      <figcaption>
+                          <h2 tal:content="partenaires/type_de_partenaire" tal:condition="partenaires/type_de_partenaire" />
+                          <h3 tal:content="partenaires/thematiques" tal:condition="partenaires/thematiques" />
+                      </figcaption>
+                    </a>    
+                  </figure>
+                </div>
+              </div>
+            </div>
+          </div>        
+        </section>  
+        <tal:block replace="structure string:<script>" />    
+          var locations = [
+            <tal:block repeat="partenaires variablePartenaires">['<h4><tal:block condition="partenaires/title" replace="partenaires/title" /></h4><a tal:attributes="title string:Atteindre la page; href partenaires/absolute_url" tal:condition="partenaires/absolute_url"><img tal:define="scales_image partenaires/@@images; maVariable python:scales_image.scale('logo_bloc', scale='thumb')" tal:attributes="src maVariable/url; alt string:Photo du partenaire ${partenaires/title}" tal:condition="partenaires/logo_bloc" /></a>',<tal:block condition="partenaires/latitude_googlemap" replace="structure partenaires/latitude_googlemap" />,<tal:block condition="partenaires/longitude_googlemap" replace="structure partenaires/longitude_googlemap" />,"http://partage.lavieengreene.fr/gmap/<tal:block tal:content="partenaires/classe" tal:condition="partenaires/classe" />.png"],</tal:block>
+          ];
+          var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 11,
+            scrollwheel: false,
+            center: new google.maps.LatLng(43.6882405,7.207712),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          });
+          var styles = [
+            {
+            stylers: [ ]},{
+            featureType: "water",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#139bd5" },
+              { lightness: -50 },
+              { visibility: "simplified" }
+            ]
+            },{
+            featureType: "landscape",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#4eaa33" },
+              { lightness: -10 },
+              { saturation: 40 },
+              { visibility: "simplified" }
+            ]
+            },{
+            featureType: "road",
+            elementType: "geometry",
+            stylers: [
+              { hue: "#ccc" },
+              { lightness: 50 },
+              { visibility: "simplified" }
+            ]
+            },{
+            featureType: "road",
+            elementType: "labels",
+            stylers: [
+              { visibility: "off" }
+            ]
+            }
+          ];
+          map.setOptions({styles: styles});    
+          var infowindow = new google.maps.InfoWindow();
+          var marker, i;
+          for (i = 0; i < locations.length; i++) {  
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+              map: map,
+              icon: locations[i][3]
+            });
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                infowindow.setContent(locations[i][0]);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+          } 
+        <tal:block replace="structure string:</script>" />
+        <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+    	</metal:content-core>
+    </div>
+  </metal:block>
+</tal:block>

@@ -1,0 +1,23 @@
+.couleur_principale(@couleurPrincipale, @dark) {
+    .navbar-default {
+        .navbar-toggle, .navbar-toggle:hover, .navbar-toggle:focus {
+            background-color: @couleurPrincipale;
+        }
+        .navbar-nav > .active > a {
+            &, &:hover, &:focus {
+                background-color: @couleurPrincipale;
+            }
+        }
+    }
+    .btn.btn-primary {
+        background-color: @couleurPrincipale;
+
+        &:hover, &:focus {
+            background-color: darken(@couleurPrincipale, @dark);
+        }
+    }
+    .list-group-item h4 .fa {
+        color: darken(@couleurPrincipale, @dark);
+    }
+}
+

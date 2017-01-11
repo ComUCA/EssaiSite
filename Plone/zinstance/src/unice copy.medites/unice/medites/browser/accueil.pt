@@ -1,0 +1,418 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core"
+                        tal:define="widgets nocall:context/@@view">
+                <section class="container-fluid emplacement accueil">
+                    <a title="Rends toi directement sur le parcours en cliquant sur l'image" href="http://medites.fr/parcours-pedagogiques/ocean-observation-et-decouverte">
+                        <img border="0" class="img-all" alt="" src="++resource++unice.medites.images/accueil_parcours-ocean.jpg">
+                    </a>    
+                </section>
+                <section class="container-fluid dark accueilv1">
+                    <div class="row grid">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+                            <div class="presentation accueil">
+                                <h1>Le projet MEDITES</h1>
+                                <div class="text-justify" tal:content="structure widgets/++widget++contenu/render"></div>
+                                <div class="visible-md visible-lg  text-justify" tal:content="structure widgets/++widget++contenu_suite/render"></div>
+                                <br class="hidden-xs hidden-sm hidden-md" />
+                                <br class="hidden-xs hidden-sm hidden-md"/>
+                                <ul class="blocsAccueil col-lg-12">
+                                    <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">   
+                                        <a title="Voir le contenu" data-toggle="modal" data-target="#videoPresentation" href="#">
+                                            <img class="img-responsive opaciteHover" src="++resource++unice.medites.images/pages/videoPresentation.jpg" />
+                                        </a>
+                                         <div id="videoPresentation" class="modal fade bs-example-modal-lg darkModal" tabindex="-1" role="dialog" aria-labelledby="Video" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                        <h3 class="modal-title" id="Video">Présentation du projet MEDITES</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                            <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/ifyHWh7TGws?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                        </div>
+                                                        <h2 class="marginTop35">Ils en ont parlé :</h2>
+                                                        <ul class="noPadding sansPuce">
+                                                            <li class="col-xs-6">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/VVKeIWWE0os?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                                </div>
+                                                                <br/>
+                                                                <h3 class="noMargin">Dominique NOBIL</h3><p>Délégué régional en PACA de l'INSERM</p>
+                                                            </li>
+                                                            <li class="col-xs-6">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/PZNyfmILhLA?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                                </div>
+                                                                <br/>
+                                                                <h3 class="noMargin">Laurence PATTI</h3><p>Délégué académique à l'éducation artistique et culturelle à Nice</p>
+                                                            </li>
+                                                            <li class="col-xs-6">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/537oVEsK2Bk?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                                </div>
+                                                                <br/>
+                                                                <h3 class="noMargin">Béatrice Saint CRICQ</h3><p>Délégué régionale en côte d'Azur</p>
+                                                            </li>
+                                                            <li class="col-xs-6">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/nmXRmhMwHlI?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                                </div>
+                                                                <br/>
+                                                                <h3 class="noMargin">Antoine SCIANDRA</h3><p>Directeur du laboratoire océanographique de Villefranche</p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">   
+                                        <a title="Voir le contenu" data-toggle="modal" data-target="#leProjet" href="#">
+                                            <img class="img-responsive opaciteHover" src="++resource++unice.medites.images/pages/syntheseProjet.jpg" />
+                                        </a>
+                                        <div aria-hidden="true" aria-labelledby="" role="dialog" tabindex="-1" id="leProjet" class="modal fade bs-example-modal-lg darkModal">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                        <h3 class="modal-title" id="Video">MEDITES - Méditerranée Diffusion des Techniques et des Sciences</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        MEDITES est un projet de structuration et d’innovation territoriales pour le développement de la culture scientifique technique et pour l’égalité des chances MEDITES va promouvoir une culture scientifique moderne, partagée par le plus grand nombre, ouverte sur les publics isolés, ce projet décloisonnera les lieux où la science se fait pour aller là où elle interroge.
+                                                        <br/><br/><br/>
+                                                        <h3>Un territoire académique :</h3>
+                                                        C’est ensemble que les acteurs de la Culture scientifique, technique et industrielle du territoire de l’Académie de Nice (Alpes Maritimes et Var) répondent à l’appel à projets piloté par l’Agence nationale pour la rénovation urbaine (Anru) avec le projet MEDITES.
+                                                        <br/><br/><br/>
+                                                        <h3>Des partenaires :</h3>
+                                                        Le projet MEDITES n’existe que par l’apport concerté de nombreux acteurs, associations et institutions qui sont regroupés dans l’Assemblée Générale des partenaires. Ces acteurs ont une expertise ancienne et confirmée. MEDITES permet d’associer ces acteurs et de démultiplier leurs actions en évoluant collectivement vers une dimension nouvelle, plus globale et mieux structurée. Le projet est ouvert à tous les acteurs de culture scientifique et technique qui le souhaitent et qui adhèrent aux principes et à la méthodologie du projet.
+                                                        <br/><br/><br/>
+                                                        <h3>Un public cible :</h3>
+                                                        Les activités MEDITES ciblent les collégiens et les lycéens professionnels ainsi que les apprentis des centres de formation de l’Académie. Le public périscolaire toujours dans la tranche d’âge 10-16 ans est également visé par le projet MEDITES. Les sciences permettent de structurer l’observation, l’analyse, la réflexion et l’interprétation des choses. Les jeunes ne peuvent déserter les filières scientifiques et techniques car les innovations de demain passeront inéluctablement par ces domaines.
+                                                        <br/><br/><br/>
+                                                        <h3>Des objectifs ambitieux :</h3>
+                                                        <ul class="ulPerso">
+                                                            <li>Donner aux jeunes accès à la culture scientifique, éveiller la curiosité et l’esprit critique, y compris et surtout de ceux qui se trouvent socialement et/ou territorialement le plus éloignés de cette culture.</li>
+                                                            <li>Préparer les jeunes d’aujourd’hui à affronter le monde de demain en leur donnant les outils intellectuels pour appréhender sa complexité, comprendre son évolution et participer aux innovations du futur.</li>
+                                                            <li>Attirer les jeunes vers les filières scientifiques. L’enseignement supérieur note en effet une désaffection continue des étudiants pour ces filières. La Culture Scientifique et Technique apparaît comme un moyen d’endiguer cette tendance, amorcée il y a maintenant plusieurs années. Elle permet de répondre plus directement aux questions qui se posent, y compris celle de savoir « à quoi ça sert ».</li>
+                                                        </ul>
+                                                        <br/>
+                                                        <h3>Se donner les moyens de contribuer à l’égalité des chances</h3>
+                                                        L’égalité des chances entérine le passage d’un strict égalitarisme, celui du modèle républicain traditionnel, à une égalité construite sur la notion d’équité. Elle consiste à garantir à chacun, quels que soient ses origines, son sexe, sa situation sociale et de santé, ses convictions ou ses croyances, les mêmes opportunités d’insertion sociale et professionnelle et d’épanouissement personnel par une logique de moyens différenciés, corrélative à une analyse des besoins.<br/>
+                                                        Les partenaires de MEDITES s’investissent pour l’égalité des chances.
+                                                        <br/><br/><br/>
+                                                        <h3>Des moyens mis en oeuvre pour la réussite du projet</h3>
+                                                        <ul class="ulPerso">
+                                                            <li>La démarche méthodologique : mise en place de parcours pédagogiques innovants grâce d’une part à la pluridisciplinarité dans les thématiques retenues et d’autre part à l’existence de modules transversaux.</li>
+                                                            <li>L’adossement scientifique : l’investissement de l’Université et de ses partenaires garantira la qualité scientifique des projets développés et l’adossement aux pôles de compétitivité territoriaux ouvrira une porte sur la technique et sur l’industrie.</li>
+                                                            <li>Évolution nationale : le projet MEDITES anticipe et s’inscrit dans les évolutions en cours de la culture scientifique et technique et des politiques publiques en ce domaine. Une nouvelle gouvernance nationale, en lien avec Universcience se met en place et s’appuiera sur des partenaires territoriaux.</li>
+                                                        </ul>
+                                                        <br/>
+                                                        <h3>Une évaluation nécessaire</h3>
+                                                        Les partenaires, institutions, fondations ou associations locales, sont accoutumés à mener les bilans et évaluations utiles à l’exercice de leurs responsabilités. Leurs expériences et compétences antérieures seront ainsi naturellement mobilisées pour mener collectivement, sous l’autorité de la gouvernance du projet, une évaluation adaptée et propre au projet MEDITES.
+                                                        <br/><br/><br/>
+                                                        <h3>Une pérennité escomptée</h3>
+                                                        Le programme investissements d’avenir permettra la création et la réalisation de parcours pédagogiques ainsi que la production des livrables pendant 3 ans. Ce temps est nécessaire à la mise en place des outils matériels et de la dynamique de réseau essentiels à la pérennité du projet.
+                                                        <br/><br/><br/>
+                                                        <h3>En conclusion :</h3>
+                                                        <ul class="ulPerso">
+                                                            <li>MEDITES est une démarche originale innovante, pragmatique, pour être efficace et durable.</li>
+                                                            <li>MEDITES fédère, structure et décloisonne les acteurs de la culture scientifique sur un territoire académique.</li>
+                                                            <li>MEDITES veut mettre la culture scientifique au service de l’égalité des chances et des jeunes, de leur avenir et de leur orientation.</li>
+                                                            <li>MEDITES crée des parcours thématiques afin d’ouvrir de nouveaux horizons.</li>
+                                                        </ul>
+                                                        <a class="pull-right txtBleu" title="Télécharger le fichier" href="++resource++unice.medites.documents/MEDITES-synthese novembre-2013.pdf">
+                                                            Télécharger le fichier PDF - <i class="fa fa-download fa-2x"></i>
+                                                        </a>
+                                                        <br/><br/>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button data-dismiss="modal" class="btn btn-default" type="button">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">   
+                                        <a title="Voir le contenu" data-toggle="modal" data-target="#forum" href="#">
+                                            <img class="img-responsive opaciteHover" src="++resource++unice.medites.images/pages/forumMedites.jpg" />
+                                        </a>
+                                        <div aria-hidden="true" aria-labelledby="" role="dialog" tabindex="-1" id="forum" class="modal fade bs-example-modal-lg darkModal">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                        <h3 class="modal-title" id="Video">Le forum MEDITES</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-banderolle.jpg" />
+                                                        <br/>
+                                                        <br/>
+                                                        Le forum MEDITES s’est tenu le vendredi 22 mai 2015 dans les pelouses du Parc Valrose, Siège de l’Université Nice Sophia Antipolis.
+                                                        <br/>
+                                                        <br/>
+                                                        Les quatorze classes participantes à la première phase du projetont été invitées au forum. Venant de Nice, Breil sur Roya ou Vinon sur Verdon, les élèves ont pu présenter à leurs camarades, aux chercheurs et aux personnalités invitées, les différentes thématiques scientifiques découvertes au cours de l’année.<br/>
+                                                        Alors que le matin, les élèves tenaient des stands dans les pelouses, ils ont pu se produire l'après-midi à l’oral sur la scène du Théâtre du Grand Chateau de Valrose.
+                                                        <br/>
+                                                        <br/>
+                                                       <ul class="noPadding">
+                                                            <li class="col-xs-6 col-sm-6 col-md-6 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-stand.jpg" /></li>
+                                                            <li class="col-xs-6 col-sm-6 col-md-6 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-theatre.jpg" /></li>
+                                                        </ul>
+                                                        <br/>
+                                                        <br/>
+                                                        Dans le cadre du Développement de la Culture Scientifique et Technique et l’Egalité des Chances, le projet MEDITES a été lauréat des Investissements d’Avenir en octobre 2013.
+                                                        <br/>
+                                                        <br/>
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-projet.jpg" />
+                                                        <br/>
+                                                        Les trente partenaires du projet, signataires de la convention cadre MEDITES, se réuniront autour des enfants pour conclure cette première phase de déploiement du programme, qui se poursuivra encore pendant deux années scolaires. À cette occasion, ils ont également marqué leur engagement en signant la charte MEDITES : 
+                                                        <br/>
+                                                        <br/>
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-charte.jpg" />
+                                                        <br/>
+                                                        <h3>Les posters des différentes classes</h3>
+                                                        <ul class="col-xs-12 col-sm-12 col-md-12 col-lg-12 sansPuce">
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_1.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_1.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_2.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_2.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_3.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_3.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_4.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_4.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_5.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_5.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_6.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_6.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_7.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_7.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_8.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_8.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_9.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_9.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_10.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_10.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_11.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_11.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_12.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_12.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_13.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_13.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/poster_14.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/poster_14.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                        </ul>    
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button data-dismiss="modal" class="btn btn-default marginTop35" type="button">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="col-xs-3 col-sm-3 col-md-3 col-lg-3">   
+                                        <a title="Voir le contenu" data-toggle="modal" data-target="#assemblee" href="#">
+                                            <img class="img-responsive opaciteHover" src="++resource++unice.medites.images/pages/assembleeGenerale.jpg" />
+                                        </a>
+                                        <div aria-hidden="true" aria-labelledby="" role="dialog" tabindex="-1" id="assemblee" class="modal fade bs-example-modal-lg darkModal">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                        <h3 class="modal-title" id="Video">Assemblée générale</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h3></h3>
+                                                        L'assemblée générale s'est tenue le 7 juillet 2015 à saint Jean d'Angély avec l'ensemble des partenaires.<br/> 
+                                                        Un compte rendu a été réalisé, nous vous invitons à en prendre connaissance en clique sur le lien suivant.
+
+                                                        <a class="pull-right txtBleu" title="Télécharger le fichier" href="++resource++unice.medites.documents/MEDITES-07-07-2015.pdf">
+                                                            Télécharger le fichier PDF - <i class="fa fa-download fa-2x"></i>
+                                                        </a>
+                                                        <br/><br/>
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button data-dismiss="modal" class="btn btn-default" type="button">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>                           
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-xs-4">
+                                    <div class="item bloc-biodiv">
+                                        <img src="++resource++unice.medites.images/structure/bio.png" alt="" class="img-responsive" />
+                                        <a href="http://medites.fr/thematiques/biodiversite" title="Se rendre sur la page">
+                                            <h2>Biodiversité</h2>
+                                        </a>
+                                        <br/>
+                                        <div class="hidden-xs hidden-sm hidden-md">
+                                            <ul class="ulPerso ">
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/biodiversite-des-insectes" title="Se rendre sur la page">Biodiversité des insectes</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/observation-des-plantes-a-differentes-echelles" title="Se rendre sur la page">Observation des plantes</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/la-biodiversite-au-service-de-lalimentation-et-de-la-sante" title="Se rendre sur la page">Biodiversité, alimentation et santé</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/changement-climatique-vu-a-travers-ses-impacts" title="Se rendre sur la page">Changement climatique vu à travers ses impacts</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="item bloc-tpHistEvo">
+                                        <img src="++resource++unice.medites.images/structure/tHE.png" alt="" class="img-responsive" />
+                                        <a href="http://medites.fr/thematiques/temps-histoire-evolution" title="Se rendre sur la page">
+                                            <h2>
+												Temps,<br/>
+												Histoire,<br/>
+												&Eacute;volution
+											</h2>                                           
+                                        </a>
+                                        <br/>
+                                        <div class="hidden-xs hidden-sm hidden-md">
+                                            <ul class="ulPerso">
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/sur-le-fil-du-temps" title="Se rendre sur la page">Sur le fil du temps</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>                           
+                                <div class="col-xs-4">
+                                    <div class="item bloc-vivMatTech">
+                                        <img src="++resource++unice.medites.images/structure/vMT.png" alt="" class="img-responsive" />
+                                        <a href="http://medites.fr/thematiques/vivant-matiere-et-technologie" title="Se rendre sur la page">
+                                            <h2>
+												Vivant,<br/>
+												Matière,<br/>
+												Technologie
+											</h2>
+                                        </a>
+                                        <br/>
+                                        <div class="hidden-xs hidden-sm hidden-md">
+                                            <ul class="ulPerso ">
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/formes-architecture-du-vivant" title="Se rendre sur la page">Architecture du Vivant</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/sensoriel" title="Se rendre sur la page">Sensoriel</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/activite-physique-sante-et-nouvelles-technologies" title="Se rendre sur la page">Activités physiques, santé et nouvelles technologies</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/euclide" title="Se rendre sur la page">Euclide</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="col-xs-4">
+                                    <div class="item bloc-sciNum ">
+                                        <img src="++resource++unice.medites.images/structure/num.png" alt="" class="img-responsive" />
+                                        <a href="http://medites.fr/thematiques/sciences-du-numerique" title="Se rendre sur la page">
+                                            <h2>Sciences<br/>du<br/>numérique</h2>
+                                        </a>
+                                        <br/>
+                                        <div class="hidden-xs hidden-sm hidden-md">
+                                            <ul class="ulPerso ">
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/demarche-scientifique-dans-le-numerique" title="Se rendre sur la page">Démarche numérique</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="item bloc-terOceUni ">
+                                        <img src="++resource++unice.medites.images/structure/tOU.png" alt="" class="img-responsive" />
+                                        <a href="http://medites.fr/thematiques/terre-ocean-univers" title="Se rendre sur la page">
+                                            <h2>
+												Terre,<br/>
+												Océan,<br/>
+												Univers
+											</h2>										
+                                        </a>
+                                        <br/>
+                                        <div class="hidden-xs hidden-sm hidden-md">
+                                            <ul class="ulPerso ">
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/terre-solide" title="Se rendre sur la page">Terre Solide</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/ocean-observation-et-decouverte" title="Se rendre sur la page">Océan : observation et découverte</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/changement-climatique-vu-a-travers-ses-impacts" title="Se rendre sur la page">L'Homme et l'Océan : études et impacts</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/observation-univers" title="Se rendre sur la page">Observation de l'Univers</a></li>
+                                                <li><a href="http://medites.fr/parcours-pedagogiques/espace-et-instrumentation" title="Se rendre sur la page">Espace et instrumentation</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-4">
+                                    <div class="item bloc-partenaires ">
+                                        <img src="++resource++unice.medites.images/structure/partenaires.png" alt="" class="img-responsive" />
+                                        <a href="http://medites.fr/partenaires" title="Voir la page de nos partenaires">
+                                            <h2>Les partenaires</h2>
+                                        </a>
+                                        <br/>
+                                        <div class="hidden-xs hidden-sm hidden-md">
+                                            <span>
+                                                Les partenaires de MEDITES sont réunis pour mettre la culture scientifique au service des jeunes, de leur avenir et de leur orientation, et pour l'égalité des chances.
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section> 
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+  			</metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

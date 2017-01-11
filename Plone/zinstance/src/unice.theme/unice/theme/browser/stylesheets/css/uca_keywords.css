@@ -1,0 +1,892 @@
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+@-webkit-keyframes hvr-pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  0% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+@keyframes hvr-pulse {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  50% {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+}
+.animation-pulse {
+  display: inline-block;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-animation-name: hvr-pulse;
+  animation-name: hvr-pulse;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+/*******************************************************************************/
+/*** LIENS *********************************************************************/
+/*******************************************************************************/
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #967ADC !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #967ADC;
+}
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/networks-information-and-digital-society-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #967ADC;
+}
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #F6BB42 !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #F6BB42;
+}
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/complex-systems-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #F6BB42;
+}
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #37BC9B !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #37BC9B;
+}
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/space-environment-risk-and-resilience-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #37BC9B;
+}
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #4A89DC !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #4A89DC;
+}
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/living-systems-complexity-and-diversity-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #4A89DC;
+}
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link) {
+  display: inline-block;
+  padding: 0 0.25em;
+  border-radius: 3px;
+  text-decoration: none !important;
+  font-weight: normal;
+  color: #986807 !important;
+  background-color: transparent;
+  margin-bottom: 0.25em;
+}
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover,
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus {
+  color: #FFF !important;
+  background-color: #986807;
+}
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):hover:before,
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):focus:before {
+  color: #FFF;
+}
+#content a[href$="academies-of-excellence/human-societies-ideas-and-environments-academy-of-excellence"]:not(.thumb_link):not(.details_link):before {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-decoration: inherit;
+  display: inline-block;
+  speak: none;
+  width: 1em;
+  margin-right: .25em;
+  text-align: center;
+  content: "\f005";
+  color: #986807;
+}
+dl#relatedItemBox dd > span {
+  padding-left: 0 !important;
+}
+dl#relatedItemBox dd > span:before {
+  display: none;
+}
+/*******************************************************************************/
+/*** DECLINAISONS DES PAGES ****************************************************/
+/*******************************************************************************/
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence h1.documentFirstHeading,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #967ADC;
+  background-image: url("++resource++unice.theme.images/academy_networks.jpg");
+  background-size: cover;
+  background-position: top center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence h1.documentFirstHeading:before,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e616";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence #viewlet-below-content-title img.tileImage,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence #content h2,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 #content h2 {
+  background-color: #967ADC;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence #content h2 strong,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-networks-information-and-digital-society-academy-of-excellence-2 #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #F6BB42;
+  background-image: url("++resource++unice.theme.images/academy_complex.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e63d";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence #content h2 {
+  background-color: #F6BB42;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-complex-systems-academy-of-excellence #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #37BC9B;
+  background-image: url("++resource++unice.theme.images/academy_space.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e64f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence #content h2 {
+  background-color: #37BC9B;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-space-environment-risk-and-resilience-academy-of-excellence #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #4A89DC;
+  background-image: url("++resource++unice.theme.images/academy_living.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e6b8";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence #content h2 {
+  background-color: #4A89DC;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-living-systems-complexity-and-diversity-academy-of-excellence #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence h1.documentFirstHeading,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #986807;
+  background-image: url("++resource++unice.theme.images/academy_human.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence h1.documentFirstHeading:before,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e693";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence #viewlet-below-content-title img.tileImage,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence #content h2,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 #content h2 {
+  background-color: #986807;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence #content h2 strong,
+body.subsection-english-idex-uca-jedi-academies-of-excellence-human-societies-ideas-and-environments-academy-of-excellence-2 #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+  background-image: url("++resource++unice.theme.images/center_modeling.jpg");
+  background-size: cover;
+  background-position: bottom center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e619";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-center-of-modeling-simulation-interactions #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e605";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-health-well-being-and-aging-reference-center #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e65a";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-smart-territory-risk-prevention-and-management-reference-center #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e61d";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-digital-challenge-reference-center #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e60f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-reference-centers-the-virtual-center-of-pedagogical-innovation #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e6c3";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-research-program #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e60f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-training-program #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e691";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-international-program #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e643";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-idex-uca-jedi-ucajedi-programs-innovation-program #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-jobs-at-uca h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+  background-image: url("++resource++unice.theme.images/jobs_at_uca.jpg");
+  background-size: cover;
+  background-position: center center;
+  text-shadow: 0 0 5px #000, 0 0 5px #000;
+}
+body.subsection-english-jobs-at-uca h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e68f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-jobs-at-uca #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-jobs-at-uca #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-jobs-at-uca #content h2 strong {
+  font-weight: 100;
+}
+body.subsection-english-uca-education-diplomas h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-uca-education-diplomas h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e6c1";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-uca-education-diplomas #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-uca-education-diplomas #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-uca-education-diplomas #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+body.subsection-english-digital-tools h1.documentFirstHeading {
+  margin: 0 -15px;
+  padding: 40px 10px;
+  text-align: center;
+  color: #FFF;
+  background-color: #0085A3;
+}
+body.subsection-english-digital-tools h1.documentFirstHeading:before {
+  font-family: 'Pe-icon-7-stroke';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 2em;
+  content: "\e60f";
+  display: block;
+  margin-bottom: 0.125em;
+}
+body.subsection-english-digital-tools #viewlet-below-content-title img.tileImage {
+  display: none;
+}
+body.subsection-english-digital-tools #content h2 {
+  background-color: #0085A3;
+  border-radius: 2px;
+  font-size: 24px;
+  padding: 5px;
+  color: #FFF !important;
+  letter-spacing: 0;
+}
+body.subsection-english-digital-tools #content h2 strong {
+  font-weight: 100;
+}
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+.fa-jedi:before {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  content: "JEDI";
+  vertical-align: 50%;
+  font-size: 60%;
+  font-weight: 900;
+}

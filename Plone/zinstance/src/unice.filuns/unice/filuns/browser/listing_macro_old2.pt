@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+
+<metal:block define-macro="fil">
+
+    <!-- <tal:block content="view/ical"/> -->
+
+    <tal:listing condition="batch">
+
+        <tal:block define="
+            items python:view.items(batch, ['page.html'], isObjects=type(batch) is list);
+            mois python:['-', 'Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'];
+            themes python:view.themes_agenda();
+            TRUE python:True; FALSE python:False;">
+
+            <ul class="row canal_fil_importance3">
+                <li tal:repeat="item items">
+
+                    <tal:block define="parts python:item['dates']['start'].parts() if item['dates']['start'] != None else ['-', 0, '-'];">
+
+                        <a tal:attributes="href string:${item/url}/@@article_view; title string:En savoir plus sur '${item/title}';" class="date_event">
+                            <span class="date_event_day" tal:content="python:parts[2]"/>
+                            <span class="date_event_month" tal:content="python:mois[parts[1]]"/>
+                            <span class="date_event_year"><span tal:content="python:parts[0]"/></span>
+                        </a>
+
+                        <a tal:attributes="href string:${item/url}/@@article_view; title string:En savoir plus sur '${item/title}';" class="details_link">
+                            <strong tal:content="item/title"/><br/>
+                            <span tal:content="item/desc_trunc"/>
+                        </a>
+
+                        <a tal:attributes="href string:${item/url}/@@article_view; title string:En savoir plus sur '${item/title}';" class="thumb_link image_ratio ratio4:3">
+                            <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                <img tal:attributes="src item/image; title item/title"/>
+                            </span>
+                        </a>
+
+                    </tal:block>
+
+                    <tal:block define="opt_entete FALSE">
+                        <metal:block use-macro="context/templates_macro/macros/edit"></metal:block>
+                    </tal:block>
+
+                    <span class="visualClear"></span>
+                    <metal:block use-macro="context/listing_macro/macros/publication_filuns"></metal:block>
+
+                </li>
+            </ul>
+        </tal:block>
+
+    </tal:listing>
+    <p class="discreet" tal:condition="not: batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+
+<!-- ############################################################################# -->
+<!-- ############################################################################# -->
+<!-- ############################################################################# -->
+
+<metal:block define-macro="publication_filuns">
+
+<!-- <div tal:condition="python:item['type'] in ['Event', 'News Item']" class="publication">-->
+<div class="publication">
+    <tal:block condition="python:item['access']">
+        <tal:block define="permissions python:view.permissions(item)">
+
+            <tal:block repeat="permission permissions">
+
+                <tal:block tal:condition="python:not 'sep' in permission">
+                    <div class="btn-group menu_publication"
+                        tal:define="subjects permission/subjects"
+                        tal:attributes="
+                            data-alltitles python:'|'.join([s[0] for s in subjects]);
+                            data-allsubjects python:'|'.join([s[1] for s in subjects]);
+                            data-allaccess python:'|'.join([s[2] for s in subjects]);
+                            data-allcolors python:'|'.join([s[3] for s in subjects]);
+                            data-subjects python:'|'.join(item['subjects']);
+                            data-default permission/default;
+                            data-url item/real_url;">
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
+                            <span><i tal:attributes="class permission/icon"></i> <tal:block content="permission/title"/> :</span>
+                            <strong></strong>
+                        </button>
+                        <ul class="dropdown-menu" role="menu"></ul>
+                    </div>
+                </tal:block>
+
+                <br tal:condition="python:'sep' in permission"/>
+
+            </tal:block>
+
+        </tal:block>
+    </tal:block>
+
+    <span class="visualClear"></span>
+
+</div>
+
+</metal:block>
+
+</metal:content-core>
+</body>
+
+</html>

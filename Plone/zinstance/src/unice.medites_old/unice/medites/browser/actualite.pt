@@ -1,0 +1,54 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="not:context/@@plone_portal_state/anonymous">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="context/@@plone_portal_state/anonymous"
+    define="infos view/infos;
+            scales context/@@images; 
+            ">
+
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+			<!--<tal:block content="infos"/>-->
+			
+			<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core"
+                        tal:define="widgets nocall:context/@@view">
+          
+
+                <!-- carrousel -->
+                <section class="container-fluid emplacement">
+                    <img tal:define="maVariable python:scales.scale('image', scale='extra-large')" tal:condition="context/image" tal:attributes="src maVariable/url" class="img-responsive img-all" />
+                </section>
+
+                <!-- contenu --> 
+                <section class="container-fluid container-md-height dark">                 
+                    <div class="content presentation"> 
+                        <ol class="breadcrumb">
+                            <li><a href="http://localhost:8080/Medites">Accueil</a></li>
+                            <li><a href="http://localhost:8080/Medites/actualites-csti">Actualites</a></li>
+                            <li tal:content="infos/title" tal:attributes="class string:active" />
+                        </ol>
+                    
+                        <h1 tal:content="infos/title" />
+
+                    </div>
+                </section>
+                
+                <div class="container-fluid gradient"></div>
+                
+                <!-- conteneurs de couleurs -->
+                <section class="container-fluid biodiv">
+ 
+                </section>         
+
+
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+
+
+  			</metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

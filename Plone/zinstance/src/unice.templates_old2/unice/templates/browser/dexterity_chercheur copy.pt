@@ -1,0 +1,77 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="main">
+
+    <div class="chercheur_bandeau">
+        <div class="row">
+            <div class="col-md-4">
+
+                <div tal:condition="context/contentleadimage" class="chercheur_photo">
+                    <tal:block define="opt_image string:contentleadimage; opt_scale string:large; opt_imageratio string:ratio1:1; opt_title context/title;">
+                        <metal:block use-macro="context/templates_macro/macros/dexterity_thumb_link"></metal:block>
+                    </tal:block>
+                    <div class="chercheur_photo_bordure"></div>
+                </div>
+
+            </div>
+            <div class="col-md-8">
+                <h2 tal:content="context/title"/>
+                <p tal:condition="context/Description"><small tal:content="context/Description"/></p>
+
+                <ul tal:define="labs view/laboratoires" class="fa-ul lead">
+                    <tal:block repeat="fnc python:[
+                        {'intitule': context.fonction1, 'lab': context.fonction_lab1},
+                        {'intitule': context.fonction2, 'lab': context.fonction_lab2},
+                        {'intitule': context.fonction3, 'lab': context.fonction_lab3},
+                        {'intitule': context.fonction4, 'lab': context.fonction_lab4},
+                        {'intitule': context.fonction5, 'lab': context.fonction_lab5},
+                    ]">
+                        <li tal:condition="fnc/intitule">
+                            <i class="fa-li fa fa-check"></i>
+                            <tal:block content="fnc/intitule"/>
+                            <tal:block condition="python:fnc['lab'] and fnc['lab'] in labs">
+                                - <a tal:attributes="href python:labs[fnc['lab']]['url']" tal:content="python:labs[fnc['lab']]['title']"/>
+                            </tal:block>
+                        </li>
+                    </tal:block>
+                </ul>
+                <hr/>
+                <ul class="fa-ul lead">
+                    <tal:block repeat="prix view/chercheur_prix">
+                        <li tal:condition="prix/prix" class="chercheur_prix">
+                            <i class="fa-li fa fa-star"></i>
+                            <a tal:omit-tag="not:prix/url" tal:attributes="href prix/url">
+                                <span tal:replace="structure prix/prix_html"/>
+                            </a>
+                        </li>
+                    </tal:block>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="chercheur_contenu">
+        <div class="row">
+            <div class="col-md-12">
+                <p tal:condition="context/biographie" tal:content="structure context/biographie/output"/>
+                <!--<div class="chercheur_footer">
+                    <a tal:attributes="href context/portal_url">
+                        <img src="++theme++ThemeUNS/assets/img/logo_traits.png"/>
+                    </a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+</metal:main>
+
+</body>
+</html>
+

@@ -1,0 +1,69 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="template">
+
+    <div tal:condition="batch" class="template listingboutons">
+
+        <tal:block define=" items python:view.items(batch, ['page.html'], desc_max=90, isObjects=type(batch) is list);
+                            filtered python:view.filtered(items, '#ExclureContenuTemplate');
+                            TRUE python:True; FALSE python:False;
+
+                            colonnes python:4;
+                            groupes python:[{'parent': context, 'items': filtered}] if not sous_niveaux else [{'parent': item, 'items': view.subitems(item, ['page.html'], '#ExclureContenuTemplate')} for item in filtered];">
+
+            <metal:block use-macro="context/templates_macro/macros/entete"></metal:block>
+            <br/>
+
+            <tal:block repeat="grp groupes">
+                <h2 tal:condition="python:len(groupes) > 1" tal:content="grp/parent/title" class="text-center"/>
+                <tal:block define="groupe python:grp['items'] if len(grp['items']) > 0 else [grp['parent']]">
+                    <metal:block use-macro="context/listingboutons_macro/macros/groupe_boutons"></metal:block>
+                </tal:block>
+            </tal:block>
+
+        </tal:block>
+
+    </div>
+
+    <p class="discreet" tal:condition="not:batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+
+
+<metal:block define-macro="groupe_boutons">
+    <tal:block repeat="item groupe">
+        <tal:block define="index repeat/item/index">
+
+            <tal:block condition="python:index % colonnes == 0">
+                <tal:block replace="structure string:&lt;div class='btn-group btn-group-lg btn-group-justified'&gt;"/>
+            </tal:block>
+
+            <a tal:attributes="href item/url; title item/description;" class="btn-group btn-info lead text-center">
+                <i class="fa fa-sitemap"></i><br/>
+                <tal:block content="item/title"/>
+            </a>
+
+            <tal:block condition="python:index % colonnes == colonnes-1">
+                <tal:block replace="structure string:&lt;/div&gt;"/>
+            </tal:block>
+
+        </tal:block>
+    </tal:block>
+
+    <tal:block condition="python:len(groupe) % colonnes != 0">
+        <tal:block replace="structure string:&lt;/div&gt;"/>
+    </tal:block>
+</metal:block>
+
+</metal:content-core>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="template">
+
+    <div tal:condition="batch" class="template listingpanel">
+
+        <tal:block define=" items python:view.items(batch, ['page.html'], desc_max=90, isObjects=type(batch) is list);
+                            filtered python:view.filtered(items, '#ExclureContenuTemplate');
+                            TRUE python:True; FALSE python:False;">
+
+            <metal:block use-macro="context/templates_macro/macros/entete"></metal:block>
+
+            <br/>
+
+            <div class="panel panel-info">
+                <div class="panel-heading text-center">
+                    <strong class="panel-title" tal:content="string:${context/title} :"/>
+                </div>
+                <div class="list-group">
+                    <a tal:repeat="item filtered" tal:attributes="href item/url; title item/description;" class="list-group-item">
+                        <h4 class="list-group-item-heading" tal:content="item/title"/>
+                        <p class="list-group-item-text text-muted" tal:condition="item/description" tal:content="item/description"/>
+                    </a>
+                </div>
+            </div>
+
+        </tal:block>
+
+    </div>
+
+    <p class="discreet" tal:condition="not:batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+</metal:content-core>
+</body>
+
+</html>

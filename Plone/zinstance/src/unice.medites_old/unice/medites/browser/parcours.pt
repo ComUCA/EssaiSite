@@ -1,0 +1,345 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="not:context/@@plone_portal_state/anonymous">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="context/@@plone_portal_state/anonymous"
+    define="infos view/infos;
+            scales context/@@images;
+            variableEtapes python:view.champsRepeat('etapes');      
+            variableGalerie python:view.champsRepeat('galerie_photos');  
+            variableMeditesCollege python:view.champsRepeat('medites_dans_mon_college');
+            variableMeditesEtapesCollege python:view.champsRepeat('ajout_etapes'); 
+            variableIntervenants python:view.champsRepeat('intervenants');">
+
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+            <metal:content-core define-macro="content-core" tal:define="widgets nocall:context/@@view">
+<!-- appel de la mapMonde du parcours  -->
+                <metal:macro use-macro="python:context.restrictedTraverse('@@medites_macros_parcours').index.macros[context.identifiant]"></metal:macro>
+<!-- contenu -->
+                <section class="container-fluid container-md-height dark">                 
+                    <div class="content presentation"> 
+                        <ol class="breadcrumb">
+                            <li><a href="#">Accueil</a></li>
+                            <li>Parcours p&eacute;dagogique</li>
+                            <li tal:content="infos/title" tal:condition="infos/title" class="active"></li>
+                        </ol>
+                        <h1 tal:content="infos/title" tal:condition="infos/title"></h1>
+                        <div tal:replace="structure widgets/++widget++contenu/render" tal:condition="context/contenu" />
+                    </div>
+                </section>
+                <section class="container-fluid biodiv">
+                    <div class="row">
+                        <div class="row-same-height row-full-height">
+                            <div class="col-xs-6 col-sm-4 col-xs-height col-full-height col1 parcours" tal:condition="variableEtapes">
+                                <div class="item">
+                                    <div class="topCol">
+                                        <img src="++resource++unice.medites.images/parcours-icon.png" alt="" /><h3 class="visible-lg">&Eacute;tapes</h3>
+                                    </div>
+                                    <div class="contentCol">  
+                                        <ul class="perso">
+                                            <li tal:repeat="etapes variableEtapes">  
+                                                <a tal:attributes="href string:#; data-toggle string:modal; data-target string:#${etapes/identifiant};"
+                                                   tal:content="string:${etapes/numero_de_l_etape}&nbsp;:&nbsp;${etapes/title}"
+                                                   tal:condition="etapes/title" />
+                                                <div tal:attributes="id etapes/identifiant; class string:modal fade bs-example-modal-lg; tabindex string:-1; role string:dialog; aria-labelledby string:id${etapes/identifiant}; aria-hidden string:true;"
+                                                     tal:condition="etapes/title">
+                                                  <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                                                            <h3 tal:attributes="class string:modal-title; id string:id${etapes/identifiant};"
+                                                                tal:content="etapes/title" />
+                                                        </div>    
+                                                        <div class="modal-body">     
+                                                            <tal:block condition="etapes/contenu" replace="structure etapes/contenu/output" />
+                                                        </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="footCol"></div>
+                                </div>    
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-xs-height col-full-height col2 equipe" tal:condition="variableIntervenants">
+                                <div class="item">
+                                    <div class="topCol">
+                                        <i class="fa fa-users fa-3x"></i><h3 class="visible-lg">Encadrants</h3>
+                                    </div>
+                                    <div class="contentCol">
+                                        <ul class="grid cs-style-3">
+                                            <li class="col-xs-6 col-sm-6 col-md-4 col-lg-3" tal:repeat="intervenants variableIntervenants">                                              
+                                                <figure>
+                                                    <img tal:define="scales_portrait intervenants/@@images; maVariable python:scales_portrait.scale('portrait', scale='mini')"
+                                                         tal:attributes="src maVariable/url; alt string:Photo de ${context/title}"
+                                                         tal:condition="intervenants/portrait" />
+                                                    <figcaption>
+                                                        <div>
+                                                            <strong tal:content="intervenants/title"></strong>
+                                                            <span tal:content="intervenants/metier"></span>
+                                                             <a tal:attributes="href string:mailto: ${intervenants/email}; title string:Lui &eacute;crire un email"><i class="fa fa-envelope fa-2x"></i></a>
+                                                        </div>    
+                                                    </figcaption>
+                                                </figure>
+                                            </li>   
+                                        </ul>
+                                    </div>
+                                    <div class="footCol"></div>
+                                </div>    
+                            </div>
+                            <div class="col-xs-6 col-sm-4 col-xs-height col-full-height col3 photographie" tal:condition="variableMeditesCollege" >
+                                <div class="item">
+                                    <div class="topCol">
+                                        <i class="fa fa-image fa-3x"></i><h3 class="visible-lg">Medites dans mon coll&egrave;ge</h3>
+                                    </div>
+                                    <div class="contentCol">
+<!--  modal avec plusieurs contenus -->
+                                        <ul class="perso">
+<!-- medites_dans_mon_college -->           <li tal:repeat="medites_dans_mon_college variableMeditesCollege"> 
+                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_1', scale='large')"
+                                                   tal:attributes="href string:#; data-target string:#${medites_dans_mon_college/identifiant}; data-toggle string:modal;"
+                                                   tal:content="medites_dans_mon_college/title"
+                                                   tal:condition="medites_dans_mon_college/image_1" />
+                                                <div tal:attributes="id medites_dans_mon_college/identifiant;
+                                                                     class string:modal fade bs-example-modal-lg;
+                                                                     tabindex string:1;
+                                                                     role string:dialog;
+                                                                     aria-labelledby string:label;
+                                                                     aria-hidden string:true;"
+                                                    tal:condition="medites_dans_mon_college/identifiant">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                                                                <h3 tal:content="medites_dans_mon_college/title" tal:condition="medites_dans_mon_college/title" />
+                                                            </div>    
+                                                            <div class="modal-body">     
+                                                                <div tal:attributes="id string:#carousel-${medites_dans_mon_college/identifiant};class string:carousel slide;data-ride string:carousel">
+                                                                    <ol class="carousel-indicators">
+                                                                        <li tal:attributes="data-target string:#carousel-${medites_dans_mon_college/identifiant};class string:active;data-slide-to string:0"></li>
+                                                                        <li tal:repeat="ajout_etapes variableMeditesEtapesCollege" tal:attributes="data-target string:#carousel-${ajout_etapes/identifiant};data-slide-to ajout_etapes/numero_de_l_etape"></li>
+                                                                    </ol>
+                                                                    <div class="carousel-inner" role="listbox">
+                                                                        <div class="item active">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <h4>Description textuelle de la s&eacute;ance</h4>
+                                                                                    <p tal:replace="structure widgets/++widget++contenu/render" />
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="col-md-12">
+                                                                                        <h4>Photos prises durant la s&eacute;ance</h4>
+                                                                                        <ul class="grid images">
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_1">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_1', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_2">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_2', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_3">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_3', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_4">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_4', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_5">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_5', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_6">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_6', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_7">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_7', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_8">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_8', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_9">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_9', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="medites_dans_mon_college/image_10">
+                                                                                                <a tal:define="scales_medites_dans_mon_college medites_dans_mon_college/@@images; maVariable python:scales_medites_dans_mon_college.scale('image_10', scale='large')" 
+                                                                                                    tal:attributes="data-title medites_dans_mon_college/title;data-gallery medites_dans_mon_college/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>                                          
+                                                                                        </ul>        
+                                                                                    </div>
+                                                                                    <div class="col-md-12">
+                                                                                        <h4>Supports num&eacute;riques / posters / cr&eacute;ations &eacute;l&egrave;ves</h4>
+                                                                                        <ul class="perso">
+                                                                                            <li tal:condition="medites_dans_mon_college/fichier_1">
+                                                                                                <a tal:attributes="href medites_dans_mon_college/fichier_1;">Fichier 1</a>
+                                                                                            </li>
+                                                                                            <li tal:condition="medites_dans_mon_college/fichier_2">
+                                                                                                <a tal:attributes="href medites_dans_mon_college/fichier_2;">Fichier 2</a>
+                                                                                            </li>
+                                                                                            <li tal:condition="medites_dans_mon_college/fichier_3">
+                                                                                                <a tal:attributes="href medites_dans_mon_college/fichier_3;">Fichier 3</a>
+                                                                                            </li>
+                                                                                            <li tal:condition="medites_dans_mon_college/fichier_4">
+                                                                                                <a tal:attributes="href medites_dans_mon_college/fichier_4;">Fichier 4</a>
+                                                                                            </li>        
+                                                                                        </ul>    
+                                                                                    </div>
+                                                                                </div>    
+                                                                            </div>
+                                                                        </div> 
+<!-- fin 1er item -->
+<!-- ajout etapes -->                             
+                                                                        <div class="item" tal:repeat="ajout_etapes variableMeditesEtapesCollege">
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <h4>Description textuelle de la s&eacute;ance</h4>
+                                                                                    <p tal:replace="ajout_etapes/contenu" />
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="col-md-12">    
+                                                                                        <h4>Photos prises durant la s&eacute;ance</h4>
+                                                                                        <ul class="grid images">
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_1">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_1', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_2">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_2', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_3">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_3', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_4">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_4', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_5">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_5', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_6">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_6', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_7">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_7', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_8">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_8', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_9">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_9', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>
+                                                                                            <li class="col-xs-6 col-sm-4 col-md-3" tal:condition="ajout_etapes/image_10">
+                                                                                                <a tal:define="scales_ajout_etapes ajout_etapes/@@images; maVariable python:scales_ajout_etapes.scale('image_10', scale='large')" 
+                                                                                                    tal:attributes="data-title ajout_etapes/title;data-gallery ajout_etapes/identifiant;data-toggle string:lightbox; href maVariable/url">
+                                                                                                    <img tal:attributes="src maVariable/url; class string:img-responsive;" />
+                                                                                                </a>
+                                                                                            </li>                                          
+                                                                                        </ul>
+                                                                                    </div>   
+                                                                                    <div class="col-md-12">
+                                                                                        <h4>Supports num&eacute;riques / posters / cr&eacute;ations &eacute;l&egrave;ves</h4>
+                                                                                        <ul class="perso">
+                                                                                            <li tal:condition="ajout_etapes/fichier_1">
+                                                                                                <a tal:attributes="href ajout_etapes/fichier_1;">Fichier 1</a>
+                                                                                            </li>
+                                                                                            <li tal:condition="ajout_etapes/fichier_2">
+                                                                                                <a tal:attributes="href ajout_etapes/fichier_2;">Fichier 2</a>
+                                                                                            </li>
+                                                                                            <li tal:condition="ajout_etapes/fichier_3">
+                                                                                                <a tal:attributes="href ajout_etapes/fichier_3;">Fichier 3</a>
+                                                                                            </li>
+                                                                                            <li tal:condition="ajout_etapes/fichier_4">
+                                                                                                <a tal:attributes="href ajout_etapes/fichier_4;">Fichier 4</a>
+                                                                                            </li>        
+                                                                                        </ul>    
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div> 
+<!-- fin item et nouvelles etapes -->
+                                                                    <!-- boutons
+                                                                        <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+                                                                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                                                            <span class="sr-only">Previous</span>
+                                                                        </a>
+                                                                        <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+                                                                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                                                            <span class="sr-only">Next</span>
+                                                                        </a>
+                                                                    -->    
+                                                                    </div> <!-- fin carousel-inner -->
+                                                                </div>   <!-- fin #carousel-example-generic --> 
+                                                            </div> <!-- fin modal-body -->
+                                                            <div class="modal-footer"></div>
+                                                        </div> <!-- fin modal-content -->
+                                                    </div> <!-- fin modal-dialog -->
+                                                </div> <!-- fin modal -->
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="footCol"></div>
+                                </div>    
+                            </div>
+                        </div>    
+                    </div>
+                </section>
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+            </metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

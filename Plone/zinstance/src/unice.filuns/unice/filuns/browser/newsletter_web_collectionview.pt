@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width"/>
+        <!-- <link rel="stylesheet" href="++resource++unice.filuns.stylesheets/newsletter.css"/> -->
+        <style tal:content="python:view.css('++resource++unice.filuns.stylesheets/newsletter.css')"/>
+    </head>
+
+    <body tal:define="
+        batch python:context.results(); classement python:view.classement(batch, 300); const view/constants;
+
+        father nocall:here/aq_inner/aq_parent;
+        grandfather nocall:father/aq_inner/aq_parent;
+        greatfather nocall:grandfather/aq_inner/aq_parent;
+
+        filuns father/absolute_url;
+        filuns context/portal_url;
+        agenda string:${filuns}/agenda;
+
+        logo string:${context/portal_url}/++theme++ThemeUNS/assets/img/logo_vertical.png;
+        suffix string:/@@article_view;
+
+        rubriques python:[
+            {'id':'institutionnel', 'title':'Institutionnel'},
+            {'id':'formation', 'title':'Formation'},
+            {'id':'recherche', 'title':'Recherche'},
+            {'id':'international', 'title':'International'},
+            {'id':'culture', 'title':'Culture'},
+            {'id':'sport', 'title':'Sport'}
+        ];
+
+        mois python:['-', 'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
+
+        reseaux python:[
+            {'id':'facebook', 'url':'https://www.facebook.com/UnivNiceSophia'},
+            {'id':'twitter', 'url':'https://twitter.com/Univ_Nice'},
+            {'id':'linkedin', 'url':'http://www.linkedin.com/company/universit-nice-sophia-antipolis?trk=cp_followed_name_universit-nice-sophia-antipolis'},
+            {'id':'vimeo', 'url':'https://vimeo.com/channels/unice'},
+            {'id':'youtube', 'url':'http://www.youtube.com/user/UnivNice?feature=watch'},
+            {'id':'google', 'url':'https://plus.google.com/u/0/b/104299740066935221672/104299740066935221672/posts'}
+        ];">
+
+<metal:block use-macro="context/newsletter_macro/macros/container">
+    <metal:block fill-slot="container-content">
+
+        <!-- HEADER ---------------------------------------------------------------->
+        <metal:block use-macro="context/newsletter_macro/macros/row">
+            <metal:block fill-slot="row-content">
+
+                <!-- LOGO ---------------------------------------------------------------->
+                <tal:block define="wide const/cols/four; offset const/offset/no; last const/last/no; center const/center/yes;">
+                    <metal:block use-macro="context/newsletter_macro/macros/col">
+                        <metal:block fill-slot="col-content">
+
+                            <a tal:attributes="href filuns" class="block"
+                                tal:define="src logo; width const/img/four; center const/center/yes; alt context/Title;">
+                                <metal:block use-macro="context/newsletter_macro/macros/image"></metal:block>
+                            </a>
+
+                        </metal:block>
+                    </metal:block>
+                </tal:block>
+
+                <!-- TITRE + DATE ---------------------------------------------------------------->
+                <tal:block define="wide const/cols/eight; offset const/offset/no; last const/last/yes; center const/center/yes;">
+                    <metal:block use-macro="context/newsletter_macro/macros/col">
+                        <metal:block fill-slot="col-content">
+
+                            <br/>
+                            <h1><a tal:attributes="href filuns" tal:content="context/Title"/></h1>
+                            <h3 tal:define="date python:view.dateTime(); parts python:date.parts() if date else ['', 0, '-'];">
+                                <tal:block content="python:parts[2]"/>
+                                <tal:block content="python:mois[parts[1]]"/>
+                                <tal:block content="python:parts[0]"/>
+                            </h3>
+
+                        </metal:block>
+                    </metal:block>
+                </tal:block>
+
+            </metal:block>
+        </metal:block>
+
+
+        <!--<metal:block use-macro="context/newsletter_macro/macros/container">
+            <metal:block fill-slot="container-content">
+                <center>
+                    <strong>Le Service Commuication de l'UNS vous souhaite d'excellentes vacances</strong>
+                </center>
+            </metal:block>
+        </metal:block>-->
+
+        <!-- NIVEAU 1 ---------------------------------------------------------------->
+        <metal:block use-macro="context/newsletter_macro/macros/row">
+            <metal:block fill-slot="row-content">
+
+                <!-- ITEM ---------------------------------------------------------------->
+                <tal:block define="wide const/cols/eight; offset const/offset/no; last const/last/no; center const/center/yes;">
+                    <metal:block use-macro="context/newsletter_macro/macros/col">
+                        <metal:block fill-slot="col-content">
+
+                            <tal:block condition="python:len(classement['niveau1'])>0" define="item python:classement['niveau1'][0]">
+                                <a tal:attributes="href string:${item/url}${suffix}" class="block"
+                                    tal:define="src item/image; width const/img/eight; center const/center/yes; alt item/title;">
+                                    <metal:block use-macro="context/newsletter_macro/macros/image"></metal:block>
+                                    <strong tal:content="item/title"/>
+                                </a>
+                            </tal:block>
+
+                        </metal:block>
+                    </metal:block>
+                </tal:block>
+
+                <!-- MENU ---------------------------------------------------------------->
+                <tal:block define="wide const/cols/four; offset const/offset/no; last const/last/yes; center const/center/no;">
+                    <metal:block use-macro="context/newsletter_macro/macros/col">
+                        <metal:block fill-slot="col-content">
+
+                            <tal:block repeat="rub rubriques">
+                                <tal:block define="href string:${filuns}/${rub/id}; size const/btn/sm; color const/btn/secondary; cls rub/id;">
+                                    <metal:block use-macro="context/newsletter_macro/macros/button">
+                                        <metal:block fill-slot="button-content">
+                                            <tal:block content="rub/title"/>
+                                        </metal:block>
+                                    </metal:block>
+                                </tal:block>
+                                <hr tal:condition="not:repeat/rub/end"/>
+                            </tal:block>
+
+                        </metal:block>
+                    </metal:block>
+                </tal:block>
+
+            </metal:block>
+        </metal:block>
+
+        <!-- NIVEAU 2 TITRE ---------------------------------------------------------------->
+        <metal:block use-macro="context/newsletter_macro/macros/row">
+            <metal:block fill-slot="row-content">
+                <tal:block define="wide const/cols/twelve; offset const/offset/no; last const/last/yes; center const/center/no;">
+                    <metal:block use-macro="context/newsletter_macro/macros/col">
+                        <metal:block fill-slot="col-content">
+                            <h2>Actualités</h2>
+                        </metal:block>
+                    </metal:block>
+                </tal:block>
+            </metal:block>
+        </metal:block>
+
+        <!-- NIVEAU 2 ITEMS ---------------------------------------------------------------->
+        <tal:block repeat="item classement/niveau2">
+
+            <metal:block use-macro="context/newsletter_macro/macros/subrow">
+                <metal:block fill-slot="subrow-content">
+
+                    <tal:block define="wide const/cols/four; last const/last/no; center const/center/no;">
+                        <metal:block use-macro="context/newsletter_macro/macros/subcol">
+                            <metal:block fill-slot="subcol-content">
+
+                                <a tal:attributes="href string:${item/url}${suffix}" class="block"
+                                    tal:define="src item/image; width const/img/four; center const/center/yes; alt item/title;">
+                                    <metal:block use-macro="context/newsletter_macro/macros/image"></metal:block>
+                                </a>
+
+                                <tal:block define="href string:${filuns}/${item/themeLower}; size const/btn/xs; color const/btn/primary; cls item/themeLower;">
+                                    <metal:block use-macro="context/newsletter_macro/macros/button">
+                                        <metal:block fill-slot="button-content">
+                                            <tal:block content="item/theme"/>
+                                        </metal:block>
+                                    </metal:block>
+                                </tal:block>
+
+                            </metal:block>
+                        </metal:block>
+                    </tal:block>
+
+                     <tal:block define="wide const/cols/eight; last const/last/yes; center const/center/no;">
+                        <metal:block use-macro="context/newsletter_macro/macros/subcol">
+                            <metal:block fill-slot="subcol-content">
+
+                                <a tal:attributes="href string:${item/url}${suffix}" class="block">
+                                    <strong tal:content="item/title"/><br>
+                                    <small tal:content="item/dates/localized"/>
+                                    <tal:block condition="item/location">
+                                        - <small tal:content="item/location"/>
+                                    </tal:block><br>
+                                    <small tal:content="item/desc_trunc"/>
+                                </a>
+
+                            </metal:block>
+                        </metal:block>
+                    </tal:block>
+
+                </metal:block>
+            </metal:block>
+
+        </tal:block>
+
+        <!-- NIVEAU 2 MORE ---------------------------------------------------------------->
+        <metal:block use-macro="context/newsletter_macro/macros/row">
+            <metal:block fill-slot="row-content">
+                <tal:block define="wide const/cols/four; offset const/offset/four; last const/last/yes; center const/center/no;">
+                    <metal:block use-macro="context/newsletter_macro/macros/col">
+                        <metal:block fill-slot="col-content">
+
+                            <tal:block define="href filuns; size const/btn/xs; color const/btn/primary; cls string:;">
+                                <metal:block use-macro="context/newsletter_macro/macros/button">
+                                    <metal:block fill-slot="button-content">
+                                        Plus d'infos sur le Fil UNS
+                                    </metal:block>
+                                </metal:block>
+                            </tal:block>
+
+                        </metal:block>
+                    </metal:block>
+                </tal:block>
+            </metal:block>
+        </metal:block>
+
+
+        <!-- NIVEAU 3 TITRE ---------------------------------------------------------------->
+        <metal:block use-macro="context/newsletter_macro/macros/row">
+            <metal:block fill-slot="row-content">
+                <tal:block define="wide const/cols/twelve; offset const/offset/no; last const/last/yes; center const/center/no;">
+                    <metal:block use-macro="context/newsletter_macro/macros/col">
+                        <metal:block fill-slot="col-content">
+                            <h2>Agenda</h2>
+                        </metal:block>
+                    </metal:block>
+                </tal:block>
+            </metal:block>
+        </metal:block>
+
+        <!-- NIVEAU 3 ITEMS ---------------------------------------------------------------->
+        <tal:block repeat="item classement/niveau3">
+
+            <metal:block use-macro="context/newsletter_macro/macros/subrow">
+                <metal:block fill-slot="subrow-content">
+
+                    <tal:block define="wide const/cols/two; last const/last/no; center const/center/no;">
+                        <metal:block use-macro="context/newsletter_macro/macros/subcol">
+                            <metal:block fill-slot="subcol-content">
+
+                                <tal:block define="href string:${filuns}/${item/themeLower}; size const/btn/xs; color const/btn/success;
+                                    parts python:item['dates']['start'].parts() if item['dates']['start'] else ['', 0, '-']">
+                                    <tal:block define="cls string:;">
+                                        <metal:block use-macro="context/newsletter_macro/macros/button">
+                                            <metal:block fill-slot="button-content">
+                                                <tal:block content="python:parts[2]"/>
+                                            </metal:block>
+                                        </metal:block>
+                                    </tal:block>
+                                    <tal:block define="cls string:month;">
+                                        <metal:block use-macro="context/newsletter_macro/macros/button">
+                                            <metal:block fill-slot="button-content">
+                                                <tal:block content="python:mois[parts[1]]"/>
+                                            </metal:block>
+                                        </metal:block>
+                                    </tal:block>
+                                </tal:block>
+
+                            </metal:block>
+                        </metal:block>
+                    </tal:block>
+
+                     <tal:block define="wide const/cols/ten; last const/last/yes; center const/center/no;">
+                        <metal:block use-macro="context/newsletter_macro/macros/subcol">
+                            <metal:block fill-slot="subcol-content">
+
+                                <a tal:attributes="href string:${item/url}${suffix}" class="block">
+                                    <strong tal:content="item/theme" tal:attributes="class item/themeLower"/><br>
+                                    <strong tal:content="item/title"/><br>
+                                    <tal:block condition="item/location">
+                                        <small tal:content="item/location"/><br>
+                                    </tal:block>
+                                    <small tal:content="item/desc_trunc"/>
+                                </a>
+
+                            </metal:block>
+                        </metal:block>
+                    </tal:block>
+
+                </metal:block>
+            </metal:block>
+
+        </tal:block>
+
+
+        <!-- NIVEAU 3 MORE ---------------------------------------------------------------->
+        <metal:block use-macro="context/newsletter_macro/macros/row">
+            <metal:block fill-slot="row-content">
+                <tal:block define="wide const/cols/four; offset const/offset/four; last const/last/yes; center const/center/no;">
+                    <metal:block use-macro="context/newsletter_macro/macros/col">
+                        <metal:block fill-slot="col-content">
+
+                            <tal:block define="href agenda; size const/btn/xs; color const/btn/primary; cls string:;">
+                                <metal:block use-macro="context/newsletter_macro/macros/button">
+                                    <metal:block fill-slot="button-content">
+                                        Tout l'agenda
+                                    </metal:block>
+                                </metal:block>
+                            </tal:block>
+
+                        </metal:block>
+                    </metal:block>
+                </tal:block>
+            </metal:block>
+        </metal:block>
+
+
+        <!-- FOOTER ---------------------------------------------------------------->
+        <metal:block use-macro="context/newsletter_macro/macros/row">
+            <metal:block fill-slot="row-content">
+                <tal:block define="wide const/cols/twelve; offset const/offset/no; last const/last/yes; center const/center/yes;">
+                    <metal:block use-macro="context/newsletter_macro/macros/col">
+                        <metal:block fill-slot="col-content">
+                            <strong>Service Communication</strong><br>
+                            <span>Direction Stratégie et Développement</span><br>
+                            <a href="mailto:com@unice.fr">com@unice.fr</a>
+                        </metal:block>
+                    </metal:block>
+                </tal:block>
+            </metal:block>
+        </metal:block>
+
+
+    </metal:block>
+</metal:block>
+
+
+    </body>
+</html>

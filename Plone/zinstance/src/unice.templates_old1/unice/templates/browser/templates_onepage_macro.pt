@@ -1,0 +1,381 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+
+
+<!-- ################################################################################################## -->
+<!-- ### HERO ######################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="dexterity_onepage_hero">
+    <div tal:attributes="id item/uuid; style string:background-image: url(${locales/contentleadimage});
+        class string:fullscreen background hero onepage_hero_text_${locales/text/type}"
+        data-img-width="1500" data-img-height="1000">
+        <div class="content-a">
+            <div class="content-b">
+                <div class="container">
+
+                    <div class="row text-center">
+                        <div class="col-xs-12">
+                            <h1>
+                                <tal:block content="python:locales['subtitle'] if locales and 'subtitle' in locales and locales['subtitle'] else item['item'].Title()"/>
+                                <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_edit"></metal:block>
+                            </h1>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_missing_locales"></metal:block>
+                            <tal:block define="text locales/text;">
+                                <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_hero_text"></metal:block>
+                            </tal:block>
+                        </div>
+                    </div>
+
+                    <div tal:condition="python:len(items) > 1" class="row- text-center">
+                        <div tal:define="next python:items[1]" class="col-xs-12-">
+                            <a tal:define="loc python:next[lang]" tal:attributes="href string:#${next/uuid}" class="more btn btn-default">
+                                <i class="fa fa-chevron-down"></i>
+                                <tal:block content="python:loc['subtitle'] if loc and 'subtitle' in loc and loc['subtitle'] else next['item'].Title()"/>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_hero_text">
+
+<tal:block define="contents python:text['contents']; type text/type;">
+
+    <div tal:condition="python:type == 'string'" class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <strong tal:content="structure contents"/>
+        </div>
+    </div>
+
+    <div tal:condition="python:type == 'chercheur'" class="row">
+        <div class="col-sm-2"
+            tal:define="scales contents/@@images; full python:scales.scale('contentleadimage', scale='full');
+                       logo full/url; captions contents/Title; key string:contentleadimage;">
+            <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_thumb"></metal:block>
+        </div>
+        <div class="col-sm-10">
+            <p tal:condition="contents/Description" tal:content="contents/Description" class="lead text-justify"/>
+        </div>
+    </div>
+
+    <div tal:condition="python:type == 'video'" class="row">
+        <div class="col-md-8 col-md-offset-2 text-center">
+            <strong tal:content="structure contents/description"/>
+        </div>
+        <div class="col-md-4 col-md-offset-4 text-center">
+            <br/>
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" tal:attributes="src contents/url"></iframe>
+            </div>
+        </div>
+    </div>
+
+</tal:block>
+
+
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### CONTENT ###################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="dexterity_onepage_content">
+    <div class="row" tal:define="contents python:view.getOnePageItemContents(locales)">
+        <tal:block repeat="content contents">
+            <div tal:condition="python:content['key'] == 'thumbnail1_image'" tal:attributes="class content/class"
+                tal:define="logo locales/thumbnail1_image; captions locales/thumbnail1_captions; key content/key;">
+                <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_thumb"></metal:block>
+            </div>
+
+            <div tal:condition="python:content['key'] == 'thumbnail2_image'" tal:attributes="class content/class"
+                tal:define="logo locales/thumbnail2_image; captions locales/thumbnail2_captions; key content/key;">
+                <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_thumb"></metal:block>
+            </div>
+
+            <div tal:condition="python:content['key'] == 'graphdata1'" tal:attributes="class content/class"
+                tal:define="id string:${item/uuid}_graph1; graphdata locales/graphdata1; title locales/graph1_title; captions locales/graph1_captions;">
+                <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_graph"></metal:block>
+            </div>
+
+            <div tal:condition="python:content['key'] == 'graphdata2'" tal:attributes="class content/class"
+                tal:define="id string:${item/uuid}_graph2; graphdata locales/graphdata2; title locales/graph2_title; captions locales/graph2_captions;">
+                <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_graph"></metal:block>
+            </div>
+
+            <div tal:condition="python:content['key'] == 'text'" tal:define="text locales/text" tal:attributes="class content/class">
+                <div class="text-justify">
+
+                    <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_text"></metal:block>
+
+                    <tal:block condition="locales/more_text">
+                        <div class="text-right">
+                            <a href="#" data-toggle="modal" class="btn btn-primary btn-inverted-"
+                                tal:attributes="data-target string:#${item/uuid}_more_text;">
+                                Plus d'information
+                            </a>
+                        </div>
+                        <div tal:attributes="id string:${item/uuid}_more_text" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                        <h4 class="modal-title" tal:content="locales/title"/>
+                                    </div>
+                                    <div class="modal-body" tal:content="structure locales/more_text"/>
+                                </div>
+                            </div>
+                        </div>
+                    </tal:block>
+
+                </div>
+            </div>
+        </tal:block>
+    </div>
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### CONTENT TYPES ################################################################################ -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="dexterity_onepage_text">
+
+<div tal:define="contents python:text['contents']; type text/type;">
+    <tal:block condition="python:type == 'string'" content="structure contents"/>
+
+    <tal:block condition="python:type == 'Folder'">
+        <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_folder"></metal:block>
+    </tal:block>
+
+    <tal:block condition="python:type == 'chercheur'">
+        <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_chercheur"></metal:block>
+    </tal:block>
+
+    <tal:block condition="python:type == 'video'">
+        <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_video"></metal:block>
+    </tal:block>
+
+    <tal:block condition="python:type == 'galerie'">
+        <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_galerie"></metal:block>
+    </tal:block>
+</div>
+
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_folder">
+    <div class="list-group">
+        <a tal:repeat="content contents" tal:attributes="href content/url" class="list-group-item">
+            <span tal:condition="not:content/image_default" class="image_ratio">
+                <span style="background-image: url(http://localhost:8080/Plone/cartes-de-visite/site-one-page/clint-eastwood/@@images/56311965-744a-47e2-8aa1-97d5a61af318.jpeg)"></span>
+            </span>
+            <h4 class="list-group-item-heading"
+                tal:attributes="style python:'line-height: 40px' if not content['description'] else '';">
+                <i tal:condition="python:content['type'] == 'Link'" class="fa fa-external-link-square fa-fw text-muted"></i>
+                <i tal:condition="python:content['type'] == 'File'" class="fa fa-cloud-download fa-fw text-muted"></i>
+                <i tal:condition="python:content['type'] == 'News Item'" class="fa fa-star fa-fw text-muted"></i>
+                <i tal:condition="python:content['type'] == 'News Item'" class="fa fa-star fa-calendar-o text-muted"></i>
+                <tal:block content="content/title"/>
+            </h4>
+            <p tal:condition="content/description" class="list-group-item-text text-muted">
+                <small tal:content="content/desc_trunc"/>
+            </p>
+            <span style="display:block; clear:both;"></span>
+        </a>
+    </div>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_chercheur">
+    <div class="row">
+        <div class="col-md-9">
+            <p tal:condition="contents/biographie" tal:content="structure contents/biographie/output"/>
+        </div>
+        <div class="col-md-3">
+            <ul tal:define="labs view/laboratoires" class="list-group">
+                <li class="list-group-item disabled text-center">
+                    <i class="fa fa-university"></i> Fonctions
+                </li>
+                <tal:block repeat="fnc python:[
+                    {'intitule': contents.fonction1, 'lab': contents.fonction_lab1},
+                    {'intitule': contents.fonction2, 'lab': contents.fonction_lab2},
+                    {'intitule': contents.fonction3, 'lab': contents.fonction_lab3},
+                    {'intitule': contents.fonction4, 'lab': contents.fonction_lab4},
+                    {'intitule': contents.fonction5, 'lab': contents.fonction_lab5},
+                ]">
+                    <li tal:condition="fnc/intitule" class="list-group-item">
+                        <tal:block content="fnc/intitule"/>
+                        <tal:block condition="python:fnc['lab'] and fnc['lab'] in labs">
+                            - <a tal:attributes="href python:labs[fnc['lab']]['url']" tal:content="python:labs[fnc['lab']]['title']"/>
+                        </tal:block>
+                    </li>
+                </tal:block>
+
+                <li class="list-group-item disabled text-center">
+                    <i class="fa fa-star"></i> Prix et distinctions
+                </li>
+                <tal:block repeat="prix python:[
+                    {'prix': contents.prix1, 'url': contents.prix_lien1},
+                    {'prix': contents.prix2, 'url': contents.prix_lien2},
+                    {'prix': contents.prix3, 'url': contents.prix_lien3},
+                    {'prix': contents.prix4, 'url': contents.prix_lien4},
+                    {'prix': contents.prix5, 'url': contents.prix_lien5},
+                ]">
+                    <li tal:condition="prix/prix" class="list-group-item">
+                        <a tal:omit-tag="not:prix/url" tal:attributes="href prix/url">
+                            <tal:block content="prix/prix"/>
+                        </a>
+                    </li>
+                </tal:block>
+            </ul>
+        </div>
+    </div>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_video">
+    <div class="row">
+        <div class="col-md-6" tal:content="structure contents/description"/>
+        <div class="col-md-6">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" tal:attributes="src contents/url"></iframe>
+            </div>
+        </div>
+    </div>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_galerie">
+    <div class="row galerie">
+        <div tal:repeat="content contents" class="col-xs-4 col-md-2">
+            <a tal:attributes="href content/image_full; title content/title" class="image_ratio" data-imagelightbox="e">
+                <span tal:attributes="style string:background-image: url(${content/image});"/>
+            </a>
+        </div>
+    </div>
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### ELEMENTS ##################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="dexterity_onepage_subtitle">
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 tal:attributes="id item/uuid" class="lead scrollme- animateme- text-center"
+                data-when="enter" data-from="0.5" data-to="0.25"
+                data-opacity="0" data-translatex="-100">
+                <i tal:condition="python:locales and locales['fa_icon']" tal:attributes="class locales/fa_icon"></i>
+                <tal:block content="python:locales['subtitle'] if locales and 'subtitle' in locales and locales['subtitle'] else item['item'].Title()"/>
+                <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_edit"></metal:block>
+                <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_folder_contents"></metal:block>
+            </h2>
+            <metal:block use-macro="context/templates_onepage_macro/macros/dexterity_onepage_missing_locales"></metal:block>
+        </div>
+    </div>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_thumb">
+    <a href="#" tal:attributes="data-target string:#${item/uuid}_${key}; title captions"
+        data-toggle="modal" class="image_ratio img-circle">
+        <span tal:attributes="style string:background-image: url(${logo});"/>
+    </a>
+
+    <div tal:attributes="id string:${item/uuid}_${key}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" tal:content="captions|string:Photo"/>
+                </div>
+                <div class="modal-body">
+                    <img tal:attributes="src logo" style="width: 100%; height: auto;"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_graph">
+    <tal:block define="graph python:view.getOnePageItemGraph(graphdata, captions, id)">
+        <div tal:condition="title" class="text-muted text-center">
+            <strong><small tal:content="structure title"/></strong>
+        </div>
+        <tal:block condition="graph">
+            <canvas tal:attributes="id id" width="320" height="240"></canvas>
+            <script type="text/javascript" tal:content="structure graph"/>
+        </tal:block>
+        <div tal:condition="python:item['access'] and not graph" class="alert alert-danger" role="alert">
+            <i class="fa fa-exclamation-triangle"></i> Aucune donnée chiffrée, le graphique ne sera pas affiché.
+        </div>
+    </tal:block>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_iframe">
+    <tal:block define="iframe python:view.getOnePageIframe(locales['iframe'])">
+        <div tal:condition="iframe" class="row">
+            <br/>
+            <div class="col-sm-6 col-sm-push-3">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe tal:attributes="src iframe" class="embed-responsive-item" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                </div>
+                <div tal:condition="locales/iframe_title" class="text-muted text-center">
+                    <strong><small tal:content="structure locales/iframe_title"/></strong>
+                </div>
+            </div>
+        </div>
+    </tal:block>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_logo">
+    <tal:block tal:condition="logo">
+        <a tal:omit-tag="not:href" tal:attributes="href href; title captions;" class="navbar-brand">
+            <img tal:attributes="src logo; alt captions"/>
+            <span tal:condition="captions" tal:content="captions" class="sr-only"/>
+        </a>
+    </tal:block>
+</metal:block>
+
+<!-- ################################################################################################## -->
+<!-- ### MANAGER ###################################################################################### -->
+<!-- ################################################################################################## -->
+
+<metal:block define-macro="dexterity_onepage_missing_locales">
+    <div tal:condition="python:item['access'] and locales and fallback" class="alert alert-warning" role="alert">
+        <i class="fa fa-exclamation-triangle"></i> Pas de traduction en "<tal:block content="python:parts['langs'][lang]"/>",
+        la version en "<tal:block content="python:parts['langs'][parts['fallback']]"/>" sera affichée.
+    </div>
+    <div tal:condition="python:item['access'] and not locales" class="alert alert-danger" role="alert">
+        <i class="fa fa-exclamation-triangle"></i> Aucune traduction, l'élément ne sera pas affiché.
+    </div>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_edit">
+    <a tal:condition="item/access" tal:attributes="href string:${item/item/absolute_url}/edit"
+        class="btn btn-warning btn-sm" target="_blank">
+        <i class="fa fa-pencil"></i> Modifier
+    </a>
+</metal:block>
+
+<metal:block define-macro="dexterity_onepage_folder_contents">
+    <a tal:condition="python:locales and locales['text']['type'] in ['Folder', 'galerie'] and item['access']" tal:attributes="href string:${item/item/absolute_url}/folder_contents"
+        class="btn btn-warning btn-sm" target="_blank">
+        <i class="fa fa-bars"></i> Contenus
+    </a>
+</metal:block>
+
+</metal:content-core>
+</body>
+</html>

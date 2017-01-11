@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="group">
+
+	<dl>
+
+		<tal:repeat repeat="widget group/widgets/values">
+
+	        <tal:item define="name widget/name; id python:name.replace('.', '-')">
+
+	        	<dt tal:content="structure string:${widget/label} :" tal:attributes="id string:${id}-label"/>
+				<dd tal:content="structure widget/value" tal:attributes="id string:${id}-value"/>
+
+			</tal:item>
+
+	    </tal:repeat>
+
+
+	</dl>
+
+</metal:block>
+</metal:content-core>
+</body>
+</html>

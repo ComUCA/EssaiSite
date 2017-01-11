@@ -1,0 +1,2280 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master">
+
+    <metal:content-core fill-slot="content-core">
+
+        <!-- ======================= -->
+        <!-- MACRO Scripts MAP MONDE -->
+        <!-- ======================= -->
+
+<!-- biodiversite p1 -->
+        <metal:block define-macro="bio-p1">
+            <script src="++resource++unice.medites.javascripts/libs/parcours-mapMonde.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span><br/>
+                    Points du parcours : <span id="pointsParcours">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="bio-P1" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "7,80","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "18,65","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"33.5,79","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "27.5,35","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "11.5,26","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "38,14","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "45.5,65","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "81,72","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+
+                    <div class="marqueur" id="bio-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "59,38","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 8</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>                          
+
+
+                    <div class="marqueur" id="bio-a-9">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "65,25","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 9</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-10">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "82.5,40","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 10</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer la dernière &Eacute;tape</button>                        
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-a-11">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "90.5,15","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- biodiversite p2 -->
+        <metal:block define-macro="bio-p2">
+            <script src="++resource++unice.medites.javascripts/libs/parcours-mapMonde.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span><br/>
+                    Points du parcours : <span id="totalXP">0</span></p>
+                    <span id="pointsParcours">0</span>/100 
+                </div>
+
+                <div id="bio-P2" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-b-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-b-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'><i class="fa fa-users fa-5"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-b-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-b-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-b-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-b-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-b-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-b-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>           
+
+<!-- biodiversite p3 -->
+        <metal:block define-macro="bio-p3">
+            <script src="++resource++unice.medites.javascripts/libs/parcours-mapMonde.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span><br/>
+                    Points du parcours : <span id="pointsParcours">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="bio-P3" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-c-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-c-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-c-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-c-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-c-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-c-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-c-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-c-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- biodiversite p4 -->
+        <metal:block define-macro="bio-p4">
+            <script src="++resource++unice.medites.javascripts/libs/parcours-mapMonde.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span><br/>
+                    </p>Points du parcours : <span id="pointsParcours">0</span><br/>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="bio-P4" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="bio-d-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-d-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-d-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="bio-d-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="bio-d-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="bio-d-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="bio-d-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="bio-d-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+
+<!-- Science numerique p1 -->
+        <metal:block define-macro="scNu-p1">
+            <script src="++resource++unice.medites.javascripts/libs/parcours-mapMonde.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span><br/>
+                    Points du parcours : <span id="pointsParcours">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="scNu-P1" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="scNum-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="scNum-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="scNum-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="scNum-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="scNum-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="scNum-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="scNum-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="scNum-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- Temps, histoire, &eacute;volution p1 -->
+        <metal:block define-macro="tpHiEvo-p1">
+            <script src="++resource++unice.medites.javascripts/libs/parcours-mapMonde.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span><br/>
+                    Points du parcours : <span id="pointsParcours">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="tpHiEvo-P1" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="tpHiEvo-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="tpHiEvo-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="tpHiEvo-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="tpHiEvo-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="tpHiEvo-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="tpHiEvo-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="tpHiEvo-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="tpHiEvo-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+<!-- Terre, Ocean, Univers p1 -->
+        <metal:block define-macro="teOcUn-p1">
+            <script src="++resource++unice.medites.javascripts/libs/parcours-mapMonde.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span><br/>
+                    Points du parcours : <span id="pointsParcours">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="teOcUn-P1" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="teOcUn-a-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="teOcUn-a-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="teOcUn-a-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="teOcUn-a-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="teOcUn-a-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="teOcUn-a-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="teOcUn-a-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="teOcUn-a-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+            </section>
+        </metal:block>   
+
+<!-- Terre, ocean, univers p2 -->
+        <metal:block define-macro="teOcUn-p2">
+            <script src="++resource++unice.medites.javascripts/libs/parcours-mapMonde.js"></script> 
+            <script src="++resource++unice.medites.javascripts/libs/drag_drop.js"></script> 
+<!--             <script>$('.carousel').carousel()</script>
+ -->
+
+
+            <section class="container-fluid emplacement">
+                <div class="points teOcUn-P2">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span><br/>
+                    Points du parcours : <span id="totalXP">0</span></p>
+                    <span id="pointsParcours">0</span>/100 
+                </div>
+
+                <div id="teOcUn-P2" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="teOcUn-b-1">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"76.5,21","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-info-circle"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1 - Vue g&eacute;n&eacute;rale</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h3>Oc&eacute;an - Vue g&eacute;n&eacute;rale</h3>
+                            <div id="carousel-teOcUn-P2-1" class="carousel slide" data-ride="carousel" data-interval="false">
+                              <ol class="carousel-indicators">
+                                <li data-target="#carousel-teOcUn-P2-1" data-slide-to="0" class="active"></li>
+                                <li data-target="#carousel-teOcUn-P2-1" data-slide-to="1"></li>
+                              </ol>
+                              <div class="carousel-inner" role="listbox">
+                                <div class="item active">
+                                    <div style="float:left;width:48%;">
+                                        <h4>L&eacute;gendes, rêves et cauchemars</h4>
+                                        <p><strong>L’Oc&eacute;an a toujours attir&eacute; et en même temps effray&eacute; les hommes de toute &eacute;poque.</strong> Les eaux bleues des oc&eacute;ans font rêver d’îles paradisiaques, de voyages, de libert&eacute;, de rencontres avec des animaux r&eacute;els ou fruits de l’imagination de nos ancêtres.</p>
+
+                                        <p>Qui n’a jamais imagin&eacute; de naviguer avec son propre voilier ? D’accoster sur une plage d&eacute;serte de sable blanc ? Et peut être... au passage... de rencontrer une sirène qui nous guide dans des eaux cristallines ?</p>
+
+                                        <p>Mais à cot&eacute; du rêve il y a &eacute;galement la peur et les cauchemars li&eacute;s au monde sous-marin, qui est rest&eacute; un mystère insondable pour des siècles et des siècles et que même au jour d’aujourd’hui n’a pas encore &eacute;t&eacute; complètement explor&eacute; et compris.</p>
+                                    </div>
+                                    <div style="float:right;width:48%;">
+                                        <h4>Science et connaissance</h4>
+                                        <p>La Science permet à l’Homme de <strong>trouver les r&eacute;ponses aux questions</strong> qu’il se pose à propos de son milieu de vie, de ses origines et de son existence. Trouver ces r&eacute;ponses permet d’acqu&eacute;rir de nouvelles connaissances.</p>
+                                        <h5>Qu’est-ce que l’Oc&eacute;anographie ? (Du grec "d&eacute;crire l'oc&eacute;an")</h5>
+                                        <p>L’Oc&eacute;anographie est la Science qui permet de r&eacute;pondre aux nombreuses questions que l’on s’est toujours pos&eacute;es sur les oc&eacute;ans. L’exploration des oc&eacute;ans a commenc&eacute; il y a environ 700 ans, quand la construction de grands navires a rendu possible les premières travers&eacute;es transoc&eacute;aniques. Ceci dit l’Oc&eacute;anographie est une discipline très “jeune”, <strong>reconnue depuis à peine 200 ans</strong>.</p>
+                                        <h5>Le mot Oc&eacute;anographie... me fait penser à... G&eacute;ographie... (...du grec... d&eacute;crire la terre)</h5>
+                                        <p>La <strong>G&eacute;ographie</strong>, une discipline bien plus ancienne que l’Oc&eacute;anographie, est n&eacute;e il y a plus de 2400 ans. Elle regroupe toutes les sciences qui &eacute;tudient les territoires et les relations entre l’Homme et son environnement de vie.</p>
+                                        <p><strong>L’Oc&eacute;anographie</strong> est l’ensemble des disciplines qui &eacute;tudient tout ce qui est li&eacute; aux mers et aux oc&eacute;ans, du vivant au non vivant, de la surface aux abysses.</p>
+                                        <h5>A ne pas confondre avec... ...l’Oc&eacute;anologie</h5>
+                                        <p><strong>L’Oc&eacute;anologie</strong> est une sorte d’”Oc&eacute;anographie Appliqu&eacute;e”. Autrement dit c’est l’ensemble des disciplines qui &eacute;tudient comment exploiter les mers et les oc&eacute;ans au profit de la soci&eacute;t&eacute; tout en les prot&eacute;geant.</p>
+                                    </div>        
+                                </div>
+             
+                                <div class="item">
+                                    <div style="float:left;width:48%;">
+                                        <h4>Exploitation et soci&eacute;t&eacute;</h4>
+                                        <p>Grâce à la Science l’Homme a donc commenc&eacute; à d&eacute;voiler les mystères et les secrets des oc&eacute;ans. C’est pourquoi il n’en a plus peur, au contraire... il se donne maintenant les moyens de <strong>contrôler</strong> et <strong>d’exploiter</strong> les mers et les oc&eacute;ans <strong>au profit de la soci&eacute;t&eacute;</strong>.<br/>
+                                        Par exemple...<br/>
+                                        Nous <strong>pêchons</strong> ou nous <strong>&eacute;levons</strong> les poissons que nous mangeons...<br/>
+                                        Nous <strong>transportons</strong> nos marchandises dans de grands containers sur de navires commerciaux qui traversent les oc&eacute;ans du monde entier...</p>
+                                    </div>  
+                                    <div style="float:right;width:48%;">
+                                        <h4>Surexploitation et d&eacute;gâts</h4>
+                                        <p>Lorsque l'Homme a r&eacute;alis&eacute; l’&eacute;norme richesse des ressources oc&eacute;aniques, la tentation de les exploiter de façon exag&eacute;r&eacute;e et d&eacute;mesur&eacute;e a &eacute;t&eacute; irr&eacute;fr&eacute;nable. Il en r&eacute;sulte que les oc&eacute;ans,
+                                        respect&eacute;s parce que craints pendant des siècles, sont aujourd’hui menac&eacute;s par les <strong>activit&eacute;s humaines, trop souvent non correctement encadr&eacute;es</strong>.<br/>
+                                        La <strong>surpêche</strong>, c’est à dire la pêche excessive de certaines espèces d’animaux marins, est la cause directe de la r&eacute;duction du nombre et de la taille surtout de certains poissons.<br/>
+                                        L’<strong>aquaculture</strong> aurait pu être une solution aux problèmes li&eacute;s à la surpêche, mais les &eacute;levages de poissons, souvent très mal g&eacute;r&eacute;s, produisent des animaux de mauvaise qualit&eacute; nutritionnelle et souvent malades.<br/>
+                                        Le <strong>transport maritime</strong> ne cesse pas de s’intensifier, par cons&eacute;quent les ports commerciaux s’agrandissent, en causant des dommages aux littoraux et une forte pollution.</p>
+                                        <p>Les zones au bord de l’eau les plus touristiques et attractives se remplissent de bâtiments pour accueillir de plus en plus de touristes. Cela est à la base de la <strong>b&eacute;tonisation de nos littoraux</strong>.</p>
+
+                                        <p class="pointsXP"><span>20</span>points</p>
+                                        <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                                    </div>    
+                                </div>  
+                              </div>
+                              <a class="left carousel-control" href="#carousel-teOcUn-P2-1" role="button" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                <span class="sr-only">Previous</span>
+                              </a>
+                              <a class="right carousel-control" href="#carousel-teOcUn-P2-1" role="button" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                <span class="sr-only">Next</span>
+                              </a>
+                            </div>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="teOcUn-b-2">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"55,20","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-info-circle"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2 - D&eacute;marche scientifique</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h5>Titre seance 2</h5>
+                            
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur jeuDrag1Etape" id="teOcUn-b-3">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"38.5,23","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-wrench"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3 - Instruments de mesure</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h5>Associe les instruments de mesures et les r&eacute;sultats obtenus</h5>
+                            <div class="">
+                                <ul class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> 
+                                    <li id="teOcUn-b-3-drag-0" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 drag ui-widget-content">
+                                        <img src="++resource++unice.medites.images/jeux/ocean/p1/s1/filet_plancton.jpg" width="125" alt="" />
+                                        <p>Filet &agrave; plancton</p>
+                                    </li>
+                                  <li id="teOcUn-b-3-drag-1" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 drag ui-widget-content">
+                                        <img src="++resource++unice.medites.images/jeux/ocean/p1/s1/aqua_satellite.jpg" width="125" alt="" />
+                                        <p>Aqua sat&eacute;llite</p>
+                                  </li>
+                                  <li id="teOcUn-b-3-drag-2" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 drag ui-widget-content">
+                                        <img src="++resource++unice.medites.images/jeux/ocean/p1/s1/flotteur-a.jpg" width="125" alt="" />
+                                        <p>Flotteur</p>
+                                  </li>
+                                  <li id="teOcUn-b-3-drag-3" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 drag ui-widget-content">
+                                        <img src="++resource++unice.medites.images/jeux/ocean/p1/s1/rosette_niskin.jpg" width="125" alt="" />
+                                        <p>Rosette Niskin</p>
+                                  </li>
+                                </ul>
+                                <ul class="col-xs-6 col-sm-6 col-md-6 col-lg-6"> 
+                                    <li id="teOcUn-b-3-drop-3" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 drop ui-widget-header ferme">
+                                        <img src="++resource++unice.medites.images/jeux/ocean/p1/s1/filtre_rosette_niskin.jpg" width="170" alt="" />
+                                        <div class="detail">Description de l'&eacute;l&eacute;ment</div>
+                                    </li>   
+                                    <li id="teOcUn-b-3-drop-1" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 drop ui-widget-header ferme ">
+                                        <img src="++resource++unice.medites.images/jeux/ocean/p1/s1/bloom_phytoplanctonique.jpg" width="170" alt="" />
+                                        <div class="detail">Description de l'&eacute;l&eacute;ment</div>
+                                    </li>
+                                    <li id="teOcUn-b-3-drop-0" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 drop ui-widget-header ferme">
+                                        <img src="++resource++unice.medites.images/jeux/ocean/p1/s1/plancton.jpg" width="170" alt="" />
+                                        <div class="detail">Description de l'&eacute;l&eacute;ment</div>
+                                    </li> 
+                                    <li id="teOcUn-b-3-drop-2" class="col-xs-12 col-sm-6 col-md-6 col-lg-3 drop ui-widget-header ferme ">
+                                        <img src="++resource++unice.medites.images/jeux/ocean/p1/s1/flotteur-b.jpg" width="170" alt="" />
+                                        <div class="detail">Description de l'&eacute;l&eacute;ment</div>
+                                    </li>
+                                </ul>
+                                <div id="great-teOcUn-b-3">
+                                    <h1>Bien jou&eacute; !</h1>
+                                    <p class="pointsXP"><span>10</span>points</p>
+                                    <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                                </div> 
+                            </div>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="teOcUn-b-4">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"19.5,20","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-home"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4 - Visite du site de Villefranche</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="teOcUn-b-5">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"9,63","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-info-circle"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5 - Flottabilit&eacute;</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Oc&eacute;an - Flottabilit&eacute;</h3>
+                            <div id="carousel-teOcUn-P2-5" class="carousel slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-teOcUn-P2-5" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-teOcUn-P2-5" data-slide-to="1"></li>
+                                    <li data-target="#carousel-teOcUn-P2-5" data-slide-to="2"></li>
+                                    <li data-target="#carousel-teOcUn-P2-5" data-slide-to="3"></li>
+                                    <li data-target="#carousel-teOcUn-P2-5" data-slide-to="4"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <h4>La pouss&eacute;e d’Archimède</h4>
+                                        <p>Tous les corps plong&eacute;s dans un fluide (eau ou air) sont soumis à la <strong>pouss&eacute;e d’Archimède</strong>, une force agissant toujours dans la direction oppos&eacute;e à la gravit&eacute; et &eacute;quivalente au poids du
+                                        volume d’eau qui a &eacute;t&eacute; d&eacute;plac&eacute;. C’est à partir de cela qu’on d&eacute;finit la flottabilit&eacute;... La flottabilit&eacute; d’un corps d&eacute;pend de la diff&eacute;rence entre son poids et la <strong>pouss&eacute;e d’Archimède</strong>, mais
+                                        &eacute;galement de la diff&eacute;rence entre les densit&eacute;s du corps et du fluide.</p>
+                                        <ul>
+                                            <li>La gravit&eacute; est la force qui nous attire vers le centre de la Terre.</li>
+                                            <li>Un fluide est un mat&eacute;riel parfaitement d&eacute;formable.</li>
+                                            <li>La densit&eacute; est la quantit&eacute; de matière pr&eacute;sente dans une unit&eacute; de volume.</li>
+                                            <li>On parle de “flottabilit&eacute;” dans l’eau et dans l’air... mais... concentrons-nous sur l’eau !</li>
+                                        </ul>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Ça flotte</h4> 
+                                        <p>Quand le poids d’un corps (Pc) est inf&eacute;rieur à la <strong>pouss&eacute;e d’Archimède</strong> (Pa) et sa densit&eacute; est <strong>inf&eacute;rieure</strong> à celle du fluide => <strong>le corps flotte</strong>.<br/>
+                                        Un gros <strong>paquebot</strong> flotte sans plus de difficult&eacute;s qu’un <strong>petit bateau</strong>. Cela parce que l’&eacute;norme volume d’eau qu’il d&eacute;place produit une pouss&eacute;e d'Archimède suffisamment forte.<br/>
+                                        En versant de l’<strong>huile</strong> dans un verre d’eau, l’huile flotte au-dessus de l’eau, car sa densit&eacute; est inf&eacute;rieure à celle de l’eau.<br/>
+                                        Un <strong>ballon</strong> et un <strong>bouchon</strong> de liège flottent car ils sont très l&eacute;gers et leur densit&eacute; est inf&eacute;rieure à celle de l’eau.</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>D&eacute;placement</h4>
+                                        <p>Les mêmes organismes aquatiques qui se sont adapt&eacute;s à rester en &eacute;quilibre dans l’eau, ont &eacute;galement appris à s'y d&eacute;placer verticalement.<br/>
+                                        Le plancton (<strong>m&eacute;duses et cop&eacute;podes</strong> par exemple) migre quotidiennement de la surface des oc&eacute;ans jusqu’à quelques centaines de mètres de profondeur, souvent grâce à des m&eacute;canismes encore m&eacute;connus.<br/>
+                                        Les <strong>poissons</strong> sont &eacute;quip&eacute;s d’un organe sp&eacute;cialis&eacute;, la <strong>vessie natatoire</strong>, qui peut se remplir ou se vider de gaz. De cette façon ils peuvent modifier leur densit&eacute; et donc leur flottabilit&eacute;.<br/>
+                                        <strong>Les hommes se sont inspir&eacute;s de la nature...</strong><br/>
+                                        Les <strong>plongeurs</strong> vident ou remplissent d’air les <strong>gilets stabilisateurs</strong>, exactement comme les poissons le font avec la vessie natatoire, afin de plonger en profondeur ou remonter à la surface.<br/>
+                                        De même, les <strong>sous-marins</strong> remplissent ou vident leurs r&eacute;servoirs d’eau (ballast) afin de modifier leur densit&eacute; et donc leur flottabilit&eacute;.</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Equilibre</h4>
+                                        <p>Quand le poids d’un corps (Pc) est &eacute;gal à la <strong>pouss&eacute;e d’Archimède</strong> (Pa) et sa densit&eacute; est <strong>&eacute;gale</strong> à celle du fluide => <strong>le corps reste en &eacute;quilibre</strong>.<br/>
+                                        Les <strong>m&eacute;duses</strong> peuvent rester en &eacute;quilibre à une certaine profondeur de la colonne d’eau. Cela parce que elles sont compos&eacute;es de 95% à 98% d’eau, elles ont donc presque la même densit&eacute; de l’eau de mer.<br/>
+                                        Il existe des astuces pour se maintenir en &eacute;quilibre dans un fluide, ou bien pour s’opposer à la gravit&eacute;...</p>
+                                        <h4>Friction</h4>
+                                        <p>Certains <strong>organismes aquatiques</strong> (<strong>cop&eacute;podes et foraminifères</strong> par exemple) augmentent la surface de leur corps et donc la friction avec l’eau, afin de retarder leur retomb&eacute;e, exactement comme le fait un parachutiste dans l'air.</p>
+                                        <h4>Mouvement</h4>
+                                        <p>D'autres organismes doivent continuer à bouger pour maintenir leur position. Les <strong>pt&eacute;ropodes</strong> par exemple agitent leurs ailes pour s’opposer au poids de leur coquille.</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Ça coule</h4>
+                                        <p>Quand le poids d’un corps (Pc) est <strong>sup&eacute;rieur</strong> à la <strong>pouss&eacute;e d’Archimède</strong> (Pa) et sa densit&eacute; est <strong>sup&eacute;rieure</strong> à celle du fluide => <strong>le corps coule</strong>.<br/>
+                                        Un <strong>caillou</strong> jet&eacute; dans l’eau coule au fond, car son poids est plus important que la pouss&eacute;e d’Archimède qui se g&eacute;nère et sa densit&eacute; est sup&eacute;rieure à celle de l’eau de mer.<br/>
+                                        Si un <strong>paquebot</strong> se remplit d’eau, suite à un accident, la pouss&eacute;e d’Archimède diminue et le navire coule au fond des oc&eacute;ans.<br/>
+                                        La composition, le poids et la forme de certains organismes les obligent à rester en contact avec les fonds marins (<strong>oursins et langoustes</strong> par exemple).</p>
+
+                                        <p class="pointsXP"><span>10</span>points</p>
+                                        <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                                    </div>      
+                                </div>
+                                <a class="left carousel-control" href="#carousel-teOcUn-P2-5" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-teOcUn-P2-5" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>          
+                        </div>  
+                    </div>
+
+                 <!--    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div> -->
+
+
+                    <div class="marqueur" id="teOcUn-b-6">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"19.5,69","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-search"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6 - Observation du plancton</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Oc&eacute;an - Observation du plancton</h3>
+                            <div id="carousel-teOcUn-P2-6" class="carousel slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-teOcUn-P2-6" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-teOcUn-P2-6" data-slide-to="1"></li>
+                                    <li data-target="#carousel-teOcUn-P2-6" data-slide-to="2"></li>
+                                    <li data-target="#carousel-teOcUn-P2-6" data-slide-to="3"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <h4>Qu’est-ce que le plancton ?</h4>
+                                        <p>Le <strong>plancton</strong> (terme venant du grec <strong>planktós</strong> qui signifie “errant”) est constitu&eacute; d'organismes vivants aquatiques incapables de s’opposer aux <strong>courants</strong> et dont la distribution spatiale
+                                        d&eacute;pend, par cons&eacute;quent, des mouvements des masses d'eau.</p>
+                                        <h5>Le plancton d&eacute;rive mais n’est pas passif !</h5>
+                                        <p>Malgr&eacute; la difficult&eacute; à se d&eacute;placer horizontalement contre les courants, le plancton peut effectuer des <strong>d&eacute;placements verticaux</strong> très importants (jusqu’à des centaines de mètres/jour).</p>
+                                        <h4>Le plancton est adapt&eacute; à vivre en pleine eau</h4>
+                                        <h5>Transparence</h5>
+                                        <p>Le plancton se d&eacute;fend des pr&eacute;dateurs par sa transparence. Il est presque invisible.</p>
+                                        <h5>Flottabilit&eacute;</h5>
+                                        <p>Les organismes planctoniques ont un <strong>poids</strong> r&eacute;duit (absence de squelette et de coquille). Ils peuvent avoir des <strong>flotteurs</strong> (gouttelettes d’huile, bulles de gaz) et augmenter leur <strong>surface</strong> ou leur contenu d’<strong>eau</strong>.</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>A ne pas confondre avec...</h4> 
+                                        <ul>
+                                            <li>PLEUSTON : organismes vivant entre air et eau.</li>
+                                            <li>PLANCTON : organismes vivants d&eacute;rivant au gr&eacute; des courants.</li>
+                                            <li>NECTON : animaux dot&eacute;s d’une capacit&eacute; de nage leur permettant de s’opposer aux courants.</li>
+                                            <li>BENTHOS : organismes vivant près des fonds marins ou en contact avec eux.</li>
+                                        </ul>   
+                                    </div>
+                                    <div class="item">
+                                        <h4>Types de plancton</h4>
+                                        <h5>...selon le règne d’appartenance</h5>
+                                        <ul>
+                                            <li><strong>VIRIO</strong>PLANCTON (VIRUS)</li>
+                                            <li><strong>BACTERIO</strong>PLANCTON (BACTERIES)</li>
+                                            <li><strong>PHYTO</strong>PLANCTON (VEGETAUX)</li>
+                                            <li><strong>ZOO</strong>PLANCTON (ANIMAUX)</li>
+                                        </ul>
+                                        <h5>...selon le cycle de vie</h5>
+                                        <ul>
+                                            <li><strong>HOLO</strong>PLANCTON : Organismes planctoniques tout au long de leur vie.</li>
+                                            <li><strong>MERO</strong>PLANCTON : Organismes qui ne passent qu’une partie de leur vie sous forme planctonique.</li>
+                                        </ul>
+                                        <h5>...selon la taille</h5> 
+                                        <ul>
+                                            <li><strong>MEGA</strong>PLANCTON</li>
+                                            <li><strong>MACRO</strong>PLANCTON</li>
+                                            <li><strong>MESO</strong>PLANCTON</li>
+                                            <li><strong>MICRO</strong>PLANCTON</li>
+                                            <li><strong>NANO</strong>PLANCTON</li>
+                                            <li><strong>PICO</strong>PLANCTON</li>
+                                            <li><strong>FEMTO</strong>PLANCTON</li>
+                                        </ul>   
+                                    </div>
+                                    <div class="item">
+                                        <h4>Comment pêcher le plancton ?</h4>
+                                        <ul>
+                                            <li>Le <strong>gros plancton</strong> (les m&eacute;duses par exemple) peut être pêch&eacute; à l’aide d’une simple <strong>&eacute;puisette</strong>.</li>
+                                            <li>Le <strong>plus petit plancton</strong> se pêche avec un filet. En utilisant diff&eacute;rents “vides de maille” (c’est à dire la taille des trous du <strong>filet</strong>), on r&eacute;colte du plancton de diff&eacute;rentes tailles.</li>
+                                            <li>Le <strong>plancton microscopique</strong>, souvent très fragile, s’&eacute;chantillonne en utilisant des <strong>bouteilles Niskin</strong>. Ces bouteilles plongent et “enferment” des &eacute;chantillons d’eau à la profondeur souhait&eacute;e.</li>
+                                        </ul>   
+
+                                        <p class="pointsXP"><span>10</span>points</p>
+                                        <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                                    </div>      
+                                </div>
+                                <a class="left carousel-control" href="#carousel-teOcUn-P2-6" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-teOcUn-P2-6" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>              
+                        </div>    
+                    </div>
+
+                    <div class="marqueur jeuDrag1Etape-2" id="teOcUn-b-7">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"31,68","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-search"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7 - R&eacute;seau trophique</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Oc&eacute;an - R&eacute;seau trophique marin</h3>
+                            <div id="carousel-teOcUn-b-7" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                <div class="carousel-inner" role="listbox">
+
+                                    <div class="item active">
+                                        <div class="col-md-6">
+                                            <h4 data-animation="animated bounceInDown">Biodiversit&eacute;</h4> 
+                                            <p data-animation="animated zoomInLeft">La biodiversit&eacute; c’est l’ensemble des formes de vie et des milieux naturels existant sur notre planète. C’est &eacute;galement l’ensemble de toutes les relations qui existent, d’une part, entre les organismes vivants et, d’autre part, entre ces organismes et leurs milieux de vie.</p>
+                                            <p data-animation="animated zoomInLeft">Nous pouvons donc &eacute;tudier la biodiversit&eacute; à diff&eacute;rents niveaux :</p>
+                                            <ul data-animation="animated zoomInRight">
+                                                <li><strong>Diversit&eacute; des espèces</strong> : 1,8 millions d’espèces ont d&eacute;jà &eacute;t&eacute; identifi&eacute;es sur terre, mais on pense qu’il en existe plus de 10 millions ! </li>
+                                                <li><strong>Diversit&eacute; des individus</strong> : chaque individu est diff&eacute;rent de l’autre, même au sein de la même espèce </li>
+                                                <li><strong>Diversit&eacute; des milieux naturels</strong> : des abysses aux côtes, des prairies d’algues aux cavit&eacute;s des rochers, des forêts aux d&eacute;serts...</li>
+                                            </ul>   
+                                            <p data-animation="animated bounceInLeft" >Tout être vivant a un rôle essentiel dans son &eacute;cosystème</p>
+                                            <p data-animation="animated bounceInRight" >Un &eacute;cosystème est form&eacute; par un ensemble d’espèces vivantes et le milieu naturel où elles co-habitent</p>   
+                                        </div>        
+                                        <div class="col-md-6">
+                                            <h4>Quelles relations y a-t-il entre les êtres vivants d’un &eacute;cosystème ?</h4>
+                                            <h5>On parle souvent de <strong>chaîne alimentaire</strong></h5>  
+                                            <p>Une chaîne alimentaire est une suite d'êtres vivants, où le plus gros mange le plus petit. Autrement dit,  chacun mange les organismes du maillon inf&eacute;rieur.</p>
+                                            <h5>mais en r&eacute;alit&eacute; il faut parler de r&eacute;seau alimentaire</h5>
+                                            <p>Le <strong>r&eacute;seau alimentaire</strong> est un ensemble de chaînes alimentaires reli&eacute;es entre elles, où le plus fort mange le plus faible et le plus malin mange le moins malin.</p>   
+                                        </div>
+
+                                        <a class="glyphiconButton" href="#carousel-teOcUn-b-7" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                                        </a>
+                                    </div>
+
+                                    <div class="item">
+                                        <h4>Qui mange qui ? Dispose les différentes espèces dans le bon emplacement</h4>
+                                        <div class="">          
+                                            <ul class="col-xs-6 col-sm-6 col-md-6" data-animation="animated flipInX"> 
+
+                                                <li id="teOcUn-b-7-drag-1" class="col-xs-3 col-sm-2 col-md-3 drag ui-widget-content">
+                                                    <img width="53" height="46" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape7/jeu1/virus_bacteries.png" alt="" />
+                                                    <p>Virus et bactéries</p>
+                                                </li>
+                                                <li id="teOcUn-b-7-drag-4" class="col-xs-3 col-sm-2 col-md-3 drag ui-widget-content">
+                                                    <img width="47" height="60" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape7/jeu1/microzooplancton.png" alt="" />
+                                                    <p>Microzooplancton</p>
+                                                </li>                                               
+                                                <li id="teOcUn-b-7-drag-6" class="col-xs-3 col-sm-2 col-md-3 drag ui-widget-content">
+                                                    <img width="84" height="130" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape7/jeu1/mesozzoplancton.png" alt="" />
+                                                    <p>Mesozzoplancton</p>
+                                                </li>
+                                                <li id="teOcUn-b-7-drag-7" class="col-xs-3 col-sm-2 col-md-3 drag ui-widget-content">
+                                                    <img width="78" height="110" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape7/jeu1/macrozooplancton.png" alt="" />
+                                                    <p>Macrozooplancton</p>
+                                                </li>                                                                                                    
+                                                <li id="teOcUn-b-7-drag-2" class="col-xs-3 col-sm-2 col-md-6 drag ui-widget-content">
+                                                    <img width="180" height="63" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape7/jeu1/requin.png" alt="" />
+                                                    <p>Requin</p>
+                                                </li>                                                
+                                                <li id="teOcUn-b-7-drag-5" class="col-xs-3 col-sm-2 col-md-6 drag ui-widget-content">
+                                                    <img width="260" height="132" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape7/jeu1/mammiferes.png" alt="" />
+                                                    <p>Mammifères</p>
+                                                </li>
+                                                <li id="teOcUn-b-7-drag-8" class="col-xs-3 col-sm-2 col-md-4 drag ui-widget-content">
+                                                    <img width="40" height="120" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape7/jeu1/homme.png" alt="" />
+                                                    <p>&Ecirc;tre humain</p>
+                                                </li> 
+                                                <li id="teOcUn-b-7-drag-3" class="col-xs-3 col-sm-2 col-md-4 drag ui-widget-content">
+                                                    <img width="110" height="89" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape7/jeu1/poissons_larves.png" alt="" />
+<a class="btn btn-lg btn-danger" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">Poissons et larves</a>
+
+                                                </li>
+                                                <li id="teOcUn-b-7-drag-0" class="col-xs-3 col-sm-2 col-md-4 drag ui-widget-content">
+                                                    <img width="75" height="73" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape7/jeu1/algues.png" alt="" />
+                                                    <p>Algues</p>
+                                                </li>
+
+                                            </ul>
+                                            <ul class="col-xs-6 col-sm-6 col-md-6 teOcUn-b-7" data-animation="animated flipInY"> 
+                                                <li id="teOcUn-b-7-drop-0" class="drop ui-widget-header ferme">
+                                                    <div>
+                                                        <div class="detail"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></div>
+                                                    </div>
+                                                </li>
+                                                <li id="teOcUn-b-7-drop-1" class="drop ui-widget-header ferme">
+                                                    <div>
+                                                        <div class="detail"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></div>
+                                                    </div>    
+                                                </li> 
+                                                <li id="teOcUn-b-7-drop-2" class="drop ui-widget-header ferme ">
+                                                    <div>
+                                                        <div class="detail"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></div>
+                                                    </div>  
+                                                </li>
+                                                <li id="teOcUn-b-7-drop-3" class="drop ui-widget-header ferme">
+                                                    <div>
+                                                        <div class="detail">
+                                                            <span aria-hidden="true" class="glyphicon glyphicon-ok"></span></div>
+                                                    </div>
+                                                </li>   
+                                                <li id="teOcUn-b-7-drop-4" class="drop ui-widget-header ferme ">
+                                                    <div>
+
+                                                        <div class="detail"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></div>
+                                                    </div>
+                                                </li>
+                                                <li id="teOcUn-b-7-drop-5" class="drop ui-widget-header ferme">
+                                                    <div>
+                                                        <div class="detail"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></div>
+                                                    </div>    
+                                                </li> 
+                                                <li id="teOcUn-b-7-drop-6" class="drop ui-widget-header ferme ">
+                                                    <div>
+                                                        <div class="detail"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></div>
+                                                    </div>  
+                                                </li>
+                                                <li id="teOcUn-b-7-drop-7" class="drop ui-widget-header ferme ">
+                                                    <div>
+                                                        <div class="detail"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></div>
+                                                    </div>  
+                                                </li>        
+                                                <li id="teOcUn-b-7-drop-8" class="drop ui-widget-header ferme">
+                                                    <div>
+                                                        <div class="detail"><span aria-hidden="true" class="glyphicon glyphicon-ok"></span></div>
+                                                    </div>
+                                                </li>   
+                                            </ul>
+                                        </div>
+                                        <div id="great-teOcUn-b-7">
+                                            <h1>Bien jou&eacute; !</h1>
+                                            <p class="pointsXP"><span>10</span>points</p>
+                                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                                            <a class="glyphiconButton" href="#carousel-teOcUn-b-7" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div> 
+                                    </div>
+
+                                    <div class="item">
+                                        <h4>R&eacute;seau trophique marin</h4>
+                                        <p>trophique = alimentaire<br/>
+                                        Les superpr&eacute;dateurs ne sont la proie de personne !<br/>
+                                        L'<strong>Homme</strong> est devenu un <strong>superpr&eacute;dateur</strong>, comme les requins et les orques.<br/>
+                                        Les <strong>baleines</strong> se nourrissent de petits crustac&eacute;s planctoniques.<br/>
+                                        zooplancton = plancton animal<br/>
+                                        phytoplancton = plancton v&eacute;g&eacute;tal<br/>
+                                        Le <strong>gros zooplancton</strong> et ses b&eacute;b&eacute;s sont mang&eacute;s par les gros et les petits poissons.<br/>
+                                        Les <strong>poissons herbivores</strong> se nourrissent d'algues.<br/>
+                                        
+                                        Le <strong>zooplancton herbivore</strong> se nourrit de phytoplancton.<br/>
+                                        Le <strong>zooplancton carnivore</strong> se nourrit d'autres espèces de zooplancton.<br/>
+                                        Les relations entre les êtes vivants ne sont pas forc&eacute;ment «lin&eacute;aires».<br/>
+                                        Le <strong>microzooplancton</strong> se nourrit de phytoplancton ou de bact&eacute;ries.</p>
+                                        <p><strong>Les virus et les bact&eacute;ries sont essentiels pour tous les &eacute;l&eacute;ments du r&eacute;seau trophique.</strong> <br/>
+                                        Les bact&eacute;ries d&eacute;composent les d&eacute;chets (les excr&eacute;ments et les cadavres par exemple) en remettant en circulation les nutriments dans la mer.<br/>
+                                        Les bact&eacute;ries d&eacute;pendent à leur tour des virus qui en contrôlent l’abondance.</p>
+                                        <a class="glyphiconButton" href="#carousel-teOcUn-b-7" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                                        </a>
+                                    </div>
+ 
+                                    <div class="item">
+                                        <h4>Perturbation de l'&eacute;cosystème... un exemple...</h4>
+                                        <p>La <strong>surpêche</strong> est l’une des causes de la <strong>prolif&eacute;ration de m&eacute;duses</strong>. Les poissons sont à la fois les pr&eacute;dateurs et les comp&eacute;titeurs des m&eacute;duses. En pêchant excessivement et r&eacute;duisant les stocks de poissons, les m&eacute;duses ont moins de pr&eacute;dateurs et plus à manger ! <br/> 
+                                        <strong>Elles sont donc doublement avantag&eacute;es !</strong></p>
+                                        <p><strong>Perturber l’&eacute;quilibre de l’&eacute;cosystème cause toujours des d&eacute;gâts !</strong></p>
+    
+                                        <p class="pointsXP"><span>10</span>points</p>
+                                        <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                                        <a class="glyphiconButton" href="#carousel-teOcUn-b-7" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                            <span aria-hidden="true" class="glyphicon glyphicon-chevron-left"></span>
+                                        </a>
+                                    </div>      
+                                </div>
+                            </div>              
+                        </div>  
+                    </div>      
+
+               <!--      <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div> -->
+
+                    <div class="marqueur" id="teOcUn-b-8">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"42,54","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-info-circle"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 8 - Propri&eacute;t&eacute;s de l'oc&eacute;an</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Oc&eacute;an - Propri&eacute;t&eacute;s</h3>
+                            <div id="carousel-teOcUn-P2-8" class="carousel slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-teOcUn-P2-8" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-teOcUn-P2-8" data-slide-to="1"></li>
+                                    <li data-target="#carousel-teOcUn-P2-8" data-slide-to="2"></li>
+                                    <li data-target="#carousel-teOcUn-P2-8" data-slide-to="3"></li>
+                                    <li data-target="#carousel-teOcUn-P2-8" data-slide-to="4"></li>
+                                    <li data-target="#carousel-teOcUn-P2-8" data-slide-to="5"></li>
+                                    <li data-target="#carousel-teOcUn-P2-8" data-slide-to="6"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <p>71% de la surface de la Terre est recouverte d’eau<br/>
+                                        97% de cette eau est sal&eacute;e<br/>
+                                        3% de cette eau est douce<br/>
+                                        Vu de la côte, d'un bateau ou d'un avion, l'oc&eacute;an se pr&eacute;sente “partout pareil”. Mais en r&eacute;alit&eacute; il est incroyablement diff&eacute;rent selon les endroits ou les saisons et il y existe peut-être plus de diversit&eacute; que sur les continents. L'œil humain ne peut pas appr&eacute;cier ces diff&eacute;rences. Il faut utiliser des instruments sp&eacute;cifiques afin de mesurer les paramètres qui d&eacute;crivent ces diff&eacute;rences.</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Salinit&eacute;</h4> 
+                                        <p>La salinit&eacute; d&eacute;crit la quantit&eacute; de sels dissous dans l’eau. La salinit&eacute; moyenne des oc&eacute;ans est de 35, c'est-à-dire que dans 1 kg d'eau de mer il y a 35 g de sel, mais elle peut varier (surtout en surface) <strong>entre 32 et 40</strong>. L’eau douce par contre ne contient presque pas de sels, sa salinit&eacute; varie entre 0 et 0,5.<br/>
+                                        En règle g&eacute;n&eacute;rale l’eau des oc&eacute;ans est moins sal&eacute;e :</p>
+                                        <ul>
+                                            <li>en hiver</li>
+                                            <li>en surface</li>
+                                            <li>aux embouchures des rivières.</li>
+                                        </ul>   
+                                        <p>Parmi les sels dissous dans l’eau de mer, le plus abondant est le chlorure de sodium (NaCl), principal composant du sel alimentaire.<br/>
+                                        La salinit&eacute; et la temp&eacute;rature de l’eau de mer varient selon les r&eacute;gions et selon les saisons !</p>    
+                                    </div>
+                                    <div class="item">
+                                        <h4>Temp&eacute;rature</h4>
+                                        <p>Intuitivement, la notion de temp&eacute;rature est directement reli&eacute;e à la sensation de chaud ou de froid. L’unit&eacute; de mesure habituelle de ce paramètre est le degr&eacute; Celsius (°C). Dans les oc&eacute;ans la temp&eacute;rature varie <strong>entre -2 et 35 °C</strong> et d&eacute;pend des saisons et de la latitude.<br/>
+                                        En règle g&eacute;n&eacute;rale l’eau des oc&eacute;ans est plus froide : </p>
+                                        <ul>
+                                            <li>en hiver.</li> 
+                                            <li>en profondeur.</li>  
+                                            <li>aux pôles Nord et Sud.</li> 
+                                        </ul>   
+                                    </div>
+                                    <div class="item">
+                                        <h4>Densit&eacute;</h4>
+                                        <p>La densit&eacute; est le paramètre fondamental pour &eacute;tudier les mouvements des masses d’eau et donc les courants. Une masse d’eau plus dense a tendance à couler, alors qu’une masse d’eau moins dense remonte à la surface.</p> 
+                                        <p><strong>En oc&eacute;anographie</strong>, la densit&eacute; se mesure en kilogrammes par mètre cube, elle d&eacute;crit donc le poids de l’eau par rapport à une unit&eacute; de volume. La densit&eacute; de l’eau des oc&eacute;ans varie entre 1020 kg/m3 et 1070 kg/m3, alors que la densit&eacute; de l’eau douce est d’environ 1000 kg/m3.</p>
+                                        <p>La densit&eacute; de l'eau de mer d&eacute;pend de la salinit&eacute; et de l'eau de mer.</p>
+                                        <p>Il ne faut pas confondre le <strong>poids</strong> avec la <strong>densit&eacute;</strong> de l'eau de mer...<br/>
+                                        Le <strong>poids</strong> se mesure en <strong>kilogrammes</strong> alors que la <strong>densit&eacute;</strong> elle se mesure en <strong>kilogrammes par mètre cube</strong>.</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Sondes... et satellites</h4>
+                                        <p>Des <strong>sondes</strong> pour mesurer <strong>salinit&eacute;, temp&eacute;rature, densit&eacute;</strong> et concentration en chlorophylle a de l’eau de mer se trouvent sur la plupart des systèmes d’observations : rosettes, bou&eacute;es instrument&eacute;es, flotteurs, planeurs sous-marins, etc.</p>
+                                        <p>En plus de cela, depuis les ann&eacute;es ’80 et ’90, des <strong>satellites</strong> qui orbitent dans l’espace autour de notre planète mesurent la <strong>temp&eacute;rature</strong>, la <strong>salinit&eacute;</strong> et la concentration en <strong>chlorophylle</strong> a à la surface des oc&eacute;ans du monde entier.</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Courants</h4>
+                                        <p><strong>En surface</strong> les courants oc&eacute;aniques sont principalement induits par les vents.<br/>
+                                        En profondeur, là où les vents n'ont plus d'influence, les courants d&eacute;pendent des diff&eacute;rences de densit&eacute; entre les masses d'eau.<br/>
+                                        En règle g&eacute;n&eacute;rale, vers les pôles l'eau se refroidit et se charge en sel, suite à la formation de la glace, qui rejette le sel, elle devient donc plus dense et coule en profondeur.<br/>
+                                        En opposition aux zones de courant descendant il y a des zones de courant ascendant où ces masses d'eau retournent à la surface.<br/>
+                                        Ce circuit est appel&eacute; circulation thermohaline et rappelle un gros «tapis roulant».<br/>
+                                        Les courants jouent un rôle essentiel dans la r&eacute;gulation du climat de notre planète !</p>
+                                        <h4>Circulation thermohaline </h4>
+                                        <p>Eau sal&eacute;e &amp; Eau froide <br/>
+                                        => + dense   => elle coule en profondeur <br/>
+                                        Eau douce &amp; Eau chaude<br/> 
+                                        => - dense  => elle remonte à la surface</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Chlorophylle A</h4>
+                                        <p>La <strong>chlorophylle A</strong> est le pigment pr&eacute;sent chez tous les v&eacute;g&eacute;taux qui donne cette fameuse couleur verte aux plantes. Ce pigment est à la base du processus de <strong>photosynthèse</strong> car il permet de capter la lumière du soleil. En oc&eacute;anographie, la chlorophylle a nous renseigne sur la quantit&eacute; de phytoplancton (plancton v&eacute;g&eacute;tal).<br/>
+                                        La quantit&eacute; de chlorophylle a dans les oc&eacute;ans varie entre 0,01 (d&eacute;serts marins) et 15 milligrammes par mètre cube (zones très riches en phytoplancton).</p>
+    
+                                        <p class="pointsXP"><span>10</span>points</p>
+                                        <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                                    </div>      
+                                </div>
+                                <a class="left carousel-control" href="#carousel-teOcUn-P2-8" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-teOcUn-P2-8" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>              
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="teOcUn-b-9">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"49,71","tooltip_offset":"-9,-4","panel_pos":"4.5,5"}'><i class="fa fa-search"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 9 - Observation robotis&eacute;e des oc&eacute;ans</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Oc&eacute;an - Observation robotis&eacute;e</h3>
+                            <div id="carousel-teOcUn-P2-9" class="carousel slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-teOcUn-P2-9" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-teOcUn-P2-9" data-slide-to="1"></li>
+                                    <li data-target="#carousel-teOcUn-P2-9" data-slide-to="2"></li>
+                                    <li data-target="#carousel-teOcUn-P2-9" data-slide-to="3"></li>
+                                    <li data-target="#carousel-teOcUn-P2-9" data-slide-to="4"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <p>La curiosit&eacute; des oc&eacute;anographes les a pouss&eacute;s à cr&eacute;er une multitude d’instruments qui explorent de façon continue et autonome les trois dimensions des oc&eacute;ans.<br/> 
+                                        Ces engins robotis&eacute;s, command&eacute;s à distance, permettent d’observer simultan&eacute;ment plusieurs zones d’int&eacute;rêts des oc&eacute;ans du monde entier.<br/>
+                                        Cela serait extrêmement difficile et coûteux si les oc&eacute;anographes ne se servaient seulement que des navires oc&eacute;anographiques.</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Bou&eacute;e instrument&eacute;e</h4> 
+                                        <p>Une bou&eacute;e instrument&eacute;e permet de mesurer en un point fixe les propri&eacute;t&eacute;s de l'oc&eacute;an. L’objectif est celui d’observer la même zone au fil des jours et des saisons. Cela pour comprendre comment cette zone &eacute;volue en fonction des facteurs environnementaux comme les coups de vent, les tempêtes et les changements climatiques actuels.</p>    
+                                    </div>
+                                    <div class="item">
+                                        <h4>Planeur sous-marin</h4>
+                                        <p>Le planeur sous-marin mesure les propri&eacute;t&eacute;s de l'oc&eacute;an en naviguant vers une direction bien pr&eacute;cise. Pendant son trajet il effectue des cycles de descente (jusqu’à 1 km de profondeur) et de remont&eacute;e à la surface, toutes les 4 heures environ. Il peut r&eacute;aliser des missions de plusieurs mois et sur plusieurs milliers de kilomètres.<br/>
+                                        Pour se d&eacute;placer verticalement le planeur sous-marin modifie son volume. Cela grâce à une vessie qui se vide (descente) ou se remplit (mont&eacute;e) d’huile.</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Flotteur profileur</h4>
+                                        <p>Le flotteur profileur mesure les propri&eacute;t&eacute;s de l’oc&eacute;an depuis la surface jusqu'à 2 km m de profondeur.<br/>
+                                        Tous les 10 jours, il quitte sa profondeur de “parking” (situ&eacute;e entre 1000 et 2000 m) et remonte à la surface. Pendant la remont&eacute;e, le flotteur allume ses capteurs et mesure par exemple, la temp&eacute;rature, la salinit&eacute; et la concentration en chlorophylle a.<br/>
+                                        Il replonge ensuite et va se “garer” à sa profondeur de parking où il d&eacute;rivera au <strong>gr&eacute; des courants</strong> pendant un nouveau cycle de 10 jours.<br/>
+                                        La mission d’un flotteur peut durer pendant <strong>plusieurs ann&eacute;es</strong>.</p> 
+                                        <p>Comme le planeur sous-marin, le flotteur se d&eacute;place verticalement en modifiant son volume. Cela grâce à une vessie qui se vide (descente) ou se remplit (mont&eacute;e) d’huile.
+                                        Actuellement plus de <strong>3000 flotteurs profileurs</strong> d&eacute;rivent dans tous les oc&eacute;ans du monde(mont&eacute;e) d’huile.</p>
+                                        <p><strong>Etapes à suivre pour effecteur des observations avec un flotteur :</strong></p>
+                                        <ul>
+                                            <li>1) tests et calibrage du flotteur en bassin.</li>
+                                            <li>2) transport du flotteur</li>
+                                            <li>3) pr&eacute;paration du flotteur au port</li>
+                                            <li>4) mise à l’eau du flotteur depuis un bateau</li>
+                                            <li>5) première descente en profondeur du flotteur.</li>
+                                        </ul>      
+                                    </div>
+                                    <div class="item">
+                                        <h4>Le rôle essentiel des satellites</h4>
+                                        <h5>Mesures</h5>
+                                        <p>Les oc&eacute;anographes se servent de plus en plus des satellites qui tournent autour de la Terre à une altitude comprise entre 700 et 1000 km. 
+                                        Ces satellites nous renseignent <strong>tous les jours en temps r&eacute;el</strong> sur les propri&eacute;t&eacute;s physiques (temp&eacute;rature et salinit&eacute;) et sur la richesse de la vie oc&eacute;anique à <strong>la surface de tous les oc&eacute;ans</strong> du monde. Leur dur&eacute;e de vie est d’environ une dizaine d'ann&eacute;es, ce qui permet d’&eacute;tudier l’&eacute;volution des oc&eacute;ans en fonction des saisons et des ann&eacute;es.</p>
+                                        <h5>Envoi des informations</h5>
+                                        <p>Tous ces <strong>instruments robotis&eacute;s</strong> (bou&eacute;e, planeur et flotteur) <strong>transmettent aux satellites</strong> les mesures effectu&eacute;es. Les satellites renvoient à leur tour ces informations aux scientifiques via leurs ordinateurs. Le scientifique peut alors aussitôt regarder, analyser et, dans le cas du flotteur et du planeur, d&eacute;cider ou non de modifier les paramètres de la mission (par exemple envoyer le robot plus ou moins profond ou allumer d'autres capteurs).</p>
+
+                                        <p class="pointsXP"><span>10</span>points</p>
+                                        <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                                    </div>      
+                                </div>
+                                <a class="left carousel-control" href="#carousel-teOcUn-P2-9" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-teOcUn-P2-9" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>              
+                        </div>  
+                    </div>     
+<!--
+                    <div class="marqueur" id="teOcUn-b-10">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"61,62","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-users"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 10 - Les m&eacute;tiers</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Oc&eacute;an - Les m&eacute;tiers</h3>
+                            <div id="carousel-teOcUn-P2-10" class="carousel slide" data-ride="carousel" data-interval="false">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carousel-teOcUn-P2-10" data-slide-to="0" class="active"></li>
+                                    <li data-target="#carousel-teOcUn-P2-10" data-slide-to="1"></li>
+                                    <li data-target="#carousel-teOcUn-P2-10" data-slide-to="2"></li>
+                                    <li data-target="#carousel-teOcUn-P2-10" data-slide-to="3"></li>
+                                    <li data-target="#carousel-teOcUn-P2-10" data-slide-to="4"></li>
+                                </ol>
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <h4>Quelle fonction peut-on avoir dans un laboratoire de recherche ?</h4> 
+                                        <p>Ann&eacute;e d’&eacute;tudes / Sp&eacute;cialisation / Responsabilit&eacute; / Salaire</p>
+                                        <ul>
+                                            <li>Chercheur / Enseignant-chercheur</li>
+                                            <li>Ing&eacute;nieur de Recherche</li>
+                                            <li>Ing&eacute;nieur d’&eacute;tude</li>
+                                            <li>Assistant Ing&eacute;nieur</li>
+                                            <li>Technicien</li>
+                                            <li>Adjoint technique</li>
+                                        </ul>   
+                                        <p>Travail d'&eacute;quipe</p>
+                                    </div>
+                                    <div class="item">
+                                        <h4>D&eacute;marche scientifique Qui fait quoi</h4>
+                                        <p>... à la base de tous les projets scientifiques</p>
+                                        <ul>
+                                            <li>
+                                                <div style="float:left">
+                                                    <strong>Se poser une question</strong><br/>
+                                                    Faire des hypothèses
+                                                </div>
+                                                <div style="float:left">
+                                                    <strong>Chercheurs</strong>
+                                                </div>  
+                                            </li>
+                                            <li>
+                                                <div style="float:left">
+                                                    Mettre en place un protocole
+                                                </div>
+                                                <div style="float:left">
+                                                    <strong>Chercheurs et Ing&eacute;nieurs</strong>
+                                                </div>      
+                                            </li>
+                                            <li>
+                                                <div style="float:left">
+                                                    Exp&eacute;rimentation et observation<br/>
+                                                    R&eacute;pliquer exp&eacute;riences et observations<br/>
+                                                    Noter ce qu’on observe
+                                                </div>
+                                                <div style="float:left">
+                                                    <strong>
+                                                        Chercheurs,<br/>
+                                                        Ing&eacute;nieurs et techniciens<br/>
+                                                        (et… administratifs)
+                                                    </strong>
+                                                </div>          
+                                            </li>
+                                            <li>
+                                                <div style="float:left">
+                                                    Bilan, discussion, transmission<br/>
+                                                    <strong>Se poser de nouvelles questions...</strong>
+                                                </div>
+                                                <div style="float:left">
+                                                    <strong>Chercheurs</strong>
+                                                </div>      
+                                            </li>
+                                        </ul>   
+                                    </div>
+                                    <div class="item">
+                                        <h4>Quelle fonction peut-on avoir dans un laboratoire de recherche ?</h4>
+                                        <ul style="float:left">
+                                            <li>Etudes, th&eacute;ories, observations, mod&eacute;lisations</li>
+                                            <li>Analyse des donn&eacute;es</li>
+                                            <li>R&eacute;daction de projets, papiers scientifiques, congrès</li>
+                                            <li>Demande de financement</li>
+                                            <li>Encadrement d’&eacute;tudiants</li>
+                                            <li>Enseignement et diffusion des connaissances</li>
+
+                                            <li>D&eacute;veloppement d’outils</li>
+                                            <li>Analyse des donn&eacute;es</li>
+                                            <li>Activit&eacute;s de laboratoire / atelier / terrain</li>
+
+                                            <li>Activit&eacute;s de laboratoire  atelier / terrain</li>    
+                                        </ul>   
+                                        <ul style="float:left">
+                                            <li>Chercheur / Enseignant-chercheur</li>
+                                            <li>Ing&eacute;nieur de Recherche</li>
+
+                                            <li>Ing&eacute;nieur de Recherche</li>
+                                            <li>Ing&eacute;nieur d’&eacute;tude</li>
+                                            <li>Assistant Ing&eacute;nieurAnalyse des donn&eacute;es</li>
+
+                                            <li>Technicien</li>
+                                            <li>Adjoint technique</li>  
+
+                                            <li>Travail d'&eacute;quipe</li>
+                                        </ul>   
+                                    </div>
+                                    <div class="item">
+                                        <h4>Services</h4>
+                                        <ul>
+                                            <li>Accueil</li>
+                                            <li>M&eacute;nage, entretien</li>
+                                            <li>Service technique, s&eacute;curit&eacute;</li>
+                                            <li>Cuisine</li>
+                                            <li>Bibliothèque</li>
+                                            <li>Service informatique</li>
+                                            <li>Finances, comptabilit&eacute;, administration</li>
+                                            <li>Ressources Humaines</li>
+                                            <li>Communication et diffusion des connaissances</li>
+                                        </ul>
+                                    </div>
+                                    <div class="item">
+                                        <h4>Sp&eacute;cificit&eacute;s</h4>
+                                        <ul>
+                                            <li>Sujets d’&eacute;tudes</li>
+                                            <li>Terrain</li>
+                                            <li>Instruments</li>
+                                            <li>Quelques personnels...</li>
+                                        </ul>
+                                        <p class="pointsXP"><span>10</span>points</p>
+                                        <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                                    </div>      
+                                </div>
+                                <a class="left carousel-control" href="#carousel-teOcUn-P2-10" role="button" data-slide="prev">
+                                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="right carousel-control" href="#carousel-teOcUn-P2-10" role="button" data-slide="next">
+                                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>              
+                        </div>  
+                    </div>     
+-->
+
+                    <div class="marqueur" id="teOcUn-b-10">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"61,62","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-users"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 10 - Les m&eacute;tiers</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Oc&eacute;an - Les m&eacute;tiers</h3>
+                                
+                            <div id="carousel-teOcUn-b-10" class="carouselParallaxe carousel slide" data-ride="carousel" data-interval="false">
+                                <div class="carousel-inner" role="listbox">        
+                                    <div class="item active skyblue">
+                                        <div class="carousel-caption">
+                                            <h3 data-animation="animated bounceInDown">Démarche scientifique</h3>
+                                            <h4 data-animation="animated bounceInUp">Le raisonnement à la base de tous les projets scientifiques</h4>
+                                            <ul data-animation="animated zoomInLeft" class="col-md-4">
+                                                <li><strong>Se poser une question</strong></li>
+                                                <li>Faire des hypothèses</li>
+                                                <li>Mettre en place un protocole</li>
+                                                <li>Exp&eacute;rimentation et observation</li>
+                                                <li>R&eacute;pliquer exp&eacute;riences et observations</li>
+                                                <li>Noter ce qu’on observe</li>
+                                                <li>Bilan, discussion, transmission</li>
+                                                <li><strong>Se poser de nouvelles questions...</strong></li>
+                                            </ul>
+                                            <div class="col-md-6">                                 
+                                                <img data-animation="animated zoomInRight" width="70" src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/fleche.png" alt="" style ="transform: rotate(135deg);" />
+                                            </div>    
+                                            <a class="glyphiconButton" href="#carousel-teOcUn-b-10" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div>
+                                    </div>        
+
+                                    <div class="item deepskyblue">
+                                        <div class="carousel-caption">
+                                            <h3 data-animation="animated bounceInDown">
+                                                Quelle fonction peut-on avoir dans un laboratoire de recherche ?
+                                            </h3>
+                                            <div class="col-md-4">
+                                                <ul data-animation="animated bounceInLeft" class="col-md-12">
+                                                    <li><strong>Année d’études</strong></li>
+                                                    <li><strong>Spécialisation</strong></li>
+                                                    <li><strong>Responsabilité</strong></li>
+                                                    <li><strong>Salaire</strong></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-2"  data-animation="animated bounceInUp">
+                                                <img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/fleche.png" alt="" />
+                                            </div>    
+                                            <div class="col-md-6" data-animation="animated flipInX" style="background:#fff;border-radius:10px;padding:10px;margin-bottom:20px">
+                                                <ul data-animation="animated bounceInRight" class="col-md-12">
+                                                    <li><h4>Chercheur / Enseignant-chercheur</h4></li>
+                                                    <li><h4>Ingénieur de Recherche</h4></li>
+                                                </ul> 
+                                                <ul data-animation="animated bounceInRight" class="col-md-12">
+                                                    <li><h4>Ingénieur de Recherche</h4></li>
+                                                    <li><h4>Ingénieur d’étude</h4></li>
+                                                    <li><h4>Assistant Ingénieur</h4></li>
+                                                </ul>                        
+                                                <ul data-animation="animated bounceInRight" class="col-md-12">
+                                                    <li><h4>Technicien</h4></li>
+                                                    <li><h4>Adjoint technique</h4></li>
+                                                </ul>
+                                            </div>                        
+                                            <p data-animation="animated zoomInRight" style="background:#fff;border: 3px solid #000;border-radius: 10px;bottom: 100px;color: #000;font-size: 22px;
+                            padding: 5px 10px;position: absolute;right: -55px;transform: rotate(-35deg);">Travail d'équipe</p>                 
+                                            <a class="glyphiconButton" href="#carousel-teOcUn-b-10" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="item skyblue">
+                                        <div class="carousel-caption">
+                                            <div class="col-md-12">
+                                                <div class="col-md-6">
+                                                    <h3 data-animation="animated bounceInDown">Démarche scientifique</h3>
+                                                    <h4 data-animation="animated bounceInUp">... à la base de tous les projets scientifiques</h4>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <h3 data-animation="animated bounceInDown">Qui fait quoi ?</h3>
+                                                </div>
+                                            </div>    
+                                            <div class="col-md-12" data-animation="animated zoomInLeft">
+                                                <ul class="col-md-6" style="border-right:3px solid #fff;">
+                                                    <li><strong>Se poser une question</strong></li>
+                                                    <li>Faire des hypothèses</li>
+                                                </ul>
+                                                <ul class="col-md-6">
+                                                    <li><strong>Chercheurs</strong></li>
+                                                </ul>                    
+                                            </div>   
+                                            <div class="col-md-12" data-animation="animated zoomInRight">
+                                                <ul class="col-md-6" style="border-right:3px solid #fff;">
+                                                    <li>Metre en place un protocole</li>
+                                                </ul>
+                                                <ul class="col-md-6">
+                                                    <li><strong>Chercheurs et Ingénieurs</strong></li>
+                                                </ul>                    
+                                            </div> 
+                                            <div class="col-md-12" data-animation="animated bounceInUp">
+                                                <ul class="col-md-6" style="border-right:3px solid #fff;">
+                                                    <li>Expérimentation et observation</li>
+                                                    <li>Répliquer expériences et observations</li>
+                                                    <li>Noter ce qu'on observe</li>
+                                                </ul>
+                                                <ul class="col-md-6">
+                                                    <li><strong>Chercheurs</strong></li>
+                                                    <li><strong>Ingénieus et Techniciens</strong></li>
+                                                    <li><strong>et... Administratifs</strong></li>
+                                                </ul>                    
+                                            </div> 
+                                            <div class="col-md-12" data-animation="animated bounceInUp">
+                                                <ul class="col-md-6" style="border-right:3px solid #fff;">
+                                                    <li>Bilan, discussion, transmission</li>
+                                                    <li><strong>Se poser de nouvelles questions</strong></li>
+                                                </ul>
+                                                <ul class="col-md-6">
+                                                    <li><strong>Chercheurs</strong></li>
+                                                </ul>                    
+                                            </div>                     
+                                            <a class="glyphiconButton" href="#carousel-teOcUn-b-10" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="item deepskyblue">
+                                        <div class="carousel-caption">
+                                            <h3 data-animation="animated bounceInDown">
+                                                Quelle fonction peut-on avoir dans un laboratoire de recherche ?
+                                            </h3>
+                                            <div class="col-md-6">
+                                                <ul data-animation="animated bounceInLeft" class="col-md-12">
+                                                    <li>Etudes, théories, observations, modélisations</li>
+                                                    <li>Analyse des données</li>
+                                                    <li>Rédaction de projets, papiers scientifiques, congrès</li>
+                                                    <li>Demande de financement</li>
+                                                    <li>Encadrement d’étudiants</li>
+                                                    <li>Enseignement et diffusion des connaissances</li>
+                                                </ul>
+                                                <ul data-animation="animated bounceInLeft" class="col-md-12">
+                                                    <li>Développement d’outils</li>
+                                                    <li>Analyse des données</li>
+                                                    <li>Activités de laboratoire / atelier / terrain</li>
+                                                </ul>
+                                                <ul data-animation="animated bounceInLeft" class="col-md-12">
+                                                    <li>Activités de laboratoire / atelier / terrain</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-6" data-animation="animated flipInX" style="background:#fff;border-radius:10px;padding:10px;margin-bottom:20px">
+                                                <ul data-animation="animated bounceInRight" class="col-md-12">
+                                                    <li><h4>Chercheur / Enseignant-chercheur</h4></li>
+                                                    <li><h4>Ingénieur de Recherche</h4></li>
+                                                </ul> 
+                                                <ul data-animation="animated bounceInRight" class="col-md-12">
+                                                    <li><h4>Ingénieur de Recherche</h4></li>
+                                                    <li><h4>Ingénieur d’étude</h4></li>
+                                                    <li><h4>Assistant Ingénieur</h4></li>
+                                                </ul>                        
+                                                <ul data-animation="animated bounceInRight" class="col-md-12">
+                                                    <li><h4>Technicien</h4></li>
+                                                    <li><h4>Adjoint technique</h4></li>
+                                                </ul>
+                                            </div>                        
+                                            <p data-animation="animated zoomInRight" style="background:#fff;border: 3px solid #000;border-radius: 10px;bottom: 100px;color: #000;font-size: 22px;
+                            padding: 5px 10px;position: absolute;right: -55px;transform: rotate(-35deg);">Travail d'équipe</p>                 
+                                            <a class="glyphiconButton" href="#carousel-teOcUn-b-10" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div>
+                                    </div> 
+
+                                    <div class="item darkerskyblue">
+                                        <div class="carousel-caption">
+                                            <h3 data-animation="animated zoomInLeft">
+                                                Services
+                                            </h3>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated bounceInUp"><strong>Accueil</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Ménage, entretien</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Service technique, sécurité</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Cuisine</strong></li>
+                                            </ul>
+                                            <ul class="col-md-8">
+                                                <li class="col-md-4" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_01.jpg" alt="" /></li>
+                                                <li class="col-md-4" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_02.jpg" alt=""  /></li>
+                                                <li class="col-md-4" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_03.jpg" alt=""  /></li>
+                                            </ul>
+                                            <ul class="col-md-12">
+                                                <li class="col-md-3" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_04.jpg" alt=""  /></li>
+                                                <li class="col-md-3" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_05.jpg" alt=""  /></li>
+                                                <li class="col-md-3" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_06.jpg" alt=""  /></li>
+                                                <li class="col-md-3" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_07.jpg" alt=""  /></li>
+                                            </ul>    
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated bounceInUp"><strong>Bibliothèque</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Service informatique</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Finances, comptabilité, administration</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Ressources Humaines</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Communication et diffusion des connaissances</strong></li>
+                                            </ul>
+                                            <ul class="col-md-8">
+                                                <li class="col-md-4" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_08.jpg" alt=""  /></li>
+                                                <li class="col-md-4" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_09.jpg" alt=""  /></li>
+                                                <li class="col-md-4" data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide7/img_10.jpg" alt=""  /></li>
+                                            </ul>
+                                            <a class="glyphiconButton" href="#carousel-teOcUn-b-10" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                
+                                    <div class="item darkerskyblue">
+                                        <div class="carousel-caption">
+                                            <h3 data-animation="animated zoomInLeft">
+                                                Spécificités
+                                            </h3>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated bounceInUp"><strong>Sujets d'études</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Terrain</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Instruments</strong></li>
+                                                <li data-animation="animated bounceInUp"><strong>Quelques personnels...</strong></li>
+                                            </ul>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide8/img_01.jpg" alt="" /></li>
+                                            </ul>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide8/img_02.jpg" alt="" /></li>
+                                            </ul>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide8/img_03.jpg" alt="" /></li>
+                                            </ul>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide8/img_04.jpg" alt="" /></li>
+                                            </ul>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide8/img_05.jpg" alt="" /></li>
+                                            </ul>                    
+                                            <a class="glyphiconButton" href="#carousel-teOcUn-b-10" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                                <span aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+                                            </a>
+                                        </div>
+                                    </div>      
+                                
+                                    <div class="item darkerskyblue">
+                                        <div class="carousel-caption">
+                                            <h3 data-animation="animated zoomInLeft">Spécificités</h3>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated bounceInDown"><strong>Sujets d'études</strong></li>
+                                                <li data-animation="animated bounceInDown"><strong>Terrain</strong></li>
+                                                <li data-animation="animated bounceInDown"><strong>Instruments</strong></li>
+                                                <li data-animation="animated bounceInDown"><strong>Quelques personnels...</strong></li>
+                                            </ul>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide9/img_01.jpg" alt="" /></li>
+                                            </ul>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide9/img_02.jpg" alt="" /></li>
+                                            </ul>
+                                            
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide9/img_03.jpg" alt="" /></li>
+                                            </ul>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide9/img_04.jpg" alt="" /></li>
+                                            </ul>
+                                            <ul class="col-md-4">
+                                                <li data-animation="animated flipInX"><img src="++resource++unice.medites.images/parcours-mapmonde/terre-ocean-univers/ocean/p1/etape10/slide9/img_05.jpg" alt="" /></li>
+                                            </ul>                    
+                                            <a class="glyphiconButton" href="#carousel-teOcUn-b-10" role="button" data-slide="next" data-animation="animated lightSpeedIn">
+                                                <span aria-hidden="true" class="glyphicon glyphicon-fast-backward"></span>
+                                            </a>
+                                        </div>
+                                    </div>       
+                                </div>
+                            </div>                                
+                        </div>  
+                    </div>   
+
+                    <div class="marqueur" id="teOcUn-b-11">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"76.5,64","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-question-circle"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 11 - Mon oc&eacute;an et moi</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h3>Oc&eacute;an - Mon oc&eacute;an et moi</h3>
+                            <h4>Le projet et ses objectifs</h4> 
+
+                            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingOne">
+                                        <h5 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                Le Projet Mon Oc&eacute;an et Moi
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                        <div class="panel-body">
+                                            <p>En France, la place accord&eacute;e dans les &eacute;coles, collèges et lyc&eacute;es à l'&eacute;tude et la compr&eacute;hension de l'Oc&eacute;an n'est pas à la mesure de la surface qu'occupent les Oc&eacute;ans sur notre planète, de leur rôle dans le contexte climatique en &eacute;volution ou encore de leur importance pour l'homme.</p>
+                                            <p>Ce constat a amen&eacute; un certain nombre de chercheurs du Laboratoire d'Oc&eacute;anographie de Villefranche (LOV)/Observatoire Oc&eacute;anologique de Villefranche (OOV) à prendre l'initiative de d&eacute;velopper un projet &eacute;ducatif d&eacute;di&eacute; aux Oc&eacute;ans et aux recherches qui y sont associ&eacute;es. Grace à leur investissement initial, au soutien actif du Conseil G&eacute;n&eacute;ral et à l'appui du rectorat des Alpes-Maritimes, un plus grand groupe de chercheurs, en &eacute;troite collaboration avec des professeurs du collège Roland-Garros et des webdesigners, est à l'origine du projet « Mon Oc&eacute;an &amp; moi ».</p>
+                                            <p>Un des objectifs de ce projet est en effet de favoriser une collaboration entre les mondes scientifiques et &eacute;ducatifs pour &eacute;laborer une m&eacute;thode de sensibilisation des &eacute;lèves à l'environnement marin. Une première &eacute;tape repose sur l'&eacute;laboration d'un « prototype », d'abord diss&eacute;min&eacute; et test&eacute; « localement » dans quelques collèges des Alpes Maritimes (France). Un &eacute;largissement de la communaut&eacute; « Mon Oc&eacute;an &amp; moi » est ensuite envisag&eacute;.</p>
+                                        </div>
+                                    </div>
+                                </div>    
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingTwo">
+                                        <h5 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                Les objectifs
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                        <div class="panel-body">
+                                            <p>« Mon Oc&eacute;an &amp; moi » souhaite tout d'abord faire partager certains aspects de la recherche scientifique en Oc&eacute;anographie et en Biologie marine avec le grand public et en priorit&eacute; avec les jeunes et les scolaires.</p>
+                                            <p>Le projet vise à une diss&eacute;mination adapt&eacute;e de diverses th&eacute;matiques concernant les Oc&eacute;ans et souhaite susciter des int&eacute;rêts nouveaux, voire d'&eacute;ventuelles vocations. En outre, cette initiative met à disposition un certain nombre de ressources p&eacute;dagogiques (incluant des fiches th&eacute;matiques, des quizz et des jeux) qui permettent aux professeurs et m&eacute;diateurs scientifiques de pr&eacute;parer des interventions a priori diversifi&eacute;es et attractives.</p>
+                                            <p>Une ambition partag&eacute;e des intervenants de « Mon Oc&eacute;an &amp; moi » est une sensibilisation à l'environnement marin. Au travers d'une telle sensibilisation, ils souhaitent &eacute;galement initier une conscience du rôle du « Grand Bleu » dans notre vie quotidienne et du respect qu'il m&eacute;rite.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="headingThree">
+                                        <h5 class="panel-title">
+                                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                                Le site internet
+                                            </a>
+                                        </h5>
+                                    </div>
+                                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                        <div class="panel-body">
+                                            <div class="mOeM">
+                                                <a href="http://www.monoceanetmoi.com/web/index.php/fr/" title="Visiter le site internet" target="_blank">
+                                                    <img class="img-responsive" alt="Image de Temps, histoire, &eacute;volution" src="++resource++unice.medites.images/mon_ocean_et_moi.jpg" width="300" /><br/>
+                                                    www.monoceanetmoi.com
+                                                </a>
+                                            </div>        
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>     
+
+                    <div class="marqueur" id="teOcUn-b-12">
+                        <div class="HE_Marker" data-hawkeye='{"pos":"89,68","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'><i class="fa fa-pencil-square"></i></div>
+                        <div class="HE_Tooltip">&Eacute;tape 12- Quizz</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                            <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>     
+
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+
+
+
+            </section>
+        </metal:block>   
+
+<!-- Terre, ocean, univers p3 -->
+        <metal:block define-macro="teOcUn-p3">
+            <script src="++resource++unice.medites.javascripts/libs/parcours-mapMonde.js"></script> 
+            <section class="container-fluid emplacement">
+                <div class="points">
+                    <h3>Score</h3>
+                    <p style="display:none">Nouveaux points : <span id="nouveauXP">0</span>/100<br/>
+                    Anciens points : <span id="ancienXP">0</span><br/>
+                    Points du parcours : <span id="pointsParcours">0</span></p>
+                    <span id="totalXP">0</span>/100 
+                </div>
+
+                <div id="teOcUn-P3" class="Marker_Container marqueurs">
+                    <div class="HE_Char"></div>
+                    
+                    <div class="marqueur" style="display:block" id="teOcUn-c-1">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "0.5,63","tooltip_offset":"0,-10","panel_pos":"4.5,5"}'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 1</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="teOcUn-c-2">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "10,74","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 2</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre seance 2</h5>
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" width="560" height="315" src="http://www.youtube.com/embed/fN9I8nWbT5A?rel=0" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>20</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="teOcUn-c-3">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "20.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 3</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>                        
+                            <p class="pointsXP"><span>30</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>      
+                    
+                    <div class="marqueur" id="teOcUn-c-4">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "33.5,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 4</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>5</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>  
+                    
+                    <div class="marqueur" id="teOcUn-c-5">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "46,59","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 5</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"58,61","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"64,78","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"77,75","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"90.5,64","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"85,55","hidden":true}'></div>
+
+
+                    <div class="marqueur" id="teOcUn-c-6">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "74,56","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 6</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>10</span>points</p>
+                            <button>D&eacute;bloquer l'&eacute;tape suivante</button>
+                        </div>  
+                    </div>
+
+                    <div class="marqueur" id="teOcUn-c-7">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "68,52","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">&Eacute;tape 7</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>Titre</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
+                            <p class="pointsXP"><span>15</span>points</p>
+                            <button>D&eacute;bloquer la dernière &Eacute;tape</button>
+                        </div>  
+                    </div>      
+
+                    <div class="HE_Marker" data-hawkeye='{"pos":"51,33","hidden":true}'></div>
+                    <div class="HE_Marker" data-hawkeye='{"pos":"47,31","hidden":true}'></div>
+
+                    <div class="marqueur" id="teOcUn-c-8">
+                        <div class="HE_Marker" data-hawkeye='{ "pos" : "47,20","tooltip_offset":"0,-10","panel_pos":"4.5,5" }'></div>
+                        <div class="HE_Tooltip">Fin</div>
+                        <div class="HE_Panel">
+                            <div class="closePan" onclick="closePopup($(this));"><i class="fa fa-times"></i></div>
+                                <h5>CONGRATULATION</h5>
+                        </div>  
+                    </div>
+                    
+                </div> 
+
+                <img tal:define="scales_image_principale context/@@images; maVariable python:scales_image_principale.scale('image_principale', scale='extra-large')"
+                     tal:attributes="src maVariable/url; alt string:Image repr&eacute;sentative du parcours ${context/title}; class string:img-responsive img-jeu"
+                     tal:condition="context/image_principale" />              
+
+            </section>
+        </metal:block>   
+
+    </metal:content-core>
+</html>

@@ -1,0 +1,58 @@
+<html tal:omit-tag=""
+    xmlns="http://www.w3.org/1.09/xhtml"
+    xmlns:tal="http://xml.zope.org/namespaces/tal"
+	xmlns:metal="http://xml.zope.org/namespaces/metal"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+	i18n:domain="unice.portlet.indicateurs">
+
+
+<tal:block condition="view/access">
+    <div tal:define="widgets view/widgets;"
+    tal:attributes="id view/data/extra_id; class string:portlet portletIndicateurs ${view/data/extra_css}">
+
+        <!-- <tal:block content="widgets"/> -->
+
+        <div class="panel panel-default indicateurs_panel">
+            <div class="panel-heading">
+                <i class="fa fa-line-chart fa-lg"></i> Statistiques de vos pages <small>(30 derniers jours)</small>
+            </div>
+            <div class="panel-body">
+
+                <tal:block repeat="w widgets">
+
+                    <tal:block condition="not:w/error">
+                        <tal:block define="data w/data;
+                        w_rows data/rows; w_dimensions data/dimensions; w_metrics data/metrics; w_totals data/totals;
+                        w_uuid w/uuid; w_count python:view.format(w_totals['total']);
+                        w_label python:view.locale(w_metrics[0], data['metric_format']);
+                        w_icon w/icon; w_more python:len(w_rows)>1;
+                        w_title python:'%s <small>(%s entrées sur %s)</small>' % (w_label, len(w_rows), data['totals']['count']);
+                        w_title w_label;">
+                            <metal:block use-macro="context/indicateurs_macro/macros/widget">
+                                <div metal:fill-slot="modal-body">
+                                    <metal:block use-macro="context/indicateurs_macro/macros/google_analytics"></metal:block>
+                                </div>
+                            </metal:block>
+                        </tal:block>
+
+                    </tal:block>
+
+                    <tal:block condition="w/error" define="w_uuid w/uuid; w_count string:Erreur; w_label string:;
+                        w_icon string:fa-exclamation-triangle; w_color string:text-danger; w_more python:True;">
+                        <metal:block use-macro="context/indicateurs_macro/macros/widget">
+                            <div metal:fill-slot="modal-body">
+                                <div class="alert alert-danger" role="alert" tal:content="w/error"/>
+                            </div>
+                        </metal:block>
+                    </tal:block>
+
+                </tal:block>
+
+            </div>
+        </div>
+
+    </div>
+</tal:block>
+
+
+</html>

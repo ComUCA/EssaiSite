@@ -1,0 +1,166 @@
+@import "ink";
+
+@institutionnel: #006FA4;
+@formation: #5E3A3C;
+@recherche: #468500;
+@international: #6A2790;
+@culture: #CF0505;
+@sport: #EF9120;
+
+h1, h2, h3 {
+    font-family:'Helvetica Neue', Arial, Helvetica, Geneva, sans-serif;
+    font-weight: 100;
+}
+
+h1 {
+    font-size: 26px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+h2 {
+    font-size: 20px;
+    font-weight: 300;
+    border-bottom: 1px solid #006fa4;
+}
+h3 {
+    font-size: 16px;
+    text-align: center;
+}
+h4, h5, h6 {
+    color: #333333;
+}
+h4 {
+    font-size: 16px;
+    border-bottom: 1px solid #006fa4;
+}
+// center {
+//     & > h1, & > h2, & > h3 {
+//         text-align: center;
+//     }
+// }
+a.block, a.block:visited {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #000 !important;
+}
+
+
+table.primary td {
+    background: #006fa4;
+    border-color: #004c71;
+}
+
+table.primary:hover td {
+    background: #004c71 !important;
+}
+
+
+table {
+    &.button, &.tiny-button, &.small-button, &.medium-button, &.large-button {
+        td a {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
+    }
+}
+
+table.small-button.secondary {
+    &.institutionnel, &.formation, &.recherche, &.international, &.culture, &.sport {
+        // margin-bottom: 5px;
+    }
+
+    td {
+        background: #fff !important;
+        border-width: 0 0 0 5px;
+        text-align: left;
+        padding-left: 10px;
+
+        a {
+            font-weight: normal;
+        }
+    }
+
+    &.institutionnel td {
+        border-color: @institutionnel;
+    }
+    &.formation td {
+        border-color: @formation;
+    }
+    &.recherche td {
+        border-color: @recherche;
+    }
+    &.international td {
+        border-color: @international;
+    }
+    &.culture td {
+        border-color: @culture;
+    }
+    &.sport td {
+        border-color: @sport;
+    }
+}
+
+table.tiny-button.primary {
+    &.institutionnel, &.formation, &.recherche, &.international, &.culture, &.sport {
+        margin-bottom: 5px;
+    }
+
+    td {
+        padding: 0;
+        border-width: 0 2px 2px 2px;
+        border-color: #fff;
+    }
+
+    &.institutionnel:hover td, &.institutionnel td {
+        background: @institutionnel !important;
+    }
+    &.formation:hover td, &.formation td {
+        background: @formation !important;
+    }
+    &.recherche:hover td, &.recherche td {
+        background: @recherche !important;
+    }
+    &.international:hover td, &.international td {
+        background: @international !important;
+    }
+    &.culture:hover td, &.culture td {
+        background: @culture !important;
+    }
+    &.sport:hover td, &.sport td {
+        background: @sport !important;
+    }
+}
+
+table.tiny-button.success {
+    &:hover td, td {
+        padding: 11px 1px;
+        border-width: 0;
+        background: #006fa4 !important;
+    }
+    &.month:hover td, &.month td {
+        background: #004c71 !important;
+    }
+}
+
+strong {
+    &.institutionnel {
+        color: @institutionnel;
+    }
+    &.formation {
+        color: @formation;
+    }
+    &.recherche {
+        color: @recherche;
+    }
+    &.international {
+        color: @international;
+    }
+    &.culture {
+        color: @culture;
+    }
+    &.sport {
+        color: @sport;
+    }
+}

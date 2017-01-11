@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="main">
+
+     <tal:block define="Batch python:modules['Products.CMFPlone'].Batch;
+                        is_a_topic python:context.portal_type=='Topic';
+                        contentFilter python:{};
+                        folderContents python:is_a_topic and context.queryCatalog(batch=True, **contentFilter) or context.getFolderContents(contentFilter, batch=True, b_size=100);
+                        batch python:isinstance(folderContents, Batch) and folderContents or Batch(folderContents, 100, 0, orphan=1);">
+
+
+        <div class="espaces_bandeau">
+            <div class="espaces_description">
+                <div class="row">
+                    <div class="col-md-3">
+                    </div>
+                    <div class="col-md-6">
+                        <h2><strong tal:content="context/Title"/><br/><small tal:content="context/Description"/></h2>
+                    </div>
+                    <div class="col-md-3">
+
+                        <tal:listing condition="batch">
+                            <ul class="nav nav-pills">
+                                <li class="dropdown">
+                                    <a id="drop1" role="button" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-th fa-lg"></i> Choisir un espace <b class="caret"/>
+                                    </a>
+                                    <ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                                        <li tal:repeat="item batch" role="presentation">
+                                            <a tal:attributes="href item/getURL|item/absolute_url" tal:content="item/pretty_title_or_id" role="menuitem" tabindex="-1"/>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </tal:listing>
+                    </div>
+                </div>
+                <div class="visualClear"></div>
+            </div>
+            <div class="espaces_photo_panoramique">
+                <img tal:replace="structure context/@@images/photo_panoramique/full"/>
+            </div>
+        </div>
+
+
+    </tal:block>
+
+</metal:main>
+
+</body>
+</html>
+

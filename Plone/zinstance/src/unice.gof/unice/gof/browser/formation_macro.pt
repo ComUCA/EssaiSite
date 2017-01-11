@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+<metal:block define-macro="formation">
+
+    <img src="./++theme++ThemeUNS/assets/img/logo_traits.png" alt="Logo" class="logo_print" />
+    <p tal:content="context/Title" class="title_print"/>
+
+    <ul class="nav nav-pills nav-justified nav-tabs">
+        <tal:block repeat="group view/groups">
+            <tal:block define="grp group/__name__">
+                <li tal:condition="python:not grp=='outils'" tal:attributes="class python:'active' if repeat['group'].index == 1 else ''">
+                    <a data-toggle="tab" tal:attributes="href string:#group-${repeat/group/index}">
+                        <tal:block content="group/label"/>
+                     </a>
+                </li>
+            </tal:block>
+        </tal:block>
+    </ul>
+
+    <div class="tab-content">
+        <tal:block repeat="group view/groups">
+            <div tal:define="grp group/__name__"
+                 tal:condition="python:not grp=='outils'"
+                 tal:attributes="id string:group-${repeat/group/index};
+                                 class python:'tab-pane fade in active' if repeat['group'].index == 1 else 'tab-pane fade'">
+
+                <div class="row">
+                    <div class="col-md-9">
+            <h2 tal:content="group/label"/>
+                        <metal:macro use-macro="python:context.restrictedTraverse('@@formation_macro_%s' % grp).index.macros['group']"></metal:macro>
+                    </div>
+                    <div class="col-md-3">
+                        <metal:block use-macro="context/formation_macro_outils/macros/group"></metal:block>
+                    </div>
+                </div>
+
+                <div class="visualClear"></div>
+
+            </div>
+        </tal:block>
+    </div>
+
+</metal:block>
+</metal:content-core>
+</body>
+</html>

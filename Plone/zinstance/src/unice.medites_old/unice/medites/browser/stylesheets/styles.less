@@ -1,0 +1,63 @@
+body {
+    padding-top: 50px;
+}
+
+.navbar-brand {
+    @padding: 2px;
+
+    padding: @padding;
+
+    img {
+        width: auto;
+        height: 50px - 2*@padding;
+    }
+}
+
+
+/*** LIVESEARCH ***/
+
+body.template-search {
+    padding-top: 20px;
+
+    #portal-top, #portal-footer-wrapper {
+        display:none !important;
+    }
+}
+#LSResult {
+    position: absolute;
+    right: 0;
+    background: White;
+    // margin: -1.5em 0 0 -7em;
+    margin: 0;
+}
+#LSResult fieldset {
+    // padding: 1em 0 0;
+    padding: 0;
+    border: 0.1em solid #ccc;
+}
+#livesearchLegend {
+    background-color:#ccc;
+    padding:0.3em;
+    margin: 0;
+}
+#LSResult .LSDescr {
+    font-size: 85%;
+    color: #666;
+}
+.LSRow,
+#LSNothingFound {
+    display: block;
+    padding: 0.5em 1em;
+    white-space: normal;
+    width:28em;
+}
+.LSBox {
+    position: relative;
+}
+.LSHighlight {
+    background: #ddd;
+}
+.LSTable {
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<portlets xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone">
+
+ <!-- Portlet type registrations -->
+
+ <portlet
+   addview="unice.portlet.a_la_une.A_La_UnePortlet"
+   title="A_La_Une portlet"
+   description="A portlet that shows a a_la_une item."
+   i18n:attributes="title;
+                    description"
+   />
+
+</portlets>

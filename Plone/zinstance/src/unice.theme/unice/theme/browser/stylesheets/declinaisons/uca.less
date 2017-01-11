@@ -1,0 +1,647 @@
+@import "declinaisons";
+@import "uca_keywords";
+@import "uca_keywords_fr";
+@import "uca_utils";
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:100,300);
+
+.portlets-in-header(#FFF, #FFF);
+.declinaison();
+.navigation-principale-large-centree();
+
+#portal-columns h1,
+#portal-columns h2,
+#portal-columns h3,
+h1, h2, h3 {
+    font-family: "Raleway";
+    font-weight: 100;
+}
+
+a, a:link, a:visited {
+    color: @couleurFond;
+
+}
+a.btn, a.btn:link, a.btn:visited {
+    color: #FFF !important;
+}
+
+div#wrap > div > div.container {
+    width: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#portal-column-one.col-md-3,
+#portal-column-two.col-md-3 {
+    @media (min-width: 992px) {
+        margin-top: 56px;
+    }
+}
+
+body.subsection-english-english {
+    div#wrap > div > div.container {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    div#portal-column-content {
+        padding: 0;
+    }
+    div#portal-columns {
+        padding-top: 0;
+    }
+}
+
+
+#plone-document-byline .documentByLine,
+#viewlet-above-content-body .newsImageContainer {
+    display: none;
+}
+
+#portal-columns {
+    background-color: transparent;
+}
+.breadcrumb {
+    background-color: #FFF;
+    border: 0;
+
+    #portal-column-content & {
+        display: none !important;
+    }
+}
+
+h1.documentFirstHeading {
+    margin: 0;
+    margin-bottom: 20px;
+    padding: 40px 10px;
+    text-align: center;
+    background-color: @couleurFond;
+    color: #FFF !important;
+    .angled_up20();
+
+    // #portal-column-content.col-md-12 & {
+        margin-left: -15px;
+        margin-right: -15px;
+    // }
+
+    #content & {
+        display: none !important;
+    }
+}
+#content .documentDescription,
+#content #description,
+#parent-fieldname-description,
+ul.canal_fil_importance3 .details_link span {
+    color: @couleurFond !important;
+    font-size: 21px;
+    text-align: justify;
+    font-weight: 300;
+    margin-top: 30px;
+    padding: 0;
+}
+ul.canal_fil_importance3 .details_link span {
+    font-size: 14px;
+}
+
+.highlightedSearchTerm {
+    background-color: #f1c40f;
+}
+
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+
+.managedPortlet .managedPortletActions > span.draggable,
+.managedPortlet .managedPortletActions > a.left,
+.managedPortlet .managedPortletActions > a.right {
+    display: inline-block !important;
+}
+
+#portlets-in-header {
+    div.portlet.portletNavigation {
+        &.navbar-style-logo, &.navbar-style-principal {
+            &, nav {
+                width: 100% !important;
+                background-color: transparent !important;
+            }
+
+            div.navbar-collapse ul.navbar-nav {
+                & > li > a {
+                    color: @couleurFond !important;
+                    padding: 10px !important;
+                    font-stretch: initial !important;
+
+                    .caret {
+                        border-top-color: @couleurFond;
+                        border-bottom-color: @couleurFond;
+                        display: inline-block;
+                        margin-left: 2px;
+                    }
+                }
+
+                .open > a {
+                    &, &:hover {
+                        background-color: @couleurFond !important;
+                        color: #FFF !important;
+                    }
+                    .caret {
+                        border-top-color: #FFF;
+                        border-bottom-color: #FFF;
+                    }
+                }
+            }
+        }
+
+        .dropdown-menu {
+            border: 0;
+
+            a {
+                border: 0;
+
+                i.fa.fa-angle-right {
+                    display: none;
+                }
+            }
+        }
+
+        #menu-idex-uca-jedi-uca-home,
+        #menu-uca-labs-uca-home,
+        #menu-uca-education-uca-home {
+            display: none;
+        }
+    }
+
+    div.portlet.portletCarousel {
+        background-color: transparent;
+        background-image: none;
+
+        .bx-wrapper {
+            margin-bottom: 0;
+
+            .bx-viewport {
+                @media (min-width: 768px) {
+                    .angled_up5();
+                }
+            }
+        }
+
+        .bx-caption {
+            @media (min-width: 768px) {
+                padding-bottom: 30px;
+                padding-top: 30px;
+                background-color: transparent;
+                .gradient(transparent, rgba(0, 0, 0, 1));
+            }
+
+            span strong, span small {
+                font-weight: 100;
+            }
+        }
+    }
+}
+
+.titre_s_s {
+    background: @couleurFondSombre;
+    padding: 20px;
+    text-align:center;
+    margin-top: 20px;
+
+    &:hover, &:focus {
+        background: darken(@couleurFondSombre, 10%);
+    }
+
+    h3 {
+        margin: 0;
+        font-weight: 100;
+    }
+
+    a {
+        color: #FFF !important;
+        text-decoration: none !important;
+    }
+}
+
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+
+div.portlet.portletAgenda {
+    .image_ratio span {
+        padding-top: 66.666%;
+    }
+
+    div.row {
+        @media (min-width: 992px) {
+            & > div.col-md-1 {
+                line-height: 236px;
+            }
+            & > div.col-md-11 {
+            }
+        }
+    }
+}
+
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+
+#livesearch0,
+footer .credits {
+    display: none !important;
+}
+
+ol.breadcrumb > li:nth-child(1),
+ol.breadcrumb > li:nth-child(2),
+ol.breadcrumb > li:nth-child(3) {
+    display: none;
+
+    & + li:before {
+        content: " ";
+    }
+}
+
+div#portlets-in-header nav.navbar-style-logo {
+    padding: 10px;
+    text-align: center;
+    box-shadow: none;
+
+    .navbar-header, .navbar-brand {
+        float: none;
+        // display: inline-block;
+    }
+
+    .navbar-brand:nth-child(2) img {
+        height: 60px;
+        margin-left: 50px;
+    }
+
+
+    .navbar-header {
+        // margin-left: 2 * 7em;
+    }
+    .navbar-form #searchGadget {
+        width: 7em;
+
+        &:focus {
+            width: 17em;
+        }
+    }
+}
+
+
+
+.modal-header {
+    background-color: @couleurFond;
+    color: #FFF;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+
+    .close {
+        color: #FFF;
+        opacity: 1;
+        text-shadow: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .portletNavigation.navbar-style-principal {
+        .navbar {
+            .navbar-nav {
+                display: inline-block;
+                float: none;
+                vertical-align: top;
+            }
+
+            .navbar-collapse {
+                text-align: center;
+
+                ul.navbar-nav > li {
+                    border-width: 0 !important;
+
+                    // & > a {
+                    //     font-size: 16px !important;
+                    //     // text-transform: uppercase !important;
+                    //     padding-left: 15px !important;
+                    //     padding-right: 15px !important;
+                    // }
+                }
+            }
+        }
+    }
+}
+
+
+body.subsection-english-english {
+    ol.breadcrumb, h1#parent-fieldname-title {
+        display: none !important;
+    }
+}
+body.subsection-english-presentation-uca-members {
+    .template .btn.btn-more {
+        display: none;
+    }
+}
+/*
+body.template-template2bis_view {
+    display:none !important;
+}*/
+
+body.template-template2bis_view #content,
+body.template-template2ter_view #content {
+    hr {
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+    ul.canal_fil_importance2 {
+        margin: 0 !important;
+        margin-top: 40px !important;
+
+        div.row {
+            margin: 0 !important;
+        }
+
+        div.row li.col-md-4,
+        div.row li.col-md-3 {
+            border: 0 none !important;
+            box-shadow: none !important;
+            margin-bottom: 0 !important;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-bottom: 0 !important;
+            height: 100%;
+            .image_ratio.ratio16\3a 9 {
+                border: 0 !important;
+            }
+            .image_ratio.ratio16\3a 9 span {
+                padding-top:100% !important;
+            }
+
+            .details_link {
+                text-align: center;
+
+                h2 {
+                    font-size: 14px;
+                }
+            }
+
+            a {
+                height: auto;
+            }
+        }
+    }
+}
+#content .template ul.canal_fil_importance3 {
+    background-color: transparent !important;
+
+    li {
+        padding: 0 !important;
+    }
+}
+
+.portletAgenda > .container {
+    width: auto;
+}
+
+
+footer .FooterPortletManager1 {
+    .liste-membres a {
+        img {
+            width: auto;
+            height: 40px;
+            margin-right: 2px;
+
+            @filterString: e("url(data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale)");
+            @props: ~`"@{filterString}".replace(/[\[\]]/g, '')`;
+
+            filter: @props;
+            filter: gray;
+            -webkit-filter: grayscale(100%);
+            -webkit-transition: all .6s ease;
+            -webkit-backface-visibility: hidden;
+
+            &:hover {
+                filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+                -webkit-filter: grayscale(0%);
+            }
+        }
+
+        &:nth-child(4) img {
+            height: 35px;
+        }
+        &:nth-child(5) img {
+            height: 35px;
+        }
+        &:nth-child(6) img {
+            height: 50px;
+        }
+        &:nth-child(8) img {
+            height: 20px;
+        }
+        &:nth-child(9) img {
+            height: 75px;
+        }
+        &:nth-child(10) img {
+            height: 20px;
+        }
+        &:nth-child(12) img {
+            height: 60px;
+        }
+        &:nth-child(13) img {
+            height: 46px;
+        }
+    }
+}
+
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+
+
+#portal-columns {
+    padding-top: 0;
+}
+#portal-column-content {
+    padding: 0;
+}
+#content {
+    margin: 0;
+}
+#portlets-below {
+    margin-bottom: 0;
+}
+
+body.subsection-english-english #viewlet-below-content-title #portlets-below {
+    background-color: #F2F2F2;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+
+div.portletEvenementiels div.portletHeader.panel-heading,
+dl.portlet.portletListing .portletHeader {
+    background-color: @couleurFond !important;
+    display: block !important;
+    text-align: center;
+    color: #FFF !important;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    border-radius: 0;
+    border: 0;
+    padding: 10px 15px !important;
+    text-transform: uppercase;
+
+    &, & span {
+        font-weight: 700;
+    }
+}
+
+div.portletEvenementiels {
+    border: 0;
+
+    div.portletHeader.panel-heading {
+        margin-bottom: 10px;
+    }
+}
+
+div.portlet.portletEvenementiels .list-group-item {
+    border: 0 !important;
+    padding: 30px !important;
+    padding: 10px 20px !important;
+    background-color: #F2F2F2;
+
+    @media (min-width: 768px) {
+        width: 50%;
+        float: left;
+    }
+
+    h4.list-group-item-heading {
+        margin-top: 15px;
+    }
+
+    span.carre {
+        width: 80px !important;
+        height: 70px !important;
+        border: 0 !important;
+        box-shadow: none !important;
+
+        width: 120px!important;
+        height: 120px!important;
+        .angled_up5();
+    }
+
+    p.list-group-item-text {
+        font-size: 12px;
+        margin: 0 !important;
+
+        .text-muted {
+            display: none;
+        }
+    }
+}
+
+/*******************************************************************************/
+/*******************************************************************************/
+/*******************************************************************************/
+
+body.template-template1_view {
+    #content h2 {
+        background-color: @couleurFond;
+        border-radius: 2px;
+        padding: 5px;
+        color: #FFF;
+        letter-spacing: 0;
+
+        strong {
+            font-weight: 100;
+        }
+
+        &:after {
+            .fontawesome();
+            content: "\f105";
+            float: right;
+        }
+    }
+}
+
+body.portaltype-document.template-document_view {
+    #content h2 {
+        background-color: @couleurFond;
+        border-radius: 2px;
+        padding: 5px;
+        color: #FFF;
+        letter-spacing: 0;
+
+        strong {
+            font-weight: 100;
+        }
+    }
+}
+
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row {
+
+    li.col-md-3 {
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+
+        .image_ratio.ratio16\3a 9 {
+            border: 0 !important;
+        }
+        .image_ratio.ratio16\3a 9 span {
+            padding-top:100% !important;
+        }
+
+        a.btn.btn-primary {
+            display: none !important;
+        }
+
+        div.row {
+            margin: 0 !important;
+        }
+
+        .details_link {
+            display: none;
+        }
+    }
+}
+
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+
+ul.list-inline {
+    margin-left: -5px !important;
+    list-style: none !important;
+
+    & > li {
+        display: inline-block !important;
+    }
+}
+
+#fieldset-openid-login label, #login-form label{
+    text-align: center;
+}
+#fieldset-openid-login input, #login-form input {
+    width: 100%;
+}
+#login-forgotten-password {
+    display: none;
+}
+
+a.btn.btn-more {
+    display: none !important;
+}
+
+/*********************************************************************************/
+/*********************************************************************************/
+/*********************************************************************************/
+
+body.template-solgemafullcalendar_view a.fc-event {
+    color: #FFF !important;
+}

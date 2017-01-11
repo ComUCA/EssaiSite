@@ -1,0 +1,27 @@
+@import "declinaisons";
+
+@couleurFond: #97bf0d;
+@couleurFondSombre: darken(@couleurFond, 10%);
+
+.portlets-in-header();
+.declinaison();
+
+
+a {
+    color:@couleurFondSombre;
+    &:hover, &:focus {
+        color:@couleurFond;
+    }
+}
+.btn-primary {
+    background-color: @couleurFondSombre;
+    border-color: @couleurFondSombre;
+    &:hover, &:focus {
+        background-color: @couleurFond;
+    }
+}
+#portal-columns {
+    h1, h2, h3 {
+        color:@couleurFondSombre;
+    }
+}

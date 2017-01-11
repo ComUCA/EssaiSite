@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.portlet.carousel">
+
+    <!-- Resource directory for images -->
+    <browser:resourceDirectory
+        name="unice.portlet.carousel.stylesheets"
+        directory="stylesheets"
+        />
+
+    <browser:resourceDirectory
+        name="unice.portlet.carousel.javascripts"
+        directory="javascripts"
+        />
+
+    <browser:resourceDirectory
+        name="unice.portlet.carousel.images"
+        directory="images"
+        />
+
+</configure>

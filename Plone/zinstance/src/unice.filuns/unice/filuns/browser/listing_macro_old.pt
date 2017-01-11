@@ -1,0 +1,158 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <body>
+
+<metal:content-core fill-slot="content-core">
+
+<metal:block define-macro="fil">
+
+    <tal:listing condition="batch">
+
+        <tal:block define="items python:view.items(batch, ['page.html'], 190);
+            mois python:['-', 'Jan', 'Fév', 'Mars', 'Avr', 'Mai', 'Juin', 'Juil', 'Août', 'Sept', 'Oct', 'Nov', 'Déc'];
+            themes python:view.themes_agenda();">
+
+            <ul class="row canal_fil_importance3">
+                <li tal:repeat="item items">
+
+                    <tal:block define="parts python:item['dates']['start'].parts() if item['dates']['start'] != None else ['-', 0, '-'];">
+
+                        <a tal:attributes="href string:${item/url}/@@article_view; title string:En savoir plus sur '${item/title}';" class="date_event">
+                            <span class="date_event_day" tal:content="python:parts[2]"/>
+                            <span class="date_event_month" tal:content="python:mois[parts[1]]"/>
+                            <span class="date_event_year"><span tal:content="python:parts[0]"/></span>
+                        </a>
+
+                        <a tal:attributes="href string:${item/url}/@@article_view; title string:En savoir plus sur '${item/title}';" class="details_link">
+                            <strong tal:content="item/title"/><br/>
+                            <span tal:content="item/desc_trunc"/>
+                        </a>
+
+                        <a tal:attributes="href string:${item/url}/@@article_view; title string:En savoir plus sur '${item/title}';" class="thumb_link image_ratio ratio4:3">
+                            <span tal:attributes="style string:background-image: url(${item/image}); class string:${item/image_size} ${item/image_position}">
+                                <img tal:attributes="src item/image; title item/title"/>
+                            </span>
+                        </a>
+
+                    </tal:block>
+
+                    <span class="visualClear"></span>
+                    <metal:block use-macro="context/listing_macro/macros/publication_filuns"></metal:block>
+
+                </li>
+            </ul>
+        </tal:block>
+
+    </tal:listing>
+    <p class="discreet" tal:condition="not: batch" i18n:translate="description_no_items_in_folder">
+        There are currently no items in this folder.
+    </p>
+
+</metal:block>
+
+<!-- ############################################################################# -->
+<!-- ############################################################################# -->
+<!-- ############################################################################# -->
+
+<metal:block define-macro="publication_filuns">
+
+<div tal:condition="python:item['type'] in ['Event', 'News Item']" class="publication">
+    <tal:block condition="python:item['access']">
+        <tal:block define="permissions python:view.permissions(item)">
+
+            <tal:block repeat="permission permissions">
+                <small class="text-muted">
+                    <i tal:attributes="class permission/icon"></i> <tal:block content="permission/title"/> :
+                </small>
+                <div class="btn-group menu_publication"
+                    tal:define="subjects permission/subjects"
+                    tal:attributes="
+                        data-alltitles python:'|'.join([s[0] for s in subjects]);
+                        data-allsubjects python:'|'.join([s[1] for s in subjects]);
+                        data-allcolors python:'|'.join([s[3] for s in subjects]);
+                        data-subjects python:'|'.join(item['subjects']);
+                        data-url item/real_url;
+                    ">
+                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">AAA</button>
+                    <ul class="dropdown-menu" role="menu"></ul>
+                </div>
+
+                <br/>
+
+            </tal:block>
+
+        </tal:block>
+    </tal:block>
+
+    <tal:block condition="python:item['access'] and view.hasGroupAccess('redacteurs_filuns_agenda', item['item'])"
+                             tal:define="came_from context/absolute_url; themes_match python:view.themes_match(item['subjects'])">
+
+        <small class="text-muted"><i class="fa fa-paper-plane"></i> Fil UNS :</small>
+        <div class="btn-group menu_publication"
+            tal:attributes="data-prefix string:#FilUNSTheme;
+            data-allsubjects python:','.join(themes.keys());
+            data-allcolors python:','.join(themes.values());
+            data-subjects python:','.join(themes_match);
+            data-colors python:','.join([themes[t] for t in themes_match]);
+            data-url item/real_url;">
+            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+
+                <!-- <tal:block condition="python:len(themes_match)==0">
+                    Non affiché
+                </tal:block>
+
+                <tal:block condition="python:len(themes_match)>0">
+                    Affiché dans
+                    <tal:block repeat="theme_match themes_match">
+                        <i class="fa fa-square fa-lg" tal:attributes="style python:'color: %s' % themes[theme_match];"></i>
+                        <tal:block content="python:theme_match.replace('#FilUNSTheme', '')"/>
+                        <tal:block condition="not:repeat/theme_match/end">, </tal:block>
+                    </tal:block>
+                </tal:block>
+                <span class="caret"></span> -->
+            </button>
+
+            <ul class="dropdown-menu" role="menu">
+                <!-- <tal:block repeat="theme_infos python:themes.items()">
+
+                    <tal:block define=" theme_code python:theme_infos[0]; theme_nom python:theme_code.replace('#FilUNSTheme', '');
+                                        color python:theme_infos[1];
+                                        publie python:theme_code in item['subjects'];
+                                        query python:view.urlencode({'subject': theme_code, 'came_from': came_from});">
+
+                        <li tal:condition="not:publie" tal:attributes="style string:background-color:${color};;">
+                            <a  tal:attributes="href string:${item/real_url}/ajouter_subject?${query};
+                                title string:Afficher l'article '${item/title}' dans le thème '${theme_nom}';">
+                                <i class="fa fa-lg"></i>
+                                <tal:block content="theme_nom"/>
+                            </a>
+                        </li>
+                        <li tal:condition="publie" tal:attributes="style string:background-color:${color};;" class="active">
+                            <a  tal:attributes="href string:${item/real_url}/supprimer_subject?${query};
+                                title string:Masquer l'article '${item/title}' dans le thème '${theme_nom}';">
+                                <i class="fa fa-lg"></i>
+                                <tal:block content="theme_nom"/>
+                            </a>
+                        </li>
+                    </tal:block>
+                </tal:block> -->
+            </ul>
+        </div>
+
+    </tal:block>
+
+    <span class="visualClear"></span>
+
+
+</div>
+
+</metal:block>
+
+</metal:content-core>
+</body>
+
+</html>

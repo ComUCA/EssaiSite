@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="content-core">
+
+    <tal:block define="uri python:view.detectUrlOrIframe(context.uri)">
+
+        <iframe tal:condition="uri" tal:attributes="src uri; width context/largeur; height context/hauteur;" frameborder="0" allowfullscreen></iframe>
+
+        <tal:block condition="not:uri">
+            <div class="alert alert-danger" role="alert">L'adresse ou le code d'intégration ne sont pas au bon format</div>
+        </tal:block>
+
+        <style type="text/css" tal:condition="context/fullscreen">
+            #portlets-in-header .portlet,
+            #portal-column-one, #portal-column-two,
+            ol.breadcrumb,
+            footer {
+                display: none !important;
+            }
+            #portlets-in-header .portlet.navbar-style-noir,
+            #portlets-in-header .portlet.navbar-style-logo,
+            #portlets-in-header .portlet.navbar-style-principal {
+                display: block !important;
+            }
+            #portlets-in-header .portlet nav.container,
+            div#wrap > div > div.container,
+            #portal-column-content {
+                width: auto !important;
+            }
+
+        </style>
+
+    </tal:block>
+
+</metal:main>
+
+</body>
+</html>
+

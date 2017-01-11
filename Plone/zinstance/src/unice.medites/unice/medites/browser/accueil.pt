@@ -1,0 +1,820 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="python:not (context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups())">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="python:context.restrictedTraverse('@@plone_portal_state').anonymous() or 'Partenaires' in user.getGroups()"
+    define="infos view/infos;
+            scales context/@@images;">
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+<!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+			<metal:content-core define-macro="content-core"
+                        tal:define="widgets nocall:context/@@view">
+                <section class="container-fluid emplacement accueil">
+                    <div class="accueilMontage">
+                        <ul class="sansPuce col-xs-12 toolTipBlanc">
+                            <li class="col-xs-2">
+                                <a title='Rends-toi sur le parcours "Océan, observation et découverte"' data-toggle="tooltip" data-placement="top" href="http://medites.fr/parcours-pedagogiques/ocean-observation-et-decouverte">
+                                    <img class="img-responsive" src="++resource++unice.medites.images/avatars/terre-ocean-univers/ocean/p1/faceGrand.png" alt="Avatar du parcours Océan, observation et découverte"/> 
+                                </a>
+                            </li>
+                            <li class="col-xs-2">
+                                <a title='Rends-toi sur le parcours "Terre solide"' data-toggle="tooltip" data-placement="top" href="http://medites.fr/parcours-pedagogiques/terre-solide">
+                                    <img class="img-responsive" src="++resource++unice.medites.images/avatars/terre-ocean-univers/terre/p1/faceGrand.png" alt="Avatar du parcours Terre solide"/> 
+                                </a>
+                            </li>
+                            <li class="col-xs-2">
+                                <a title='Rends-toi sur le parcours "Démarche scientifique dans le numérique"' data-toggle="tooltip" data-placement="top" href="http://medites.fr/parcours-pedagogiques/demarche-scientifique-dans-le-numerique">
+                                    <img class="img-responsive" src="++resource++unice.medites.images/avatars/sciences-du-numerique/p1/faceGrand.png" alt="Avatar du parcours Démarche scientifique dans le numérique"/> 
+                                </a>
+                            </li>
+                            <li class="col-xs-2">
+                                <a title='Rends-toi sur le parcours "Observation de l&acute;univers"' data-toggle="tooltip" data-placement="top" href="http://medites.fr/parcours-pedagogiques/observation-univers">
+                                    <img class="img-responsive" src="++resource++unice.medites.images/avatars/terre-ocean-univers/univers/p1/faceGrand.png" alt="Avatar du parcours Observation de l&acute;univers"/> 
+                                </a>
+                            </li>
+                            <li class="col-xs-2">
+                                <a title='Rends-toi sur le parcours "Biodiversité des insectes"' data-toggle="tooltip" data-placement="top" href="http://medites.fr/parcours-pedagogiques/biodiversite-des-insectes">
+                                    <img class="img-responsive" src="++resource++unice.medites.images/avatars/biodiversite/insectes/p1/faceGrand.png" alt="Avatar du parcours Biodiversité des insectes"/> 
+                                </a>
+                            </li>
+                            <li class="col-xs-2">
+                                <a title='Rends-toi sur le parcours "Observation des plantes à différentes échelles"' data-toggle="tooltip" data-placement="top" href="http://medites.fr/parcours-pedagogiques/observation-des-plantes-a-differentes-echelles">
+                                    <img class="img-responsive" src="++resource++unice.medites.images/avatars/biodiversite/plantes/p1/faceGrand.png" alt="Avatar du parcours Observation des plantes à différentes échelles"/> 
+                                </a>
+                            </li>
+                        </ul>
+                        <img src="++resource++unice.medites.images/accueil/montage.png" alt="Visuel de l'ensemble des parcours avec les avatars en premier plan" class="img-all noMargin noPadding col-xs-12" />
+                    </div>
+                </section>
+                <section class="container-fluid dark accueilv1">
+                    <div class="row grid">
+                        <div class="col-xs-12"> <!--  col-sm-12 col-md-12 col-lg-3-->
+                            <div class="presentation accueil">
+                                <h1>Le projet MEDITES</h1>
+                                <div class="text-justify" tal:content="structure widgets/++widget++contenu/render"></div>
+                                <div class="visible-md visible-lg text-justify" tal:content="structure widgets/++widget++contenu_suite/render"></div>
+                                <!-- <br class="hidden-xs hidden-sm" />
+                                <br class="hidden-xs hidden-sm"/>
+                                <ul class="blocsAccueil col-lg-12">
+                                    <li class="col-xs-3">   
+                                        <a title="Voir le contenu" data-toggle="modal" data-target="#videoPresentation" href="#">
+                                            <img class="img-responsive opaciteHover" src="++resource++unice.medites.images/pages/videoPresentation.jpg" />
+                                        </a>
+                                         <div id="videoPresentation" class="modal fade bs-example-modal-lg darkModal" tabindex="-1" role="dialog" aria-labelledby="Video" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                        <h3 class="modal-title" id="Video">Présentation du projet MEDITES en vidéo</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="embed-responsive embed-responsive-16by9">
+                                                            <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/ifyHWh7TGws?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                        </div>
+                                                        <h2 class="marginTop35">Ils en ont parlé :</h2>
+                                                        <ul class="noPadding sansPuce">
+                                                            <li class="col-xs-6">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/VVKeIWWE0os?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                                </div>
+                                                                <br/>
+                                                                <h3 class="noMargin">Dominique NOBIL</h3><p>Délégué régional en PACA de l'INSERM</p>
+                                                            </li>
+                                                            <li class="col-xs-6">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/PZNyfmILhLA?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                                </div>
+                                                                <br/>
+                                                                <h3 class="noMargin">Laurence PATTI</h3><p>Délégué académique à l'éducation artistique et culturelle à Nice</p>
+                                                            </li>
+                                                            <li class="col-xs-6">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/537oVEsK2Bk?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                                </div>
+                                                                <br/>
+                                                                <h3 class="noMargin">Béatrice Saint CRICQ</h3><p>Délégué régionale en côte d'Azur</p>
+                                                            </li>
+                                                            <li class="col-xs-6">
+                                                                <div class="embed-responsive embed-responsive-16by9">
+                                                                    <iframe class="embed-responsive-item" width="420" height="315" src="https://www.youtube.com/embed/nmXRmhMwHlI?rel=0" frameborder="0" allowfullscreen></iframe>
+                                                                </div>
+                                                                <br/>
+                                                                <h3 class="noMargin">Antoine SCIANDRA</h3><p>Directeur du laboratoire océanographique de Villefranche</p>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="col-xs-3">   
+                                        <a title="Voir le contenu" data-toggle="modal" data-target="#forumP1" href="#">
+                                            <img class="img-responsive opaciteHover" src="++resource++unice.medites.images/pages/forumMeditesPhase1.jpg" />
+                                        </a>
+                                        <div aria-hidden="true" aria-labelledby="" role="dialog" tabindex="-1" id="forumP1" class="modal fade bs-example-modal-lg darkModal">
+                                            <div class="modal-dialog modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                        <h3 class="modal-title">Le forum MEDITES phase 1</h3>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-banderolle.jpg" />
+                                                        <br/>
+                                                        <br/>
+                                                        Le forum MEDITES Phase 1 s’est tenu le vendredi 22 mai 2015 dans les pelouses du Parc Valrose, Siège de l’Université Nice Sophia Antipolis.
+                                                        <br/>
+                                                        <br/>
+                                                        Les quatorze classes participantes à la première phase du projet ont été invitées au forum. Venant de Nice, Breil sur Roya ou Vinon sur Verdon, les élèves ont pu présenter à leurs camarades, aux chercheurs et aux personnalités invitées, les différentes thématiques scientifiques découvertes au cours de l’année.<br/>
+                                                        Alors que le matin, les élèves tenaient des stands dans les pelouses, ils ont pu se produire l'après-midi à l’oral sur la scène du Théâtre du Grand Chateau de Valrose.
+                                                        <br/>
+                                                        <br/>
+                                                       <ul class="noPadding">
+                                                            <li class="col-xs-6 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-stand.jpg" /></li>
+                                                            <li class="col-xs-6 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-theatre.jpg" /></li>
+                                                        </ul>
+                                                        <br/>
+                                                        <br/>
+                                                        Dans le cadre du Développement de la Culture Scientifique et Technique et l’Egalité des Chances, le projet MEDITES a été lauréat des Investissements d’Avenir en octobre 2013.
+                                                        <br/>
+                                                        <br/>
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-projet.jpg" />
+                                                        <br/>
+                                                        Les trente partenaires du projet, signataires de la convention cadre MEDITES, se réuniront autour des enfants pour conclure cette première phase de déploiement du programme, qui se poursuivra encore pendant deux années scolaires. À cette occasion, ils ont également marqué leur engagement en signant la charte MEDITES : 
+                                                        <br/>
+                                                        <br/>
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-charte.jpg" />
+                                                        <br/>
+                                                        <h3>Les posters des différentes classes</h3>
+                                                        <ul class="col-xs-12 sansPuce">
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_1.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_1.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_2.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_2.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_3.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_3.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_4.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_4.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_5.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_5.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_6.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_6.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_7.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_7.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_8.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_8.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_9.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_9.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_10.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_10.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_11.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_11.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_12.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_12.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_13.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_13.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                            <li class="col-xs-3">
+                                                                <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_14.pdf">
+                                                                    <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_14.jpg" />
+                                                                </a>    
+                                                            </li>
+                                                        </ul>    
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button data-dismiss="modal" class="btn btn-default marginTop35" type="button">Fermer</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="col-xs-3">   
+                                        <a title="Voir le contenu" data-toggle="modal" data-target="#forumP2" href="#">
+                                            <img class="img-responsive opaciteHover" src="++resource++unice.medites.images/pages/forumMeditesPhase2.jpg" />
+                                        </a>
+                                    </li>
+
+                                    <li class="col-xs-3">   
+                                        <a title="Voir le contenu" data-toggle="modal" data-target="#assemblee" href="#">
+                                            <img class="img-responsive opaciteHover" src="++resource++unice.medites.images/pages/assembleeGenerale.jpg" />
+                                        </a>
+
+                                    </li>
+                                </ul>     -->                       
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-4">
+                                <div class="item bloc-biodiv">
+                                    <img src="++resource++unice.medites.images/structure/bio.png" alt="" class="img-responsive" />
+                                    <a href="http://medites.fr/thematiques/biodiversite" title="Se rendre sur la page">
+                                        <h2>Biodiversité</h2>
+                                    </a>
+                                    <br/>
+                                    <div class="hidden-xs hidden-sm">
+                                        <ul class="ulPerso ">
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/biodiversite-des-insectes" title="Se rendre sur la page">Biodiversité des insectes</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/observation-des-plantes-a-differentes-echelles" title="Se rendre sur la page">Observation des plantes</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/la-biodiversite-au-service-de-lalimentation-et-de-la-sante" title="Se rendre sur la page">Biodiversité, alimentation et santé</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/changement-climatique-vu-a-travers-ses-impacts" title="Se rendre sur la page">Changement climatique vu à travers ses impacts</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="item bloc-tpHistEvo">
+                                    <img src="++resource++unice.medites.images/structure/tHE.png" alt="" class="img-responsive" />
+                                    <a href="http://medites.fr/thematiques/temps-histoire-evolution" title="Se rendre sur la page">
+                                        <h2>
+											Temps,
+											Histoire,
+											&Eacute;volution
+										</h2>                                           
+                                    </a>
+                                    <br/>
+                                    <div class="hidden-xs hidden-sm">
+                                        <ul class="ulPerso">
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/sur-le-fil-du-temps" title="Se rendre sur la page">Sur le fil du temps</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/gestion-et-protection-du-littoral" title="Se rendre sur la page">Gestion et protection du littoral </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>                           
+                            <div class="col-xs-4">
+                                <div class="item bloc-vivMatTech">
+                                    <img src="++resource++unice.medites.images/structure/vMT.png" alt="" class="img-responsive" />
+                                    <a href="http://medites.fr/thematiques/vivant-matiere-et-technologie" title="Se rendre sur la page">
+                                        <h2>
+											Vivant,
+											Matière,
+											Technologie
+										</h2>
+                                    </a>
+                                    <br/>
+                                    <div class="hidden-xs hidden-sm">
+                                        <ul class="ulPerso ">
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/formes-architecture-du-vivant" title="Se rendre sur la page">Architecture du Vivant</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/sensoriel" title="Se rendre sur la page">Sensoriel</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/activite-physique-sante-et-nouvelles-technologies" title="Se rendre sur la page">Activités physiques, santé et nouvelles technologies</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/euclide" title="Se rendre sur la page">Euclide</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/la-recherche-medicale-et-les-neurosciences" title="Se rendre sur la page">La recherche médicale et les neurosciences</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="col-xs-4">
+                                <div class="item bloc-sciNum ">
+                                    <img src="++resource++unice.medites.images/structure/num.png" alt="" class="img-responsive" />
+                                    <a href="http://medites.fr/thematiques/sciences-du-numerique" title="Se rendre sur la page">
+                                        <h2>Sciences du numérique</h2>
+                                    </a>
+                                    <br/>
+                                    <div class="hidden-xs hidden-sm">
+                                        <ul class="ulPerso ">
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/demarche-scientifique-dans-le-numerique" title="Se rendre sur la page">Démarche scientifique dans le numérique</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/conception-objets-connectes-impact-dans-le-domaine-de-la-sante" title="Se rendre sur la page">Conception d’objets connectés, impact dans le domaine de la santé</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="item bloc-terOceUni ">
+                                    <img src="++resource++unice.medites.images/structure/tOU.png" alt="" class="img-responsive" />
+                                    <a href="http://medites.fr/thematiques/terre-ocean-univers" title="Se rendre sur la page">
+                                        <h2>
+											Terre,
+											Océan,
+											Univers
+										</h2>										
+                                    </a>
+                                    <br/>
+                                    <div class="hidden-xs hidden-sm">
+                                        <ul class="ulPerso ">
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/terre-solide" title="Se rendre sur la page">Terre Solide</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/ocean-observation-et-decouverte" title="Se rendre sur la page">Océan : observation et découverte</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/changement-climatique-vu-a-travers-ses-impacts" title="Se rendre sur la page">L'Homme et l'Océan : études et impacts</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/observation-univers" title="Se rendre sur la page">Observation de l'Univers</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/espace-et-instrumentation" title="Se rendre sur la page">Espace et instrumentation</a></li>
+                                            <li><a href="http://medites.fr/parcours-pedagogiques/l-astronomie-et-l-instrumentation-vues-par-le-satellite-gaia" style="letter-spacing: -0.35px;" title="Se rendre sur la page">L'astronomie et l'instrumentation vues par le satellite Gaia</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <div class="item bloc-infos ">
+                                    <img src="++resource++unice.medites.images/structure/partenaires.png" alt="" class="img-responsive" />
+                                    <a href="http://medites.fr/partenaires" title="Voir la page de nos partenaires">
+                                        <h2>Informations complémentaires</h2>
+                                    </a>
+                                    <br/>
+                                    <div class="hidden-xs hidden-sm">
+                                        <ul class="ulPerso">
+                                            <li><a href="http://medites.fr/presentation" title="Afficher la page">Présentation du projet MEDITES</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#assemblee" title="Se rendre sur la page">L'assemblée générale</a></li>
+                                            <li><a href="http://medites.fr/partenaires" title="Retrouvez les partenaires du projet MEDITES">Nos partenaires</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#forumP1" title="Le forum MEDITES 2016">Le forum MEDITES phase 1</a></li>
+                                            <li><a href="#" data-toggle="modal" data-target="#forumP2" title="Le forum MEDITES 2017">Le forum MEDITES phase 2</a></li>
+<!--                                             <li><a href="http://medites.fr/inscription-phase-3" title="Accéder au formulaire en ligne">Inscription phase 3 (limitées)</a></li> -->                                            <li><a href="#" data-toggle="modal" data-target="#presse" title="Retrouvez les articles et publications qui traient du projet MEDITES">Dossier de presse</a></li>                        
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+<!-- modals -->
+                            <div aria-hidden="true" aria-labelledby="titreAssemblee" role="dialog" tabindex="-1" id="assemblee" class="modal fade bs-example-modal-lg darkModal">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <h3 class="modal-title" id="titreAssemblee">Assemblée générale</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            L'assemblée générale s'est tenue le 7 juillet 2015 à saint Jean d'Angély avec l'ensemble des partenaires.<br/> 
+                                            Un compte rendu a été réalisé, nous vous invitons à en prendre connaissance en clique sur le lien suivant.
+                                            <a class="pull-right txtBleu" title="Télécharger le fichier" href="++resource++unice.medites.documents/MEDITES-07-07-2015.pdf">
+                                                Télécharger le fichier PDF - <i class="fa fa-download fa-2x"></i>
+                                            </a>
+                                            <br/><br/>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button data-dismiss="modal" class="btn btn-default" type="button">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div aria-hidden="true" aria-labelledby="titreForumP1" role="dialog" tabindex="-1" id="forumP1" class="modal fade bs-example-modal-lg darkModal">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <h3 class="modal-title" id="titreForumP1">Le forum MEDITES phase 1</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-banderolle.jpg" alt="Photo de la banderolle" />
+                                            <br/>
+                                            <br/>
+                                            Le forum MEDITES Phase 1 s’est tenu le vendredi 22 mai 2015 dans les pelouses du Parc Valrose, Siège de l’Université Nice Sophia Antipolis.
+                                            <br/>
+                                            <br/>
+                                            Les quatorze classes participantes à la première phase du projet ont été invitées au forum. Venant de Nice, Breil sur Roya ou Vinon sur Verdon, les élèves ont pu présenter à leurs camarades, aux chercheurs et aux personnalités invitées, les différentes thématiques scientifiques découvertes au cours de l’année.<br/>
+                                            Alors que le matin, les élèves tenaient des stands dans les pelouses, ils ont pu se produire l'après-midi à l’oral sur la scène du Théâtre du Grand Chateau de Valrose.
+                                            <br/>
+                                            <br/>
+                                           <ul class="noPadding">
+                                                <li class="col-xs-6 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-stand.jpg" alt="Photo du stand du forum MEDITES" /></li>
+                                                <li class="col-xs-6 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-theatre.jpg" alt="Photo de l'intérieur du théâtre de Valrose" /></li>
+                                            </ul>
+                                            <br/>
+                                            <br/>
+                                            Dans le cadre du Développement de la Culture Scientifique et Technique et l’Egalité des Chances, le projet MEDITES a été lauréat des Investissements d’Avenir en octobre 2013.
+                                            <br/>
+                                            <br/>
+                                            <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-projet.jpg" alt="Affiche qui synthétise le projet" />
+                                            <br/>
+                                            Les trente partenaires du projet, signataires de la convention cadre MEDITES, se réuniront autour des enfants pour conclure cette première phase de déploiement du programme, qui se poursuivra encore pendant deux années scolaires. À cette occasion, ils ont également marqué leur engagement en signant la charte MEDITES : 
+                                            <br/>
+                                            <br/>
+                                            <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-charte.jpg" alt="Photo de la charte MEDITES" />
+                                            <br/>
+                                            <h3>Les posters des différentes classes</h3>
+                                            <ul class="col-xs-12 sansPuce">
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_1.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_1.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_2.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_2.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_3.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_3.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_4.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_4.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_5.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_5.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_6.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_6.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_7.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_7.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_8.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_8.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_9.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_9.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_10.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_10.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_11.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_11.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_12.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_12.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_13.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_13.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase1/poster_14.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase1/poster_14.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                            </ul>    
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button data-dismiss="modal" class="btn btn-default marginTop35" type="button">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div aria-hidden="true" aria-labelledby="titreForumP2" role="dialog" tabindex="-1" id="forumP2" class="modal fade bs-example-modal-lg darkModal">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <h3 class="modal-title" id="titreForumP2">Le forum MEDITES phase 2</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <img class="img-responsive" src="++resource++unice.medites.images/pages/forum-medites-banderolle.jpg" alt="Photo de la banderolle" />
+                                            <br/>
+                                            <br/>
+                                            Le forum MEDITES Phase 2 s’est tenu le jeudi 26 et vendredi 27 mai 2016 dans les pelouses du Parc Valrose, Siège de l’Université Nice Sophia Antipolis.
+                                            <br/>
+                                            <br/>
+                                            Les vingt-quatre classes participantes à la seconde phase du projet ont été invitées au forum. Venant de Nice, Breil sur Roya ou Vinon sur Verdon, les élèves ont pu présenter à leurs camarades, aux chercheurs et aux personnalités invitées, les différentes thématiques scientifiques découvertes au cours de l’année.<br/>
+                                            Alors que le matin, les élèves tenaient des stands dans les pelouses, ils ont pu se produire l'après-midi à l’oral sur la scène du Théâtre du Grand Chateau de Valrose.
+                                            <br/>
+                                            <br/>
+                                            <ul class="noPadding">
+                                                <li class="col-xs-3 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forumP2-1.JPG" alt="Photo prise lors du forum" /></li>
+                                                <li class="col-xs-3 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forumP2-2.JPG" alt="Photo prise lors du forum" /></li>
+                                                <li class="col-xs-3 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forumP2-3.JPG" alt="Photo prise lors du forum" /></li>
+                                                <li class="col-xs-3 sansPuce"><img class="img-responsive" src="++resource++unice.medites.images/pages/forumP2-4.JPG" alt="Photo prise lors du forum" /></li>
+                                            </ul>
+                                            <br/>
+                                            <br/>
+                                            
+                                            <h3>Les posters des différentes classes</h3>
+                                            <ul class="col-xs-12 sansPuce">
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_1.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_1.jpg" alt="Poster édité pour la classe" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_2.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_2.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_3.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_3.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_4.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_4.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_5.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_5.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_6.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_6.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_7.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_7.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_8.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_8.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_9.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_9.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_10.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_10.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_11.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_11.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_12.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_12.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_13.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_13.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_14.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_14.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_15.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_15.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_16.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_16.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_17.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_17.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_18.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_18.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_19.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_19.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_20.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_20.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_21.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_21.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_22.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_22.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_23.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_23.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_24.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_24.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_25.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_25.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_26.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_26.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_27.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_27.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_28.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_28.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_29.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_29.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_30.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_30.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_31.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_31.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_32.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_32.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_33.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_33.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_34.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_34.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_35.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_35.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_36.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_36.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                                <li class="col-xs-3">
+                                                    <a title="Télécharger le poster au grand format" href="++resource++unice.medites.images/pages/posters/phase2/poster_37.pdf">
+                                                        <img class="img-responsive" src="++resource++unice.medites.images/pages/posters/phase2/poster_37.jpg" alt="Photo prise lors du forum" />
+                                                    </a>    
+                                                </li>
+                                            </ul>  
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button data-dismiss="modal" class="btn btn-default" type="button">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div aria-hidden="true" aria-labelledby="titrePresse" role="dialog" tabindex="-1" id="presse" class="modal fade bs-example-modal-lg darkModal">
+                                <div class="modal-dialog modal-lg">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                            <h3 class="modal-title" id="titrePresse">Presse</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul class="ulPerso noPadding">
+                                                <li class="sansPuce">
+                                                    <h4>Publications sur le web</h4>
+                                                </li>                                                  
+                                                <li>
+                                                    <u>Journée de restitution par les élèves 2015</u><br/>
+                                                    Publication : <a href="
+                                                    http://unice.fr/faculte-des-sciences/contenus-riches/agenda/forum-medites" title="Se rendre sur la publication">unice.fr</a>
+                                                </li>
+                                                <li>
+                                                    <u>Mon océan et moi</u> (26 juillet 2015) :<br/>
+                                                    Publication : <a href="http://www.monoceanetmoi.com/web/index.php/fr/actualites/item/206-zoom-sur-le-parcours-ocean-observation-et-decouverte-medites" title="Se rendre sur la publication">"Zoom sur le parcours OCEAN : OBSERVATION ET DECOUVERTE"</a>
+                                                </li>
+                                                <li>
+                                                    <u>Académie de Nice</u> (mai 2016) : Forum MEDITES 2016<br/>
+                                                    Publication : <a href="http://www2.ac-nice.fr/cid102579/page.html" title="Se rendre sur la publication">www2.ac-nice.fr</a>
+                                                </li>
+                                                <li>
+                                                    Animation d'une <u>émission de radio sur « Agora Côte d'azur »</u> pour la présentation du programme MEDITES avec :<br/>
+                                                    Animateur : Bernard Cuissard (Responsable Secteur Environnement PSM)<br/> accompagné d’Anne-Sophie Coldefy (coordinatrice MEDITES) et de Benoît Milan (Animateur Nature PSM)<br/>
+                                                    <audio controls>
+                                                        <source src="++resource++unice.medites.images/pages/presse/planetescience_16-06-2015.mp3" type="audio/mpeg" />
+                                                        <a href="++resource++unice.medites.images/pages/presse/planetescience_16-06-2015.mp3">horse</a>
+                                                    </audio>
+                                                </li>
+                                                <li>
+                                                    <u>Education nationale</u> (3 décembre 2013) :<br/>
+                                                    Publication : <a href="http://cache.media.education.gouv.fr/file/2013-12/53/7/Dossier-Presentation-MEDITES-3decembre2013_286537.pdf" title="Se rendre sur la publication">Conférence de presse</a>
+                                                </li> 
+                                                <li>
+                                                    <u>Investissements d’avenir : 2 millions d’euros pour le projet MEDITES porté par l’Université Nice Sophia Antipolis</u><br/>
+                                                    Publications : <a href="
+                                                    http://filuns.unice.fr/fil/service-communication/actualites/investissements-d2019avenir-2-millions-d2019euros-pour-le-projet-medites-porte-par-l2019universite-nice-sophia-antipolis" title="Se rendre sur la publication">unice.fr</a> &amp; <a href="http://www2.ac-nice.fr/cid75354/investissements-d-avenir-2-millions-d-euros-pour-le-projet-medites-porte-par-l-universite-nice-sophia-antipolis.html" title="Se rendre sur la publication">unice.fr</a>
+                                                </li>
+                                                <li class="sansPuce">
+                                                    <h4>Autres publications </h4>
+                                                </li>
+                                                <li>
+                                                    <u>Nice matin</u>, collège Thomas Edison, en juin 2016<br/>
+                                                    <img src="++resource++unice.medites.images/pages/presse/niceMatin-juin2016-lorgues.jpg" alt="Aperçu de l'article" class="center img-responsive" />
+                                                </li>
+
+                                                <li>
+                                                    <u>Pays des Alpes-Maritimes</u>, en mai 2016<br/>
+                                                    <img src="++resource++unice.medites.images/pages/presse/Pays_des_Alpes-Maritimes_mai2015.jpg" alt="Aperçu de l'article" class="center img-responsive" />
+                                                </li>
+                                                <li>
+                                                    <u>Nice matin</u>, le 28 avril 2016<br/>
+                                                    <img src="++resource++unice.medites.images/pages/presse/Nice-Matin-28Avril-JulesRomain.jpg" alt="Aperçu de l'article" class="center img-responsive" />
+                                                </li>
+                                                <li>
+                                                    <u>Var matin</u>, le 23 juin 2015<br/>
+                                                    <img src="++resource++unice.medites.images/pages/presse/Var_Matin_23juin2015.jpg" alt="Aperçu de l'article" class="center img-responsive" />
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button data-dismiss="modal" class="btn btn-default" type="button">Fermer</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $(".accueilMontage li img").hover(
+                                function() {
+                                    var src = $(this).attr("src");
+                                    $(this).attr("src", src.replace("faceGrand", "faceAnimGrand"));
+                                },
+                                function() {
+                                    var src = $(this).attr("src");
+                                    $(this).attr("src", src.replace("faceAnimGrand", "faceGrand"));
+                                }
+                            );
+                        });                   
+                        $(function () {
+                            $('[data-toggle="tooltip"]').tooltip();
+                        });
+                    </script>
+                </section> 
+                <metal:block use-macro="context/medites_macros/macros/footerNavbar" />
+  			</metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

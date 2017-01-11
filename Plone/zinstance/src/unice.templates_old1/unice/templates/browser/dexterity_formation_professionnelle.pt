@@ -1,0 +1,210 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone.app.dexterity">
+<body>
+
+<metal:main fill-slot="main"
+    tal:define="nc string:<span class='text-muted'>N.C.</span>;
+                toLocalizedTime nocall:context/@@plone/toLocalizedTime;
+
+                Batch python:modules['Products.CMFPlone'].Batch;
+                is_a_topic python:context.portal_type=='Topic';
+                contentFilter python:{};
+                folderContents python:is_a_topic and context.queryCatalog(batch=True, **contentFilter) or context.getFolderContents(contentFilter, batch=True, b_size=100);
+                batch python:isinstance(folderContents, Batch) and folderContents or Batch(folderContents, 100, 0, orphan=1);">
+
+    <div class="text-center">
+        <h2 tal:content="context/title"/>
+        <p tal:condition="context/Description" tal:content="context/Description"/>
+    </div>
+
+    <ul class="nav nav-pills nav-justified">
+        <li class="active"><a href="#formation" data-toggle="tab">Contenus de la formation</a></li>
+        <li><a href="#dates" data-toggle="tab">Dates, Tarifs &amp; Renseignements</a></li>
+    </ul>
+
+    <div class="tab-content">
+
+        <div class="tab-pane active" id="formation">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <tal:block tal:condition="context/objectifs">
+                        <h3><i class="fa fa-location-arrow"></i> Objectifs</h3>
+                        <p tal:replace="structure python:context.objectifs.output or nc"/>
+                    </tal:block>
+
+                    <hr/>
+
+                    <tal:block tal:condition="context/public">
+                        <h3><i class="fa fa-group"></i> Public</h3>
+                        <p tal:replace="structure python:context.public.output or nc"/>
+                    </tal:block>
+
+                    <hr/>
+
+                    <tal:block tal:condition="context/prerequis">
+                        <h3><i class="fa fa-briefcase"></i> Pr&#233;-requis</h3>
+                        <p tal:replace="structure python:context.prerequis.output or nc"/>
+                    </tal:block>
+
+                    <hr/>
+
+                    <tal:block tal:condition="context/programme">
+                        <h3><i class="fa fa-th-list"></i> Programme</h3>
+                        <p tal:replace="structure python:context.programme.output or nc"/>
+                    </tal:block>
+
+                    <hr/>
+
+                    <tal:block tal:condition="context/programme">
+                        <h3><i class="fa fa-edit-sign"></i> Méthodes pédagogiques</h3>
+                        <p tal:replace="structure python:context.methodes_pedagogiques.output or nc"/>
+                    </tal:block>
+
+                    <hr/>
+
+                    <tal:block tal:condition="context/programme">
+                        <h3><i class="fa fa-tasks"></i> Modalités d'évaluation</h3>
+                        <p tal:replace="structure python:context.evaluation.output or nc"/>
+                    </tal:block>
+
+                    <hr/>
+
+                    <tal:block tal:condition="context/programme">
+                        <h3><i class="fa fa-check-sign"></i> Validation de la formation</h3>
+                        <p tal:replace="structure python:context.validation.output or nc"/>
+                    </tal:block>
+
+                    <hr/>
+
+                    <h3><i class="fa fa-star"></i> Intervenant</h3>
+                    <div class="text-center">
+                        <stong>
+                            <i class="fa-fw fa fa-user"></i>
+                            <tal:block content="structure python:context.intervenant_nom or nc"/>
+                        </stong><br/>
+                        <span tal:condition="context/intervenant_tel">
+                            <i class="fa-fw fa fa-phone"></i> <strong>Tel :</strong>
+                            <tal:block content="context/intervenant_tel"/>
+                        </span><br/>
+                        <span tal:condition="context/intervenant_email">
+                            <i class="fa-fw fa fa-envelope"></i> <strong>Email :</strong>
+                            <a tal:attributes="href string:mailto:${context/intervenant_email}" tal:content="context/intervenant_email" title="Adresse email de l'intervenant"/>
+                        </span>
+                    </div>
+
+                    <hr/>
+
+                    <tal:block tal:condition="context/duree">
+                        <h3><i class="fa fa-time"></i> Dur&#233;e et rythme</h3>
+                        <p>
+                            <tal:block content="structure python:context.duree.output or nc"/>
+                        </p>
+                    </tal:block>
+
+                </div>
+            </div>
+
+            <div class="visualClear"></div>
+        </div>
+
+        <div class="tab-pane" id="dates">
+
+            <div class="row">
+                <div class="col-md-12">
+
+                    <h3><i class="fa fa-calendar"></i> Dates</h3>
+                    <ul tal:condition="batch" class="fa-ul">
+                        <li tal:repeat="item batch" role="presentation" class="text-center">
+                            <i class="fa fa-paper-clip"></i>
+                            <a tal:attributes="href python:item.getObject().absolute_url()">
+                                <strong tal:content="python:item.Description or 'Session'"/>
+                                <tal:block condition="python:item.portal_type=='Event'">
+                                    du <strong tal:content="python:toLocalizedTime(item.start, True)"/>
+                                    au <strong tal:content="python:toLocalizedTime(item.end, True)"/>
+                                </tal:block>
+                            </a>
+                        </li>
+                    </ul>
+                    <p tal:condition="not:batch" tal:replace="structure nc"/>
+
+                    <tal:block tal:condition="context/lieu">
+                        <h3><i class="fa fa-map-marker"></i> Lieu de la formation</h3>
+                        <p>
+                            <tal:block content="structure python:context.lieu or nc"/>
+                        </p>
+                    </tal:block>
+
+                    <hr/>
+
+                    <tal:block tal:condition="context/tarifs">
+                        <h3><i class="fa fa-euro"></i>Tarifs</h3>
+                        <p>
+                            <tal:block content="structure python:context.tarifs.output or nc"/>
+                        </p>
+                    </tal:block>
+
+                    <hr/>
+
+                    <h3><i class="fa fa-user"></i> Responsable</h3>
+                    <div class="text-center">
+                        <strong>
+                            <i class="fa-fw fa fa-user"></i>
+                            <tal:block content="structure python:context.responsable_nom or nc"/>
+                        </strong><br/>
+                        <span tal:condition="context/responsable_tel">
+                            <i class="fa-fw fa fa-phone"></i> <strong>Tel :</strong>
+                            <tal:block content="context/responsable_tel"/>
+                        </span><br/>
+                        <span tal:condition="context/responsable_email">
+                            <i class="fa-fw fa fa-envelope"></i> <strong>Email :</strong>
+                            <a tal:attributes="href string:mailto:${context/responsable_email}" tal:content="context/responsable_email" title="Adresse email du responsable"/>
+                        </span>
+                    </div>
+
+                    <h3><i class="fa fa-question-sign"></i> Renseignements</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong tal:condition="context/renseignements_nom">
+                                <i class="fa-fw fa fa-home"></i> <tal:block content="context/renseignements_nom"/>
+                            </strong><br/>
+                            <div tal:condition="context/renseignements_adresse" tal:content="structure context/renseignements_adresse/output" class="fp_renseignements_adresse"/>
+                        </div>
+
+                        <div class="col-md-6">
+                            <span tal:condition="context/renseignements_tel">
+                                <i class="fa-fw fa fa-phone"></i> <strong>Tel :</strong>
+                                <tal:block content="context/renseignements_tel"/>
+                            </span><br/>
+                            <span tal:condition="context/renseignements_fax">
+                                <i class="fa-fw fa fa-print"></i> <strong>Fax :</strong>
+                                <tal:block content="context/renseignements_fax"/>
+                            </span><br/>
+                            <span tal:condition="context/renseignements_site">
+                                <i class="fa-fw fa fa-globe"></i> <strong>Site :</strong>
+                                <a tal:attributes="href context/renseignements_site" tal:content="context/renseignements_site" title="Site internet de la formation"/>
+                            </span><br/>
+                            <span tal:condition="context/renseignements_email">
+                                <i class="fa-fw fa fa-envelope"></i> <strong>Email :</strong>
+                                <a tal:attributes="href string:mailto:${context/renseignements_email}" tal:content="context/renseignements_email" title="Adresse email de contact de la formation"/>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="visualClear"></div>
+        </div>
+
+    </div>
+
+</metal:main>
+
+</body>
+</html>
+

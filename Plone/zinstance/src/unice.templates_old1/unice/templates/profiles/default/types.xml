@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<object name="portal_types" meta_type="Plone Types Tool">
+ <object name="Folder"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="Collection"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="espaces_uns"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="espaces_campus_uns"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="espace_uns"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="laboratoire"
+    meta_type="Factory-based Type Information with dynamic views"/>
+ <object name="chercheur"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="formation_professionnelle"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="video"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="projet_dsd"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="document_structure"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="ressource_externe"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="FormSaveDataAdapter"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="profil"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+ <object name="onepage"
+    meta_type="Factory-based Type Information with dynamic views"/>
+
+
+</object>

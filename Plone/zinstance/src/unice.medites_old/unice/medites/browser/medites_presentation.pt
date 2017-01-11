@@ -1,0 +1,271 @@
+<!-- Utilisateur connecté => affichage standard plone (macro "master") -->
+<tal:block condition="not:context/@@plone_portal_state/anonymous">
+    <metal:block metal:use-macro="context/main_template/macros/master"/>
+</tal:block>
+
+<!-- Utilisateur anonyme => affichage medites bootstap (macro "medites_html") -->
+<tal:block condition="context/@@plone_portal_state/anonymous"
+    define="infos view/infos;">
+
+    <metal:block use-macro="context/medites_macros/macros/master">
+        <div metal:fill-slot="body">
+            <!--<tal:block content="infos"/>-->
+            
+            <!-- la ligne du dessous permet aux fields dexterity d etre interpretes -->
+            <metal:content-core define-macro="content-core"
+                        tal:define="widgets nocall:context/@@view">
+<style>
+
+  /* Parallax base styles
+  --------------------------------------------- */
+
+  .parallax {
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -webkit-perspective: 300px;
+    perspective: 300px;
+  }
+
+  .parallax__group {
+    position: relative;
+    height: 500px; /* fallback for older browsers */
+    height: 100vh;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+
+  .parallax__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .parallax__layer--fore {
+    -webkit-transform: translateZ(90px) scale(.7);
+    transform: translateZ(90px) scale(.7);
+    z-index: 1;
+  }
+
+  .parallax__layer--base {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    z-index: 4;
+  }
+
+  .parallax__layer--back {
+    -webkit-transform: translateZ(-300px) scale(2);
+    transform: translateZ(-300px) scale(2);
+    z-index: 3;
+  }
+
+  .parallax__layer--deep {
+    -webkit-transform: translateZ(-600px) scale(3);
+    transform: translateZ(-600px) scale(3);
+    z-index: 2;
+  }
+
+
+  /* Debugger styles - used to show the effect
+  --------------------------------------------- */
+
+  .debug {
+    position: fixed;
+    top: 0;
+    left: .5em;
+    z-index: 999;
+    background: rgba(0,0,0,.85);
+    color: #fff;
+    padding: .5em;
+    border-radius: 0 0 5px 5px;
+  }
+  .debug-on .parallax__group {
+    -webkit-transform: translate3d(800px, 0, -800px) rotateY(30deg);
+    transform: translate3d(700px, 0, -800px) rotateY(30deg);
+ }
+  .debug-on .parallax__layer {
+    box-shadow: 0 0 0 2px #000;
+    opacity: 0.9;
+  }
+  .parallax__group {
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: transform 0.5s;
+  }
+
+
+  /* demo styles
+  --------------------------------------------- */
+
+  body, html {
+    overflow: hidden;
+  }
+
+  body {
+    font: 100% / 1.5 Arial;
+  }
+
+  * {
+    margin:0;
+    padding:0;
+  }
+
+  .parallax {
+    font-size: 200%;
+  }
+
+   /* centre the content in the parallax layers */
+  .title {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
+
+
+  /* style the groups
+  --------------------------------------------- */
+
+  #group1 {
+    z-index: 5; /* slide over group 2 */
+  }
+  #group1 .parallax__layer--base {
+    background: rgb(102,204,102);
+  }
+
+  #group2 {
+    z-index: 3; /* slide under groups 1 and 3 */
+  }
+  #group2 .parallax__layer--back {
+    background: rgb(123,210,102);
+  }
+
+  #group3 {
+    z-index: 4; /* slide over group 2 and 4 */
+  }
+  #group3 .parallax__layer--base {
+    background: rgb(153,216,101);
+  }
+
+  #group4 {
+    z-index: 2; /* slide under group 3 and 5 */
+  }
+  #group4 .parallax__layer--deep {
+    background: rgb(184,223,101);
+  }
+
+  #group5 {
+    z-index: 3; /* slide over group 4 and 6 */
+  }
+  #group5 .parallax__layer--base {
+    background: rgb(214,229,100);
+  }
+
+  #group6 {
+    z-index: 2; /* slide under group 5 and 7 */
+  }
+  #group6 .parallax__layer--back {
+    background: rgb(245,235,100);
+  }
+
+  #group7 {
+    z-index: 3; /* slide over group 7 */
+  }
+  #group7 .parallax__layer--base {
+    background: rgb(255,241,100);
+  }
+
+
+</style>
+              
+ <div class="debug">
+    <label><input type="checkbox"> Debug</label>
+  </div>
+
+  <div class="parallax">
+    <div id="group1" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">Base Layer</div>
+      </div>
+    </div>
+    <div id="group2" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">PRINCIPAL OBJECTIF DE MEDITES</div>
+      </div>
+      <div class="parallax__layer parallax__layer--back">
+        <div class="title">
+            <ul>
+                <li>Donner aux jeunes acc&egrave;s à la culture scientifique, &eacute;veiller leur curiosit&eacute; et leur esprit critique, y compris et surtout pour ceux qui se trouvent socialement et/ou territorialement le plus &eacute;loign&eacute; de cette culture.</li>
+                <li>Pour cela, faire &eacute;voluer une relation qui, partout, et quoi qu’on en dise, demeure superficielle et &eacute;ph&eacute;m&egrave;re entre les acteurs de la culture scientifique, la communaut&eacute; &eacute;ducative dans les &eacute;tablissements scolaires et dans les quartiers, en la rendant concr&egrave;te, productive, cr&eacute;ative et durable. Pour ce faire, nous mettons en place des parcours pluridisciplinaires &eacute;tal&eacute;s sur l’ann&eacute;e scolaire, soumis à une m&eacute;thodologie rigoureuse homog&egrave;ne et à l’expertise d’un comit&eacute; scientifique.</li>
+            </ul>
+            <p>En concertation avec le Rectorat, nous &eacute;tablirons des projets f&eacute;d&eacute;rateurs (car pluridisciplinaires et r&eacute;guliers) pour les &eacute;quipes p&eacute;dagogiques et susceptibles de r&eacute;unir chercheurs, associations et acteurs sociaux.</p>
+        </div>
+      </div>
+    </div>
+    <div id="group3" class="parallax__group">
+      <div class="parallax__layer parallax__layer--fore">
+        <div class="title">
+            <p>MEDITES a pour ambition de gagner non seulement les quartiers difficiles mais aussi les haut-pays et de s’y installer de façon durable grâce à la production et à la circulation de livrables adapt&eacute;s. Un panel d’enseignants sera associ&eacute; d&egrave;s l’initiation du projet et permettra l’&eacute;laboration des parcours p&eacute;dagogiques. Les enseignants pourront ainsi pleinement s’approprier les projets, ce qui devrait assurer leur p&eacute;rennit&eacute;.</p>
+            <p>Nous pr&eacute;senterons, au mois de juin de chaque ann&eacute;e, aux &eacute;tablissements identifi&eacute;s comme prioritaires par le Rectorat un catalogue des offres MEDITES.</p>
+            <p>Cette d&eacute;marche d’ouverture et de partenariat dans la dur&eacute;e est la seule qui permette de faire converger toutes les comp&eacute;tences pour les jeunes. Les &eacute;coles, les coll&egrave;ges, les lyc&eacute;es techniques et professionnels, les centres de formation d‘apprentis deviennent les unit&eacute;s de lieu pour l’unit&eacute; d’action, pour faire de l’&eacute;tablissement le centre de ressources culturelles innovantes de proximit&eacute;, pour les jeunes et leur famille.</p>
+            <p>Chacun des projets pourra &ecirc;tre r&eacute;alis&eacute;, suivi et diffus&eacute; sur le r&eacute;seau MEDITES de culture scientifique par le biais du portail internet d&eacute;di&eacute; et grâce aux m&eacute;dia modernes de diffusion de l’information (r&eacute;seaux sociaux).</p>
+            <p>L’investissement de l’Universit&eacute; garantira la qualit&eacute; scientifique des projets d&eacute;velopp&eacute;s et l’adossement aux pôles de comp&eacute;titivit&eacute; territoriaux ouvrira une porte sur la technique et sur l’industrie.</p>        
+        </div>
+      </div>
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">Base Layer</div>
+      </div>
+    </div>
+    <div id="group4" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">En r&eacute;sum&eacute;,</div>
+      </div>
+      <div class="parallax__layer parallax__layer--back">
+        <div class="title">
+            <p>MEDITES est une d&eacute;marche originale innovante, pragmatique, pour &ecirc;tre efficace et durable.</p>
+            <p>MEDITES f&eacute;d&egrave;re, structure et d&eacute;cloisonne les acteurs de la culture scientifique sur un territoire acad&eacute;mique.</p>
+            <p>MEDITES veut mettre la culture scientifique au service de l’&eacute;galit&eacute; des chances et des jeunes, de leur avenir et de leur orientation.</p>
+            <p>MEDITES cr&eacute;e des parcours th&eacute;matiques afin d’ouvrir de nouveaux horizons.</p>        
+        </div>
+      </div>
+      <div class="parallax__layer parallax__layer--deep">
+        <div class="title">Deep Background Layer</div>
+      </div>
+    </div>
+    <div id="group5" class="parallax__group">
+      <div class="parallax__layer parallax__layer--fore">
+        <div class="title">Foreground Layer</div>
+      </div>
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">Base Layer</div>
+      </div>
+    </div>
+    <div id="group6" class="parallax__group">
+      <div class="parallax__layer parallax__layer--back">
+        <div class="title">Background Layer</div>
+      </div>
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">Base Layer</div>
+      </div>
+    </div>
+    <div id="group7" class="parallax__group">
+      <div class="parallax__layer parallax__layer--base">
+        <div class="title">Base Layer</div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+           
+
+            </metal:content-core>
+        </div>
+    </metal:block>
+</tal:block>

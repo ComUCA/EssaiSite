@@ -1,0 +1,60 @@
+@import "declinaisons";
+@import "uca_utils";
+
+div#portlets-in-header {
+    nav.navbar-style-logo {
+        padding: 0 !important;
+    }
+
+    nav.navbar-style-logo .navbar-header,
+    nav.navbar-style-logo .navbar-brand {
+        float: left;
+    }
+
+    div.portlet.portletNavigation nav.navbar.navbar-style-logo.navbar-height-small .navbar-brand img {
+        height: 55px;
+        width: auto;
+    }
+
+    div.portlet.portletNavigation nav.navbar.navbar-style-logo.navbar-height-small .navbar-nav {
+        float: none;
+
+        & > li:last-child {
+            float: right;
+
+            a:before {
+                .pe-lg();
+                content: "\e648";
+            }
+            // a:after {
+            //     .pe-lg();
+            //     content: "\e684";
+            // }
+        }
+    }
+
+    div.portlet.portletNavigation nav.navbar.navbar-style-logo.navbar-height-small .navbar-nav>li>a {
+        padding-top: 22.5px !important;
+        padding-bottom: 22.5px !important;
+        // text-transform: uppercase;
+        // font-size: 18px !important;
+    }
+
+    div.portlet.portletNavigation nav.navbar.navbar-style-logo div.navbar-collapse ul.navbar-nav ul.dropdown-menu.yamm {
+        &, ul.dropdown-menu {
+            background-color: @couleurFond;
+
+            a {
+                color: #FFF !important;
+            }
+        }
+    }
+}
+
+body.template-template2ter_view #content ul.canal_fil_importance2 div.row li.col-md-3 .details_link {
+    display: inline-block;
+}
+
+body.template-chercheur_view #portal-columns #content .chercheur_bandeau .chercheur_photo {
+     border-color: @couleurFond !important;
+}

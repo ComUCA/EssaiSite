@@ -1,0 +1,150 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="unice.medites">
+
+  	<include package="plone.app.contentmenu" />
+
+
+    <!-- PAGE TEMPLATES -->
+    <browser:page
+        name="medites_folder"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="medites_folder.pt"/>
+
+    <browser:page
+        name="accueil"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="accueil.pt"/>
+
+    <browser:page
+        name="parcours"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="parcours.pt"/> 
+
+   <browser:page
+        name="thematique"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="thematique.pt"/>       
+
+    <browser:page
+        name="partenaire"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="partenaire.pt"/>   
+
+    <browser:page
+        name="etablissements-phase1"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="etablissements-phase1.pt"/> 
+
+    <browser:page
+        name="etablissements-phase2"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="etablissements-phase2.pt"/> 
+
+    <browser:page
+        name="etablissements"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="etablissements.pt"/> 
+
+    <browser:page
+        name="partenaires v2"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="partenaires-v2.pt"/> 
+
+    <browser:page
+        name="formulaire"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="formulaire.pt"/>    
+
+    <browser:page
+        name="actualites"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="actualites.pt"/> 
+
+    <browser:page
+        name="actualite"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="actualite.pt"/> 
+
+    <browser:page
+        name="actualite v2"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="actualite-V2.pt"/> 
+
+    <browser:page
+        name="intranet"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="medites_intranet.pt"/>
+
+    <browser:page
+        name="intranet ecole"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="medites_intranet_ecole.pt"/>
+
+    <browser:page
+        name="annuaire"
+        for="*"
+        permission="zope2.View"
+        class=".medites.Medites"
+        template="medites_annuaire.pt"/>
+
+
+    <!-- MACROS -->
+    <browser:page
+        name="medites_macros"
+        for="*"
+        permission="zope2.View"
+        template="medites_macros.pt"/>
+
+    <browser:page
+        name="medites_macros_parcours"
+        for="*"
+        permission="zope2.View"
+        template="medites_macros_parcours.pt"/>
+
+    <!-- CSS, JS & IMG -->
+    <browser:resourceDirectory
+        name="unice.medites.stylesheets"
+        directory="stylesheets"/>
+
+    <browser:resourceDirectory
+        name="unice.medites.javascripts"
+        directory="javascripts"/>
+
+    <browser:resourceDirectory
+        name="unice.medites.images"
+        directory="images"/>
+
+
+</configure>
